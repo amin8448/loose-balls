@@ -405,3 +405,365 @@ Thresholds are those of the brief. The two procedural points the brief leaves op
 | G2 window exists | candidate pairs, gap >= 1, before merging or further filtering | median gap >= 5 frames (0.5 s) and share of pairs with gap >= 3 frames >= 0.60 | stop: no loose window; the 1v1 approach idea is next |
 | G3 ball seen | main pairs | ball_data.is_detected TRUE on >= 0.85 of window frames, pooled; and share of pairs with at least one no-camera or empty window frame <= 0.25 (also reported by trigger class) | small margin, defined as every failing criterion within 5 percentage points of its threshold (>= 0.80; <= 0.30): recheck once on main pairs with gap <= 20 frames (2 s), same thresholds. Larger miss, or second failure: stop |
 | G4 players seen | main pairs | pooled share of detected players within 15 m of the pickup point >= 0.85 on the release frame and >= 0.85 on the pickup frame; and winner detected on the pickup frame in >= 0.90 of pairs | recheck once with a 10 m radius (the winner criterion does not depend on the radius); second failure: stop |
+
+### A2 to A6 and T7, revised candidate set (2026-10-27)
+
+Script: scripts/a2_a6.py, run after the thresholds commit 1f0b65c. "Main pairs" are candidate pairs with gap >= 3 frames. CSV: audit/loose_episodes_exploration.csv, one row per candidate pair (gap >= 1, 562 rows); column main marks gap >= 3; scramble fields are set on main pairs only; winner_team_id is the team of possession i+1.
+
+A2a. Pickup point agreement: tracking ball on the pickup frame vs rotated event x_start, y_start of i+1:
+
+| trigger   |   pairs |   no pickup point |   p10 m |   p50 m |   p90 m |   p95 m |   share <= 2 m |   share <= 5 m |
+|:----------|--------:|------------------:|--------:|--------:|--------:|--------:|---------------:|---------------:|
+| T1        |      26 |                 0 |   0.819 |   1.640 |   2.459 |   2.617 |          0.731 |          1.000 |
+| T2        |     135 |                 0 |   0.729 |   1.463 |   2.647 |   3.239 |          0.763 |          0.978 |
+| T3        |      32 |                 0 |   0.859 |   1.556 |   3.099 |   3.277 |          0.656 |          1.000 |
+| T4        |     137 |                 0 |   0.608 |   1.253 |   2.142 |   2.599 |          0.883 |          1.000 |
+| T5        |       8 |                 0 |   0.736 |   1.383 |   2.182 |   2.374 |          0.750 |          1.000 |
+| T6        |       5 |                 0 |   1.567 |   2.053 |   7.766 |   9.604 |          0.400 |          0.800 |
+| T7        |     123 |                 0 |   0.792 |   1.527 |   2.945 |   4.047 |          0.707 |          0.976 |
+| all       |     466 |                 0 |   0.698 |   1.426 |   2.644 |   3.196 |          0.770 |          0.985 |
+
+A2b. Same, by frame class of the pickup frame:
+
+| pickup frame class   |   pairs |   no pickup point |   p10 m |   p50 m |   p90 m |   p95 m |   share <= 2 m |   share <= 5 m |
+|:---------------------|--------:|------------------:|--------:|--------:|--------:|--------:|---------------:|---------------:|
+| camera               |     456 |                 0 |   0.708 |   1.426 |   2.619 |   3.117 |          0.774 |          0.987 |
+| no_camera            |      10 |                 0 |   0.516 |   1.669 |   4.349 |   7.896 |          0.600 |          0.900 |
+| empty                |       0 |                 0 | nan     | nan     | nan     | nan     |        nan     |        nan     |
+
+A2c. Rotation check, all main pairs with a pickup point:
+
+| event frame to tracking frame                |   median m |   share <= 2 m |   share <= 5 m |
+|:---------------------------------------------|-----------:|---------------:|---------------:|
+| (x, y) to (-x, -y) when right_to_left (used) |      1.426 |          0.770 |          0.985 |
+| x only mirrored when right_to_left           |      3.584 |          0.369 |          0.519 |
+| no rotation                                  |     19.150 |          0.358 |          0.483 |
+
+A3. Ball visibility in the window, main pairs:
+
+| trigger   |   pairs |   window frames |   share of window frames ball detected |   share of pairs with a no-camera or empty window frame |   with a no-camera frame |   with an empty frame |   share release or pickup frame not camera |
+|:----------|--------:|----------------:|---------------------------------------:|--------------------------------------------------------:|-------------------------:|----------------------:|-------------------------------------------:|
+| T1        |      26 |             874 |                                  0.879 |                                                   0.038 |                    0.038 |                 0.000 |                                      0.000 |
+| T2        |     135 |            4933 |                                  0.928 |                                                   0.030 |                    0.030 |                 0.000 |                                      0.030 |
+| T3        |      32 |             625 |                                  0.974 |                                                   0.000 |                    0.000 |                 0.000 |                                      0.000 |
+| T4        |     137 |            2086 |                                  0.819 |                                                   0.124 |                    0.124 |                 0.007 |                                      0.117 |
+| T5        |       8 |             213 |                                  1.000 |                                                   0.000 |                    0.000 |                 0.000 |                                      0.000 |
+| T6        |       5 |             114 |                                  0.447 |                                                   0.600 |                    0.600 |                 0.000 |                                      0.600 |
+| T7        |     123 |            3726 |                                  0.973 |                                                   0.049 |                    0.049 |                 0.000 |                                      0.033 |
+| all       |     466 |           12571 |                                  0.919 |                                                   0.067 |                    0.067 |                 0.002 |                                      0.058 |
+
+A4a. Players within radius of the pickup point, main pairs with a pickup point (466 of 466). Mean count per pair by team; detected shares pooled over players:
+
+| frame   |   radius m | trigger   |   pairs |   mean n releasing team |   mean n other team |   detected share releasing |   detected share other |   detected share all |
+|:--------|-----------:|:----------|--------:|------------------------:|--------------------:|---------------------------:|-----------------------:|---------------------:|
+| release |         10 | T1        |      26 |                    0.65 |                0.92 |                       0.82 |                   0.38 |                 0.56 |
+| release |         10 | T2        |     135 |                    1.53 |                1.80 |                       0.82 |                   0.82 |                 0.82 |
+| release |         10 | T3        |      32 |                    2.16 |                3.09 |                       0.88 |                   0.96 |                 0.93 |
+| release |         10 | T4        |     137 |                    2.12 |                2.55 |                       0.89 |                   0.90 |                 0.90 |
+| release |         10 | T5        |       8 |                    1.25 |                1.00 |                       1.00 |                   0.62 |                 0.83 |
+| release |         10 | T6        |       5 |                    0.60 |                0.80 |                       1.00 |                   0.75 |                 0.86 |
+| release |         10 | T7        |     123 |                    1.54 |                1.99 |                       0.79 |                   0.78 |                 0.78 |
+| release |         10 | all       |     466 |                    1.68 |                2.09 |                       0.85 |                   0.84 |                 0.84 |
+| release |         15 | T1        |      26 |                    1.42 |                2.08 |                       0.73 |                   0.41 |                 0.54 |
+| release |         15 | T2        |     135 |                    2.71 |                3.30 |                       0.83 |                   0.81 |                 0.82 |
+| release |         15 | T3        |      32 |                    3.28 |                5.12 |                       0.87 |                   0.95 |                 0.92 |
+| release |         15 | T4        |     137 |                    3.55 |                4.28 |                       0.89 |                   0.89 |                 0.89 |
+| release |         15 | T5        |       8 |                    2.88 |                2.62 |                       1.00 |                   0.76 |                 0.89 |
+| release |         15 | T6        |       5 |                    2.40 |                1.80 |                       0.83 |                   0.78 |                 0.81 |
+| release |         15 | T7        |     123 |                    2.76 |                3.70 |                       0.81 |                   0.78 |                 0.79 |
+| release |         15 | all       |     466 |                    2.94 |                3.73 |                       0.85 |                   0.83 |                 0.84 |
+| pickup  |         10 | T1        |      26 |                    1.35 |                1.85 |                       0.97 |                   1.00 |                 0.99 |
+| pickup  |         10 | T2        |     135 |                    2.36 |                2.77 |                       0.98 |                   0.98 |                 0.98 |
+| pickup  |         10 | T3        |      32 |                    2.66 |                3.72 |                       0.96 |                   0.97 |                 0.97 |
+| pickup  |         10 | T4        |     137 |                    2.51 |                3.26 |                       0.94 |                   0.94 |                 0.94 |
+| pickup  |         10 | T5        |       8 |                    2.25 |                2.38 |                       1.00 |                   0.95 |                 0.97 |
+| pickup  |         10 | T6        |       5 |                    1.40 |                1.60 |                       0.71 |                   0.75 |                 0.73 |
+| pickup  |         10 | T7        |     123 |                    2.33 |                3.26 |                       0.98 |                   0.98 |                 0.98 |
+| pickup  |         10 | all       |     466 |                    2.35 |                3.04 |                       0.96 |                   0.96 |                 0.96 |
+| pickup  |         15 | T1        |      26 |                    2.19 |                2.88 |                       0.98 |                   0.95 |                 0.96 |
+| pickup  |         15 | T2        |     135 |                    3.90 |                4.61 |                       0.96 |                   0.96 |                 0.96 |
+| pickup  |         15 | T3        |      32 |                    4.06 |                6.16 |                       0.93 |                   0.96 |                 0.95 |
+| pickup  |         15 | T4        |     137 |                    3.94 |                4.72 |                       0.92 |                   0.92 |                 0.92 |
+| pickup  |         15 | T5        |       8 |                    4.00 |                3.75 |                       1.00 |                   0.93 |                 0.97 |
+| pickup  |         15 | T6        |       5 |                    3.00 |                2.40 |                       0.60 |                   0.67 |                 0.63 |
+| pickup  |         15 | T7        |     123 |                    3.74 |                5.20 |                       0.97 |                   0.96 |                 0.97 |
+| pickup  |         15 | all       |     466 |                    3.78 |                4.77 |                       0.95 |                   0.95 |                 0.95 |
+
+A4b. Winner detected on the pickup frame and fully_extrapolated of possession i+1, all main pairs:
+
+| trigger   |   pairs |   winner detected on pickup frame |   i+1 fully_extrapolated TRUE |
+|:----------|--------:|----------------------------------:|------------------------------:|
+| T1        |      26 |                             0.962 |                         0.000 |
+| T2        |     135 |                             0.993 |                         0.000 |
+| T3        |      32 |                             1.000 |                         0.000 |
+| T4        |     137 |                             0.927 |                         0.015 |
+| T5        |       8 |                             1.000 |                         0.000 |
+| T6        |       5 |                             0.800 |                         0.200 |
+| T7        |     123 |                             1.000 |                         0.000 |
+| all       |     466 |                             0.972 |                         0.006 |
+
+A5a. Exclusion flow, all five matches (each row applies its rule to the row above):
+
+| step                                     |   pairs |
+|:-----------------------------------------|--------:|
+| retained pairs                           |    4103 |
+| trigger T1 to T7                         |     964 |
+| resolution recovery or keep_possession   |     596 |
+| not a T3 pair won by GK                  |     582 |
+| not the same player                      |     562 |
+| gap >= 1 frame (candidate pairs, G2 set) |     562 |
+| gap >= 3 frames (main pairs)             |     466 |
+
+A5b. Volume per match:
+
+| match_id   |   candidate pairs (gap >= 1) |   main pairs (gap >= 3) |   merged scrambles |
+|:-----------|-----------------------------:|------------------------:|-------------------:|
+| 1886347    |                          114 |                      96 |                 91 |
+| 1959846    |                          126 |                     104 |                101 |
+| 1996435    |                          113 |                      94 |                 92 |
+| 1996436    |                          119 |                      97 |                 93 |
+| 2007448    |                           90 |                      75 |                 74 |
+| total      |                          562 |                     466 |                451 |
+
+A5c. Main pairs per match by trigger class:
+
+| match_id   |   T1 |   T2 |   T3 |   T4 |   T5 |   T6 |   T7 |   total |
+|:-----------|-----:|-----:|-----:|-----:|-----:|-----:|-----:|--------:|
+| 1886347    |    5 |   26 |    7 |   32 |    4 |    1 |   21 |      96 |
+| 1959846    |    5 |   28 |    8 |   31 |    2 |    2 |   28 |     104 |
+| 1996435    |    6 |   27 |    7 |   30 |    1 |    2 |   21 |      94 |
+| 1996436    |    7 |   30 |    6 |   22 |    1 |    0 |   31 |      97 |
+| 2007448    |    3 |   24 |    4 |   22 |    0 |    0 |   22 |      75 |
+| total      |   26 |  135 |   32 |  137 |    8 |    5 |  123 |     466 |
+
+A5d. Merged scrambles per match by trigger class of the first link:
+
+| match_id   |   T1 |   T2 |   T3 |   T4 |   T5 |   T6 |   T7 |   total |
+|:-----------|-----:|-----:|-----:|-----:|-----:|-----:|-----:|--------:|
+| 1886347    |    3 |   26 |    7 |   32 |    1 |    1 |   21 |      91 |
+| 1959846    |    2 |   28 |    8 |   31 |    2 |    2 |   28 |     101 |
+| 1996435    |    4 |   27 |    7 |   30 |    1 |    2 |   21 |      92 |
+| 1996436    |    4 |   30 |    6 |   22 |    0 |    0 |   31 |      93 |
+| 2007448    |    2 |   24 |    4 |   22 |    0 |    0 |   22 |      74 |
+| total      |   15 |  135 |   32 |  137 |    4 |    5 |  123 |     451 |
+
+A5e. Aerial or ground per match, main pairs and merged scrambles:
+
+| match_id   |   main pairs aerial |   main pairs ground |   scrambles aerial |   scrambles ground |
+|:-----------|--------------------:|--------------------:|-------------------:|-------------------:|
+| 1886347    |                  39 |                  57 |                 35 |                 56 |
+| 1959846    |                  45 |                  59 |                 43 |                 58 |
+| 1996435    |                  39 |                  55 |                 39 |                 53 |
+| 1996436    |                  50 |                  47 |                 48 |                 45 |
+| 2007448    |                  38 |                  37 |                 38 |                 36 |
+| total      |                 211 |                 255 |                203 |                248 |
+
+A5f. Scramble size (links = main pairs merged):
+
+|   links |   scrambles |
+|--------:|------------:|
+|       1 |         437 |
+|       2 |          13 |
+|       3 |           1 |
+
+A5g. Phases of play (team_in_possession_phase_type) and main pairs by release frame:
+
+| type        |   phases |   phases with an episode |   main pairs released in it |   share of phases with an episode |   share of main pairs |
+|:------------|---------:|-------------------------:|----------------------------:|----------------------------------:|----------------------:|
+| build_up    |      308 |                       49 |                          51 |                             0.159 |                 0.109 |
+| chaotic     |      414 |                       80 |                          83 |                             0.193 |                 0.178 |
+| create      |      699 |                      109 |                         118 |                             0.156 |                 0.253 |
+| direct      |      141 |                       10 |                          10 |                             0.071 |                 0.021 |
+| finish      |      433 |                      115 |                         142 |                             0.266 |                 0.305 |
+| quick_break |       19 |                       10 |                          12 |                             0.526 |                 0.026 |
+| set_play    |      104 |                       26 |                          36 |                             0.250 |                 0.077 |
+| transition  |       41 |                       12 |                          14 |                             0.293 |                 0.030 |
+
+A5h. Winner counts by match and team (plain counts; no predictor is related to them):
+
+|   match_id |   team_id | team            |   main pairs won |   scrambles won |
+|-----------:|----------:|:----------------|-----------------:|----------------:|
+|    1886347 |      1805 | Newcastle       |               44 |              41 |
+|    1886347 |      4177 | Auckland FC     |               52 |              50 |
+|    1959846 |       868 | Melbourne V FC  |               51 |              51 |
+|    1959846 |      1803 | Western United  |               53 |              50 |
+|    1996435 |       866 | Adelaide United |               47 |              46 |
+|    1996435 |       869 | Sydney FC       |               47 |              46 |
+|    1996436 |      1804 | Macarthur FC    |               44 |              40 |
+|    1996436 |      4177 | Auckland FC     |               53 |              53 |
+|    2007448 |       871 | Perth Glory     |               37 |              37 |
+|    2007448 |      1802 | Brisbane FC     |               38 |              37 |
+
+A6a. Flight geometry, main pairs (quantiles p10, p50, p90):
+
+| trigger   |   pairs |   window s p10 |   window s p50 |   window s p90 |   pairs with a detected window frame |   max z m p10 |   max z m p50 |   max z m p90 |   share aerial |   pairs with ball at both ends |   ball distance m p10 |   ball distance m p50 |   ball distance m p90 |
+|:----------|--------:|---------------:|---------------:|---------------:|-------------------------------------:|--------------:|--------------:|--------------:|---------------:|-------------------------------:|----------------------:|----------------------:|----------------------:|
+| T1        |      26 |           1.90 |           2.75 |           5.25 |                                   26 |          1.36 |          4.90 |          8.18 |           0.81 |                             26 |                 14.45 |                 28.01 |                 48.21 |
+| T2        |     135 |           1.50 |           3.60 |           5.56 |                                  135 |          0.39 |          3.99 |          8.68 |           0.71 |                            135 |                  7.72 |                 20.22 |                 49.86 |
+| T3        |      32 |           0.70 |           1.95 |           3.59 |                                   32 |          0.26 |          1.08 |          3.09 |           0.31 |                             32 |                  4.32 |                  9.71 |                 20.79 |
+| T4        |     137 |           0.40 |           1.20 |           3.02 |                                  129 |          0.09 |          0.24 |          1.41 |           0.07 |                            137 |                  1.33 |                  5.10 |                 15.90 |
+| T5        |       8 |           1.54 |           2.65 |           3.72 |                                    8 |          1.52 |          4.29 |          5.63 |           0.75 |                              8 |                  6.47 |                 17.78 |                 29.66 |
+| T6        |       5 |           1.10 |           2.60 |           3.22 |                                    4 |          0.22 |          0.43 |          1.15 |           0.00 |                              5 |                  7.56 |                 19.64 |                 26.43 |
+| T7        |     123 |           1.50 |           2.90 |           4.78 |                                  123 |          0.18 |          2.47 |          7.49 |           0.55 |                            123 |                  7.38 |                 19.35 |                 44.85 |
+| all       |     466 |           0.70 |           2.30 |           4.90 |                                  457 |          0.16 |          1.53 |          7.32 |           0.45 |                            466 |                  2.84 |                 13.75 |                 42.07 |
+
+A6b. Gap tail, main pairs (seconds):
+
+| trigger   |   pairs |   p90 s |   p95 s |   p99 s |   max s |   gap > 5 s |   gap > 10 s |
+|:----------|--------:|--------:|--------:|--------:|--------:|------------:|-------------:|
+| T1        |      26 |    5.25 |    5.80 |    8.53 |    9.40 |           3 |            0 |
+| T2        |     135 |    5.56 |    6.86 |    9.60 |    9.80 |          29 |            0 |
+| T3        |      32 |    3.59 |    3.70 |    4.46 |    4.80 |           0 |            0 |
+| T4        |     137 |    3.02 |    3.84 |    5.08 |    9.70 |           2 |            0 |
+| T5        |       8 |    3.72 |    3.86 |    3.97 |    4.00 |           0 |            0 |
+| T6        |       5 |    3.22 |    3.36 |    3.47 |    3.50 |           0 |            0 |
+| T7        |     123 |    4.78 |    5.65 |    6.71 |    8.20 |           9 |            0 |
+| all       |     466 |    4.90 |    5.57 |    8.55 |    9.80 |          43 |            0 |
+
+T7a. T7 candidate pairs (gap >= 1), gap quantiles (seconds) by resolution and continuity:
+
+| resolution      | continuity     |   pairs |   p10 |   p50 |   p90 |   share gap >= 3 fr |
+|:----------------|:---------------|--------:|------:|------:|------:|--------------------:|
+| keep_possession | same team      |      54 |  1.60 |  2.95 |  4.64 |                1.00 |
+| recovery        | change of team |      69 |  1.38 |  2.60 |  4.82 |                1.00 |
+| all             | all            |     123 |  1.50 |  2.90 |  4.78 |                1.00 |
+
+T7b. T7 candidate pairs, gap in frames by bucket:
+
+| gap frames   |   pairs |
+|:-------------|--------:|
+| 1-2          |       0 |
+| 3-5          |       0 |
+| 6-10         |       4 |
+| 11-20        |      37 |
+| 21-30        |      25 |
+| 31-50        |      48 |
+| >50          |       9 |
+
+
+A2 to A6 reading. Facts from the tables above.
+
+| item | finding |
+|:--|:--|
+| A2 | 98.5% of pickup points agree within 5 m and 77.0% within 2 m (median 1.43 m), above the 90% check, so no rotation or alignment problem. The x-only mirror gives 51.9% within 5 m and no rotation 48.3%, which confirms the 180 degree rotation. No main pair has an empty pickup frame |
+| A3 | the ball is detected on 91.9% of window frames; 6.7% of main pairs have a no-camera or empty window frame, almost all no-camera (empty 0.2%). T4 is the weakest large class (81.9% detected, 12.4% camera loss); T6 (5 pairs) is poor (44.7%, 60.0%) |
+| A4 | detection around the pickup point is high on the pickup frame (95% within 15 m) and lower on the release frame (84%), lowest for T1 (54%) and T7 (79%) at release. The winner is detected on the pickup frame in 97.2% of main pairs; fully_extrapolated is TRUE for possession i+1 in 0.6% |
+| A5 | 466 main pairs, 75 to 104 per match; 451 merged scrambles. Merging is rare: 13 scrambles of 2 links and 1 of 3. 45% of main pairs are aerial. 19.3% of chaotic phases and 7.1% of direct phases contain a main pair; 17.8% of main pairs are released in a chaotic phase; every main pair's release frame lies in some phase |
+| A6 | median window 2.3 s (p10 0.7, p90 4.9); median max detected ball height 1.53 m; median ball distance release to pickup 13.8 m. Gap tail: p95 5.57 s, p99 8.55 s, maximum 9.8 s; no main pair above 10 s after resolution unknown was dropped |
+| T7 | 123 candidate pairs, all with gap >= 6 frames, so all are main pairs. keep_possession pairs (54) are all same team and recovery pairs (69) all change of team; median gaps 2.95 s and 2.60 s. T7 has the second lowest release-frame detection within 15 m (0.791, after T1) and its winner is detected on the pickup frame in all 123 pairs |
+
+### Gates G1 to G4 (2026-10-27)
+
+Script: scripts/gates.py, written and run after the thresholds were committed (1f0b65c). Thresholds and recheck rules as logged above; nothing was changed after the result.
+
+G1 per match (merged scrambles of main pairs):
+
+|   match_id |   merged scrambles |
+|-----------:|-------------------:|
+|    1886347 |                 91 |
+|    1959846 |                101 |
+|    1996435 |                 92 |
+|    1996436 |                 93 |
+|    2007448 |                 74 |
+
+Gate verdicts:
+
+| gate       | criterion                                                   | value                | threshold   | result   |
+|:-----------|:------------------------------------------------------------|:---------------------|:------------|:---------|
+| G1         | merged scrambles, minimum over matches                      | 74 (match 2007448)   | >= 50       | pass     |
+| G2         | median gap, candidate pairs gap >= 1 (n = 562)              | 19.0 frames (1.90 s) | >= 5 frames | pass     |
+| G2         | share with gap >= 3 frames                                  | 0.829                | >= 0.60     | pass     |
+| G2         | verdict                                                     |                      |             | pass     |
+| G3         | ball detected, share of window frames, main pairs (n = 466) | 0.919                | >= 0.85     | pass     |
+| G3         | pairs with a no-camera or empty window frame                | 0.067                | <= 0.25     | pass     |
+| G3         | verdict                                                     |                      |             | pass     |
+| G4         | players within 15 m detected, release frame (n = 466)       | 0.8371               | >= 0.85     | fail     |
+| G4         | players within 15 m detected, pickup frame                  | 0.9483               | >= 0.85     | pass     |
+| G4         | winner detected on pickup frame                             | 0.9721               | >= 0.90     | pass     |
+| G4 recheck | players within 10 m detected, release frame                 | 0.8434               | >= 0.85     | fail     |
+| G4 recheck | players within 10 m detected, pickup frame                  | 0.9641               | >= 0.85     | pass     |
+| G4 recheck | winner detected on pickup frame (radius-free)               | 0.9721               | >= 0.90     | pass     |
+| G4         | verdict                                                     |                      |             | fail     |
+
+G3 by trigger class, main pairs:
+
+| trigger   |   pairs |   ball detected share |   camera loss share |
+|:----------|--------:|----------------------:|--------------------:|
+| T1        |      26 |                 0.879 |               0.038 |
+| T2        |     135 |                 0.928 |               0.030 |
+| T3        |      32 |                 0.974 |               0.000 |
+| T4        |     137 |                 0.819 |               0.124 |
+| T5        |       8 |                 1.000 |               0.000 |
+| T6        |       5 |                 0.447 |               0.600 |
+| T7        |     123 |                 0.973 |               0.049 |
+| all       |     466 |                 0.919 |               0.067 |
+
+G4 by trigger class, main pairs:
+
+| trigger   |   pairs |   release 15 m |   pickup 15 m |   release 10 m |   pickup 10 m |   winner detected |
+|:----------|--------:|---------------:|--------------:|---------------:|--------------:|------------------:|
+| T1        |      26 |          0.538 |         0.962 |          0.561 |         0.988 |             0.962 |
+| T2        |     135 |          0.820 |         0.961 |          0.822 |         0.980 |             0.993 |
+| T3        |      32 |          0.918 |         0.951 |          0.929 |         0.966 |             1.000 |
+| T4        |     137 |          0.887 |         0.923 |          0.897 |         0.938 |             0.927 |
+| T5        |       8 |          0.886 |         0.968 |          0.833 |         0.973 |             1.000 |
+| T6        |       5 |          0.810 |         0.630 |          0.857 |         0.733 |             0.800 |
+| T7        |     123 |          0.791 |         0.966 |          0.781 |         0.980 |             1.000 |
+| all       |     466 |          0.837 |         0.948 |          0.843 |         0.964 |             0.972 |
+
+Gate verdicts, summary.
+
+| gate | number | threshold | result |
+|:--|:--|:--|:--|
+| G1 volume | fewest merged scrambles in a match: 74 (2007448); range 74 to 101 | >= 50 per match | pass |
+| G2 window exists | median gap 19 frames (1.90 s); share gap >= 3 frames 0.829 (n = 562) | >= 5 frames; >= 0.60 | pass |
+| G3 ball seen | window frames ball detected 0.919; pairs with camera loss 0.067 (n = 466) | >= 0.85; <= 0.25 | pass |
+| G4 players seen | within 15 m detected: release frame 0.8371, pickup frame 0.9483; winner detected 0.9721 | >= 0.85; >= 0.85; >= 0.90 | fail on the release frame |
+| G4 recheck, 10 m | release frame 0.8434, pickup frame 0.9641; winner detected 0.9721 | same | fail on the release frame |
+
+Under the brief, G4 failing twice means stop. Not all gates pass, so the episode definition is not frozen in DESIGN.md.
+
+### Diagnostic after G4 (2026-10-27)
+
+Not a gate and not a recheck; no threshold applies. Script: scripts/g4_diagnostic.py. Release-frame detection of players within the radius of the pickup point, split by whether the pickup point lies inside the camera view (the image_corners_projection polygon) on the release frame. The "all" rows reproduce the G4 values.
+
+| pickup point at release   |   radius m |   pairs |   players |   detected share |
+|:--------------------------|-----------:|--------:|----------:|-----------------:|
+| inside                    |         15 |     302 |      2560 |            0.945 |
+| inside                    |         10 |     302 |      1475 |            0.963 |
+| outside or no camera view |         15 |     164 |       546 |            0.330 |
+| outside or no camera view |         10 |     164 |       281 |            0.217 |
+| all                       |         15 |     466 |      3106 |            0.837 |
+| all                       |         10 |     466 |      1756 |            0.843 |
+
+| trigger   |   pairs |   share with pickup point in view at release |
+|:----------|--------:|---------------------------------------------:|
+| T1        |      26 |                                        0.192 |
+| T2        |     135 |                                        0.622 |
+| T3        |      32 |                                        0.844 |
+| T4        |     137 |                                        0.810 |
+| T5        |       8 |                                        0.375 |
+| T6        |       5 |                                        0.600 |
+| T7        |     123 |                                        0.561 |
+
+Reading. The release-frame shortfall in G4 comes from pairs whose pickup point is outside the camera view at release (164 of 466): 33.0% of players within 15 m are detected there, against 94.5% when the pickup point is in view. Long flights are most affected: the pickup point is in view at release for 19.2% of T1 pairs and 56.1% of T7 pairs, against 81.0% of T4 and 84.4% of T3 pairs.
+
+### Seeded episode figures (2026-10-27)
+
+Script: scripts/episode_figures.py. Seed 20261027 (numpy default_rng). Draw order as logged: 6 from all main pairs, 3 from main pairs with gap >= 55.8 frames (95th percentile of main-pair gaps), 2 from T7 main pairs, without replacement.
+
+|   figure | draw     |   match_id |   seq_i | trigger   | resolution      |   gap | file                                                           |
+|---------:|:---------|-----------:|--------:|:----------|:----------------|------:|:---------------------------------------------------------------|
+|        1 | general  |    1996435 |     868 | T4        | keep_possession |    46 | audit/figures/episode_seed20261027_01_general_1996435_868.png  |
+|        2 | general  |    1886347 |      99 | T2        | keep_possession |    51 | audit/figures/episode_seed20261027_02_general_1886347_99.png   |
+|        3 | general  |    2007448 |     732 | T1        | recovery        |    38 | audit/figures/episode_seed20261027_03_general_2007448_732.png  |
+|        4 | general  |    2007448 |     609 | T7        | recovery        |    14 | audit/figures/episode_seed20261027_04_general_2007448_609.png  |
+|        5 | general  |    1959846 |      25 | T7        | keep_possession |    18 | audit/figures/episode_seed20261027_05_general_1959846_25.png   |
+|        6 | general  |    1996436 |     378 | T3        | keep_possession |     7 | audit/figures/episode_seed20261027_06_general_1996436_378.png  |
+|        7 | gap tail |    1996435 |     872 | T7        | recovery        |    64 | audit/figures/episode_seed20261027_07_gap_tail_1996435_872.png |
+|        8 | gap tail |    1959846 |     468 | T7        | recovery        |    60 | audit/figures/episode_seed20261027_08_gap_tail_1959846_468.png |
+|        9 | gap tail |    1959846 |     559 | T2        | recovery        |    68 | audit/figures/episode_seed20261027_09_gap_tail_1959846_559.png |
+|       10 | T7       |    1996436 |     191 | T7        | recovery        |    18 | audit/figures/episode_seed20261027_10_T7_1996436_191.png       |
+|       11 | T7       |    1959846 |     631 | T7        | recovery        |    38 | audit/figures/episode_seed20261027_11_T7_1959846_631.png       |
+
+Figure reading (all 11 inspected). No bug found: the event and tracking pickup points agree within 2.7 m in all 11, and ball paths are continuous. Figures 3 and 10 show the G4 mechanism: at release the camera view covers the release area and not the landing zone, so players there are extrapolated, and they are detected again on the pickup frame. Figures 8 and 11 show a sharp change of ball direction inside the window, an uncontrolled touch that is not a possession (specification p. 6); in such pairs the A6 straight-line distance understates the ball's path.

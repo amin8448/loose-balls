@@ -1,6 +1,10 @@
 """A1. Gap cross-tab of trigger by resolution, split by continuity, and the gap histogram.
 
 Prints markdown tables for AUDIT.md and writes audit/figures/a1_gap_histogram.png.
+
+The A1 tables in AUDIT.md were produced with the provisional definition at commit 67b1fb3
+(A1i with the same code plus its block). episodes.py now holds the revised definition, so a
+rerun gives the revised classes (T7, no "other") and does not reproduce the logged A1.
 """
 
 import matplotlib
@@ -13,7 +17,7 @@ from matplotlib.ticker import MaxNLocator
 
 from looseball import episodes, paths
 
-TRIGGERS = ["T0", "T1", "T2", "T3", "T4", "T5", "T6", "other"]
+TRIGGERS = list(episodes.TRIGGERS)
 
 
 def gap_stats(g: pd.Series) -> pd.Series:

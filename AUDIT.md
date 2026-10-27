@@ -334,3 +334,74 @@ A1 reading. Facts from the tables above; no definition is changed here.
 | T0 to recovery | 69 candidates, all change of team, all gaps >= 6 frames, median 2.6 s; they enter through the resolution rule only |
 | resolution unknown | all 10 retained pairs have gap >= 100 frames (10 s) and all 10 are candidates. This looks like the start being marked unknown after a stoppage that carries no game_interruption value. Inference only; not checked against video or the specification |
 | clearances | 36 retained pairs end in a clearance (26 T1, 10 T5) |
+
+A1 tables above were produced at commit 67b1fb3 with the provisional definition. Table A1i below was added to scripts/a1_gap_crosstab.py afterwards and run on the same code before any revision.
+
+A1i. Retained pairs, resolution by continuity:
+
+| resolution        |   same player |   same team |   change of team |   all |
+|:------------------|--------------:|------------:|-----------------:|------:|
+| pass_reception    |             0 |        3137 |                2 |  3139 |
+| pass_interception |             0 |           3 |              355 |   358 |
+| recovery          |             0 |           3 |              353 |   356 |
+| keep_possession   |            20 |         220 |                1 |   241 |
+| unknown           |             0 |           8 |                2 |    10 |
+| all               |            20 |        3371 |              713 |  4104 |
+
+### Post hoc revisions after A0 and A1 (2026-10-27)
+
+Decided by the project lead after seeing A0 and A1. Every item here is post hoc. Reasons are as given by the project lead unless marked otherwise. Pair counts are retained pairs from A1 (gap >= 1).
+
+Principle, as given: a loose ball is a release after which nobody controls the ball directly. A clean reception (pass_reception) and a clean interception (pass_interception) are the same mechanism from opposite sides, so both are excluded. The winner of a loose ball never enters its definition.
+
+| # | revision | reason | pairs affected |
+|:--|:--|:--|:--|
+| 1 | drop every pair whose resolution is pass_interception | a clean interception is direct control | 355 after T2 (context); 356 among triggers T1 to T7 (355 T2, 1 T4); 358 among all retained pairs (2 more after T0, never candidates) |
+| 1a | drop pairs whose resolution is pass_reception | the stated principle excludes clean receptions with clean interceptions; decision 1 names only pass_interception, so applying it to pass_reception is my reading of the principle, flagged for confirmation | 2 (1 after T2, 1 after T5) |
+| 2 | minimum gap of 3 frames for every candidate in A2 to A6, G1, G3 and G4; G2 stays on the gap >= 1 candidate set, as in the brief | removes tackles where the tackler controls the ball directly (A1f: 68 T4 to recovery pairs at 1 frame, 15 at 2) | reported in A5 |
+| 3 | drop T3 pairs won by a player whose player_position is GK | a save held by the goalkeeper is direct control. Known selection on the winner, limited to T3; goalkeepers winning loose balls after other triggers stay | 14 (T3 to recovery); 1 more T3 pair won by a goalkeeper has resolution unknown and falls under 4 |
+| 4 | drop pairs whose resolution is unknown; no gap cap for now | all 10 have gap >= 10 s (A1h). A6 reports the gap tail; the seeded figure draw adds three pairs from the top 5% of gaps | 10 |
+| 5 | T5 tested before T1, confirmed. Drop pairs whose possession i has end_type foul_suffered; there is no "other" class | a foul is followed by a restart | 1 |
+| 6 | candidates are defined by trigger class only: the clause "or whose resolution is recovery or unknown" is removed. New trigger T7: end_type pass and pass_outcome successful (T0), followed by a possession whose start_type is recovery or keep_possession | a completed pass that nobody controlled directly. The old rule kept T0 to recovery (69) and dropped T0 to keep_possession (59), which selected on the winner | T7: 128 retained pairs, 5 of them same player |
+| 7 | report whether recovery always means a change of team and keep_possession always the same team | requested | see below |
+
+Item 7, from A1i: neither holds strictly. recovery is a change of team in 353 of 356 retained pairs; the other 3 are same team, all after a T2 failed pass (A1d). keep_possession is same team in 220 of 241, same player in 20 and change of team in 1, after a T2 failed pass (A1d).
+
+### Revised candidate definition (2026-10-27)
+
+Implemented in src/looseball/episodes.py (pairs, scrambles, window_measures).
+
+| element | definition |
+|:--|:--|
+| retained pair | consecutive player_possession rows i, i+1 sorted by frame_start; dropped when they span a period boundary, when i+1 starts from a restart (start_type throw_in, free_kick, goal_kick or corner, reception or interception), when pass_outcome of i is offside, when game_interruption_after of i or game_interruption_before of i+1 is set, or when end_type of i is foul_suffered |
+| trigger, tested in this order | T5 header non-pass (is_header TRUE, end_type not pass or shot); T1 clearance; T2 failed pass (pass, unsuccessful); T3 shot; T4 dispossession (possession_loss); T6 unknown end_type; T7 completed pass not controlled (pass, successful, start_type of i+1 recovery or keep_possession); T0 completed pass (reference, not a candidate) |
+| candidate pair (G2 set) | retained; trigger T1 to T7; resolution (start_type of i+1) recovery or keep_possession; not a T3 pair won by player_position GK; not the same player; gap >= 1 frame |
+| main set (A2 to A6, G1, G3, G4) | candidate pairs with gap >= 3 frames |
+| scramble | main pairs are merged when the winning possession of one is the releasing possession of the next main pair, lasts fewer than 5 frames (frame_end minus frame_start < 5, equal to the CSV duration < 0.5 s) and ends in possession_loss, clearance or unknown. Scramble trigger: that of its first pair. Scramble winner: team of possession i+1 of its last pair. Aerial if any link is aerial |
+| window | frames strictly after the release frame (frame_end of i) up to and including the pickup frame (frame_start of i+1) |
+| aerial | ball_data.z > 1.8 m on any window frame with ball_data.is_detected TRUE; an episode with no detected window frame is ground (counted in A6) |
+
+### A2 to A6 implementation choices, logged before the run (2026-10-27)
+
+| item | choice |
+|:--|:--|
+| unit (set by the project lead before the run) | raw main pairs for A2, A3, A4, A6, G3 and G4; merged scrambles of main pairs for G1; A5 reports both |
+| rotation of event coordinates (A2) | specification p. 11: event coordinates assume the team in possession attacks left to right, mirrored for the team attacking right to left, origin at the centre. Rotation used: (x, y) to (-x, -y) when attacking_side of possession i+1 is right_to_left. As a check, A2 also reports the x-only mirror and no rotation |
+| missing pickup point | when the pickup frame has no ball position (an empty frame), the episode is left out of the A2 distances and the A4 player counts, and counted. Winner detection counts it as not detected |
+| window ball detection (A3, G3) | denominator: all window frames; a frame without ball data counts as not detected |
+| teams in A4 | the releasing team (team of possession i) and the other team; the winner does not label players |
+| detection shares in A4 and G4 (set by the project lead before the run) | pooled over player instances, separately for the release frame and the pickup frame |
+| phases (A5) | an episode lies in the phase of the phases of play CSV whose frame_start to frame_end contains its release frame; on a shared boundary frame, the earlier phase. Phase type: team_in_possession_phase_type |
+| horizontal distance (A6) | straight-line distance between the tracking ball on the release frame and on the pickup frame; not path length, since nothing is smoothed in step 1 and a path on raw positions adds noise |
+| seeded figures | seed 20261027, numpy default_rng. Order of draws without replacement: 6 from all main pairs, then 3 from main pairs with gap >= the 95th percentile of main-pair gaps, then 2 from T7 main pairs. 11 figures (set by the project lead before the run) |
+
+### Gate thresholds, logged before the gate code runs (2026-10-27)
+
+Thresholds are those of the brief. The two procedural points the brief leaves open (small margin in G3, pooling in G4) were set by the project lead before any revised result was computed.
+
+| gate | set | pass condition | on failure |
+|:--|:--|:--|:--|
+| G1 volume | merged scrambles of main pairs, per match | >= 50 in each of the five exploration matches | stop: too thin for team-level work |
+| G2 window exists | candidate pairs, gap >= 1, before merging or further filtering | median gap >= 5 frames (0.5 s) and share of pairs with gap >= 3 frames >= 0.60 | stop: no loose window; the 1v1 approach idea is next |
+| G3 ball seen | main pairs | ball_data.is_detected TRUE on >= 0.85 of window frames, pooled; and share of pairs with at least one no-camera or empty window frame <= 0.25 (also reported by trigger class) | small margin, defined as every failing criterion within 5 percentage points of its threshold (>= 0.80; <= 0.30): recheck once on main pairs with gap <= 20 frames (2 s), same thresholds. Larger miss, or second failure: stop |
+| G4 players seen | main pairs | pooled share of detected players within 15 m of the pickup point >= 0.85 on the release frame and >= 0.85 on the pickup frame; and winner detected on the pickup frame in >= 0.90 of pairs | recheck once with a 10 m radius (the winner criterion does not depend on the radius); second failure: stop |

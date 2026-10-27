@@ -239,6 +239,17 @@ def main() -> None:
         f"max gap of retained pairs with another resolution: {r.loc[r['resolution'] != 'unknown', 'gap'].max()} frames"
     )
 
+    print("\nA1i. Retained pairs, resolution by continuity:\n")
+    rc = pd.crosstab(
+        pd.Categorical(r["resolution"], episodes.RESOLUTIONS),
+        pd.Categorical(r["continuity"], episodes.CONTINUITY),
+        margins=True,
+        margins_name="all",
+        dropna=False,
+    )
+    rc.index.name, rc.columns.name = "resolution", None
+    print(rc.reset_index().to_markdown(index=False))
+
     path = paths.FIGURES / "a1_gap_histogram.png"
     histogram(r, path)
     print(f"\nfigure: {path.relative_to(paths.ROOT)}")

@@ -1,0 +1,32 @@
+[project]
+name = "loose-balls"
+version = "0.1.0"
+description = "Which team gets to a loose ball, and why, from SkillCorner broadcast tracking"
+authors = [
+    { name = "Amin Nabavi" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "pyarrow",
+]
+
+[build-system]
+requires = ["uv_build>=0.8,<1"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "looseball"
+
+[tool.ruff]
+line-length = 110
+
+[dependency-groups]
+dev = [
+    "pypdf",
+    "pytest",
+    "ruff",
+    "tabulate>=0.10.0",
+]

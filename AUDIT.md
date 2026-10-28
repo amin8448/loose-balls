@@ -1370,3 +1370,97 @@ Implementation choices inside the modules, set before any match data was used:
 | calibration table (S3) | five equal-width bins of predicted probability, on the leave-one-match-out predictions of the chosen form |
 | clip export | frame: the measured anchor frame; team: the team that lost; clock: the tracking field timestamp of that frame |
 | credit and deficit | an episode's credit for the winner equals its deficit for the loser (the two teams' probabilities sum to 1); team views differ only in which episodes enter |
+
+### S1 and S2 procedure, logged before the run (2026-10-28)
+
+| item | rule |
+|:--|:--|
+| S1 speed check | smoothed speed (window 5, order 2) on every player-frame of the five matches with is_detected TRUE and a velocity; criterion: share above 10 m/s at most 1% |
+| S1 anchor velocities | players in the race (15 m) on the last-leg anchor frame of the anchored main pairs; share with is_detected FALSE (velocity from an extrapolated track) and share without a velocity |
+| S2 winner reach time | the winning player (player of possession i+1), from his position and smoothed velocity on the last-leg anchor frame to the pickup point, shaw, reaction 0.7 s, top speed 5.0 m/s, wherever he is on the pitch; compared with the lead of that anchor |
+| S2 criterion | share with winner reach time <= lead + 0.3 s; at least 70% expected |
+| S2 sets | headline: the analysis set (anchored, kept by D7 at 15 m, lead >= 0.5 s). Beside it: all anchored main pairs, and anchored pairs with lead >= 0.5 s. Pooled and by trigger |
+
+### S1 and S2 (2026-10-28)
+
+Script: scripts/s1_s2.py, run after the procedure above was logged. Race at 15 m, shaw, reaction 0.7 s, top speed 5.0 m/s, smoothing window 5.
+
+| set | episodes |
+|:--|--:|
+| anchored main pairs (last-leg anchor) | 458 |
+| kept by D7 at 15 m | 367 |
+| immediate (lead < 0.5 s) | 47 |
+| analysis set (kept, not immediate) | 326 |
+
+S1a. Smoothed speed (window 5, order 2) on detected player-frames, all frames of each match:
+
+| match   |   detected player-frames |   with a velocity |   p50 m/s |   p99 m/s |   p99.9 m/s |   max m/s |   frames > 10 m/s |   share > 10 m/s |
+|:--------|-------------------------:|------------------:|----------:|----------:|------------:|----------:|------------------:|-----------------:|
+| 1886347 |                   566778 |            566778 |   2.13216 |   6.71658 |     8.08621 |  13.74006 |                26 |          0.00005 |
+| 1959846 |                   536373 |            536373 |   1.95489 |   6.94370 |     8.45575 |  13.76258 |                25 |          0.00005 |
+| 1996436 |                   524840 |            524840 |   1.82877 |   6.65433 |     8.15045 |  14.56665 |                43 |          0.00008 |
+| 1996435 |                   630145 |            630145 |   1.98980 |   6.74562 |     8.18707 |  29.78472 |                 8 |          0.00001 |
+| 2007448 |                   525931 |            525931 |   1.98305 |   6.65192 |     8.08151 |  16.91362 |                45 |          0.00009 |
+| all     |                  2784067 |           2784067 |   1.97891 |   6.74999 |     8.20000 |  29.78472 |               147 |          0.00005 |
+
+S1b. Players in the race (15 m) on the last-leg anchor frame, anchored main pairs:
+
+| trigger   |   players |   share extrapolated (is_detected FALSE) |   share without a velocity |   share goalkeepers |
+|:----------|----------:|-----------------------------------------:|---------------------------:|--------------------:|
+| T1        |       105 |                                    0.171 |                      0.000 |               0.010 |
+| T2        |       923 |                                    0.095 |                      0.000 |               0.028 |
+| T3        |       277 |                                    0.072 |                      0.000 |               0.058 |
+| T4        |      1065 |                                    0.050 |                      0.000 |               0.009 |
+| T5        |        50 |                                    0.080 |                      0.000 |               0.020 |
+| T6        |        25 |                                    0.080 |                      0.000 |               0.000 |
+| T7        |       899 |                                    0.078 |                      0.000 |               0.024 |
+| all       |      3344 |                                    0.076 |                      0.000 |               0.023 |
+
+S2a. Analysis set (anchored, kept by D7, lead >= 0.5 s), headline:
+
+| trigger   |   episodes |   winner not on anchor frame |   share reach <= lead + 0.3 s |   winner distance p50 m |   reach minus lead p10 s |   reach minus lead p50 s |   reach minus lead p90 s |
+|:----------|-----------:|-----------------------------:|------------------------------:|------------------------:|-------------------------:|-------------------------:|-------------------------:|
+| T1        |         11 |                            0 |                         0.636 |                   4.663 |                   -1.042 |                   -0.072 |                    1.070 |
+| T2        |        104 |                            0 |                         0.760 |                   5.414 |                   -1.741 |                   -0.158 |                    0.578 |
+| T3        |         22 |                            0 |                         0.682 |                   4.454 |                   -1.856 |                    0.143 |                    0.611 |
+| T4        |         90 |                            0 |                         0.667 |                   4.147 |                   -0.291 |                    0.150 |                    0.438 |
+| T5        |          7 |                            0 |                         0.571 |                   7.443 |                   -0.169 |                    0.215 |                    0.492 |
+| T6        |          3 |                            0 |                         0.333 |                   7.121 |                    0.216 |                    0.430 |                    0.467 |
+| T7        |         89 |                            0 |                         0.708 |                   5.898 |                   -0.848 |                    0.025 |                    0.588 |
+| all       |        326 |                            0 |                         0.702 |                   5.082 |                   -1.149 |                    0.045 |                    0.585 |
+
+S2b. All anchored main pairs:
+
+| trigger   |   episodes |   winner not on anchor frame |   share reach <= lead + 0.3 s |   winner distance p50 m |   reach minus lead p10 s |   reach minus lead p50 s |   reach minus lead p90 s |
+|:----------|-----------:|-----------------------------:|------------------------------:|------------------------:|-------------------------:|-------------------------:|-------------------------:|
+| T1        |         26 |                            0 |                         0.462 |                   2.861 |                   -0.594 |                    0.350 |                    0.915 |
+| T2        |        135 |                            0 |                         0.711 |                   5.539 |                   -1.685 |                   -0.082 |                    0.657 |
+| T3        |         32 |                            0 |                         0.594 |                   4.179 |                   -1.143 |                    0.192 |                    0.657 |
+| T4        |        129 |                            0 |                         0.566 |                   3.457 |                   -0.304 |                    0.219 |                    0.644 |
+| T5        |          8 |                            0 |                         0.500 |                   7.371 |                   -0.168 |                    0.295 |                    0.678 |
+| T6        |          5 |                            0 |                         0.400 |                   3.220 |                   -1.281 |                    0.321 |                    0.457 |
+| T7        |        123 |                            0 |                         0.675 |                   5.523 |                   -0.872 |                    0.041 |                    0.709 |
+| all       |        458 |                            0 |                         0.631 |                   4.674 |                   -1.086 |                    0.111 |                    0.689 |
+
+S2c. Anchored main pairs with lead >= 0.5 s:
+
+| trigger   |   episodes |   winner not on anchor frame |   share reach <= lead + 0.3 s |   winner distance p50 m |   reach minus lead p10 s |   reach minus lead p50 s |   reach minus lead p90 s |
+|:----------|-----------:|-----------------------------:|------------------------------:|------------------------:|-------------------------:|-------------------------:|-------------------------:|
+| T1        |         22 |                            0 |                         0.545 |                   3.177 |                   -0.596 |                    0.215 |                    1.039 |
+| T2        |        129 |                            0 |                         0.744 |                   5.785 |                   -1.713 |                   -0.111 |                    0.600 |
+| T3        |         28 |                            0 |                         0.679 |                   5.284 |                   -1.382 |                    0.143 |                    0.624 |
+| T4        |        106 |                            0 |                         0.689 |                   4.296 |                   -0.374 |                    0.141 |                    0.424 |
+| T5        |          7 |                            0 |                         0.571 |                   7.443 |                   -0.169 |                    0.215 |                    0.492 |
+| T6        |          5 |                            0 |                         0.400 |                   3.220 |                   -1.281 |                    0.321 |                    0.457 |
+| T7        |        114 |                            0 |                         0.728 |                   5.838 |                   -0.892 |                    0.020 |                    0.599 |
+| all       |        411 |                            0 |                         0.703 |                   5.152 |                   -1.119 |                    0.052 |                    0.585 |
+
+| check | number | criterion | result |
+|:--|:--|:--|:--|
+| S1 speed | 147 of 2,784,067 detected player-frames above 10 m/s (0.005%); p99.9 8.20 m/s | at most 1% | pass |
+| S1 anchor velocities | 7.6% of the 3,344 players in the race at the anchor are extrapolated (T1 17.1%, T2 9.5%); none lacks a velocity; 2.3% are goalkeepers | report | reported |
+| S2 headline (analysis set) | 0.702 of 326 episodes have winner reach time <= lead + 0.3 s | at least 70% | pass by 0.2 points |
+| S2, all anchored main pairs | 0.631 of 458 | report | below 70% |
+| S2, lead >= 0.5 s | 0.703 of 411 | report | at 70% |
+
+Reading. S1 gives no sign of a smoothing or alignment fault. S2 passes on the set logged as the headline, by 0.2 points; by trigger, T2 (0.760) and T7 (0.708) are above 70% and T4 (0.667, 90 episodes), T3 (0.682), T1 (0.636) and the small T5 and T6 classes are below. The winner's reach time minus the lead has median +0.05 s (p10 -1.15 s, p90 +0.59 s), so with the package defaults the model's timing is centred on the observed leads with a long early tail. Including the 47 immediate episodes lowers the share to 0.631: with a reaction time of 0.7 s no winner can meet lead + 0.3 s when the lead is under 0.4 s. The winner was on the anchor frame in every episode.

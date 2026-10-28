@@ -1293,3 +1293,80 @@ Script: scripts/contact_figures.py. The four episodes drawn with seed 20261028 u
 | 2 | 1, 26 | 26 | release kick removed; the ricochet at 26 (37 degrees, player 0.25 m away) stays |
 | 3 | 1, 43, 44, 47, 48, 51, 52, 54 | 43, 47, 51, 54 | release kick removed; frame pairs merged into four touches in the scramble |
 | 4 | 1, 2 | 2 | the release kick still registers at release+2 (speed change 4.0 m/s, releaser 1.4 m away) |
+
+## Step 2, the measures (exploration part)
+
+Brief: docs/step2_brief.md. Exploration matches only; the MT1 marker is not logged in this step.
+
+### Step 2 setup: DataBallPy and environment (2026-10-28)
+
+| item | value |
+|:--|:--|
+| DataBallPy source | https://github.com/Alek050/databallpy, develop branch |
+| pinned commit | 3f9de8d28531aa12d826ee99aed8de7aeee0897f (develop head on 2026-10-28; contains PR #408, merge dd67888fabc9b90ad91a18a61c6dd08f87fed06a of 2026-10-23, and pandas 3 support, PR #407) |
+| recorded in | pyproject.toml ([tool.uv.sources] databallpy rev) and uv.lock |
+| package version reported | 0.8.1 |
+| API used | databallpy.optimization.constraints.TTIConstraint.tti(origin, destination, velocity), turning_penalty "shaw" (default) or "pleuler"; defaults reaction_time 0.7 s, max_velocity 5.0 m/s; no acceleration parameter |
+| test | tests/test_databallpy_tti.py: for a player at (0, 0) moving at (5, 0) m/s and a target at (0, 10), shaw 2.819 s and pleuler 5.319 s; standing player 10 m away 2.700 s; unknown penalty refused. 3 passed |
+
+Environment change. DataBallPy caps numpy below 2.3 and pyarrow below 23 on Python 3.12, so installing it moved:
+
+| package | before | after |
+|:--|:--|:--|
+| numpy | 2.5.4 | 2.2.6 |
+| pyarrow | 26.0.0 | 22.0.0 |
+| pandas | 3.1.0 | 3.1.0 |
+| scipy | not installed | 1.18.1 (now a direct dependency) |
+
+Step 1 reproduction on the new environment: every step 1 script was re-run and its output compared with the output produced before the change.
+
+| script | result |
+|:--|:--|
+| setup_check.py | identical to the setup table |
+| a2_a6.py (and audit/loose_episodes_exploration.csv) | identical; CSV byte-identical |
+| a7_a9.py (revision 3) | identical |
+| gates.py (first G4 run) | identical |
+| gates_anchor.py (revision 3) | identical |
+| g4_diagnostic.py | identical |
+| seeded episode draw (seed 20261027) | same 11 episodes |
+
+Decisions taken by the project lead before any step 2 code, after the API and the brief were checked:
+
+| # | question | decision |
+|:--|:--|:--|
+| 1 | install | pin develop head 3f9de8d and accept the numpy and pyarrow downgrade; step 1 re-verified (above) |
+| 2 | calling the constraint (its constructor needs a databallpy Game and a frame; there is no standalone function) | a thin subclass whose constructor only sets reaction_time, max_velocity and turning_penalty, calling the package's tti unchanged; tested against the package class |
+| 3 | D3 parameters (the brief's "speed and acceleration"; the model has reaction time and top speed) | package defaults, reaction_time 0.7 s and max_velocity 5.0 m/s, for all players |
+| 4 | best time of a team with nobody in the race (brief: radius / top speed = 3.0 s) | reaction_time + radius / max_velocity = 3.7 s at 15 m, the time of a standing player on the radius |
+| 5 | D5 forms (a two-team softmax with one temperature equals a logistic on the time difference without intercept) | logistic: sigmoid(a + b x (t_other - t_releasing)), oriented to the releasing team; softmax: the intercept-free one-parameter case, temperature T = 1 / b. B0 and B1 take the same orientation with an intercept |
+| 6 | outcome use in S2, S4 and D7 (the brief's rule allows it only in S3 and S5) | read there as the brief specifies, for checks and the gate definition only; nothing is fitted or chosen on it outside S3 |
+| 7 | episodes in S3's fit and the S5 dry run | the analysis set: main pairs with a last-leg anchor, kept by D7, not immediate (lead >= 0.5 s) |
+| 8 | unit of the race | raw main pairs; the winner is the team of possession i+1 |
+
+### Step 2 modules (2026-10-28)
+
+Built in the order of the step 2 brief, each with unit tests on synthetic data before any match data was used. Full suite: 31 passed.
+
+| module | content | tests |
+|:--|:--|:--|
+| velocities | Savitzky-Golay first derivative of x and y per track; window and order as arguments (5 and 2 by default) | 5: exact for linear and quadratic tracks, tracks split at gaps, short tracks, window 7, noise reduction |
+| race | ReachModel (thin DataBallPy subclass), players within the radius at the anchor, static and dynamic reach times, team best times, flags; episode driver with radius, growing-radius speed, turning penalty, smoothing window, anchor shift and extrapolated-player drop as arguments | 5: equality with the package class for 50 random players under both penalties, ordering of static and moving reach times, radius and sides, flags, empty team |
+| expectation | features dt, dn, dd; softmax, logistic, B0, B1; maximum-likelihood fit; leave-one-match-out; log-loss; calibration table | 6: parameter recovery, softmax identity, reference log-loss, held-out match never seen, orientation, shapes |
+| decompose | deficit and credit shares, verdict, immediate class, team shares with bootstrap intervals | 4: definitions and sums, verdict boundaries, orientation to the loser, team means and intervals |
+| gate | D7 keep rule, drop rates, releasing team's win-share difference with bootstrap interval | 3: boundaries, drop rates, interval |
+| export_clips | match id, period, clock, frame, team, verdict | 1: columns, order, clock lookup |
+
+Implementation choices inside the modules, set before any match data was used:
+
+| item | choice |
+|:--|:--|
+| velocity at a track end | scipy savgol_filter mode "interp" (the polynomial fitted to the first or last window); a track is a run of consecutive frames of one player |
+| track shorter than the window | no velocity; in the race the player gets velocity zero and the flag velocity_missing |
+| goalkeeper flag | roster field player_role.acronym equal to "GK" |
+| sides | named from the releasing team (team of possession i); every probability is the releasing team's |
+| nearest distance of an empty team (B1) | the radius, consistent with the empty-team best time |
+| D7 with nobody within the radius | counts as fully observed on the 85% condition, as in step 1's episode-level G4 |
+| bootstrap intervals (D7 difference, team shares) | 2.5 and 97.5 percentiles, episodes resampled with replacement within each match, 2000 replicates |
+| calibration table (S3) | five equal-width bins of predicted probability, on the leave-one-match-out predictions of the chosen form |
+| clip export | frame: the measured anchor frame; team: the team that lost; clock: the tracking field timestamp of that frame |
+| credit and deficit | an episode's credit for the winner equals its deficit for the loser (the two teams' probabilities sum to 1); team views differ only in which episodes enter |

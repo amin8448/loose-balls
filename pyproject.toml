@@ -7,10 +7,12 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "databallpy",
     "matplotlib",
     "numpy",
     "pandas",
     "pyarrow",
+    "scipy>=1.18.1",
 ]
 
 [build-system]
@@ -19,6 +21,9 @@ build-backend = "uv_build"
 
 [tool.uv.build-backend]
 module-name = "looseball"
+
+[tool.uv.sources]
+databallpy = { git = "https://github.com/Alek050/databallpy", rev = "3f9de8d28531aa12d826ee99aed8de7aeee0897f" }
 
 [tool.ruff]
 line-length = 110

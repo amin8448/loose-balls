@@ -313,6 +313,11 @@ CSV_COLUMNS = [
     "window_no_camera", "window_empty", "ball_displacement_m",
     *[f"{fr}_{k}{r}_{s}" for fr in ("release", "pickup") for r in episodes.RADII for k in ("n", "det") for s in ("releasing", "other")],
     "winner_detected_pickup", "fully_extrapolated_next", "team_id_i", "team_id_next", "player_id_next",
+    "n_contacts", "n_legs", "contact_frames", "contact_domain_frames", "contact_evaluable_frames",
+    "leg1_start", "leg1_end", "leg2_start", "leg2_end", "anchor1_frame", "anchor2_frame", "lead1_s", "lead2_s",
+    "anchor1_n15", "anchor1_det15", "anchor2_n15", "anchor2_det15", "anchor1_n10", "anchor1_det10",
+    "anchor2_n10", "anchor2_det10", "apex_frame", "apex_observed", "apex_to_pickup_s",
+    "path_length_m", "path_missing_segments",
 ]  # fmt: skip
 
 
@@ -328,7 +333,16 @@ def main() -> None:
     a6(main_set)
     t7(ep)
     out = paths.AUDIT_DIR / "loose_episodes_exploration.csv"
-    ep = ep.astype({c: "Int64" for c in ("scramble_id", "scramble_link", "scramble_links")})
+    int_cols = (
+        "scramble_id",
+        "scramble_link",
+        "scramble_links",
+        "anchor1_frame",
+        "anchor2_frame",
+        "apex_frame",
+    )
+    int_cols += tuple(f"anchor{a}_{k}{r}" for a in (1, 2) for k in ("n", "det") for r in episodes.RADII)
+    ep = ep.astype({c: "Int64" for c in int_cols})
     ep[CSV_COLUMNS].rename(
         columns={"team_id_next": "winner_team_id", "player_id_next": "winner_player_id"}
     ).to_csv(out, index=False, float_format="%.3f")

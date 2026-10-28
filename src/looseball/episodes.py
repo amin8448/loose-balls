@@ -48,6 +48,7 @@ RADII = (10, 15)  # metres
 CONTACT_ANGLE_DEG = 30.0
 CONTACT_SPEED_CHANGE = 3.0  # m/s
 CONTACT_PLAYER_RADIUS = 1.5  # metres
+CONTACT_EDGE = 2  # frames; contacts are tested from release + 2 to pickup - 2 (revision 3)
 VIEW_CORNERS = ("top_left", "top_right", "bottom_right", "bottom_left")
 
 POSSESSION_FIELDS = [
@@ -267,13 +268,20 @@ def ball_kinematics(
     return s_in, s_out, angle
 
 
+def contact_domain(release: int, pickup: int) -> np.ndarray:
+    """Frames at which a contact can be found: release + CONTACT_EDGE to pickup - CONTACT_EDGE."""
+    return np.arange(release + CONTACT_EDGE, pickup - CONTACT_EDGE + 1)
+
+
 def window_structure(p: pd.DataFrame, match_id: int) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Contacts, legs, anchors, apex and path length for the pairs of one match, and the A9 table.
 
-    Contact: a window frame t other than the pickup frame, with the ball detected on t-1, t and
-    t+1, where the horizontal ball velocity turns by more than CONTACT_ANGLE_DEG or its speed
-    changes by more than CONTACT_SPEED_CHANGE, and some player (detected or not) is within
-    CONTACT_PLAYER_RADIUS of the ball on t. Legs: the window split at its contacts. Anchor of a
+    Contact (revision 3): a frame t in contact_domain (release+2 to pickup-2), with the ball
+    detected on t-1, t and t+1, where the horizontal ball velocity turns by more than
+    CONTACT_ANGLE_DEG or its speed changes by more than CONTACT_SPEED_CHANGE, and some player
+    (detected or not) is within CONTACT_PLAYER_RADIUS of the ball on t. Consecutive contact
+    frames are one contact, placed at the first frame of the run. Legs: the window split at
+    its contacts. Anchor of a
     leg: the first frame from the leg start to the leg end (inclusive) at which the pickup point
     lies inside the camera polygon; None if there is no such frame.
     """
@@ -301,13 +309,14 @@ def window_structure(p: pd.DataFrame, match_id: int) -> tuple[pd.DataFrame, pd.D
         rel, pk = int(r.release_frame), int(r.pickup_frame)
         px, py = bx[pk], by[pk]
 
-        t = np.arange(rel + 1, pk)
+        t = contact_domain(rel, pk)
         evaluable = t[bdet[t - 1] & bdet[t] & bdet[t + 1]]
         s_in, s_out, angle = ball_kinematics(bx, by, evaluable)
         changed = (angle > CONTACT_ANGLE_DEG) | (np.abs(s_out - s_in) > CONTACT_SPEED_CHANGE)
-        contacts = [
+        flagged = [
             int(f) for f in evaluable[changed] if near(f, bx[f], by[f], CONTACT_PLAYER_RADIUS)[0].any()
         ]
+        contacts = [f for i, f in enumerate(flagged) if i == 0 or f - flagged[i - 1] > 1]
 
         view = np.array([_in_view(corners[f], px, py) for f in range(rel, pk + 1)])
 

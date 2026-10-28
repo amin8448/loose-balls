@@ -1047,3 +1047,17 @@ Script: scripts/contact_figures.py. Seed 20261028; 4 drawn from the 92 main pair
 |        4 |    1886347 |     979 | T7        |          2 |    23 | audit/figures/contacts_seed20261028_04_1886347_979.png |
 
 Figure reading (all 4 inspected). The rule finds real touches: figure 2 frame 26 (direction turns 37 degrees, a player 0.25 m from the ball, a visible ricochet), figure 1 frames 33 to 36 and the cluster in figure 3. It also flags the release touch on the first window frames (figure 2 frame 1, figure 3 frame 1, figure 4 frames 1 and 2, the releasing player 1.1 to 1.4 m away), so figure 4 has no contact after the release touch. One touch spreads over consecutive frames (figure 1, four frames; figure 3, pairs of frames). No implementation error was found: each flagged frame meets the rule as specified on the three strips.
+
+### Post hoc revision 3 (2026-10-28)
+
+Decided by the project lead after A8e, A8f and the contact figures. Post hoc. Thresholds unchanged.
+
+Reason, as given: the contact rule flagged the release kick (81 of 182 first contacts on the first window frame) and the control touch (28 last contacts on the frame before pickup), and counted one touch on consecutive frames as several (357 contacts in 247 runs). Neither is a contact inside the window.
+
+| element | revision 3 |
+|:--|:--|
+| frames tested for a contact | release + 2 to pickup - 2. The text of the revision gave release + 1 to pickup - 2; release + 1 is the frame holding the 81 release-kick contacts, so the project lead set release + 2 to pickup - 2 before the run, to match the stated reason. A frame t is still testable only when the ball is detected on t-1, t and t+1 |
+| consecutive contact frames | one contact, placed at the first frame of the run |
+| unchanged | horizontal velocity, more than 30 degrees or more than 3 m/s, a player within 1.5 m (detected or extrapolated), detected ball frames only, the legs, the anchor rule, the candidate set |
+| re-run | legs, anchors and leads recomputed; A7 and A8 re-run, with the distribution of frames from release to the first contact added; G4 at both anchors with the same thresholds and procedure (pooled decides; episode level reported; pairs without an anchor excluded and their share reported; 10 m recheck if a run fails); DESIGN.md updated. A9 and the CSV are in the same scripts and are re-run with them |
+| figures | the four episodes drawn with seed 20261028 under revision 2 are redrawn under revision 3 (set by the project lead before the run, since a fresh draw from the revised pool would give different episodes), saved beside the earlier files with the suffix _rev3 |

@@ -767,3 +767,47 @@ Script: scripts/episode_figures.py. Seed 20261027 (numpy default_rng). Draw orde
 |       11 | T7       |    1959846 |     631 | T7        | recovery        |    38 | audit/figures/episode_seed20261027_11_T7_1959846_631.png       |
 
 Figure reading (all 11 inspected). No bug found: the event and tracking pickup points agree within 2.7 m in all 11, and ball paths are continuous. Figures 3 and 10 show the G4 mechanism: at release the camera view covers the release area and not the landing zone, so players there are extrapolated, and they are detected again on the pickup frame. Figures 8 and 11 show a sharp change of ball direction inside the window, an uncontrolled touch that is not a possession (specification p. 6); in such pairs the A6 straight-line distance understates the ball's path.
+
+### Post hoc revision 2, amended (2026-10-28)
+
+Decided by the project lead after the gates. Post hoc. It supersedes the text of revision 2 in "Post hoc revisions after A0 and A1"; the minimum gap of 3 frames on the whole window stays.
+
+Reason, as given: G4 failed at the release frame because the camera follows the ball, so for long flights the landing zone and the players around it are off screen at release (in view: 94.5% detected; out of view: 33.0%). The figures also show that long windows contain a flight and then a scramble of several touches. The anchor and the window structure change; the thresholds do not. No outcome has been used; the test set stays locked.
+
+| element | definition |
+|:--|:--|
+| contact | a window frame at which the ball's velocity changes direction by more than 30 degrees or speed by more than 3 m/s between consecutive detected frames, with a player within 1.5 m of the ball on that frame. Contacts can only be found on runs of consecutive detected ball frames; the share of window time that is uncovered is reported |
+| legs | the window split at its contacts. The first leg runs from the release (frame_end of i) to the first contact, or to the pickup if there is none. The last leg runs from the last contact to the pickup, or is the whole window if there is none. Number of legs recorded per episode |
+| anchor of a leg | the first frame from the leg's start onward at which the pickup point lies inside the camera polygon (image_corners_projection). Lead = pickup frame minus anchor frame, in seconds. A leg with no such frame has no anchor and counts as lost to the camera |
+| candidate episodes | unchanged: main pairs, gap >= 3 frames on the whole window |
+
+Implementation choices, logged before the run. Items marked "set by the project lead" were answered before any revised result was computed.
+
+| item | choice |
+|:--|:--|
+| velocity (set by the project lead) | horizontal (ball_data.x, ball_data.y); velocity from consecutive frames at 10 per second, no smoothing |
+| frames tested for a contact | window frames except the pickup frame (the pickup touch ends the window). A frame t is testable when the ball is detected on t-1, t and t+1; t-1 may be the release frame and t+1 the pickup frame |
+| direction when the ball does not move | if the speed into or out of t is zero the direction is undefined; only the speed criterion applies |
+| player within 1.5 m | any player in player_data on frame t, detected or not; horizontal distance to the ball |
+| uncovered share | frames from release+1 to pickup-1 that are not testable, over all such frames |
+| anchor search end (set by the project lead) | from the leg start to the leg end inclusive; a first leg whose pickup point only comes into view after the first contact has no first-leg anchor. A frame without all eight image_corners_projection values is not in view. Pickup point: tracking ball on the pickup frame, as before |
+| A7 apex | frame of the largest ball_data.z among window frames with is_detected TRUE. Apex observed when the ball is detected on the frames before and after it, both with z not above it; otherwise unobserved. Apex time quantiles are on observed apexes |
+| A8 path length | sum of horizontal distances between consecutive ball positions from the release frame to the pickup frame, detected or not; a step with a missing position is skipped and counted |
+| A9 | players within 15 m of the pickup point on the last-leg anchor frame whose is_detected is FALSE on the release frame. First detected position: the first frame after the release, up to the pickup frame, with is_detected TRUE. Implied speed: horizontal distance between the release-frame position and that position, over the time between. Players absent from the release frame or not detected by the pickup frame are counted, not measured |
+| G1 and G3 | re-run on the main set. Episode membership does not change under this revision, so they are expected to reproduce the earlier values |
+| figures | seed 20261028 (numpy default_rng), 4 drawn without replacement from main pairs with 2 or more contacts |
+
+### G4 at the anchors, logged before the gate code runs (2026-10-28)
+
+Thresholds unchanged from the first G4. Procedure set by the project lead before the run.
+
+| item | rule |
+|:--|:--|
+| anchors | G4 is run twice: at the first-leg anchor and at the last-leg anchor |
+| set | main pairs whose leg has an anchor; pairs without one are excluded from that run and the share lost to the camera is reported beside it, by trigger class |
+| anchor side | pooled share of detected players within 15 m of the pickup point on the anchor frame >= 0.85 |
+| pickup side | pooled share of detected players within 15 m of the pickup point on the pickup frame >= 0.85, same set |
+| winner | winner detected on the pickup frame in >= 0.90 of the same set |
+| verdict | decided by the pooled shares. The episode-level share (episodes with at least 85% of the players within 15 m detected; an episode with nobody within 15 m counts as fully observed) is reported beside each, with no threshold |
+| recheck | if a run fails, recheck that run once with a 10 m radius; a second failure fails that anchor |
+| outcome | G4 passes at either anchor: the revised definitions go into DESIGN.md with the choice of leg left open as the first step 2 decision, and step 1 stops. G4 fails at both: stop and report; the fallback (restricting to episodes with lead >= 0.5 s) is the project lead's decision |

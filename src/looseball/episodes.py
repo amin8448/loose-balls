@@ -3,12 +3,14 @@
 Definitions follow docs/step1_audit_brief.md with the post hoc revisions logged in AUDIT.md
 (step 1, after A1) until they are frozen in DESIGN.md. Inputs are player_possession
 boundaries, start_type, end_type, pass_outcome, is_header, the game_interruption fields,
-player_position, team and player ids, and tracking positions and detection flags.
+player_position, team and player ids, and tracking positions, detection flags and the camera
+polygon (image_corners_projection).
 No SkillCorner model output is used.
 """
 
 import numpy as np
 import pandas as pd
+from matplotlib.path import Path as MplPath
 
 from looseball import io, paths, tracking
 
@@ -43,6 +45,10 @@ SCRAMBLE_MAX_FRAMES = 5  # a winning possession shorter than this can link a scr
 SCRAMBLE_END_TYPES = ("possession_loss", "clearance", "unknown")
 AERIAL_Z = 1.8  # metres
 RADII = (10, 15)  # metres
+CONTACT_ANGLE_DEG = 30.0
+CONTACT_SPEED_CHANGE = 3.0  # m/s
+CONTACT_PLAYER_RADIUS = 1.5  # metres
+VIEW_CORNERS = ("top_left", "top_right", "bottom_right", "bottom_left")
 
 POSSESSION_FIELDS = [
     "event_id",
@@ -237,13 +243,164 @@ def window_measures(p: pd.DataFrame, match_id: int) -> pd.DataFrame:
     return m
 
 
+def _in_view(corners: np.ndarray, x: float, y: float) -> bool:
+    """corners: (4, 2) in the order of VIEW_CORNERS. A frame without all corners is not in view."""
+    if np.isnan(corners).any() or np.isnan(x) or np.isnan(y):
+        return False
+    return bool(MplPath(corners).contains_point((x, y)))
+
+
+def ball_kinematics(
+    bx: np.ndarray, by: np.ndarray, t: np.ndarray
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Horizontal speed into and out of frames t, and the direction change at t in degrees.
+
+    Velocity from consecutive frames (t-1 to t, t to t+1), no smoothing. When either speed is
+    zero the direction is undefined and the change is set to 0.
+    """
+    vin = np.stack([bx[t] - bx[t - 1], by[t] - by[t - 1]], axis=1) * paths.FPS
+    vout = np.stack([bx[t + 1] - bx[t], by[t + 1] - by[t]], axis=1) * paths.FPS
+    s_in, s_out = np.hypot(*vin.T), np.hypot(*vout.T)
+    moving = (s_in > 0) & (s_out > 0)
+    cos = np.where(moving, (vin * vout).sum(axis=1) / np.where(moving, s_in * s_out, 1.0), 1.0)
+    angle = np.degrees(np.arccos(np.clip(cos, -1.0, 1.0)))
+    return s_in, s_out, angle
+
+
+def window_structure(p: pd.DataFrame, match_id: int) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Contacts, legs, anchors, apex and path length for the pairs of one match, and the A9 table.
+
+    Contact: a window frame t other than the pickup frame, with the ball detected on t-1, t and
+    t+1, where the horizontal ball velocity turns by more than CONTACT_ANGLE_DEG or its speed
+    changes by more than CONTACT_SPEED_CHANGE, and some player (detected or not) is within
+    CONTACT_PLAYER_RADIUS of the ball on t. Legs: the window split at its contacts. Anchor of a
+    leg: the first frame from the leg start to the leg end (inclusive) at which the pickup point
+    lies inside the camera polygon; None if there is no such frame.
+    """
+    fr = tracking.load_frames(match_id)
+    assert (fr["frame"].to_numpy() == np.arange(len(fr))).all()
+    pl_frames, pl = _frame_lookup(tracking.load_players(match_id))
+    bx = fr["ball_data.x"].to_numpy()
+    by = fr["ball_data.y"].to_numpy()
+    bz = fr["ball_data.z"].to_numpy()
+    bdet = fr["ball_data.is_detected"].fillna(False).to_numpy(dtype=bool)
+    corners = np.stack(
+        [
+            fr[[f"image_corners_projection.x_{c}", f"image_corners_projection.y_{c}"]].to_numpy()
+            for c in VIEW_CORNERS
+        ],
+        axis=1,
+    )
+
+    def near(f: int, x: float, y: float, radius: float) -> tuple[np.ndarray, slice]:
+        lo, hi = np.searchsorted(pl_frames, [f, f + 1])
+        return np.hypot(pl["x"][lo:hi] - x, pl["y"][lo:hi] - y) <= radius, slice(lo, hi)
+
+    rows, checks = [], []
+    for idx, r in zip(p.index, p.itertuples(index=False)):
+        rel, pk = int(r.release_frame), int(r.pickup_frame)
+        px, py = bx[pk], by[pk]
+
+        t = np.arange(rel + 1, pk)
+        evaluable = t[bdet[t - 1] & bdet[t] & bdet[t + 1]]
+        s_in, s_out, angle = ball_kinematics(bx, by, evaluable)
+        changed = (angle > CONTACT_ANGLE_DEG) | (np.abs(s_out - s_in) > CONTACT_SPEED_CHANGE)
+        contacts = [
+            int(f) for f in evaluable[changed] if near(f, bx[f], by[f], CONTACT_PLAYER_RADIUS)[0].any()
+        ]
+
+        view = np.array([_in_view(corners[f], px, py) for f in range(rel, pk + 1)])
+
+        def anchor(start: int, end: int, view=view, rel=rel):
+            hits = np.flatnonzero(view[start - rel : end - rel + 1])
+            return start + int(hits[0]) if len(hits) else None
+
+        leg1 = (rel, contacts[0] if contacts else pk)
+        leg2 = (contacts[-1] if contacts else rel, pk)
+        a1, a2 = anchor(*leg1), anchor(*leg2)
+
+        w = np.arange(rel + 1, pk + 1)
+        wd = w[bdet[w]]
+        apex = int(wd[np.argmax(bz[wd])]) if len(wd) else None
+        apex_observed = (
+            apex is not None
+            and apex + 1 <= pk
+            and bdet[apex - 1]
+            and bdet[apex + 1]
+            and bz[apex - 1] <= bz[apex]
+            and bz[apex + 1] <= bz[apex]
+        )
+        seg = np.hypot(np.diff(bx[rel : pk + 1]), np.diff(by[rel : pk + 1]))
+
+        out = {
+            "n_contacts": len(contacts),
+            "n_legs": len(contacts) + 1,
+            "contact_frames": ";".join(map(str, contacts)),
+            "contact_domain_frames": len(t),
+            "contact_evaluable_frames": len(evaluable),
+            "leg1_start": leg1[0],
+            "leg1_end": leg1[1],
+            "leg2_start": leg2[0],
+            "leg2_end": leg2[1],
+            "anchor1_frame": a1,
+            "anchor2_frame": a2,
+            "lead1_s": (pk - a1) / paths.FPS if a1 is not None else np.nan,
+            "lead2_s": (pk - a2) / paths.FPS if a2 is not None else np.nan,
+            "apex_frame": apex,
+            "apex_observed": bool(apex_observed),
+            "apex_to_pickup_s": (pk - apex) / paths.FPS if apex is not None else np.nan,
+            "path_length_m": np.nansum(seg),
+            "path_missing_segments": int(np.isnan(seg).sum()),
+        }
+        for name, a in (("anchor1", a1), ("anchor2", a2)):
+            for radius in RADII:
+                if a is None:
+                    out[f"{name}_n{radius}"] = out[f"{name}_det{radius}"] = np.nan
+                else:
+                    m, sl = near(a, px, py, radius)
+                    out[f"{name}_n{radius}"] = int(m.sum())
+                    out[f"{name}_det{radius}"] = int((m & pl["is_detected"][sl]).sum())
+        rows.append(out)
+
+        if a2 is None:
+            continue
+        m, sl = near(a2, px, py, 15)
+        lo_r, hi_r = np.searchsorted(pl_frames, [rel, rel + 1])
+        rel_ids = pl["player_id"][lo_r:hi_r]
+        lo_w, hi_w = np.searchsorted(pl_frames, [rel + 1, pk + 1])
+        for pid in pl["player_id"][sl][m]:
+            at_rel = np.flatnonzero(rel_ids == pid)
+            base = {"match_id": match_id, "seq_i": r.seq_i, "trigger": r.trigger, "player_id": pid}
+            if not len(at_rel):
+                checks.append({**base, "status": "absent at release"})
+                continue
+            k = lo_r + at_rel[0]
+            if pl["is_detected"][k]:
+                continue
+            later = np.flatnonzero((pl["player_id"][lo_w:hi_w] == pid) & pl["is_detected"][lo_w:hi_w])
+            if not len(later):
+                checks.append({**base, "status": "not detected by the pickup frame"})
+                continue
+            j = lo_w + later[0]
+            dt = (pl_frames[j] - rel) / paths.FPS
+            dist = np.hypot(pl["x"][j] - pl["x"][k], pl["y"][j] - pl["y"][k])
+            checks.append({**base, "status": "measured", "seconds": dt, "metres": dist, "speed": dist / dt})
+    return pd.DataFrame(rows, index=p.index), pd.DataFrame(checks)
+
+
 def match_episodes(match_id: int) -> pd.DataFrame:
-    """Candidate pairs (gap >= 1) of one match with tracking measures and scramble ids for main pairs."""
+    """Candidate pairs (gap >= 1) of one match with tracking measures, window structure and scramble ids."""
     p = pairs(match_id)
     sc = scrambles(p)[["scramble_id", "scramble_link", "scramble_links", "scramble_winner_team"]]
     c = p[p["candidate"]].copy()
-    c = c.join(window_measures(c, match_id)).join(sc)
+    c = c.join(window_measures(c, match_id)).join(window_structure(c, match_id)[0]).join(sc)
     return c
+
+
+def extrapolation_checks(match_id: int) -> pd.DataFrame:
+    """A9 rows for the main pairs of one match."""
+    p = pairs(match_id)
+    return window_structure(p[p["main"]], match_id)[1]
 
 
 def all_pairs() -> pd.DataFrame:
@@ -252,3 +409,7 @@ def all_pairs() -> pd.DataFrame:
 
 def all_episodes() -> pd.DataFrame:
     return pd.concat([match_episodes(m) for m in paths.EXPLORATION], ignore_index=True)
+
+
+def all_extrapolation_checks() -> pd.DataFrame:
+    return pd.concat([extrapolation_checks(m) for m in paths.EXPLORATION], ignore_index=True)

@@ -1,4 +1,8 @@
-"""Seeded contact figures (revision 2 amended): 4 main pairs with 2 or more contacts.
+"""Contact figures, revision 3: the four episodes drawn with seed 20261028 under revision 2.
+
+Under revision 2 they were drawn without replacement from the main pairs with 2 or more
+contacts (AUDIT.md, contact figures). Revision 3 changes the pool, so the same four episodes
+are redrawn for a before and after comparison; files carry the suffix _rev3.
 
 Top row: the first-leg anchor frame, the last-leg anchor frame and the pickup frame, with the
 contacts and the two anchors marked on the ball path. Bottom row: the three inputs of the
@@ -16,6 +20,8 @@ from episode_figures import GRID, INK, MUTED, SURFACE, panel
 from looseball import episodes, io, paths, tracking
 
 SEED = 20261028
+# (match_id, seq_i) of the revision 2 draw, in draw order
+REV2_DRAW = [(1959846, 18), (1996436, 121), (1886347, 176), (1886347, 979)]
 CONTACT = "#6250d6"
 
 
@@ -36,7 +42,7 @@ def strips(axes, ep, fr, pl):
     rel, pk = int(ep["release_frame"]), int(ep["pickup_frame"])
     bx, by = fr["ball_data.x"].to_numpy(), fr["ball_data.y"].to_numpy()
     det = fr["ball_data.is_detected"].fillna(False).to_numpy(dtype=bool)
-    t = np.arange(rel + 1, pk)
+    t = episodes.contact_domain(rel, pk)
     t = t[det[t - 1] & det[t] & det[t + 1]]
     s_in, s_out, angle = episodes.ball_kinematics(bx, by, t)
     nearest = []
@@ -60,6 +66,9 @@ def strips(axes, ep, fr, pl):
                 ax.axvline(int(f) - rel, color=INK, linewidth=0.8, linestyle=":")
                 ax.annotate(k, (int(f) - rel, 1), xycoords=("data", "axes fraction"), xytext=(2, -10),
                             textcoords="offset points", fontsize=8, color=INK)  # fmt: skip
+        edge = episodes.CONTACT_EDGE
+        ax.axvspan(0, edge - 0.5, color=GRID, alpha=0.7, linewidth=0)
+        ax.axvspan(pk - rel - edge + 0.5, pk - rel, color=GRID, alpha=0.7, linewidth=0)
         ax.set_xlim(0, pk - rel)
         ax.set_title(label, fontsize=9, color=INK, loc="left")
         ax.set_xlabel("frames after release (pickup at the right edge)", fontsize=8, color=MUTED)
@@ -91,18 +100,18 @@ def figure(ep, k, n):
     strips(bottom, ep, fr, pl)
     lead = lambda v: f"{v:.1f} s" if pd.notna(v) else "no anchor"
     fig.suptitle(
-        f"Contact figure {k} of {n} (seed {SEED}). Match {m}, possessions {ep['seq_i']} to {ep['seq_next']}. "
+        f"Contact figure {k} of {n}, revision 3 (episode drawn with seed {SEED} under revision 2). Match {m}, possessions {ep['seq_i']} to {ep['seq_next']}. "
         f"{episodes.TRIGGER_LABELS[ep['trigger']]}, resolution {ep['resolution']}, {ep['continuity']}.\n"
         f"Gap {ep['gap']} frames ({ep['gap'] / paths.FPS:.1f} s); {ep['n_contacts']} contacts at frames after release "
-        f"{', '.join(str(int(f) - int(ep['release_frame'])) for f in ep['contact_frames'].split(';'))}; "
-        f"lead A1 {lead(ep['lead1_s'])}, A2 {lead(ep['lead2_s'])}. Purple diamonds and lines: contacts; triangles and dotted lines: anchors.",
+        f"{', '.join(str(int(f) - int(ep['release_frame'])) for f in ep['contact_frames'].split(';') if f) or 'none'}; "
+        f"lead A1 {lead(ep['lead1_s'])}, A2 {lead(ep['lead2_s'])}. Purple: contacts; triangles and dotted lines: anchors; grey bands: edge frames not tested.",
         fontsize=10,
         color=INK,
         x=0.01,
         ha="left",
     )
     fig.tight_layout(rect=(0, 0, 1, 0.93))
-    name = f"contacts_seed{SEED}_{k:02d}_{m}_{ep['seq_i']}.png"
+    name = f"contacts_seed{SEED}_{k:02d}_{m}_{ep['seq_i']}_rev3.png"
     fig.savefig(paths.FIGURES / name, dpi=110, facecolor=SURFACE)
     plt.close(fig)
     return name
@@ -110,10 +119,9 @@ def figure(ep, k, n):
 
 def main():
     ep = episodes.all_episodes()
-    pool = ep[ep["main"] & (ep["n_contacts"] >= 2)].sort_values(["match_id", "seq_i"]).reset_index(drop=True)
-    rng = np.random.default_rng(SEED)
-    drawn = pool.loc[rng.choice(len(pool), 4, replace=False)]
-    print(f"seed {SEED}; pool: {len(pool)} main pairs with 2 or more contacts\n")
+    drawn = pd.concat([ep[(ep["match_id"] == m) & (ep["seq_i"] == q)] for m, q in REV2_DRAW])
+    assert len(drawn) == len(REV2_DRAW) and drawn["main"].all()
+    print(f"revision 3 redraw of the revision 2 draw (seed {SEED})\n")
     rows = []
     for k, (_, e) in enumerate(drawn.iterrows(), start=1):
         name = figure(e, k, len(drawn))

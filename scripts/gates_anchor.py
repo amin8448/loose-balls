@@ -153,7 +153,7 @@ def main() -> None:
         rows.append((tag, "verdict", "", "", verdict(ok)))
         results[name] = ok
 
-    print("Gate verdicts after revision 2 amended:\n")
+    print("Gate verdicts at the anchors, contact rule of revision 3:\n")
     print(
         pd.DataFrame(rows, columns=["gate", "criterion", "value", "threshold", "result"]).to_markdown(
             index=False

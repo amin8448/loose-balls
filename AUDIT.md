@@ -1061,3 +1061,235 @@ Reason, as given: the contact rule flagged the release kick (81 of 182 first con
 | unchanged | horizontal velocity, more than 30 degrees or more than 3 m/s, a player within 1.5 m (detected or extrapolated), detected ball frames only, the legs, the anchor rule, the candidate set |
 | re-run | legs, anchors and leads recomputed; A7 and A8 re-run, with the distribution of frames from release to the first contact added; G4 at both anchors with the same thresholds and procedure (pooled decides; episode level reported; pairs without an anchor excluded and their share reported; 10 m recheck if a run fails); DESIGN.md updated. A9 and the CSV are in the same scripts and are re-run with them |
 | figures | the four episodes drawn with seed 20261028 under revision 2 are redrawn under revision 3 (set by the project lead before the run, since a fresh draw from the revised pool would give different episodes), saved beside the earlier files with the suffix _rev3 |
+
+### A7 to A9 under revision 3 (2026-10-28)
+
+Script: scripts/a7_a9.py, run after commit 835875d. Main pairs, n = 466. A8e is now the requested distribution of frames from release to the first contact (and from the last contact to pickup); A8f is dropped because contacts and runs coincide by construction. A2 to A6 tables reproduced unchanged; the CSV carries the revision 3 contact, leg and anchor columns.
+
+A7a (first leg). Anchors and leads by trigger class:
+
+| trigger   |   pairs |   anchor at leg start |   no anchor |   lead s p10 |   lead s p50 |   lead s p90 |   lead < 0.5 s (of anchored) |
+|:----------|--------:|----------------------:|------------:|-------------:|-------------:|-------------:|-----------------------------:|
+| T1        |      26 |                 0.192 |       0.000 |        0.350 |        1.400 |        2.650 |                        0.154 |
+| T2        |     135 |                 0.622 |       0.067 |        1.050 |        2.850 |        4.600 |                        0.016 |
+| T3        |      32 |                 0.844 |       0.031 |        0.700 |        1.500 |        3.100 |                        0.097 |
+| T4        |     137 |                 0.810 |       0.066 |        0.400 |        1.100 |        2.060 |                        0.148 |
+| T5        |       8 |                 0.375 |       0.000 |        0.790 |        1.350 |        2.630 |                        0.125 |
+| T6        |       5 |                 0.600 |       0.000 |        0.540 |        0.900 |        3.220 |                        0.000 |
+| T7        |     123 |                 0.561 |       0.065 |        0.900 |        2.000 |        3.900 |                        0.017 |
+| all       |     466 |                 0.648 |       0.058 |        0.600 |        1.700 |        3.900 |                        0.071 |
+
+A7b (first leg). Anchors and leads, aerial or ground:
+
+| flight   |   pairs |   anchor at leg start |   no anchor |   lead s p10 |   lead s p50 |   lead s p90 |   lead < 0.5 s (of anchored) |
+|:---------|--------:|----------------------:|------------:|-------------:|-------------:|-------------:|-----------------------------:|
+| aerial   |     211 |                 0.526 |       0.066 |        1.100 |        2.600 |        4.500 |                        0.025 |
+| ground   |     255 |                 0.749 |       0.051 |        0.400 |        1.300 |        2.400 |                        0.107 |
+| all      |     466 |                 0.648 |       0.058 |        0.600 |        1.700 |        3.900 |                        0.071 |
+
+A7a (last leg). Anchors and leads by trigger class:
+
+| trigger   |   pairs |   anchor at leg start |   no anchor |   lead s p10 |   lead s p50 |   lead s p90 |   lead < 0.5 s (of anchored) |
+|:----------|--------:|----------------------:|------------:|-------------:|-------------:|-------------:|-----------------------------:|
+| T1        |      26 |                 0.231 |       0.000 |        0.350 |        1.250 |        2.350 |                        0.154 |
+| T2        |     135 |                 0.652 |       0.000 |        0.800 |        1.800 |        3.860 |                        0.044 |
+| T3        |      32 |                 0.844 |       0.000 |        0.430 |        1.350 |        3.090 |                        0.125 |
+| T4        |     137 |                 0.818 |       0.058 |        0.400 |        1.000 |        1.820 |                        0.178 |
+| T5        |       8 |                 0.375 |       0.000 |        0.790 |        1.250 |        2.460 |                        0.125 |
+| T6        |       5 |                 0.600 |       0.000 |        0.540 |        0.900 |        3.220 |                        0.000 |
+| T7        |     123 |                 0.642 |       0.000 |        0.620 |        1.600 |        2.680 |                        0.073 |
+| all       |     466 |                 0.682 |       0.017 |        0.400 |        1.400 |        3.100 |                        0.103 |
+
+A7b (last leg). Anchors and leads, aerial or ground:
+
+| flight   |   pairs |   anchor at leg start |   no anchor |   lead s p10 |   lead s p50 |   lead s p90 |   lead < 0.5 s (of anchored) |
+|:---------|--------:|----------------------:|------------:|-------------:|-------------:|-------------:|-----------------------------:|
+| aerial   |     211 |                 0.592 |       0.000 |        0.700 |        1.600 |        3.600 |                        0.066 |
+| ground   |     255 |                 0.757 |       0.031 |        0.400 |        1.200 |        2.400 |                        0.134 |
+| all      |     466 |                 0.682 |       0.017 |        0.400 |        1.400 |        3.100 |                        0.103 |
+
+A7c. Aerial pairs: apex (largest detected ball_data.z) relative to pickup:
+
+| trigger   |   aerial pairs |   apex unobserved |   apex before pickup s p10 |   apex before pickup s p50 |   apex before pickup s p90 |
+|:----------|---------------:|------------------:|---------------------------:|---------------------------:|---------------------------:|
+| T1        |             21 |             0.095 |                      1.100 |                      2.100 |                      4.140 |
+| T2        |             96 |             0.115 |                      0.800 |                      2.400 |                      3.860 |
+| T3        |             10 |             0.200 |                      0.500 |                      1.200 |                      3.150 |
+| T4        |             10 |             0.000 |                      0.600 |                      1.050 |                      1.870 |
+| T5        |              6 |             0.000 |                      0.850 |                      1.500 |                      2.550 |
+| T7        |             68 |             0.029 |                      0.750 |                      2.350 |                      3.400 |
+| all       |            211 |             0.081 |                      0.800 |                      2.250 |                      3.700 |
+
+A8a. Contacts per pair by trigger class, and the share of frames from release+2 to pickup-2 that cannot be tested:
+
+| trigger   |   pairs |   0 contacts |     1 |     2 |   3 or more |   untestable share of the contact frames |
+|:----------|--------:|-------------:|------:|------:|------------:|-----------------------------------------:|
+| T1        |      26 |        0.923 | 0.000 | 0.038 |       0.038 |                                    0.143 |
+| T2        |     135 |        0.659 | 0.267 | 0.059 |       0.015 |                                    0.086 |
+| T3        |      32 |        0.844 | 0.125 | 0.031 |       0.000 |                                    0.034 |
+| T4        |     137 |        0.898 | 0.080 | 0.015 |       0.007 |                                    0.210 |
+| T5        |       8 |        0.875 | 0.125 | 0.000 |       0.000 |                                    0.000 |
+| T6        |       5 |        1.000 | 0.000 | 0.000 |       0.000 |                                    0.606 |
+| T7        |     123 |        0.610 | 0.293 | 0.073 |       0.024 |                                    0.033 |
+| all       |     466 |        0.751 | 0.189 | 0.045 |       0.015 |                                    0.093 |
+
+A8b. Release to first contact (pairs with a contact) and duration of the last leg (all pairs), seconds:
+
+| trigger   |   pairs |   with a contact |   to first contact p10 |   to first contact p50 |   to first contact p90 |   last leg p10 |   last leg p50 |   last leg p90 |
+|:----------|--------:|-----------------:|-----------------------:|-----------------------:|-----------------------:|---------------:|---------------:|---------------:|
+| T1        |      26 |                2 |                   2.90 |                   4.50 |                   6.10 |           1.80 |           2.65 |           4.50 |
+| T2        |     135 |               46 |                   0.20 |                   1.55 |                   3.60 |           1.20 |           2.50 |           5.10 |
+| T3        |      32 |                5 |                   0.24 |                   0.30 |                   1.12 |           0.43 |           1.60 |           3.50 |
+| T4        |     137 |               14 |                   0.20 |                   0.50 |                   1.37 |           0.40 |           1.10 |           2.52 |
+| T5        |       8 |                1 |                   1.60 |                   1.60 |                   1.60 |           1.31 |           2.35 |           3.72 |
+| T6        |       5 |                0 |                 nan    |                 nan    |                 nan    |           1.10 |           2.60 |           3.22 |
+| T7        |     123 |               48 |                   0.20 |                   1.50 |                   2.90 |           0.90 |           1.80 |           4.20 |
+| all       |     466 |              116 |                   0.20 |                   1.30 |                   3.35 |           0.60 |           1.80 |           4.35 |
+
+A8c. Ball path length next to the straight-line distance of A6, metres:
+
+| trigger   |   pairs |   path p50 |   straight p50 |   path / straight p10 |   path / straight p50 |   path / straight p90 |   pairs with a skipped step |
+|:----------|--------:|-----------:|---------------:|----------------------:|----------------------:|----------------------:|----------------------------:|
+| T1        |      26 |      29.68 |          28.01 |                  1.01 |                  1.01 |                  1.07 |                           0 |
+| T2        |     135 |      30.93 |          20.22 |                  1.01 |                  1.21 |                  2.63 |                           0 |
+| T3        |      32 |      12.56 |           9.71 |                  1.00 |                  1.04 |                  1.84 |                           0 |
+| T4        |     137 |       5.12 |           5.10 |                  1.00 |                  1.02 |                  1.15 |                           1 |
+| T5        |       8 |      19.12 |          17.78 |                  1.01 |                  1.01 |                  1.75 |                           0 |
+| T6        |       5 |      20.69 |          19.64 |                  1.01 |                  1.02 |                  1.04 |                           0 |
+| T7        |     123 |      23.14 |          19.35 |                  1.00 |                  1.08 |                  1.97 |                           0 |
+| all       |     466 |      17.93 |          13.75 |                  1.00 |                  1.05 |                  1.96 |                           1 |
+
+A8d. Legs per pair:
+
+|   legs (4 = 4 or more) |   pairs |
+|-----------------------:|--------:|
+|                      1 |     350 |
+|                      2 |      88 |
+|                      3 |      21 |
+|                      4 |       7 |
+
+A8e. Frames from release to the first contact, and from the last contact to pickup (pairs with a contact), with the share of contacts that have the releasing player or the winner within 1.5 m:
+
+| contact       | frames from the window edge   |   contacts |   share of these contacts | player checked   |   share with that player within 1.5 m |
+|:--------------|:------------------------------|-----------:|--------------------------:|:-----------------|--------------------------------------:|
+| first contact | 2 after release               |         27 |                     0.233 | releasing player |                                 0.333 |
+| first contact | 3 after release               |          2 |                     0.017 | releasing player |                                 0.000 |
+| first contact | 4-5 after release             |          6 |                     0.052 | releasing player |                                 0.333 |
+| first contact | 6-10 after release            |         13 |                     0.112 | releasing player |                                 0.000 |
+| first contact | 11-20 after release           |         30 |                     0.259 | releasing player |                                 0.100 |
+| first contact | 21 or more after release      |         38 |                     0.328 | releasing player |                                 0.000 |
+| last contact  | 2 before pickup               |         11 |                     0.095 | winner           |                                 0.545 |
+| last contact  | 3 before pickup               |          2 |                     0.017 | winner           |                                 0.000 |
+| last contact  | 4-5 before pickup             |          3 |                     0.026 | winner           |                                 0.333 |
+| last contact  | 6-10 before pickup            |         14 |                     0.121 | winner           |                                 0.000 |
+| last contact  | 11-20 before pickup           |         53 |                     0.457 | winner           |                                 0.038 |
+| last contact  | 21 or more before pickup      |         33 |                     0.284 | winner           |                                 0.030 |
+
+A9. Players within 15 m of the pickup point at the last-leg anchor, not detected at release:
+
+| trigger   |   players within 15 m at anchor |   not detected at release |   absent at release |   not detected by pickup |   measured |   speed m/s p10 |   speed m/s p50 |   speed m/s p90 |   max m/s |   seconds to first detection p50 |   share above 9 m/s |
+|:----------|--------------------------------:|--------------------------:|--------------------:|-------------------------:|-----------:|----------------:|----------------:|----------------:|----------:|---------------------------------:|--------------------:|
+| T1        |                             105 |                        49 |                   0 |                        5 |         44 |            0.71 |            2.09 |            4.11 |      6.50 |                             1.70 |                0.00 |
+| T2        |                             923 |                       190 |                   0 |                       15 |        175 |            1.18 |            2.53 |            4.29 |      7.40 |                             1.40 |                0.00 |
+| T3        |                             277 |                        23 |                   0 |                        9 |         14 |            0.38 |            2.14 |            3.23 |      4.36 |                             1.65 |                0.00 |
+| T4        |                            1065 |                        99 |                   0 |                       28 |         71 |            0.83 |            2.73 |            5.13 |      8.09 |                             1.30 |                0.00 |
+| T5        |                              50 |                         5 |                   0 |                        2 |          3 |            2.43 |            2.98 |            3.58 |      3.73 |                             1.90 |                0.00 |
+| T6        |                              25 |                         8 |                   0 |                        2 |          6 |            2.66 |            4.46 |            5.90 |      6.48 |                             1.55 |                0.00 |
+| T7        |                             899 |                       207 |                   0 |                       19 |        188 |            0.82 |            2.28 |            4.14 |      5.58 |                             1.15 |                0.00 |
+| all       |                            3344 |                       581 |                   0 |                       80 |        501 |            0.85 |            2.40 |            4.36 |      8.09 |                             1.30 |                0.00 |
+
+### Gates at the anchors under revision 3 (2026-10-28)
+
+Script: scripts/gates_anchor.py, same thresholds and procedure as logged before the revision 2 run.
+
+Gate verdicts at the anchors, contact rule of revision 3:
+
+| gate                | criterion                                          | value              | threshold   | result   |
+|:--------------------|:---------------------------------------------------|:-------------------|:------------|:---------|
+| G1                  | merged scrambles, minimum over matches             | 74 (match 2007448) | >= 50       | pass     |
+| G3                  | ball detected, share of window frames (n = 466)    | 0.919              | >= 0.85     | pass     |
+| G3                  | pairs with a no-camera or empty window frame       | 0.067              | <= 0.25     | pass     |
+| G4 first-leg anchor | pairs with an anchor (lost to the camera: 0.058)   | 439 of 466         |             |          |
+| G4 first-leg anchor | players within 15 m detected at the anchor, pooled | 0.9208             | >= 0.85     | pass     |
+| G4 first-leg anchor | same, episode level (reported)                     | 0.8018             | none        |          |
+| G4 first-leg anchor | players within 15 m detected at pickup, pooled     | 0.9584             | >= 0.85     | pass     |
+| G4 first-leg anchor | same, episode level (reported)                     | 0.9203             | none        |          |
+| G4 first-leg anchor | winner detected on the pickup frame                | 0.9886             | >= 0.90     | pass     |
+| G4 first-leg anchor | verdict                                            |                    |             | pass     |
+| G4 last-leg anchor  | pairs with an anchor (lost to the camera: 0.017)   | 458 of 466         |             |          |
+| G4 last-leg anchor  | players within 15 m detected at the anchor, pooled | 0.9237             | >= 0.85     | pass     |
+| G4 last-leg anchor  | same, episode level (reported)                     | 0.8122             | none        |          |
+| G4 last-leg anchor  | players within 15 m detected at pickup, pooled     | 0.9589             | >= 0.85     | pass     |
+| G4 last-leg anchor  | same, episode level (reported)                     | 0.9214             | none        |          |
+| G4 last-leg anchor  | winner detected on the pickup frame                | 0.9891             | >= 0.90     | pass     |
+| G4 last-leg anchor  | verdict                                            |                    |             | pass     |
+
+G4 at the first-leg anchor by trigger class (15 m; lost share over all main pairs, the rest over pairs with an anchor):
+
+| trigger   |   pairs |   lost to the camera |   anchor pooled |   anchor episode level |   pickup pooled |   pickup episode level |   winner |
+|:----------|--------:|---------------------:|----------------:|-----------------------:|----------------:|-----------------------:|---------:|
+| T1        |      26 |                0.000 |           0.808 |                  0.577 |           0.962 |                  0.885 |    0.962 |
+| T2        |     135 |                0.067 |           0.906 |                  0.778 |           0.962 |                  0.929 |    0.992 |
+| T3        |      32 |                0.031 |           0.933 |                  0.839 |           0.950 |                  0.935 |    1.000 |
+| T4        |     137 |                0.066 |           0.951 |                  0.891 |           0.959 |                  0.922 |    0.984 |
+| T5        |       8 |                0.000 |           0.939 |                  0.875 |           0.968 |                  0.875 |    1.000 |
+| T6        |       5 |                0.000 |           0.920 |                  0.800 |           0.630 |                  0.400 |    0.800 |
+| T7        |     123 |                0.065 |           0.906 |                  0.765 |           0.965 |                  0.939 |    1.000 |
+| all       |     466 |                0.058 |           0.921 |                  0.802 |           0.958 |                  0.920 |    0.989 |
+
+G4 at the last-leg anchor by trigger class (15 m; lost share over all main pairs, the rest over pairs with an anchor):
+
+| trigger   |   pairs |   lost to the camera |   anchor pooled |   anchor episode level |   pickup pooled |   pickup episode level |   winner |
+|:----------|--------:|---------------------:|----------------:|-----------------------:|----------------:|-----------------------:|---------:|
+| T1        |      26 |                0.000 |           0.829 |                  0.577 |           0.962 |                  0.885 |    0.962 |
+| T2        |     135 |                0.000 |           0.905 |                  0.807 |           0.961 |                  0.926 |    0.993 |
+| T3        |      32 |                0.000 |           0.928 |                  0.812 |           0.951 |                  0.938 |    1.000 |
+| T4        |     137 |                0.058 |           0.950 |                  0.884 |           0.959 |                  0.922 |    0.984 |
+| T5        |       8 |                0.000 |           0.920 |                  0.875 |           0.968 |                  0.875 |    1.000 |
+| T6        |       5 |                0.000 |           0.920 |                  0.800 |           0.630 |                  0.400 |    0.800 |
+| T7        |     123 |                0.000 |           0.922 |                  0.789 |           0.966 |                  0.943 |    1.000 |
+| all       |     466 |                0.017 |           0.924 |                  0.812 |           0.959 |                  0.921 |    0.989 |
+
+G4 passes at either anchor: True
+
+| gate | number | threshold | result |
+|:--|:--|:--|:--|
+| G4 at the first-leg anchor (439 of 466 pairs; 5.8% lost to the camera) | anchor 0.9208; pickup 0.9584; winner 0.9886. Episode level (reported): anchor 0.8018, pickup 0.9203 | >= 0.85; >= 0.85; >= 0.90 | pass |
+| G4 at the last-leg anchor (458 of 466 pairs; 1.7% lost to the camera) | anchor 0.9237; pickup 0.9589; winner 0.9891. Episode level (reported): anchor 0.8122, pickup 0.9214 | >= 0.85; >= 0.85; >= 0.90 | pass |
+
+G1 (74) and G3 (0.919; 0.067) are unchanged. G4 passes at both anchors; DESIGN.md is updated with the revision 3 contact rule and the choice of leg still open.
+
+### Revision 2 against revision 3 (2026-10-28)
+
+| quantity | revision 2 | revision 3 |
+|:--|--:|--:|
+| main pairs with a contact | 182 | 116 |
+| share with 0 / 1 / 2 / 3 or more contacts | 0.609 / 0.193 / 0.097 / 0.101 | 0.751 / 0.189 / 0.045 / 0.015 |
+| release to first contact, median | 0.2 s | 1.3 s |
+| first contacts on the first tested frame | 81 at release+1, 68% with the releasing player within 1.5 m | 27 at release+2, 33% (9) with the releasing player within 1.5 m |
+| last contacts on the last tested frame | 28 at pickup-1, 96% with the winner within 1.5 m | 11 at pickup-2, 55% (6) with the winner within 1.5 m |
+| untestable share of the contact frames | 0.089 | 0.093 |
+| first leg: no anchor; lead median; lead < 0.5 s | 0.109; 1.7 s; 0.067 | 0.058; 1.7 s; 0.071 |
+| last leg: no anchor; lead median; lead < 0.5 s | 0.017; 1.4 s; 0.155 | 0.017; 1.4 s; 0.103 |
+| G4 pooled at the anchor, first leg / last leg | 0.9250 / 0.9261 | 0.9208 / 0.9237 |
+| G4 episode level at the anchor, first leg / last leg | 0.8193 / 0.8188 | 0.8018 / 0.8122 |
+
+Reading. Revision 3 removes the edge contacts at release+1 and pickup-1 and the duplicate frames: the first contact moves from a median 0.2 s to 1.3 s after release, and pairs with 3 or more contacts fall from 10.1% to 1.5%. A smaller edge effect remains one frame further in: 9 first contacts at release+2 have the releasing player within 1.5 m (contact figure 4: speed change 4.0 m/s, releaser 1.4 m away), and 6 last contacts at pickup-2 have the winner within 1.5 m. Pairs without a first-leg anchor fall from 10.9% to 5.8%, because fewer first legs are cut to one frame. G4 changes by less than 0.005 at either anchor and passes at both.
+
+### Contact figures under revision 3 (2026-10-28)
+
+Script: scripts/contact_figures.py. The four episodes drawn with seed 20261028 under revision 2, redrawn; the earlier files are kept for comparison.
+
+|   figure |   match_id |   seq_i | trigger   |   contacts |   gap | file                                                        |
+|---------:|-----------:|--------:|:----------|-----------:|------:|:------------------------------------------------------------|
+|        1 |    1959846 |      18 | T2        |          1 |    46 | audit/figures/contacts_seed20261028_01_1959846_18_rev3.png  |
+|        2 |    1996436 |     121 | T2        |          1 |    40 | audit/figures/contacts_seed20261028_02_1996436_121_rev3.png |
+|        3 |    1886347 |     176 | T2        |          4 |    71 | audit/figures/contacts_seed20261028_03_1886347_176_rev3.png |
+|        4 |    1886347 |     979 | T7        |          1 |    23 | audit/figures/contacts_seed20261028_04_1886347_979_rev3.png |
+
+| figure | revision 2 contacts (frames after release) | revision 3 contacts | reading |
+|:--|:--|:--|:--|
+| 1 | 33, 34, 35, 36 | 33 | one touch, now one contact; lead at the last-leg anchor 1.3 s (was 1.0 s) |
+| 2 | 1, 26 | 26 | release kick removed; the ricochet at 26 (37 degrees, player 0.25 m away) stays |
+| 3 | 1, 43, 44, 47, 48, 51, 52, 54 | 43, 47, 51, 54 | release kick removed; frame pairs merged into four touches in the scramble |
+| 4 | 1, 2 | 2 | the release kick still registers at release+2 (speed change 4.0 m/s, releaser 1.4 m away) |

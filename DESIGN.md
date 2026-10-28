@@ -4,6 +4,11 @@
 
 Frozen after the step 1 gates passed on the five exploration matches (AUDIT.md, "Gates after revision 2 amended": G1, G2, G3 pass; G4 passes at the first-leg and the last-leg anchor). No outcome was used and the test set stays locked. Any change from here is a revision of a frozen definition and is logged in AUDIT.md as such, with the reason, before outcome work uses it. Code: src/looseball/episodes.py.
 
+| revision | date | change | where logged |
+|:--|:--|:--|:--|
+| frozen | 2026-10-28 | definitions below, contact rule of revision 2 amended | AUDIT.md, gates after revision 2 amended |
+| revision 3 (post hoc) | 2026-10-28 | contact rule: tested from release + 2 to pickup - 2; consecutive contact frames are one contact. G4 re-run at both anchors, passes | AUDIT.md, post hoc revision 3 and the sections after it |
+
 ### Inputs
 
 Dynamic events (player_possession rows: frame_start, frame_end, period, team_id, player_id, player_position, start_type, end_type, pass_outcome, is_header, game_interruption_before, game_interruption_after, x_start, y_start, attacking_side, fully_extrapolated), phases of play, and tracking positions, detection flags and image_corners_projection. No SkillCorner model output. The tracking possession field is not used. Nothing is smoothed.
@@ -31,32 +36,32 @@ Dynamic events (player_possession rows: frame_start, frame_end, period, team_id,
 
 | element | definition |
 |:--|:--|
-| contact | a window frame t other than the pickup frame, with the ball detected on t-1, t and t+1, at which the horizontal ball velocity (ball_data.x, ball_data.y, from consecutive frames) turns by more than 30 degrees or changes speed by more than 3 m/s, and some player (detected or not) is within 1.5 m of the ball on t. When the speed into or out of t is zero, only the speed criterion applies |
+| contact (revision 3) | a frame t with release + 2 <= t <= pickup - 2, with the ball detected on t-1, t and t+1, at which the horizontal ball velocity (ball_data.x, ball_data.y, from consecutive frames) turns by more than 30 degrees or changes speed by more than 3 m/s, and some player (detected or not) is within 1.5 m of the ball on t. When the speed into or out of t is zero, only the speed criterion applies. Consecutive contact frames are one contact, placed at the first frame of the run |
 | legs | the window split at its contacts. First leg: release frame to the first contact, or to the pickup frame if there is none. Last leg: last contact to the pickup frame, or the whole window if there is none |
 | anchor of a leg | the first frame from the leg start to the leg end (inclusive) at which the pickup point lies inside the camera polygon (image_corners_projection, all eight values present). A leg with no such frame has no anchor and the episode is lost to the camera for that leg |
 | lead | pickup frame minus anchor frame, in seconds |
 
 ### Step 2 decision 1, open: which leg anchors the measures
 
-The anchor at which positioning is measured is either the first-leg anchor or the last-leg anchor. This is the first decision of step 2 and is not taken here. Step 1 evidence for it (AUDIT.md, A7, A8 and the gates after revision 2 amended):
+The anchor at which positioning is measured is either the first-leg anchor or the last-leg anchor. This is the first decision of step 2 and is not taken here. Step 1 evidence for it, under the revision 3 contact rule (AUDIT.md, A7, A8 and the gates under revision 3):
 
 | | first-leg anchor | last-leg anchor |
 |:--|:--|:--|
-| G4 pooled detection within 15 m at the anchor | 0.925 | 0.926 |
-| main pairs lost to the camera | 10.9% (T1 26.9%, T7 13.8%) | 1.7% (8 pairs, all T4) |
-| median lead (p10, p90) | 1.7 s (0.6, 3.9) | 1.4 s (0.3, 3.1) |
-| lead < 0.5 s, of anchored pairs | 6.7% | 15.5% |
+| G4 pooled detection within 15 m at the anchor | 0.921 | 0.924 |
+| G4 episode level at the anchor (reported, no threshold) | 0.802 | 0.812 |
+| main pairs lost to the camera | 5.8% (T2 6.7%, T4 6.6%, T7 6.5%) | 1.7% (8 pairs, all T4) |
+| median lead (p10, p90) | 1.7 s (0.6, 3.9) | 1.4 s (0.4, 3.1) |
+| lead < 0.5 s, of anchored pairs | 7.1% | 10.3% |
+| main pairs with no contact, where the two anchors coincide | 75.1% | 75.1% |
 
-### Known behaviour of the contact rule (step 1 audit, not changed)
-
-Recorded so that step 2 starts from it; the definition above is unchanged.
+### Known behaviour of the contact rule (step 1 audit, after revision 3)
 
 | behaviour | evidence |
 |:--|:--|
-| the release touch and the pickup touch are flagged at the window edges | 81 of 182 first contacts on the first window frame, 68% with the releasing player within 1.5 m; 28 last contacts on the frame before pickup, 96% with the winner within 1.5 m (AUDIT.md A8e; contact figures 2, 3 and 4). This shortens many first legs to one frame, which moves the first-leg anchor or removes it, and shortens some last legs |
-| one touch is flagged on consecutive frames | 357 contacts form 247 runs of consecutive frames (AUDIT.md A8f; contact figures 1 and 3), so contact and leg counts overstate the number of touches |
-| contacts cannot be tested where the ball is not detected | 8.9% of window frames from release+1 to pickup-1 are not testable (T4 19.3%) |
+| a smaller edge effect remains one frame further in | 27 of 116 first contacts are on release + 2, 9 of them with the releasing player within 1.5 m; 11 last contacts are on pickup - 2, 6 of them with the winner within 1.5 m (AUDIT.md A8e under revision 3; contact figure 4, revision 3) |
+| contacts cannot be tested where the ball is not detected | 9.3% of the frames from release + 2 to pickup - 2 are not testable (T4 21.0%) |
+| release-edge and duplicate contacts of revision 2 | removed by revision 3: the first contact moved from a median 0.2 s to 1.3 s after release, and pairs with 3 or more contacts fell from 10.1% to 1.5% |
 
 ### Release-frame positioning as a secondary quantity
 
-A9: of the players within 15 m of the pickup point at the last-leg anchor who were not detected at release, none moved at an implied speed above 9 m/s between the extrapolated release position and the first detected position (502 measured; median 2.41 m/s, maximum 8.09 m/s, median 1.3 s to first detection; 80 not detected by the pickup frame). This is the step 1 evidence on whether release-frame positioning can be reported as a secondary quantity; the decision belongs to step 2.
+A9 under revision 3: of the players within 15 m of the pickup point at the last-leg anchor who were not detected at release (581 of 3,344), none moved at an implied speed above 9 m/s between the extrapolated release position and the first detected position (501 measured; median 2.40 m/s, maximum 8.09 m/s, median 1.3 s to first detection; 80 not detected by the pickup frame). The implied speed is an average over the time to first detection, so it rules out large jumps, not short-lived errors. This is the step 1 evidence on whether release-frame positioning can be reported as a secondary quantity; the decision belongs to step 2.

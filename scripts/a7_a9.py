@@ -69,7 +69,9 @@ def a7(main: pd.DataFrame) -> None:
 
 
 def a8(main: pd.DataFrame) -> None:
-    print("\nA8a. Contacts per pair by trigger class, and the share of testable window time:\n")
+    print(
+        "\nA8a. Contacts per pair by trigger class, and the share of frames from release+2 to pickup-2 that cannot be tested:\n"
+    )
 
     def f(d):
         n = d["n_contacts"]
@@ -79,7 +81,7 @@ def a8(main: pd.DataFrame) -> None:
             "1": (n == 1).mean(),
             "2": (n == 2).mean(),
             "3 or more": (n >= 3).mean(),
-            "uncovered share of window time": 1
+            "untestable share of the contact frames": 1
             - d["contact_evaluable_frames"].sum() / d["contact_domain_frames"].sum(),
         }
 
@@ -158,9 +160,12 @@ def a8_positions(main: pd.DataFrame) -> None:
                     }
                 )
     c = pd.DataFrame(rows)
-    bins, labels = [0, 1, 2, 5, np.inf], ["1", "2", "3-5", "6 or more"]
+    bins = [1, 2, 3, 5, 10, 20, np.inf]
+    labels = ["2", "3", "4-5", "6-10", "11-20", "21 or more"]
     print(
-        "\nA8e (diagnostic). First contacts by frames after release, and last contacts by frames before pickup:\n"
+        "\nA8e. Frames from release to the first contact, and from the last contact to pickup "
+        "(pairs with a contact), with the share of contacts that have the releasing player or the winner "
+        "within 1.5 m:\n"
     )
     out = []
     for which, col, who in (
@@ -176,37 +181,12 @@ def a8_positions(main: pd.DataFrame) -> None:
                     "contact": which,
                     "frames from the window edge": f"{lab} {col}",
                     "contacts": len(g),
+                    "share of these contacts": len(g) / len(d) if len(d) else np.nan,
                     "player checked": who.replace(" within 1.5 m", ""),
                     "share with that player within 1.5 m": g[who].mean() if len(g) else np.nan,
                 }
             )
     print(md(pd.DataFrame(out)))
-
-
-def a8_runs(main: pd.DataFrame) -> None:
-    """Contacts on consecutive frames grouped into runs (diagnostic; the rule itself is unchanged)."""
-
-    def runs(s: str) -> int:
-        f = np.array([int(x) for x in s.split(";")]) if s else np.array([], dtype=int)
-        return int(len(f) and 1 + (np.diff(f) > 1).sum())
-
-    n_runs = main["contact_frames"].map(runs)
-    print("\nA8f (diagnostic). Contacts and runs of consecutive contact frames, by trigger class:\n")
-
-    def f(d):
-        r = n_runs[d.index]
-        return {
-            "pairs": len(d),
-            "contacts": int(d["n_contacts"].sum()),
-            "runs": int(r.sum()),
-            "contacts per run": d["n_contacts"].sum() / r.sum() if r.sum() else np.nan,
-            "0 runs": (r == 0).mean(),
-            "1 run": (r == 1).mean(),
-            "2 runs": (r == 2).mean(),
-            "3 or more runs": (r >= 3).mean(),
-        }
-
-    print(md(grouped(main, "trigger", TRIGGERS, f)))
 
 
 def a9(main: pd.DataFrame, chk: pd.DataFrame) -> None:
@@ -249,7 +229,6 @@ def main() -> None:
     a7(main_set)
     a8(main_set)
     a8_positions(main_set)
-    a8_runs(main_set)
     a9(main_set, episodes.all_extrapolation_checks())
 
 

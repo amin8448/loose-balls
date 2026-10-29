@@ -1,0 +1,40 @@
+{
+  "chosen_form": "softmax",
+  "softmax": {
+    "feature": "dt",
+    "intercept": false,
+    "a": 0.0,
+    "b": 2.927305121409144
+  },
+  "logistic": {
+    "feature": "dt",
+    "intercept": true,
+    "a": -0.1434877992207369,
+    "b": 2.9148111625711466
+  },
+  "B0": {
+    "feature": "dn",
+    "intercept": true,
+    "a": 0.06776535261137002,
+    "b": 0.36095226352158616
+  },
+  "B1": {
+    "feature": "dd",
+    "intercept": true,
+    "a": -0.053030801436037334,
+    "b": 0.359514192070065
+  },
+  "chosen": {
+    "feature": "dt",
+    "intercept": false,
+    "a": 0.0,
+    "b": 2.927305121409144
+  },
+  "constant_acceleration": {
+    "feature": "dt",
+    "intercept": false,
+    "a": 0.0,
+    "b": 2.1821017486243037,
+    "form": "softmax"
+  }
+}

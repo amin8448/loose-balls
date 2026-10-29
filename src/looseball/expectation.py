@@ -24,6 +24,14 @@ def frozen_parameters() -> dict:
     return json.loads(resources.files("looseball").joinpath("data/frozen_parameters.json").read_text())
 
 
+def frozen_static_temperature() -> dict:
+    """The separate static temperature (step 3, 3c.0; exploration-only, report-only), shipped with
+    the package. It benchmarks V2; the decomposition keeps the shared temperature."""
+    return json.loads(
+        resources.files("looseball").joinpath("data/frozen_static_temperature.json").read_text()
+    )
+
+
 def sigmoid(z):
     return 1.0 / (1.0 + np.exp(-np.asarray(z, dtype=float)))
 

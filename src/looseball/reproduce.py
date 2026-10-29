@@ -4,7 +4,8 @@ The main test MT1 (AUDIT.md, "MT1, the main-test plan") ran once on 15 held-out 
 module regenerates its tables through the public API with the frozen parameters shipped in the
 package: it recomputes the measures, it does not refit or re-decide anything. Output, in --out:
 report.md (every MT1 table, as logged), episodes.csv, episodes_ungated.csv, team_verdicts.csv,
-team_shares.csv, clips.csv and gates.json, matching audit/mt1_test; and figures/ (looseball.figures).
+team_shares.csv, clips.csv and gates.json, matching audit/mt1_test; static_temperature.md (3c.0,
+report-only); and figures/ (looseball.figures).
 """
 
 import io
@@ -17,7 +18,13 @@ import pandas as pd
 from looseball import decompose, expectations, export_clips, find_episodes, reach_times, team_report
 from looseball.adapters.skillcorner import load_match
 from looseball.decompose import SHARES
-from looseball.expectation import baselines, calibration, frozen_parameters, log_loss
+from looseball.expectation import (
+    baselines,
+    calibration,
+    frozen_parameters,
+    frozen_static_temperature,
+    log_loss,
+)
 from looseball.export_clips import match_clock
 from looseball.race import ReachModel
 from looseball.report import bootstrap_within_match
@@ -45,6 +52,14 @@ CREDIT = [f"credit {s}" for s in SHARES]
 
 def md(t: pd.DataFrame, floatfmt: str = ".4f") -> str:
     return t.to_markdown(index=False, floatfmt=floatfmt)
+
+
+def _static_own(reach: pd.DataFrame) -> pd.DataFrame:
+    """3c.0: the releasing team's static expectation under its own frozen temperature."""
+    e = expectations(reach, {"chosen": frozen_static_temperature()})
+    return e.loc[e["side"] == "releasing", ["match_id", "seq_i", "p_static"]].rename(
+        columns={"p_static": "p_static_own"}
+    )
 
 
 def _measures(ep: pd.DataFrame, reach: pd.DataFrame, parameters: dict) -> pd.DataFrame:
@@ -98,6 +113,7 @@ def compute(data, matches=TEST_MATCHES) -> dict:
         reach = reach_times(ep, m.tracking, m.players, radius=radius)
         meas = _measures(ep, reach, frozen)
         base = ep.merge(meas, on=["match_id", "seq_i"], validate="1:1")
+        base = base.merge(_static_own(reach), on=["match_id", "seq_i"], validate="1:1")
         base["t_winner"] = _winner_reach(ep, m.tracking, m.players).to_numpy()
         bases.append(base)
         a = base[base["kept"] & ~base["immediate"]]
@@ -152,6 +168,32 @@ def _comparison(t: pd.DataFrame, a: str, b: str, n_matches: int) -> dict:
         f"matches p_dynamic lower (of {n_matches})": same,
         "result": "pass" if (lo > 0 and same >= MATCHES_MIN) else "fail",
     }
+
+
+def write_static_temperature(r: dict, out: Path) -> None:
+    """3c.0, report-only: the static expectation with its own temperature, next to B1 and p_dynamic."""
+    a, n_m = r["a"], r["n_sets"]
+
+    def line(better: str, other: str) -> dict:
+        def stat(d):
+            return log_loss(d["releasing_won"], d[other]) - log_loss(d["releasing_won"], d[better])
+
+        boot = np.array(bootstrap_within_match(a, stat, N_BOOT, SEED))
+        return {"model": better, "against": other, "log-loss model": log_loss(a["releasing_won"], a[better]),
+                "log-loss against": log_loss(a["releasing_won"], a[other]), "difference": stat(a),
+                "lo": np.quantile(boot, 0.025), "hi": np.quantile(boot, 0.975),
+                f"matches model lower (of {n_m})": int(sum(stat(d) > 0 for _, d in a.groupby("match_id")))}  # fmt: skip
+
+    b = frozen_static_temperature()["b"]
+    rows = [line("p_dynamic", "p_static_own"), line("p_dynamic", "p_B1"), line("p_static_own", "p_B1")]
+    text = (
+        f"3c.0, report-only. Static expectation with its own temperature (b_static {b:.4f} per second, fitted on the "
+        f"exploration matches only) on the {len(a)} test analysis episodes. Difference: log-loss of the comparison "
+        "minus log-loss of the model; interval: 2000 bootstrap replicates within match, seed 0.\n\n"
+        + md(pd.DataFrame(rows))
+        + "\n"
+    )
+    (out / "static_temperature.md").write_text(text)
 
 
 def _verdict_shares(t: pd.DataFrame) -> pd.Series:
@@ -350,7 +392,9 @@ def reproduce(data, out) -> dict:
     """Regenerate the MT1 tables and the README figures from the open-data clone at `data` into `out`."""
     from looseball.figures import draw_figures
 
-    summary = write(compute(data), Path(out))
+    r = compute(data)
+    summary = write(r, Path(out))
+    write_static_temperature(r, Path(out))
     figures = draw_figures(data, out)
     summary["figure 1 episode"] = (
         f"match {figures['figure 1']['match_id']}, seq_i {figures['figure 1']['seq_i']}"

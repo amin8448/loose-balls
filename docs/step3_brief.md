@@ -8,6 +8,9 @@ Brief for step 3 in the loose-balls repository. MT1 passed on the 15 test matche
 - Figure 2 is drawn in two versions (A and B below) and Amin chooses.
 - A DataBallPy issue proposing the feature is optional, opened by Amin after the adapter exists, and not a dependency of anything here.
 - The README draft goes to a fresh reader who has not seen the project before submission.
+- Figure 2 is version A, with the interval bar moved below the bar (or drawn in the positioning colour) so it does not read as an interval on the reading share.
+- Figure 1 is redrawn once by seed under a legibility constraint logged before the draw: a reading or positioning verdict, lead of at least 1.5 s, ball path of at least 10 m. The caption says the ball was drawn at random among such balls. (Amin may keep the current episode instead; then the constraint line is dropped.)
+- "What would have been enough" (section 3h) is added after the README draft exists. "What the players should have done" is not built; it is one future-work sentence in the README.
 
 ## What the submission requires (Pretalx CfP, Analytics Cup 2.0)
 
@@ -18,9 +21,13 @@ Brief for step 3 in the loose-balls repository. MT1 passed on the 15 test matche
 
 ## Order of work
 
-3a. Package and adapter. 3b. Figures. 3c. README. 3d. Video script and shot list. 3e. Reproducibility check from a fresh clone. 3f. Fresh-reader review and revision. 3g. Submission checklist.
+3a. Package and adapter. 3b. Figures. 3c. README (with 3c.0, one report-only line, first). 3h. What would have been enough. 3d. Video script and shot list. 3e. Reproducibility check from a fresh clone. 3f. Fresh-reader review and revision. 3g. Submission checklist.
 
-Stops for Amin: after 3b (choose Figure 2), after 3c (read the README draft), after 3f (review results).
+Stops for Amin: after 3b (choose Figure 2), after 3c (read the README draft), after 3h (the distributions and four figures), after 3f (review results).
+
+## 3c.0. One report-only line before the README
+
+The static expectation shares the temperature fitted for the dynamic model, which is the right nesting for the decomposition but flatters V2. Fit a separate temperature for the static reach times on the exploration episodes by the same leave-one-match-out procedure (exploration only, logged, frozen), apply it to the test episodes, and report its log-loss next to B1 and the dynamic model, with the per-match count. The README states V2 against this line and against B1. Nothing else changes; the decomposition keeps the shared temperature, and DESIGN.md says why in one sentence.
 
 ## 3a. Package and adapter
 
@@ -56,15 +63,31 @@ Sections, in this order, with the numbers taken from AUDIT.md and audit/mt1_test
 2. What a loose ball is here. The definition (a release after which nobody controls the ball directly); the trigger classes in plain words; about 100 a match; what is excluded and why (clean receptions and interceptions, held saves, contests shorter than half a second).
 3. How a lost ball is read. The anchor and why the broadcast forces it (the camera follows the ball; at release the drop zone is off screen for a third of episodes); the three nested expectations, one sentence each; what each verdict means in coaching terms; the sentence that the verdicts are parameter-free (with no intercept, the expectation is one half exactly when the two best reach times are equal, whatever the fitted slope), so only the continuous shares depend on the one fitted value.
 4. What held. V1, V2, V3 and the camera gate as numbers in prose; the gated against ungated comparison; one sentence reconciling V2's size with the reading share (movement matters for who wins, and flips a favourable position in about one lost ball in seven); one sentence on prior work (second balls studied with event data by Sears 2025 and Lamberts 2025; a tracking-based decomposition of why a loose ball was lost is new).
-5. For the coaching staff. The clip export and what to do with it; the worked match in one sentence; how each verdict maps to a training week, three short clauses.
+5. For the coaching staff. The clip export and what to do with it; the worked match in one sentence; how each verdict maps to a training week, three short clauses; one sentence on "what would have been enough" (section 3h): for each lost ball the clip table also gives the smallest change under the model that would have made the team the favourite, one player, how far or which way.
 6. Limitations. First-sight anchor (positioning means positioning when the drop zone came into view, not shape before the kick); clearances (55.7% dropped by the camera gate, 30 remain); velocity enters the reach model only as drift during the reaction window; calibration is slightly under-confident at the fitted slope; team level only, 1 to 7 matches per team; one league.
-7. Reproduce and reuse. Install; the data clone command with the commit; the one reproduce command; the adapter and how another provider would plug in; what a DataBallPy contribution would add. A closing line crediting SkillCorner and PySport for the data and DataBallPy for the reach model.
+7. Reproduce and reuse. Install; the data clone command with the commit; the one reproduce command with its run time and memory; the adapter and how another provider would plug in; what a DataBallPy contribution would add. One future-work sentence: what the players should have done tactically needs a model of team behaviour and the coach's game model (positional optimisation as in Shah 2026, or learned typical movement as in Le et al. 2017), and is not attempted here. A closing line crediting SkillCorner and PySport for the data and DataBallPy for the reach model.
 
 Style: no em dashes; no bullet lists inside sections 1 to 6; numbers carry their units; no claim without a number from AUDIT.md behind it; nothing about the project's history or the earlier entries. Stop and hand the draft to Amin with the word count.
 
+## 3h. What would have been enough
+
+An extension of the decomposition, not a second idea. For every lost loose ball with a positioning or reading verdict, the smallest change to one player of the losing team that would have made that team the favourite under the frozen reach model. Nothing is fitted; it is a deterministic function of the model already validated. It is never called "what should have happened".
+
+Definitions. The verdicts are parameter-free: the losing team becomes the favourite exactly when its best dynamic reach time drops to the winner's best dynamic reach time. Let the deficit be D = (losing team's best time) minus (winning team's best time), in seconds, with D > 0 for every such ball.
+
+- Metres short: 5 m/s times D, the distance the best-placed losing player would have needed to start closer along the line from his drifted position (position plus 0.7 s of his velocity) to the pickup point. Closed form under the shaw model; report for every lost ball with a verdict.
+- Redirection: for each losing player, keep his speed and point his velocity at the pickup point; recompute his reach time; the flip is achieved if it is at most the winner's best time. Among the players for whom it is, take the smallest angle change. Report the player, the angle, and the new reach time.
+- The "enough" change for a ball: the redirection with the smallest angle if any redirection suffices; otherwise the displacement of the best-placed player by the metres short. Record the type (redirect or move), the player, and the magnitude. For after-the-anchor verdicts there is nothing to compute; the model already favoured the losing team.
+
+Columns added to the clip export: deficit_s, metres_short, enough_type, enough_player, enough_magnitude (degrees or metres). The reproduce path regenerates them.
+
+Checks, report-only, logged before they run: the distribution of metres short and of the angle change, by verdict and by trigger; the share of reading verdicts that one redirection fixes; stability of the enough change under the V3 variants (share of balls where the type and the player are unchanged; rank correlation of the magnitude); and the share of balls where the enough player is extrapolated at the anchor. If the median metres short is above 10 m the model is saying something other than "nearly there", and that is reported, not adjusted.
+
+Animation: looseball animate --match ID --episode N --out FILE writes a short clip. First half, as recorded: the frames from the anchor to the pickup, both teams, arrows, the shading recomputed each frame. Second half, labelled "model: one change": the anchor frame with the enough change applied and the shading recomputed, then the altered player moving on the altered path at the model's speed while every other player follows the recorded track. The label stays on screen for the whole second half. Four animations drawn by seed (two reading, two positioning) for Amin to check; the one used in the video is chosen from them.
+
 ## 3d. Video script and shot list
 
-Sixty seconds, about 140 words, written for Amin's voice, with a shot list that uses only Figure 1, Figure 2 and screen captures of the clip export: 0 to 10 s the coach's question and what a loose ball is; 10 to 35 s the mechanism on Figure 1 (anchor, contours, arrows, the three numbers); 35 to 50 s the headline and what a coach does with it; 50 to 60 s the package, the repository name, the held-out validation in one clause. No sentence in the script that is not also in the README.
+Sixty seconds, about 140 words, written for Amin's voice, with a shot list that uses only Figure 1, Figure 2, one animation from 3h and screen captures of the clip export: 0 to 10 s the coach's question and what a loose ball is; 10 to 30 s the mechanism on Figure 1 (anchor, contours, arrows, the three numbers); 30 to 42 s the animation, as recorded and then with the one change; 42 to 52 s the headline and what a coach does with it; 52 to 60 s the package, the repository name, the held-out validation in one clause. No sentence in the script that is not also in the README.
 
 ## 3e. Reproducibility check
 

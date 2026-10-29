@@ -3,7 +3,8 @@
 Usage: python scripts/check_reproduce.py OUT
 
 Every file of audit/mt1_test must be byte-identical in OUT, and OUT/report.md must equal the MT1
-results logged in AUDIT.md (from "MT1 on the test matches" to the gate summary). Figures and the
+results logged in AUDIT.md (from "MT1 on the test matches" to the gate summary), and
+OUT/static_temperature.md must equal audit/static_temperature_test.md (3c.0). Figures and the
 Figure 1 caption, when present in OUT/figures, are compared byte for byte with figures/.
 """
 
@@ -28,6 +29,14 @@ def main(out: Path) -> int:
         f"{'identical' if same else 'DIFFERS  '}  report.md against AUDIT.md ({len(logged.splitlines())} lines)"
     )
     failures += [] if same else ["report.md"]
+    record = ROOT / "audit" / "static_temperature_test.md"
+    same = (out / "static_temperature.md").exists() and (
+        out / "static_temperature.md"
+    ).read_bytes() == record.read_bytes()
+    print(
+        f"{'identical' if same else 'DIFFERS  '}  static_temperature.md against audit/static_temperature_test.md"
+    )
+    failures += [] if same else ["static_temperature.md"]
     if (out / "figures").exists():
         for f in sorted(p for p in (ROOT / "figures").iterdir() if p.is_file()):
             g = out / "figures" / f.name

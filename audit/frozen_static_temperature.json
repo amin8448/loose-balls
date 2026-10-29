@@ -1,0 +1,7 @@
+{
+  "form": "softmax",
+  "feature": "static best-time difference",
+  "a": 0.0,
+  "b": 1.81229518832611,
+  "fitted on": "exploration analysis set, 326 episodes (3c.0, report-only)"
+}

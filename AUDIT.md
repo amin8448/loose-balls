@@ -2237,3 +2237,24 @@ Reading. With its own temperature the static expectation reaches a log-loss of 0
 | bug | the .gitignore rule `data/` also matched src/looseball/data, so the packaged frozen parameters (looseball/data/frozen_parameters.json) were never committed in 3a; a fresh clone would have lacked them. The 3a wheel check passed because it built from the working tree |
 | fix | the rule is anchored to the repository root (`/data/`); the open-data link and the cache stay ignored; src/looseball/data/frozen_parameters.json and frozen_static_temperature.json are committed |
 | effect on results | none: the files' contents are unchanged (byte-identical to the audit copies, test_frozen_parameters) |
+
+### 3b revision: figures redrawn (2026-10-29)
+
+| item | value |
+|:--|:--|
+| Figure 1 draw | under the constraint logged above, seed 20261029: pool of 17 lost balls in match 1927964; drawn match 1927964, seq_i 323: T6 (unknown end), lead 1.5 s, ball path 19.0 m, verdict positioning; Wellington P FC lost to Western Sydney |
+| Figure 1 caption (40 words) | Shading: which team reaches each point first. When the drop zone came into view, Wellington P FC had 1.1% from position, 0.3% with movement: lost on positioning. Randomly drawn among lost balls with lead 1.5 s+ and path 10 m+. |
+| Figure 1 file | figures/figure1_constrained_seed20261029.png and figures/figure1_caption.txt; the previous draw kept as figures/previous/figure1_unconstrained_seed20261029.png (not regenerated) |
+| Figure 1 rendering fix | players outside the panel are no longer drawn (their arrows had reached into the panel without a marker) |
+| Figure 2 A (chosen) and B | the 95% interval on the positioning share moved below each bar, so it cannot be read as an interval on the reading share; the footnote wrapped onto two lines |
+| reproduce diff | `looseball reproduce` (5 min 47 s, 826 MB peak) checked with scripts/check_reproduce.py: the six MT1 files, report.md, static_temperature.md and all four figure files identical; a second drawing from the same tables gives identical bytes |
+
+Reproduce runs so far, same machine (Python 3.12.3, numpy 2.2.6, pandas 3.1.0):
+
+| run | wall time | peak memory |
+|:--|:--|:--|
+| 3a, tables only | 4 min 40 s | 821 MB |
+| 3b, with figures | 5 min 15 s | 825 MB |
+| 3c.0 | 5 min 52 s | 813 MB |
+| figure revision, first | 7 min 10 s | 846 MB |
+| figure revision, final | 5 min 47 s | 826 MB |

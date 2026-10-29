@@ -33,6 +33,8 @@ BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
 VERDICT_COLOURS = {"positioning": BLUE, "reading": ORANGE, "after the anchor": AQUA}
 HALF = 22.0  # metres shown around the pickup point
 MAX_CAPTION_WORDS = 40
+MIN_LEAD = 1.5  # seconds, Figure 1 legibility constraint (AUDIT.md, 3b revision)
+MIN_PATH = 10.0  # metres
 STYLE = {
     "font.size": 12,
     "axes.edgecolor": GRID,
@@ -53,32 +55,49 @@ def _pitch(ax, length: float, width: float) -> None:
         ax.add_patch(Rectangle((s * hl - (5.5 if s > 0 else 0), -9.16), 5.5, 18.32, fill=False, **kw))
 
 
-def draw_episode(episodes: pd.DataFrame) -> pd.Series:
-    """The seeded draw for Figure 1 from the reproduce output's episodes table."""
+def ball_path_length(tracking: pd.DataFrame, release: int, pickup: int) -> float:
+    """Length of the tracked ball path from release to pickup, steps with a missing position skipped."""
+    xy = tracking.loc[release:pickup, ["ball_x", "ball_y"]].to_numpy(dtype=float)
+    return float(np.nansum(np.hypot(np.diff(xy[:, 0]), np.diff(xy[:, 1]))))
+
+
+def draw_episode(episodes: pd.DataFrame, path_length: pd.Series | None = None) -> pd.Series:
+    """The seeded draw for Figure 1 from the reproduce output's episodes table, under the
+    legibility constraint logged before the draw (AUDIT.md, 3b revision): a reading or
+    positioning verdict, a lead of at least MIN_LEAD and a ball path of at least MIN_PATH.
+    path_length: ball path length by seq_i for the worked match."""
     pool = episodes[
         (episodes["match_id"] == WORKED_MATCH) & episodes["verdict"].isin(["reading", "positioning"])
     ]
+    pool = pool[pool["lead_s"] >= MIN_LEAD]
+    if path_length is not None:
+        pool = pool[pool["seq_i"].map(path_length) >= MIN_PATH]
     pool = pool.sort_values("seq_i").reset_index(drop=True)
-    return pool.loc[int(np.random.default_rng(SEED).choice(len(pool)))]
+    return pool.loc[int(np.random.default_rng(SEED).choice(len(pool)))], len(pool)
 
 
 def caption(loser: str, p_static_loser: float, p_dynamic_loser: float, verdict: str) -> str:
-    ps, pd_ = 100 * p_static_loser, 100 * p_dynamic_loser
-    if verdict == "positioning":
-        text = (f"When the drop zone came into view, {loser} had a {ps:.1f}% chance from where their players stood "
-                f"and {pd_:.1f}% counting how they were moving. Lost on positioning: they were too far away.")  # fmt: skip
-    else:
-        text = (f"When the drop zone came into view, {loser} had a {ps:.1f}% chance from where their players stood, "
-                f"but how they were moving cut it to {pd_:.1f}%. Lost on reading: moving the wrong way.")  # fmt: skip
+    text = (
+        f"Shading: which team reaches each point first. When the drop zone came into view, {loser} had "
+        f"{100 * p_static_loser:.1f}% from position, {100 * p_dynamic_loser:.1f}% with movement: lost on {verdict}. "
+        f"Randomly drawn among lost balls with lead {MIN_LEAD:g} s+ and path {MIN_PATH:g} m+."
+    )
     if len(text.split()) > MAX_CAPTION_WORDS:
         raise ValueError(f"caption has {len(text.split())} words")
     return text
 
 
 def figure1(data, episodes: pd.DataFrame, out_dir: Path) -> dict:
-    e = draw_episode(episodes)
     m = load_match(data, WORKED_MATCH)
-    ep = find_episodes(m.possessions, m.tracking, m.players).set_index("seq_i").loc[int(e["seq_i"])]
+    found = find_episodes(m.possessions, m.tracking, m.players).set_index("seq_i")
+    lengths = pd.Series(
+        {
+            s: ball_path_length(m.tracking, int(r.release_frame), int(r.pickup_frame))
+            for s, r in found.iterrows()
+        }
+    )
+    e, pool_size = draw_episode(episodes, lengths)
+    ep = found.loc[int(e["seq_i"])]
     anchor, release, pickup = int(e["anchor_frame"]), int(ep["release_frame"]), int(e["pickup_frame"])
     target = np.array([ep["pickup_x"], ep["pickup_y"]], dtype=float)
     loser, winner = int(e["losing_team"]), int(e["winning_team"])
@@ -91,6 +110,7 @@ def figure1(data, episodes: pd.DataFrame, out_dir: Path) -> dict:
 
     vel = tracking_velocities(m.tracking)
     at = vel[vel["frame"] == anchor].copy()
+    inside = at["x"].between(*xlim) & at["y"].between(*ylim)
     at["team_id"] = m.players.set_index("column_id")["team_id"].reindex(at["column_id"]).to_numpy()
     model = ReachModel()
     gx, gy = np.meshgrid(np.linspace(*xlim, 177), np.linspace(*ylim, 177))
@@ -125,7 +145,7 @@ def figure1(data, episodes: pd.DataFrame, out_dir: Path) -> dict:
         ax.scatter(path[0, 0], path[0, 1], s=50, facecolor=SURFACE, edgecolor=INK, linewidth=1.5, zorder=5)
         ax.scatter(*target, marker="x", s=150, color=INK, linewidth=2.4, zorder=6)
         for team, colour in ((winner, BLUE), (loser, ORANGE)):
-            rows = at[at["team_id"] == team]
+            rows = at[(at["team_id"] == team) & inside]  # players inside the panel
             det = rows["detected"].fillna(False).to_numpy(dtype=bool)
             ax.scatter(rows["x"], rows["y"], s=120, facecolor=np.where(det, colour, SURFACE), edgecolor=colour,
                        linewidth=2.2, zorder=7)  # fmt: skip
@@ -173,11 +193,12 @@ def figure1(data, episodes: pd.DataFrame, out_dir: Path) -> dict:
         )
         text = caption(m.team_names[loser], ps_loser, pd_loser, e["verdict"])
         fig.text(0.03, 0.155, textwrap.fill(text, 98), fontsize=12, color=INK, va="top")
-        name = f"figure1_seed{SEED}.png"
+        name = f"figure1_constrained_seed{SEED}.png"
         fig.savefig(out_dir / name, dpi=150, facecolor=SURFACE, bbox_inches="tight", pad_inches=0.3)
         plt.close(fig)
     (out_dir / "figure1_caption.txt").write_text(text + "\n")
     return {"file": name, "seed": SEED, "match_id": WORKED_MATCH, "seq_i": int(e["seq_i"]), "verdict": e["verdict"],
+            "pool": pool_size, "lead_s": float(e["lead_s"]), "ball_path_m": float(lengths[int(e["seq_i"])]),
             "caption": text}  # fmt: skip
 
 
@@ -187,13 +208,13 @@ def _team_panel(ax, teams: pd.DataFrame) -> None:
     left = np.zeros(len(t))
     for v in SHARES:
         ax.barh(
-            y, t[v], left=left, height=0.72, color=VERDICT_COLOURS[v], edgecolor=SURFACE, linewidth=2, label=v
+            y, t[v], left=left, height=0.66, color=VERDICT_COLOURS[v], edgecolor=SURFACE, linewidth=2, label=v
         )
         for yi, (lft, w) in enumerate(zip(left, t[v])):
             if w >= 0.07:
                 ax.text(
                     lft + w / 2,
-                    yi - 0.07,
+                    yi,
                     f"{100 * w:.0f}%",
                     ha="center",
                     va="center",
@@ -203,8 +224,8 @@ def _team_panel(ax, teams: pd.DataFrame) -> None:
                 )
         left = left + t[v].to_numpy()
     lo, hi = t["positioning lo"].to_numpy(), t["positioning hi"].to_numpy()
-    ax.hlines(y + 0.27, lo, hi, color=INK, linewidth=1.6, zorder=5)
-    ax.vlines(np.r_[lo, hi], np.r_[y, y] + 0.20, np.r_[y, y] + 0.34, color=INK, linewidth=1.6, zorder=5)
+    ax.hlines(y - 0.42, lo, hi, color=INK, linewidth=1.6, zorder=5)  # below the bar
+    ax.vlines(np.r_[lo, hi], np.r_[y, y] - 0.47, np.r_[y, y] - 0.37, color=INK, linewidth=1.6, zorder=5)
     labels = [f"{n}{' *' if f == 'flag' else ''} ({lost})" for n, f, lost in
               zip(t["team"], t["sample-size flag"].fillna(""), t["lost"])]  # fmt: skip
     ax.set_yticks(y, labels, fontsize=12, color=INK)
@@ -217,8 +238,8 @@ def _team_panel(ax, teams: pd.DataFrame) -> None:
     )
     for s in ("top", "right"):
         ax.spines[s].set_visible(False)
-    ax.text(0, -0.15, "Black line: 95% interval on the positioning share. * Two test matches or fewer.",
-            fontsize=10.5, color=MUTED, transform=ax.transAxes)  # fmt: skip
+    ax.text(0, -0.13, "Line under each bar: 95% interval on the positioning share.\n* Two test matches or fewer.",
+            fontsize=10.5, color=MUTED, transform=ax.transAxes, va="top")  # fmt: skip
 
 
 def _model_panel(ax, episodes: pd.DataFrame) -> int:

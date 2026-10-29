@@ -2142,3 +2142,15 @@ Structure and checks:
 | README.md | a title-only placeholder until 3c, so the README-limit test runs; the test counts words after stripping markdown (link URLs and comments dropped, image captions, table text and code counted) and counts images and markdown tables together |
 | licence | LICENSE.md, MIT, copyright Amin Nabavi; pyproject declares license MIT and the looseball command |
 | wheel | builds with both packages, the frozen-parameter JSON, LICENSE.md and the entry point |
+
+### 3a. Reproduce against the MT1 record (2026-10-29)
+
+`looseball reproduce --data data/opendata --out OUT`, run after commit 12bd6f2, through the public API and the SkillCorner adapter with the packaged frozen parameters; compared with `scripts/check_reproduce.py OUT`.
+
+| output | against | result |
+|:--|:--|:--|
+| episodes.csv, episodes_ungated.csv, team_verdicts.csv, team_shares.csv, clips.csv, gates.json | audit/mt1_test | byte-identical, all six |
+| report.md (every MT1 gate and report-only table) | the MT1 results logged in AUDIT.md, 215 lines | identical |
+| run | Python 3.12.3, numpy 2.2.6, pandas 3.1.0, DataBallPy 3f9de8d | 4 min 40 s wall time, 821 MB peak memory |
+
+No difference: the public package regenerates MT1 exactly.

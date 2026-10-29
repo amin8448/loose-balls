@@ -412,13 +412,13 @@ def extrapolation_checks(match_id: int) -> pd.DataFrame:
     return window_structure(p[p["main"]], match_id)[1]
 
 
-def all_pairs() -> pd.DataFrame:
-    return pd.concat([pairs(m) for m in paths.EXPLORATION], ignore_index=True)
+def all_pairs(matches=paths.EXPLORATION) -> pd.DataFrame:
+    return pd.concat([pairs(m) for m in matches], ignore_index=True)
 
 
-def all_episodes() -> pd.DataFrame:
-    return pd.concat([match_episodes(m) for m in paths.EXPLORATION], ignore_index=True)
+def all_episodes(matches=paths.EXPLORATION) -> pd.DataFrame:
+    return pd.concat([match_episodes(m) for m in matches], ignore_index=True)
 
 
-def all_extrapolation_checks() -> pd.DataFrame:
-    return pd.concat([extrapolation_checks(m) for m in paths.EXPLORATION], ignore_index=True)
+def all_extrapolation_checks(matches=paths.EXPLORATION) -> pd.DataFrame:
+    return pd.concat([extrapolation_checks(m) for m in matches], ignore_index=True)

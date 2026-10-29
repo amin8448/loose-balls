@@ -21,15 +21,17 @@ EPISODE_COLUMNS = [
 ]  # fmt: skip
 
 
-@lru_cache(maxsize=1)
-def anchored_pairs() -> pd.DataFrame:
-    ep = episodes.all_episodes()
+@lru_cache(maxsize=2)
+def anchored_pairs(matches: tuple = paths.EXPLORATION) -> pd.DataFrame:
+    ep = episodes.all_episodes(matches)
     return ep[ep["main"] & ep["anchor2_frame"].notna()].reset_index(drop=True)
 
 
-def episode_table(keys: pd.DataFrame | None = None, **settings) -> pd.DataFrame:
+def episode_table(
+    keys: pd.DataFrame | None = None, matches: tuple = paths.EXPLORATION, **settings
+) -> pd.DataFrame:
     """Race summary per anchored main pair (or per pair in keys: match_id, seq_i) with flags."""
-    main = anchored_pairs()
+    main = anchored_pairs(tuple(matches))
     if keys is not None:
         main = main.merge(keys[["match_id", "seq_i"]], on=["match_id", "seq_i"])
     parts = [race.episode_races(m, d, **settings)[0] for m, d in main.groupby("match_id")]

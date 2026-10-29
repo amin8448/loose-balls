@@ -1521,3 +1521,292 @@ Procedure points set by the project lead before S3:
 | V3 episodes | the base analysis set's lost balls stay fixed; a variant changes only the reach times and hence the probabilities, with the frozen D5 parameter; D7 and the immediate rule are not re-applied under a variant |
 | S5 dry run probabilities | the frozen parameters applied to the exploration analysis set: the code path MT1 will run, in-sample, so a bug check |
 | S5 per-match rule | the brief's "same direction in at least 10 of 15 matches" is reported as a count out of 5 |
+
+### S3, the expectation model (2026-10-28)
+
+Script: scripts/s3.py, run after commit a3ce7bc. Analysis set: 326 episodes (anchored, kept by D7 at 15 m, lead >= 0.5 s); the releasing team won 0.442 of them. Frozen values written to audit/frozen_parameters.json.
+
+S3a. Leave-one-match-out log-loss on the analysis set (dynamic best times for softmax and logistic):
+
+| model    |   pooled |   1886347 |   1959846 |   1996435 |   1996436 |   2007448 |
+|:---------|---------:|----------:|----------:|----------:|----------:|----------:|
+| softmax  |   0.4525 |    0.3929 |    0.4722 |    0.5060 |    0.4123 |    0.4775 |
+| logistic |   0.4547 |    0.3927 |    0.4906 |    0.5026 |    0.4094 |    0.4767 |
+| B0       |   0.6547 |    0.6442 |    0.7084 |    0.6474 |    0.6482 |    0.6212 |
+| B1       |   0.5545 |    0.5526 |    0.5730 |    0.5545 |    0.5267 |    0.5694 |
+
+chosen form: softmax
+
+S3b. Parameters fitted on the whole analysis set (frozen):
+
+| model    | feature   |   a (intercept) |   b (slope) |   temperature 1/b |   in-sample log-loss |
+|:---------|:----------|----------------:|------------:|------------------:|---------------------:|
+| softmax  | dt        |          0.0000 |      2.9273 |            0.3416 |               0.4498 |
+| logistic | dt        |         -0.1435 |      2.9148 |          nan      |               0.4482 |
+| B0       | dn        |          0.0678 |      0.3610 |          nan      |               0.6495 |
+| B1       | dd        |         -0.0530 |      0.3595 |          nan      |               0.5499 |
+
+S3c. Calibration of the chosen form (softmax), leave-one-match-out predictions:
+
+| bin        |   episodes |   mean predicted |   observed share |
+|:-----------|-----------:|-----------------:|-----------------:|
+| 0.0 to 0.2 |         85 |            0.069 |            0.094 |
+| 0.2 to 0.4 |         62 |            0.297 |            0.194 |
+| 0.4 to 0.6 |         60 |            0.499 |            0.433 |
+| 0.6 to 0.8 |         60 |            0.699 |            0.683 |
+| 0.8 to 1.0 |         59 |            0.929 |            0.966 |
+
+S3d. Constant-acceleration model (report-only), chosen form fitted on its dynamic times:
+
+| model                          |   a (intercept) |   b (slope) |   leave-one-match-out log-loss |   DataBallPy model, same form |
+|:-------------------------------|----------------:|------------:|-------------------------------:|------------------------------:|
+| constant acceleration, softmax |          0.0000 |      2.1821 |                         0.4738 |                        0.4525 |
+
+
+| item | value |
+|:--|:--|
+| chosen form | softmax: pooled leave-one-match-out log-loss 0.4525 against 0.4547 for the logistic |
+| frozen D5 parameter | b = 2.9273 per second, temperature T = 1 / b = 0.3416 s; p_releasing = sigmoid(2.9273 x (t_other - t_releasing)) |
+| frozen B0 | sigmoid(0.0678 + 0.3610 x (n_releasing - n_other)) |
+| frozen B1 | sigmoid(-0.0530 + 0.3595 x (nearest_other - nearest_releasing)) |
+| frozen constant-acceleration model (report-only) | softmax, b = 2.1821 per second |
+
+Reading. Both forms of p_dynamic are well below B1 (0.5545) and B0 (0.6547) on leave-one-match-out log-loss, in every match. The softmax is lower than the logistic by 0.0022 pooled, driven by one match (1959846: 0.4722 against 0.4906); in the other four matches the logistic is lower, by at most 0.0034. The fitted intercept of the logistic is small (-0.14), so the choice between the two forms changes little. The calibration table shows the 0.2 to 0.4 bin over-predicting (0.297 against 0.194, 62 episodes); the other bins are within 0.07. The constant-acceleration model has a higher leave-one-match-out log-loss than the DataBallPy model (0.4738 against 0.4525). These are exploration values; the comparison that counts is on the test set.
+
+### S4, camera gate and the immediate class (2026-10-28)
+
+Script: scripts/s4.py. Anchored main pairs, race at 15 m. The winner is read here for the D7 definition and the by-winner splits only (step 2 setup, decision 6).
+
+anchored main pairs: 458
+
+S4a. D7 drop rates by trigger:
+
+| trigger   |   episodes |   dropped |   drop rate |
+|:----------|-----------:|----------:|------------:|
+| T1        |         26 |        12 |       0.462 |
+| T2        |        135 |        27 |       0.200 |
+| T3        |         32 |         6 |       0.188 |
+| T4        |        129 |        17 |       0.132 |
+| T5        |          8 |         1 |       0.125 |
+| T6        |          5 |         2 |       0.400 |
+| T7        |        123 |        26 |       0.211 |
+| all       |        458 |        91 |       0.199 |
+
+S4b. D7 drop rates by winner:
+
+| winner         |   episodes |   dropped |   drop rate |
+|:---------------|-----------:|----------:|------------:|
+| other team     |        252 |        45 |       0.179 |
+| releasing team |        206 |        46 |       0.223 |
+| all            |        458 |        91 |       0.199 |
+
+S4c. Reason for dropping:
+
+| reason                                                       |   episodes |
+|:-------------------------------------------------------------|-----------:|
+| under 85% of players within 15 m detected at the anchor only |         86 |
+| winner not detected at pickup only                           |          5 |
+| both                                                         |          0 |
+| kept                                                         |        367 |
+
+S4d. Releasing team's win share, dropped against kept (interval: 2000 bootstrap replicates within match, seed 0):
+
+|   win share dropped |   win share kept |   difference |     lo |    hi |
+|--------------------:|-----------------:|-------------:|-------:|------:|
+|               0.505 |            0.436 |        0.070 | -0.039 | 0.183 |
+
+S4e. Immediate class (lead < 0.5 s) by trigger, all anchored main pairs:
+
+| trigger   |   episodes |   immediate |   share |
+|:----------|-----------:|------------:|--------:|
+| T1        |         26 |           4 |   0.154 |
+| T2        |        135 |           6 |   0.044 |
+| T3        |         32 |           4 |   0.125 |
+| T4        |        129 |          23 |   0.178 |
+| T5        |          8 |           1 |   0.125 |
+| T6        |          5 |           0 |   0.000 |
+| T7        |        123 |           9 |   0.073 |
+| all       |        458 |          47 |   0.103 |
+
+S4e. Immediate class (lead < 0.5 s) by winner, all anchored main pairs:
+
+| winner         |   episodes |   immediate |   share |
+|:---------------|-----------:|------------:|--------:|
+| other team     |        252 |          28 |   0.111 |
+| releasing team |        206 |          19 |   0.092 |
+| all            |        458 |          47 |   0.103 |
+
+S4e. Immediate class (lead < 0.5 s) by trigger, pairs kept by D7:
+
+| trigger   |   episodes |   immediate |   share |
+|:----------|-----------:|------------:|--------:|
+| T1        |         14 |           3 |   0.214 |
+| T2        |        108 |           4 |   0.037 |
+| T3        |         26 |           4 |   0.154 |
+| T4        |        112 |          22 |   0.196 |
+| T5        |          7 |           0 |   0.000 |
+| T6        |          3 |           0 |   0.000 |
+| T7        |         97 |           8 |   0.082 |
+| all       |        367 |          41 |   0.112 |
+
+S4e. Immediate class (lead < 0.5 s) by winner, pairs kept by D7:
+
+| winner         |   episodes |   immediate |   share |
+|:---------------|-----------:|------------:|--------:|
+| other team     |        207 |          25 |   0.121 |
+| releasing team |        160 |          16 |   0.100 |
+| all            |        367 |          41 |   0.112 |
+
+Reading. D7 drops 19.9% of anchored main pairs, below the 30% line that MT1 sets for the test set; 86 of the 91 drops are for player detection at the anchor and 5 for an undetected winner. Clearances (T1) lose 46.2% (12 of 26). The drop rate is 22.3% when the releasing team won and 17.9% when the other team won; the releasing team's win share is 0.070 higher among dropped than among kept episodes, with an interval from -0.039 to 0.183 that includes 0. The immediate class is 10.3% of anchored pairs (T4 17.8%, T2 4.4%) and 11.2% of kept pairs.
+
+### S5, dry run of V1 to V3 (2026-10-28)
+
+A bug check, not a test: the frozen parameters were fitted on these same 326 episodes, so every number below is in-sample. Script: scripts/s5.py (frozen values from audit/frozen_parameters.json); per-episode output audit/s5_episodes_exploration.csv, team shares audit/s5_team_shares_exploration.csv, clip export audit/s5_clips_exploration.csv. Bootstrap: 2000 replicates within match, seed 0.
+
+V1 and V2 (dry run). Differences are log-loss of the comparison minus log-loss of the better-expected model:
+
+| check               | model     | comparison   |   log-loss model |   log-loss comparison |   difference |     lo |     hi | interval excludes 0   |   matches with the same direction (of 5) |
+|:--------------------|:----------|:-------------|-----------------:|----------------------:|-------------:|-------:|-------:|:----------------------|-----------------------------------------:|
+| V1 against B0       | p_dynamic | p_B0         |           0.4498 |                0.6495 |       0.1997 | 0.1475 | 0.2523 | True                  |                                        5 |
+| V1 against B1       | p_dynamic | p_B1         |           0.4498 |                0.5499 |       0.1002 | 0.0664 | 0.1348 | True                  |                                        5 |
+| V2 against p_static | p_dynamic | p_static     |           0.4498 |                0.5744 |       0.1246 | 0.0786 | 0.1744 | True                  |                                        5 |
+
+V3 (dry run). Verdicts of lost balls unchanged under each variant on its own (frozen D5 parameter, base set fixed):
+
+| variant                                |   lost balls |   verdict unchanged | at least 0.70   |
+|:---------------------------------------|-------------:|--------------------:|:----------------|
+| anchor 0.2 s later                     |          326 |               0.899 | True            |
+| growing radius max(15 m, 8 m/s x lead) |          326 |               0.985 | True            |
+| pleuler turning penalty                |          326 |               0.899 | True            |
+| smoothing window 7                     |          326 |               1.000 | True            |
+| extrapolated players dropped           |          326 |               0.982 | True            |
+| reaction time 0.35 s                   |          326 |               0.951 | True            |
+
+Camera gate (dry run, anchored main pairs):
+
+|   anchored pairs |   dropped |   drop share | at most 0.30   |   drop rate, releasing team won |   drop rate, other team won |   difference |
+|-----------------:|----------:|-------------:|:---------------|--------------------------------:|----------------------------:|-------------:|
+|              458 |        91 |        0.199 | True           |                           0.223 |                       0.179 |        0.045 |
+
+Report-only (dry run). Calibration of p_dynamic, frozen parameter, five bins:
+
+| bin        |   episodes |   mean predicted |   observed share |
+|:-----------|-----------:|-----------------:|-----------------:|
+| 0.0 to 0.2 |         85 |            0.069 |            0.106 |
+| 0.2 to 0.4 |         61 |            0.295 |            0.180 |
+| 0.4 to 0.6 |         60 |            0.496 |            0.417 |
+| 0.6 to 0.8 |         57 |            0.690 |            0.667 |
+| 0.8 to 1.0 |         63 |            0.922 |            0.968 |
+
+Report-only (dry run). Mean deficit shares of the losing team by trigger:
+
+| trigger   |   lost balls |   deficit positioning |   deficit reading |   deficit after the anchor |
+|:----------|-------------:|----------------------:|------------------:|---------------------------:|
+| T1        |           11 |                 0.771 |             0.025 |                      0.205 |
+| T2        |          104 |                 0.673 |             0.051 |                      0.276 |
+| T3        |           22 |                 0.574 |             0.121 |                      0.304 |
+| T4        |           90 |                 0.681 |             0.032 |                      0.287 |
+| T5        |            7 |                 0.611 |             0.087 |                      0.302 |
+| T6        |            3 |                 0.835 |             0.073 |                      0.092 |
+| T7        |           89 |                 0.633 |             0.020 |                      0.347 |
+| all       |          326 |                 0.661 |             0.042 |                      0.297 |
+
+Report-only (dry run). Share of lost loose balls under each verdict, pooled over teams:
+
+| verdict          |   lost balls |   share |
+|:-----------------|-------------:|--------:|
+| positioning      |          239 |   0.733 |
+| reading          |           34 |   0.104 |
+| after the anchor |           53 |   0.163 |
+
+Report-only (dry run). Constant-acceleration model against the DataBallPy model:
+
+|   log-loss DataBallPy p_dynamic |   log-loss constant-acceleration p_dynamic |   verdicts that agree |
+|--------------------------------:|-------------------------------------------:|----------------------:|
+|                          0.4498 |                                     0.4707 |                0.9601 |
+
+Team shares (dry run): deficit over lost balls, credit over won balls, 95% bootstrap intervals within match:
+
+| team name       |   lost |   won |   deficit positioning |   deficit positioning lo |   deficit positioning hi |   deficit reading |   deficit reading lo |   deficit reading hi |   deficit after the anchor |   deficit after the anchor lo |   deficit after the anchor hi |
+|:----------------|-------:|------:|----------------------:|-------------------------:|-------------------------:|------------------:|---------------------:|---------------------:|---------------------------:|------------------------------:|------------------------------:|
+| Adelaide United |     35 |    35 |                 0.683 |                    0.600 |                    0.766 |             0.000 |               -0.045 |                0.044 |                      0.316 |                         0.237 |                         0.398 |
+| Melbourne V FC  |     36 |    30 |                 0.662 |                    0.567 |                    0.745 |             0.016 |               -0.035 |                0.067 |                      0.322 |                         0.242 |                         0.411 |
+| Sydney FC       |     35 |    35 |                 0.679 |                    0.582 |                    0.767 |             0.019 |               -0.029 |                0.070 |                      0.302 |                         0.218 |                         0.395 |
+| Perth Glory     |     28 |    30 |                 0.596 |                    0.483 |                    0.707 |             0.024 |               -0.063 |                0.107 |                      0.379 |                         0.270 |                         0.491 |
+| Brisbane FC     |     30 |    28 |                 0.711 |                    0.603 |                    0.812 |             0.053 |               -0.018 |                0.128 |                      0.236 |                         0.161 |                         0.319 |
+| Western United  |     30 |    36 |                 0.631 |                    0.545 |                    0.715 |             0.061 |                0.010 |                0.114 |                      0.308 |                         0.232 |                         0.385 |
+| Macarthur FC    |     36 |    34 |                 0.586 |                    0.500 |                    0.669 |             0.086 |                0.035 |                0.137 |                      0.328 |                         0.255 |                         0.407 |
+| Newcastle       |     30 |    32 |                 0.589 |                    0.495 |                    0.683 |             0.108 |                0.040 |                0.179 |                      0.303 |                         0.217 |                         0.400 |
+| Auckland FC     |     66 |    66 |                 0.731 |                    0.677 |                    0.783 |             0.031 |               -0.009 |                0.071 |                      0.238 |                         0.187 |                         0.289 |
+
+
+Clip export: audit/s5_clips_exploration.csv, 326 rows (match_id, period, clock, frame, team, verdict). The clock is the tracking timestamp, a match clock: period 2 starts at 00:45:00.00 (checked on 1886347).
+
+| dry-run item | number | MT1 rule | as it would read |
+|:--|:--|:--|:--|
+| V1 against B0 | log-loss 0.4498 against 0.6495; difference 0.1997 (0.1475 to 0.2523); 5 of 5 matches | interval excludes 0, at least 10 of 15 matches | holds |
+| V1 against B1 | 0.4498 against 0.5499; 0.1002 (0.0664 to 0.1348); 5 of 5 | same | holds |
+| V2 against p_static | 0.4498 against 0.5744; 0.1246 (0.0786 to 0.1744); 5 of 5 | same | holds |
+| V3, six variants | verdict unchanged 0.899 to 1.000; lowest: anchor 0.2 s later and pleuler, both 0.899 | at least 0.70 each | holds |
+| camera gate | 19.9% dropped; drop rate 0.223 when the releasing team won, 0.179 when the other team won | at most 30% | holds |
+| constant-acceleration model (report-only) | log-loss 0.4707 against 0.4498; verdicts agree in 0.960 | report | reported |
+| headline (report-only) | of 326 lost balls: positioning 0.733, reading 0.104, after the anchor 0.163 | report | reported |
+
+Reading, as a bug check. The code path that MT1 will run produces every V1 to V3 quantity, the camera-gate figures, the report-only tables, the team shares and the clip export without error, and the numbers are consistent across tables: the team lost and won counts mirror within each match and sum to 326, and the clip export has one row per lost ball. The smoothing-window variant changes velocities only slightly (median speed difference 0.009 m/s on 1886347, p_dynamic by at most 0.008), so no verdict moves under it; this is a property of the already smooth tracking positions, not a fault. The growing radius exceeds 15 m in 34.4% of the episodes (p90 25.6 m) and reaches 50.4 m at the longest lead in the analysis set (6.3 s). Because the parameters were fitted on these episodes, V1 and V2 here say nothing about the test set.
+
+### S5 figures (2026-10-28)
+
+Script: scripts/s5_figures.py. Seed 20261028, 4 episodes drawn without replacement from the 326 analysis-set episodes (sorted by match and sequence).
+
+|   figure |   match_id |   seq_i | trigger   | verdict     | file                                                     |
+|---------:|-----------:|--------:|:----------|:------------|:---------------------------------------------------------|
+|        1 |    1886347 |     859 | T4        | reading     | audit/figures/s5_episode_seed20261028_01_1886347_859.png |
+|        2 |    1996435 |     697 | T2        | positioning | audit/figures/s5_episode_seed20261028_02_1996435_697.png |
+|        3 |    1886347 |      38 | T2        | positioning | audit/figures/s5_episode_seed20261028_03_1886347_38.png  |
+|        4 |    1886347 |     826 | T2        | positioning | audit/figures/s5_episode_seed20261028_04_1886347_826.png |
+
+Team deficit figure: audit/figures/s5_team_deficit_exploration.png (nine teams; Auckland FC pooled over its two matches).
+
+Figure reading (all inspected). In each episode figure the nearest players, the direction of the velocity arrows and the printed probabilities agree: in figure 1 the other team's nearest player (about 5 m away) is moving away from the pickup point, which lifts the releasing team from p_static 0.23 to p_dynamic 0.53 and gives the loser the verdict reading. The 1.0 s contour of a standing player has a 1.5 m radius, as 0.7 + d / 5 requires, and dynamic contours are shifted by velocity times 0.7 s. Figure 2 shows a near-tie (the loser's p_static 0.49) that the 0.5 line turns into positioning, which is the kind of episode V3 probes. No bug found.
+
+### Bug check log, S5 (2026-10-28)
+
+| change | when | effect |
+|:--|:--|:--|
+| a leftover assignment of losing_team and an unused import removed from scripts/s5.py | before its first run | none |
+| V1 and V2 table rebuilt with fixed columns (it printed empty columns) | after the first run | display only; every value and every other table identical (checked by diff) |
+
+No bug in the measures was found; the package code was not changed during S5.
+
+### Step 2 interpretations of the brief, exploration part (2026-10-28)
+
+Where the brief had to be read rather than followed. "Lead" marks a decision by the project lead before the result; "logged" marks a choice made in the code and logged before match data or before the run; "deferred" marks brief items not done in this step.
+
+| # | brief item | reading | by |
+|:--|:--|:--|:--|
+| 1 | D3 "DataBallPy's time-to-intercept constraint" | the package's TTIConstraint.tti, called through a thin subclass because the constructor needs a Game | lead |
+| 2 | D3 "default speed and acceleration parameters" | the model has no acceleration: reaction 0.7 s and top speed 5.0 m/s, the package defaults | lead |
+| 3 | empty team best time "radius divided by top speed" | reaction time + radius / top speed (3.7 s at 15 m), the time of a standing player on the radius | lead |
+| 4 | D5 softmax and logistic | identical without an intercept; softmax taken as the one-parameter form, logistic with an intercept, oriented to the releasing team; S3's "both forms, with and without the intercept" read as these two | lead |
+| 5 | outcome only in S3 and S5 | S2, S4 and D7 read the winner as checks and as the gate definition, nothing fitted there | lead |
+| 6 | episodes for S3 and S5 | the analysis set: anchored, kept by D7, lead >= 0.5 s | lead |
+| 7 | unit of the race | raw main pairs, winner the team of possession i+1 | lead |
+| 8 | S2 set for the 70% check | the analysis set, the other sets reported beside it | logged |
+| 9 | S1 "anchor-frame velocities from extrapolated tracks" | share of players in the race with is_detected FALSE on the anchor frame | logged |
+| 10 | D4 "Savitzky-Golay on each player's track" | first derivative within runs of consecutive frames, scipy "interp" mode at track ends; a track shorter than the window gets no velocity (none occurred at an anchor) | logged |
+| 11 | goalkeeper flag | roster field player_role.acronym equal to "GK" | logged |
+| 12 | B0 and B1 differences | oriented to the releasing team; an empty team's nearest distance is the radius | logged |
+| 13 | D7 with nobody within the radius | counts as observed on the 85% condition | logged |
+| 14 | bootstrap intervals (D7, D8, V1, V2) | percentile intervals, episodes resampled within match, 2000 replicates, seed 0 | logged |
+| 15 | calibration tables | five equal-width bins; S3 on leave-one-match-out predictions, S5 on the frozen parameter | logged |
+| 16 | clip export "clock, frame, team" | frame: the measured anchor; team: the team that lost; clock: tracking timestamp (a match clock) | logged |
+| 17 | V3 variants | base analysis set fixed; a variant changes only reach times; D7 and the immediate rule not re-applied; frozen D5 parameter | lead |
+| 18 | V3 growing radius | max(15 m, 8 m/s x lead) with the lead at the measured anchor; the empty-team time uses the grown radius | logged |
+| 19 | MT1 "10 of 15 matches" in the dry run | reported as a count out of 5 | lead |
+| 20 | S5 dry run probabilities | the frozen parameters on the exploration analysis set (the MT1 code path, in-sample) | lead |
+| 21 | constant-acceleration model | one dimension along the line to the pickup point, no reaction time, its own frozen softmax fit | lead |
+| 22 | S5 figures "the three numbers" | the losing team's three deficit shares, with p_static and p_dynamic of the releasing team beside them | logged |
+| 23 | DESIGN.md "under the decomposition" | a new step 2 section holding the decomposition and the sentence; the rest of step 2 is frozen when MT1 is logged | logged |
+| 24 | the DESIGN.md sentence on drift | it describes the frozen shaw model; under the pleuler variant velocity also enters through the turning term | logged |
+| 25 | D8 "one match drawn by seed as the worked example" | not part of S1 to S5 | deferred |
+| 26 | deliverable shape (find_episodes on DataBallPy tracking and event tables, SkillCorner adapter) | not built; the modules read this package's own tables | deferred |

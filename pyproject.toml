@@ -1,7 +1,10 @@
 [project]
 name = "loose-balls"
 version = "0.1.0"
-description = "Which team gets to a loose ball, and why, from SkillCorner broadcast tracking"
+description = "Loose Balls: Second to the ball. Which team gets to a loose ball, and why, from broadcast tracking"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE.md"]
 authors = [
     { name = "Amin Nabavi" }
 ]
@@ -15,12 +18,15 @@ dependencies = [
     "scipy>=1.18.1",
 ]
 
+[project.scripts]
+looseball = "looseball.cli:main"
+
 [build-system]
 requires = ["uv_build>=0.8,<1"]
 build-backend = "uv_build"
 
 [tool.uv.build-backend]
-module-name = "looseball"
+module-name = ["looseball", "looseball_research"]
 
 [tool.uv.sources]
 databallpy = { git = "https://github.com/Alek050/databallpy", rev = "3f9de8d28531aa12d826ee99aed8de7aeee0897f" }

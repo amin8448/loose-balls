@@ -6,7 +6,7 @@ Prints markdown tables for AUDIT.md. Definitions: revision 2 amended in AUDIT.md
 import numpy as np
 import pandas as pd
 
-from looseball import episodes, paths, tracking
+from looseball_research import episodes, paths, tracking
 
 TRIGGERS = list(episodes.LOOSE_TRIGGERS)
 SPRINT = 9.0  # m/s

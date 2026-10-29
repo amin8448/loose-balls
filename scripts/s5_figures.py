@@ -17,7 +17,7 @@ from episode_figures import GRID, INK, MUTED, OTHER, RELEASING, SURFACE, pitch
 from matplotlib.lines import Line2D
 from matplotlib.patches import Circle, Polygon
 
-from looseball import decompose, episodes, io, paths, race, tracking, velocities
+from looseball_research import decompose, episodes, io, paths, race, tracking, velocities
 
 SEED = 20261028
 LEVELS = [1.0, 1.5, 2.0, 2.5, 3.0]

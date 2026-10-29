@@ -3,7 +3,7 @@
 import numpy as np
 import pandas as pd
 
-from looseball import episodes, paths
+from looseball_research import episodes, paths
 
 G1_MIN_SCRAMBLES = 50
 G2_MIN_MEDIAN_FRAMES = 5

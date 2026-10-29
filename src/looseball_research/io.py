@@ -4,7 +4,7 @@ import json
 
 import pandas as pd
 
-from looseball import guard
+from looseball_research import guard
 
 
 def load_metadata(match_id: int) -> dict:

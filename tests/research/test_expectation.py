@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from looseball import expectation as ex
+from looseball_research import expectation as ex
 
 
 def _simulate(n, a, b, seed=0, matches=5):

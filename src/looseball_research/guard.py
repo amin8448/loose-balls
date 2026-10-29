@@ -13,7 +13,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from looseball import paths
+from looseball_research import paths
 
 MARKER = re.compile(r"^MAIN-TEST-PLAN: \S", re.MULTILINE)
 

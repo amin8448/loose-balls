@@ -2112,3 +2112,33 @@ Drawn after the run as logged: seed 20261029, numpy default_rng, from the 15 tes
 | match | teams | date | lost balls in the analysis set |
 |:--|:--|:--|--:|
 | 1927964 | Western Sydney v Wellington P FC | 2024-12-22 | 61 |
+
+## Step 3, package and figures
+
+Brief: docs/step3_brief.md. No measure, definition or frozen parameter changes.
+
+### 3a. Package: decisions and structure (2026-10-29)
+
+Decisions by the project lead before the package was written:
+
+| # | question | decision |
+|:--|:--|:--|
+| 1 | input shape (DataBallPy has no possession table, and its tracking has no detection flags and no camera polygon) | tracking in DataBallPy's wide TrackingData layout (frame, period_id, ball_x/y/z, home_N_x/_y, away_N_x/_y) with documented extension columns (clock, ball and per-player detection, eight camera-polygon corners); a looseball-defined possessions table in DataBallPy naming with a neutral start and end vocabulary; a players table mapping player ids to tracking column ids (looseball/schema.py) |
+| 2 | what the grep test treats as a SkillCorner column name | a curated list of the SkillCorner fields the adapter reads that DataBallPy does not use; distinctive names matched as whole words anywhere in looseball outside adapters/, generic words (index, timestamp, number, acronym, possession) as exact string literals |
+| 3 | the test-set guard in the public path | not in the adapter; the guard stays on the research loaders |
+| 4 | clip-export headers | the MT1 headers frame and team are kept, so reproduce matches byte for byte; frame is the anchor frame and team the losing team |
+| 5 | where the step 1 and 2 research code lives | verbatim in src/looseball_research (imports renamed only); scripts/ and the research tests (tests/research) import it; looseball is the public, provider-neutral package |
+
+Structure and checks:
+
+| item | value |
+|:--|:--|
+| public API (looseball) | find_episodes, reach_times, expectations, decompose, team_report, export_clips; adapters/skillcorner.py; reproduce.py; cli.py (looseball reproduce, looseball run); frozen parameters in looseball/data/frozen_parameters.json (byte-identical to audit/frozen_parameters.json); refit() is a separate function, never imported or called by reproduce.py or cli.py (test) |
+| research record | src/looseball_research: the step 1 and 2 modules unchanged except the package name; scripts/mt1.py exploration reproduces its earlier output byte for byte after the move |
+| research tests | two guard tests asserted that the real repository is locked, which the committed MT1 marker (3a104ab) lifted; they now simulate a repository without the marker and keep proving the rule, and a new test checks that the real repository is unlocked |
+| tests | 30 on the public API (synthetic data, written and passed before each next function) and 34 research tests: 64 passed |
+| early equivalence | on the five exploration matches, find_episodes gives the research code's 466 episodes with identical triggers, contacts, both anchors, pickup points and winner detection, and for the 458 anchored pairs identical lead, immediate flag, D7 counts and D7 flag |
+| grep list | "period" is left out: it is the MT1 clip-export header (decision 4); the neutral tables use period_id |
+| README.md | a title-only placeholder until 3c, so the README-limit test runs; the test counts words after stripping markdown (link URLs and comments dropped, image captions, table text and code counted) and counts images and markdown tables together |
+| licence | LICENSE.md, MIT, copyright Amin Nabavi; pyproject declares license MIT and the looseball command |
+| wheel | builds with both packages, the frozen-parameter JSON, LICENSE.md and the entry point |

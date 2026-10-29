@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 from step2_common import analysis_set, episode_table, save_frozen
 
-from looseball import expectation as ex
+from looseball_research import expectation as ex
 
 
 def main() -> None:

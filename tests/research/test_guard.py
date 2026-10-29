@@ -3,13 +3,28 @@ import subprocess
 
 import pytest
 
-from looseball import guard, io, paths
+from looseball_research import guard, io, paths
 
 TEST_ID = 1874553
 EXPLORATION_ID = 1886347
 
 
+def _no_marker(monkeypatch):
+    """Simulate a repository without a committed main-test plan marker.
+
+    Since the MT1 marker was committed (3a104ab) the real repository is unlocked; these tests
+    keep proving the rule itself.
+    """
+    monkeypatch.setattr(guard, "main_test_unlocked", lambda root=paths.ROOT: False)
+
+
+def test_real_repository_is_unlocked_by_the_committed_mt1_marker():
+    assert guard.main_test_unlocked()
+    assert guard.check(TEST_ID) == TEST_ID
+
+
 def test_test_match_raises_before_any_file_is_opened(monkeypatch):
+    _no_marker(monkeypatch)
     opened = []
     real_open = builtins.open
 
@@ -28,7 +43,8 @@ def test_exploration_match_loads():
     assert int(meta["id"]) == EXPLORATION_ID
 
 
-def test_every_test_match_is_refused_and_unknown_ids_too():
+def test_every_test_match_is_refused_and_unknown_ids_too(monkeypatch):
+    _no_marker(monkeypatch)
     for match_id in paths.TEST:
         with pytest.raises(guard.TestSetLocked):
             guard.match_path(match_id, "tracking")

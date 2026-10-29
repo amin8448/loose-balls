@@ -6,7 +6,7 @@ Prints markdown tables for AUDIT.md. Procedure logged in AUDIT.md before the run
 import numpy as np
 import pandas as pd
 
-from looseball import episodes, gate, paths, race, velocities
+from looseball_research import episodes, gate, paths, race, velocities
 
 TRIGGERS = list(episodes.LOOSE_TRIGGERS)
 

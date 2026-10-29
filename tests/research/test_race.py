@@ -3,7 +3,13 @@ import pandas as pd
 import pytest
 from databallpy.optimization.constraints import TTIConstraint
 
-from looseball.race import ConstantAccelerationModel, ReachModel, race_players, reach_model, team_summary
+from looseball_research.race import (
+    ConstantAccelerationModel,
+    ReachModel,
+    race_players,
+    reach_model,
+    team_summary,
+)
 
 
 class _Game:

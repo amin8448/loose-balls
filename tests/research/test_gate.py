@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from looseball import gate
+from looseball_research import gate
 
 
 def test_keep_rule_boundaries():

@@ -14,7 +14,7 @@ from gates import (
     verdict,
 )
 
-from looseball import episodes
+from looseball_research import episodes
 
 EPISODE_SHARE = 0.85  # per-episode detected share counted as observed (reported, no threshold)
 

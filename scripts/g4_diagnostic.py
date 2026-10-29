@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from matplotlib.path import Path
 
-from looseball import episodes, tracking
+from looseball_research import episodes, tracking
 
 CORNERS = ("top_left", "top_right", "bottom_right", "bottom_left")
 

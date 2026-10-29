@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 from matplotlib.ticker import MaxNLocator
 
-from looseball import episodes, paths
+from looseball_research import episodes, paths
 
 TRIGGERS = list(episodes.TRIGGERS)
 

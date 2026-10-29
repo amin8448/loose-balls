@@ -11,7 +11,7 @@ from functools import lru_cache
 import numpy as np
 import pandas as pd
 
-from looseball import decompose, episodes, expectation, gate, paths, race
+from looseball_research import decompose, episodes, expectation, gate, paths, race
 
 FROZEN = paths.AUDIT_DIR / "frozen_parameters.json"
 EPISODE_COLUMNS = [

@@ -19,7 +19,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from looseball import guard
+from looseball_research import guard
 
 BALL_FIELDS = ("x", "y", "z", "is_detected")
 CORNER_FIELDS = (

@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from looseball.velocities import smooth_velocities
+from looseball_research.velocities import smooth_velocities
 
 
 def _track(player_id, frames, x, y, detected=True):

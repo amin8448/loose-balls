@@ -9,8 +9,8 @@ import numpy as np
 import pandas as pd
 from step2_common import analysis_set, bootstrap_within_match, episode_table, load_frozen, probabilities
 
-from looseball import decompose, export_clips, io, paths
-from looseball import expectation as ex
+from looseball_research import decompose, export_clips, io, paths
+from looseball_research import expectation as ex
 
 VARIANTS = {
     "anchor 0.2 s later": {"anchor_shift": 2},

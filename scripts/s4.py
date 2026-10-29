@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from step2_common import episode_table
 
-from looseball import gate
+from looseball_research import gate
 
 
 def md(t: pd.DataFrame, floatfmt: str = ".3f") -> str:

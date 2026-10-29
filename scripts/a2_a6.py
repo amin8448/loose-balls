@@ -6,7 +6,7 @@ Prints markdown tables for AUDIT.md. Gates are computed separately in scripts/ga
 import numpy as np
 import pandas as pd
 
-from looseball import episodes, io, paths
+from looseball_research import episodes, io, paths
 
 TRIGGERS = list(episodes.LOOSE_TRIGGERS)
 

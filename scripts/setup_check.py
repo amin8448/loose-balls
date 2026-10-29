@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-from looseball import io, paths, tracking
+from looseball_research import io, paths, tracking
 
 rows = []
 for m in paths.EXPLORATION:

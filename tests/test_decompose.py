@@ -2,65 +2,44 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from looseball import decompose as dc
+from looseball import decompose
+from looseball.decompose import SHARES, verdict
 
 
-def test_shares_follow_the_definitions_and_sum_to_one():
-    d = dc.deficit_shares([0.7, 0.2], [0.4, 0.6])
-    assert np.allclose(d["positioning"], [0.3, 0.8])
-    assert np.allclose(d["reading"], [0.3, -0.4])  # negative when movement helped
-    assert np.allclose(d["after the anchor"], [0.4, 0.6])
-    c = dc.credit_shares([0.7, 0.2], [0.4, 0.6])
-    assert np.allclose(d.sum(axis=1), 1) and np.allclose(c.sum(axis=1), 1)
-    assert np.allclose(c["reading"], [-0.3, 0.4])
+def _expectations(ps_rel, pd_rel):
+    rows = []
+    for i, (s, d) in enumerate(zip(ps_rel, pd_rel)):
+        rows.append(
+            {"match_id": 1, "seq_i": i, "side": "releasing", "team_id": 10, "p_static": s, "p_dynamic": d}
+        )
+        rows.append(
+            {"match_id": 1, "seq_i": i, "side": "other", "team_id": 20, "p_static": 1 - s, "p_dynamic": 1 - d}
+        )
+    return pd.DataFrame(rows)
 
 
-def test_verdict_boundaries():
-    v = dc.verdict([0.49, 0.5, 0.5, 0.9], [0.9, 0.49, 0.5, 0.1])
-    assert list(v) == ["positioning", "reading", "after the anchor", "reading"]
+def test_shares_verdicts_and_orientation_to_the_loser():
+    e = _expectations([0.8, 0.8, 0.3, 0.6], [0.6, 0.6, 0.3, 0.2])
+    o = pd.DataFrame({"match_id": 1, "seq_i": [0, 1, 2, 3], "winning_team": [10, 20, 10, 20]})
+    d = decompose(e, o).set_index("seq_i")
+    # 0: releasing team won; loser is the other team with ps 0.2, pd 0.4
+    assert d.loc[0, "losing_team"] == 20 and d.loc[0, "verdict"] == "positioning"
+    assert d.loc[0, "deficit positioning"] == pytest.approx(0.8) and d.loc[
+        0, "deficit reading"
+    ] == pytest.approx(-0.2)
+    # 1: releasing team lost with ps 0.8, pd 0.6
+    assert d.loc[1, "losing_team"] == 10 and d.loc[1, "verdict"] == "after the anchor"
+    # 3: releasing team lost a ball it was placed to win (ps 0.6) but movement turned (pd 0.2)
+    assert d.loc[3, "verdict"] == "reading"
+    shares = d[[f"deficit {s}" for s in SHARES]]
+    assert np.allclose(shares.sum(axis=1), 1)
+    for s in SHARES:
+        assert np.allclose(d[f"credit {s}"], d[f"deficit {s}"])
 
 
-def test_decompose_orients_to_the_loser_and_marks_immediate():
-    out = dc.decompose(
-        p_static_rel=[0.8, 0.8, 0.3],
-        p_dynamic_rel=[0.6, 0.6, 0.3],
-        releasing_won=[True, False, True],
-        lead=[1.0, 1.0, 0.4],
-    )
-    # episode 0: releasing team won, loser is the other team with ps 0.2, pd 0.4
-    assert out.loc[0, "loser_side"] == "other"
-    assert out.loc[0, "p_static_loser"] == pytest.approx(0.2) and out.loc[0, "verdict"] == "positioning"
-    # episode 1: releasing team lost with ps 0.8, pd 0.6
-    assert out.loc[1, "verdict"] == "after the anchor"
-    assert out.loc[1, "deficit reading"] == pytest.approx(0.2)
-    # the winner's credit equals the loser's deficit in every episode
-    for s in dc.SHARES:
-        assert out.loc[:1, f"credit {s}"].tolist() == pytest.approx(out.loc[:1, f"deficit {s}"].tolist())
-    assert (
-        out.loc[2, "verdict"] == "immediate" and out.loc[2, [f"deficit {s}" for s in dc.SHARES]].isna().all()
-    )
-
-
-def test_team_shares_counts_means_and_intervals():
-    rng = np.random.default_rng(0)
-    n = 300
-    t = pd.DataFrame(
-        {
-            "match_id": rng.integers(0, 3, n),
-            "losing_team": rng.choice([1, 2], n),
-        }
-    )
-    t["winning_team"] = 3 - t["losing_team"]
-    for kind in ("deficit", "credit"):
-        a = rng.uniform(0, 1, n)
-        t[f"{kind} positioning"], t[f"{kind} reading"], t[f"{kind} after the anchor"] = a, 0.0, 1 - a
-    out = dc.team_shares(t, n_boot=200, seed=1)
-    assert list(out["team"]) == [1, 2]
-    assert out["lost"].sum() == n and out["won"].sum() == n
-    row = out.iloc[0]
-    assert row["deficit positioning"] == pytest.approx(
-        t.loc[t["losing_team"] == 1, "deficit positioning"].mean()
-    )
-    assert row["deficit positioning lo"] < row["deficit positioning"] < row["deficit positioning hi"]
-    again = dc.team_shares(t, n_boot=200, seed=1)
-    assert again.equals(out)
+def test_verdict_boundaries_and_the_immediate_class():
+    assert list(verdict([0.49, 0.5, 0.5], [0.9, 0.49, 0.5])) == ["positioning", "reading", "after the anchor"]
+    e = _expectations([0.7], [0.4])
+    o = pd.DataFrame({"match_id": [1], "seq_i": [0], "winning_team": [20], "immediate": [True]})
+    d = decompose(e, o).iloc[0]
+    assert d["verdict"] == "immediate" and np.isnan(d["deficit positioning"])

@@ -17,7 +17,7 @@ import numpy as np
 import pandas as pd
 from episode_figures import GRID, INK, MUTED, SURFACE, panel
 
-from looseball import episodes, io, paths, tracking
+from looseball_research import episodes, io, paths, tracking
 
 SEED = 20261028
 # (match_id, seq_i) of the revision 2 draw, in draw order

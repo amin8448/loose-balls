@@ -16,7 +16,7 @@ import pandas as pd
 from matplotlib.lines import Line2D
 from matplotlib.patches import Circle, Polygon, Rectangle
 
-from looseball import episodes, io, paths, tracking
+from looseball_research import episodes, io, paths, tracking
 
 SEED = 20261027
 SURFACE, INK, MUTED, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e4e3df"

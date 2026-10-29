@@ -1464,3 +1464,60 @@ S2c. Anchored main pairs with lead >= 0.5 s:
 | S2, lead >= 0.5 s | 0.703 of 411 | report | at 70% |
 
 Reading. S1 gives no sign of a smoothing or alignment fault. S2 passes on the set logged as the headline, by 0.2 points; by trigger, T2 (0.760) and T7 (0.708) are above 70% and T4 (0.667, 90 episodes), T3 (0.682), T1 (0.636) and the small T5 and T6 classes are below. The winner's reach time minus the lead has median +0.05 s (p10 -1.15 s, p90 +0.59 s), so with the package defaults the model's timing is centred on the observed leads with a long early tail. Including the 47 immediate episodes lowers the share to 0.631: with a reaction time of 0.7 s no winner can meet lead + 0.3 s when the lead is under 0.4 s. The winner was on the anchor frame in every episode.
+
+### S2 finding, recorded by the project lead (2026-10-28)
+
+S2 passes as logged (0.702 on the analysis set). Recorded as a finding, not a change; no parameter changes. As given: the margin is thin because the reach model's fixed 0.7 s reaction time cannot be met at short leads, and T1 and T4 fall below 0.70 for that reason.
+
+Supporting tables (scripts/s1_s2.py, S2d and S2e, added after the finding; S1 and S2a to S2c unchanged):
+
+S2d. Analysis set: share with reach <= lead + 0.3 s by lead band, for T1, T4 and the other triggers:
+
+| group          | lead band s   |   episodes |   share |
+|:---------------|:--------------|-----------:|--------:|
+| T1             | 0.5 to 1.0    |          2 |   0.500 |
+| T1             | 1.0 to 1.5    |          1 |   0.000 |
+| T1             | 1.5 to 2.0    |          3 |   1.000 |
+| T1             | 2.0 or more   |          5 |   0.600 |
+| T4             | 0.5 to 1.0    |         32 |   0.562 |
+| T4             | 1.0 to 1.5    |         29 |   0.759 |
+| T4             | 1.5 to 2.0    |         20 |   0.700 |
+| T4             | 2.0 or more   |          9 |   0.667 |
+| other triggers | 0.5 to 1.0    |         33 |   0.515 |
+| other triggers | 1.0 to 1.5    |         52 |   0.712 |
+| other triggers | 1.5 to 2.0    |         52 |   0.731 |
+| other triggers | 2.0 or more   |         88 |   0.795 |
+
+S2e. Analysis set: median lead by trigger:
+
+| trigger   |   episodes |   median lead s |
+|:----------|-----------:|----------------:|
+| T1        |         11 |            1.90 |
+| T2        |        104 |            1.90 |
+| T3        |         22 |            1.65 |
+| T4        |         90 |            1.10 |
+| T5        |          7 |            1.30 |
+| T6        |          3 |            0.90 |
+| T7        |         89 |            1.60 |
+| all       |        326 |            1.50 |
+
+Qualification from these tables. At leads of 0.5 to 1.0 s the share is low for every trigger (T4 0.562, other triggers 0.515), which supports the finding. T4 has the shortest median lead of the large classes (1.10 s; 32 of its 90 episodes are in the 0.5 to 1.0 s band), so the finding fits T4. T1 does not fit it as well: its median lead is 1.90 s, the same as T2 (which passes at 0.760), and its 11 episodes include 5 with leads of 2 s or more that pass at 0.600.
+
+### MT1 plan additions, logged before S3 (2026-10-28)
+
+Set by the project lead before S3; these extend the brief's MT1 section and are part of the plan when MT1 is logged.
+
+| # | addition | specification |
+|:--|:--|:--|
+| 1 | V3 variant: reaction time 0.35 s | everything else unchanged (radius, shaw, top speed 5.0 m/s, window 5, frozen D5 parameter). It tests both the parameter and the fact that velocity enters the DataBallPy model only as drift during the reaction window |
+| 2 | report-only, not a gate: a constant-acceleration reach model | implemented in looseball. The player accelerates toward the pickup point from his current velocity at 3 m/s^2, capped at 5 m/s. Solved in one dimension along the line to the pickup point: the initial speed is the current velocity projected on that line (negative when moving away; a projected speed above 5 m/s starts at 5); the sideways component is ignored; no reaction time; time in closed form. Its own expectation parameter: the form chosen in S3, fitted on its dynamic times on the exploration analysis set and frozen before MT1. Compared with the DataBallPy model on test-set log-loss and on the share of verdicts that agree. A candidate follow-up to the package, not the entry's model. Empty team: the time of a standing player on the radius under this model |
+
+Procedure points set by the project lead before S3:
+
+| item | rule |
+|:--|:--|
+| S3 candidates | softmax (no intercept, one parameter) and logistic (intercept and slope) on dt from dynamic best times, as decided in step 2 setup; the two named forms are the same function without and with the intercept. The one with the lower pooled leave-one-match-out log-loss is chosen; B0 and B1 are fitted the same way and reported. All four are frozen by a fit on the whole analysis set |
+| S3 calibration | five equal-width bins on the leave-one-match-out predictions of the chosen form |
+| V3 episodes | the base analysis set's lost balls stay fixed; a variant changes only the reach times and hence the probabilities, with the frozen D5 parameter; D7 and the immediate rule are not re-applied under a variant |
+| S5 dry run probabilities | the frozen parameters applied to the exploration analysis set: the code path MT1 will run, in-sample, so a bug check |
+| S5 per-match rule | the brief's "same direction in at least 10 of 15 matches" is reported as a count out of 5 |

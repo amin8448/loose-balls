@@ -65,3 +65,13 @@ The anchor at which positioning is measured is either the first-leg anchor or th
 ### Release-frame positioning as a secondary quantity
 
 A9 under revision 3: of the players within 15 m of the pickup point at the last-leg anchor who were not detected at release (581 of 3,344), none moved at an implied speed above 9 m/s between the extrapolated release position and the first detected position (501 measured; median 2.40 m/s, maximum 8.09 m/s, median 1.3 s to first detection; 80 not detected by the pickup frame). The implied speed is an average over the time to first detection, so it rules out large jumps, not short-lived errors. This is the step 1 evidence on whether release-frame positioning can be reported as a secondary quantity; the decision belongs to step 2.
+
+## Step 2 measures (2026-10-28)
+
+The step 2 definitions are in docs/step2_brief.md (D1 to D8), with the decisions and additions logged in AUDIT.md under step 2. They are frozen here when the MT1 marker is logged; this section holds what has been fixed so far.
+
+### Decomposition (D6)
+
+At the last-leg anchor, three nested expectations for a team: static (positions only, velocities set to zero), dynamic (positions and smoothed velocities), and actual (who controlled the ball). For a team that lost, the deficit of 1 splits as positioning (1 minus p_static), reading (p_static minus p_dynamic, negative when movement helped) and after the anchor (p_dynamic). For a team that won, the credit of 1 splits as p_static, p_dynamic minus p_static, and 1 minus p_dynamic. Verdict for a lost ball: positioning if p_static is below 0.5; reading if p_static is at least 0.5 and p_dynamic is below 0.5; after the anchor otherwise. Episodes with a lead under 0.5 s are the immediate class, reported and not decomposed.
+
+Under the DataBallPy reach model, velocity acts only as drift during the reaction window, so the reading term measures how much current momentum changes who is closer after that window.

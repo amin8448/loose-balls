@@ -124,6 +124,22 @@ def s2(summary: pd.DataFrame) -> None:
         print(f"\n{title}:\n")
         print(md(grouped(d, f)))
 
+    a = sets[0][1].copy()
+    a["lead band s"] = pd.cut(a["lead_s"], [0.5, 1.0, 1.5, 2.0, np.inf], right=False,
+                              labels=["0.5 to 1.0", "1.0 to 1.5", "1.5 to 2.0", "2.0 or more"])  # fmt: skip
+    a["group"] = np.select([a["trigger"] == "T1", a["trigger"] == "T4"], ["T1", "T4"], "other triggers")
+    print(
+        "\nS2d. Analysis set: share with reach <= lead + 0.3 s by lead band, for T1, T4 and the other triggers:\n"
+    )
+    g = (
+        a.groupby(["group", "lead band s"], observed=False)["within"]
+        .agg(episodes="size", share="mean")
+        .reset_index()
+    )
+    print(md(g))
+    print("\nS2e. Analysis set: median lead by trigger:\n")
+    print(md(grouped(a, lambda d: {"episodes": len(d), "median lead s": d["lead_s"].median()}), ".2f"))
+
 
 def main() -> None:
     _, summary, players = races()

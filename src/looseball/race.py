@@ -21,6 +21,7 @@ MAX_VELOCITY = 5.0  # DataBallPy default, m/s
 RADIUS = 15.0
 TURNING_PENALTY = "shaw"
 SIDES = ("releasing", "other")
+CA_ACCELERATION = 3.0  # m/s^2, constant-acceleration model (report-only)
 
 
 class ReachModel(TTIConstraint):
@@ -56,6 +57,46 @@ class ReachModel(TTIConstraint):
         return self.reaction_time + radius / self.max_velocity
 
 
+class ConstantAccelerationModel:
+    """Report-only reach model (MT1 addition 2), a candidate follow-up to the package.
+
+    The player accelerates toward the pickup point from his current velocity at `acceleration`,
+    capped at `max_velocity`, in one dimension along the line to the pickup point: the initial
+    speed is the velocity projected on that line (negative when moving away; above the cap it
+    starts at the cap), the sideways component is ignored, and there is no reaction time.
+    """
+
+    def __init__(self, acceleration: float = CA_ACCELERATION, max_velocity: float = MAX_VELOCITY):
+        self.acceleration = acceleration
+        self.max_velocity = max_velocity
+
+    def reach_times(self, positions: np.ndarray, velocities: np.ndarray, target) -> np.ndarray:
+        to_target = np.asarray(target, dtype=float) - np.asarray(positions, dtype=float)
+        d = np.hypot(to_target[:, 0], to_target[:, 1])
+        unit = np.divide(to_target, d[:, None], out=np.zeros_like(to_target), where=d[:, None] > 0)
+        a, vmax = self.acceleration, self.max_velocity
+        v0 = np.minimum((np.asarray(velocities, dtype=float) * unit).sum(axis=1), vmax)
+        t_cap = (vmax - v0) / a  # time to reach the cap
+        s_cap = v0 * t_cap + 0.5 * a * t_cap**2  # distance covered by then
+        t_accelerating = (-v0 + np.sqrt(v0**2 + 2 * a * d)) / a
+        t = np.where(d <= s_cap, t_accelerating, t_cap + (d - s_cap) / vmax)
+        return np.where(d > 0, t, 0.0)
+
+    def empty_team_time(self, radius: float) -> float:
+        return float(self.reach_times(np.array([[radius, 0.0]]), np.zeros((1, 2)), (0.0, 0.0))[0])
+
+
+def reach_model(
+    name: str = "databallpy", turning_penalty: str = TURNING_PENALTY, reaction_time: float = REACTION_TIME
+):
+    """The reach model by name: "databallpy" (the entry's model) or "constant_acceleration"."""
+    if name == "databallpy":
+        return ReachModel(turning_penalty, reaction_time=reaction_time)
+    if name == "constant_acceleration":
+        return ConstantAccelerationModel()
+    raise ValueError(f'reach model must be "databallpy" or "constant_acceleration", not {name!r}')
+
+
 def race_players(
     at_anchor: pd.DataFrame,
     target: tuple[float, float],
@@ -63,7 +104,7 @@ def race_players(
     team_of: pd.Series,
     gk_ids: set,
     radius: float,
-    model: ReachModel,
+    model,
     drop_extrapolated: bool = False,
 ) -> pd.DataFrame:
     """Players in the race with reach times.
@@ -89,7 +130,7 @@ def race_players(
     return p.reset_index(drop=True)
 
 
-def team_summary(race: pd.DataFrame, radius: float, model: ReachModel) -> dict:
+def team_summary(race: pd.DataFrame, radius: float, model) -> dict:
     """Team best times, counts, nearest distance and flags, by side."""
     empty_time = model.empty_team_time(radius)
     out = {}
@@ -117,12 +158,16 @@ def episode_races(
     window: int = velocities.WINDOW,
     anchor_shift: int = 0,
     drop_extrapolated: bool = False,
+    reaction_time: float = REACTION_TIME,
+    model_name: str = "databallpy",
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Races for the main pairs of one match that have a last-leg anchor.
 
     episodes: main pairs with seq_i, anchor2_frame, pickup_frame, pickup_x, pickup_y, team_id_i.
     radius: fixed radius in metres; with growing_speed set (m/s), max(radius, growing_speed * lead).
     anchor_shift: frames added to the last-leg anchor (the "anchor 0.2 s later" variant is 2).
+    reaction_time: DataBallPy model only (the 0.35 s variant). model_name: "databallpy" or
+    "constant_acceleration" (report-only).
     Returns one row per episode (team summary) and one row per player in the race.
     """
     vel = velocities.match_velocities(match_id, window)
@@ -130,7 +175,7 @@ def episode_races(
     roster = io.load_roster(match_id)
     team_of = roster.set_index("id")["team_id"]
     gk_ids = set(roster.loc[roster["player_role.acronym"] == "GK", "id"])
-    model = ReachModel(turning_penalty)
+    model = reach_model(model_name, turning_penalty, reaction_time)
 
     rows, players = [], []
     for e in episodes[episodes["anchor2_frame"].notna()].itertuples(index=False):

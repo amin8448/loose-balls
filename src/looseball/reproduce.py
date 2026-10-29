@@ -4,7 +4,7 @@ The main test MT1 (AUDIT.md, "MT1, the main-test plan") ran once on 15 held-out 
 module regenerates its tables through the public API with the frozen parameters shipped in the
 package: it recomputes the measures, it does not refit or re-decide anything. Output, in --out:
 report.md (every MT1 table, as logged), episodes.csv, episodes_ungated.csv, team_verdicts.csv,
-team_shares.csv, clips.csv and gates.json, matching audit/mt1_test.
+team_shares.csv, clips.csv and gates.json, matching audit/mt1_test; and figures/ (looseball.figures).
 """
 
 import io
@@ -347,5 +347,13 @@ def _win_share_difference(table: pd.DataFrame) -> dict:
 
 
 def reproduce(data, out) -> dict:
-    """Regenerate the MT1 tables from the open-data clone at `data` into `out`."""
-    return write(compute(data), Path(out))
+    """Regenerate the MT1 tables and the README figures from the open-data clone at `data` into `out`."""
+    from looseball.figures import draw_figures
+
+    summary = write(compute(data), Path(out))
+    figures = draw_figures(data, out)
+    summary["figure 1 episode"] = (
+        f"match {figures['figure 1']['match_id']}, seq_i {figures['figure 1']['seq_i']}"
+    )
+    summary["figure 1 seed"] = figures["figure 1"]["seed"]
+    return summary

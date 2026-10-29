@@ -1810,3 +1810,58 @@ Where the brief had to be read rather than followed. "Lead" marks a decision by 
 | 24 | the DESIGN.md sentence on drift | it describes the frozen shaw model; under the pleuler variant velocity also enters through the turning term | logged |
 | 25 | D8 "one match drawn by seed as the worked example" | not part of S1 to S5 | deferred |
 | 26 | deliverable shape (find_episodes on DataBallPy tracking and event tables, SkillCorner adapter) | not built; the modules read this package's own tables | deferred |
+
+## MT1, the main-test plan (2026-10-29)
+
+Logged after S1 to S5 were read by the project lead. Run once on the 15 test matches with `scripts/mt1.py test`; outputs to audit/mt1_test/. After this entry no code changes except logged bug fixes, and none to the measures.
+
+| item | value |
+|:--|:--|
+| code | commit 682aa2c (scripts/mt1.py, src/looseball, DataBallPy develop 3f9de8d28531aa12d826ee99aed8de7aeee0897f) |
+| frozen parameters | audit/frozen_parameters.json, sha256 129bfdea2d1dd5547e3f8fdeb1f1f5de57514ca3b79ab5de2bb16a93fa9fab4c |
+| test matches | 1874553, 1899585, 1925299, 1927964, 1953632, 1986691, 2006229, 2006363, 2007721, 2010085, 2011166, 2013725, 2015213, 2016236, 2017461 |
+| rehearsal | scripts/mt1.py exploration (audit/mt1_exploration/) reproduces S5: V1 differences 0.1997 and 0.1002, V2 0.1246, V3 0.8988 to 1.0000, camera-gate drop 0.1987 |
+
+Episodes and measures, as frozen:
+
+| element | definition |
+|:--|:--|
+| episodes | DESIGN.md, step 1 definition with revision 3; the measured leg is the last leg; its anchor and lead |
+| analysis set | anchored main pairs kept by D7 at 15 m, with lead >= 0.5 s; every one is a lost ball for one team |
+| immediate class | lead < 0.5 s; reported, not decomposed |
+| race | every player of both teams within 15 m of the pickup point on the anchor frame, goalkeepers included and flagged; Savitzky-Golay velocities, window 5, order 2 |
+| reach model | DataBallPy TTIConstraint.tti, turning penalty shaw, reaction 0.7 s, top speed 5.0 m/s; static: velocity zero; an empty team gets 0.7 + radius / 5.0 |
+| p_static, p_dynamic | releasing team: sigmoid(2.9273 x (t_other - t_releasing)) on static and dynamic best times (softmax, temperature 0.3416 s) |
+| baselines | B0: sigmoid(0.0678 + 0.3610 x (n_releasing - n_other)); B1: sigmoid(-0.0530 + 0.3595 x (nearest_other - nearest_releasing)) |
+| decomposition and verdict | DESIGN.md, step 2 measures, D6 |
+| winner | team of possession i+1 |
+
+Gates:
+
+| gate | rule |
+|:--|:--|
+| V1 | p_dynamic has a lower log-loss than B0, and than B1, on the analysis set: for each, the difference (log-loss of the baseline minus log-loss of p_dynamic) has a 95% bootstrap interval above 0 and p_dynamic is lower in at least 10 of the 15 matches |
+| V2 | the same rule for p_dynamic against p_static |
+| V3 | for the lost balls of the analysis set, the verdict is unchanged in at least 70% of episodes under each variant on its own: anchor 0.2 s later; growing radius max(15 m, 8 m/s x lead); pleuler turning penalty; smoothing window 7; extrapolated players dropped; reaction time 0.35 s. The base set stays fixed, the frozen D5 parameter is used, and D7 and the immediate rule are not re-applied |
+| camera gate | at most 30% of anchored main pairs dropped by D7 at 15 m; the drop-rate difference by winner reported |
+| intervals | percentile, 2000 bootstrap replicates resampling episodes within match, seed 0 |
+
+Consequences, fixed in the brief: V1 fails, the entry reports the audit and the descriptives and makes no verdicts. V2 fails, the reading term is dropped and the decomposition is positioning against the race. V3 fails, verdicts are shown with their variants and never as one label. The camera gate drops more than 30%, the radius falls to 10 m for the main analysis (frozen D5 parameter kept; the growing-radius variant becomes max(10 m, 8 m/s x lead)) and the change is logged.
+
+Report-only on the test set, in this order:
+
+| # | item | reading |
+|:--|:--|:--|
+| R1 | categorical verdict shares of lost balls, pooled over teams | the headline if V1 to V3 hold |
+| R2 | the same with the camera gate off, extrapolated positions kept | anchored main pairs with lead >= 0.5 s, whatever D7 says; also by trigger, and for the dropped episodes alone |
+| R3 | continuous deficit shares | pooled and by trigger |
+| R4 | calibration of p_dynamic | five equal-width bins |
+| R5 | immediate class | anchored main pairs, by trigger and by winner |
+| R6 | D7 drop rates | by trigger and by winner, with the releasing team's win-share difference and its interval |
+| R7 | S2 reachability check | by trigger, on the analysis set, on all anchored pairs and on lead >= 0.5 s |
+| R8 | constant-acceleration model | log-loss of its p_dynamic (frozen softmax, b = 2.1821) and the share of verdicts that agree with the DataBallPy model |
+| R9 | team level | categorical verdict shares and continuous deficit shares over lost balls, 95% intervals as above; flagged for sample size: teams in 2 or fewer test matches, and Newcastle (team id 1805) |
+
+The worked-example match (D8) is drawn after the run with seed 20261029 (numpy default_rng) from the 15 test match ids in ascending order, as an illustration and never a check. The find_episodes adapter, the README, the figures and the video are step 3.
+
+MAIN-TEST-PLAN: MT1, logged 2026-10-29, code at commit 682aa2c, frozen parameters sha256 129bfdea2d1dd5547e3f8fdeb1f1f5de57514ca3b79ab5de2bb16a93fa9fab4c

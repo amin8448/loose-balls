@@ -1,0 +1,1004 @@
+match_id,seq_i,trigger,anchor_frame,pickup_frame,lead_s,releasing_won,p_static,p_dynamic,p_B0,p_B1,losing_team,winning_team,deficit positioning,deficit reading,deficit after the anchor,verdict,verdict anchor 0.2 s later,"verdict growing radius max(radius, 8 m/s x lead)",verdict pleuler turning penalty,verdict smoothing window 7,verdict extrapolated players dropped,verdict reaction time 0.35 s
+1874553,4,T2,235,257,2.2000,0,0.5000,0.5000,0.5169,0.4867,866,1802,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+1874553,7,T4,305,320,1.5000,1,0.5227,0.4942,0.4272,0.5007,1802,866,0.5227,-0.0285,0.5058,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,19,T4,882,892,1.0000,1,0.6348,0.7849,0.5169,0.5711,1802,866,0.6348,0.1501,0.2151,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,58,T2,4177,4197,2.0000,1,0.7738,0.6861,0.5169,0.6687,1802,866,0.7738,-0.0877,0.3139,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,73,T7,4776,4798,2.2000,0,0.6845,0.4164,0.2660,0.6041,866,1802,0.3155,0.2681,0.4164,reading,reading,reading,reading,reading,reading,after the anchor
+1874553,82,T4,5038,5055,1.7000,1,0.3367,0.3452,0.3421,0.3847,866,1802,0.3367,0.0085,0.6548,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1874553,106,T1,5754,5771,1.7000,1,0.9566,0.9315,0.6878,0.8637,1802,866,0.9566,-0.0251,0.0685,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,123,T7,6760,6781,2.1000,0,0.2351,0.2542,0.5169,0.3149,866,1802,0.7649,-0.0191,0.2542,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,127,T4,6899,6915,1.6000,1,0.6982,0.9858,0.6056,0.6135,1802,866,0.6982,0.2876,0.0142,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,155,T2,9453,9487,3.4000,0,0.9273,0.6703,0.4272,0.8191,1802,866,0.0727,0.2570,0.6703,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1874553,181,T2,11348,11359,1.1000,1,0.9823,0.9978,0.6056,0.9180,1802,866,0.9823,0.0155,0.0022,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,198,T7,11900,11923,2.3000,0,0.0198,0.0109,0.3421,0.0794,866,1802,0.9802,0.0089,0.0109,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,204,T4,12065,12072,0.7000,0,0.5084,0.4260,0.4272,0.4919,866,1802,0.4916,0.0824,0.4260,reading,positioning,reading,reading,reading,reading,reading
+1874553,212,T7,12645,12664,1.9000,0,0.4937,0.5319,0.3421,0.4829,866,1802,0.5063,-0.0382,0.5319,positioning,after the anchor,positioning,positioning,positioning,positioning,positioning
+1874553,237,T4,14055,14061,0.6000,1,0.8732,0.9032,0.7596,0.7562,866,1802,0.8732,0.0300,0.0968,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,253,T1,15117,15123,0.6000,0,0.0005,0.0002,0.4272,0.0089,866,1802,0.9995,0.0003,0.0002,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,262,T4,15499,15517,1.8000,1,0.5063,0.6241,0.5169,0.4906,1802,866,0.5063,0.1178,0.3759,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,279,T4,16069,16075,0.6000,1,0.5895,0.7415,0.3421,0.5422,866,1802,0.5895,0.1519,0.2585,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,289,T2,16426,16450,2.4000,1,0.5677,0.4202,0.6878,0.5286,1802,866,0.5677,-0.1475,0.5798,positioning,reading,positioning,positioning,positioning,positioning,positioning
+1874553,311,T2,17185,17201,1.6000,1,0.2228,0.6698,0.2016,0.3057,866,1802,0.2228,0.4470,0.3302,reading,reading,reading,after the anchor,reading,reading,reading
+1874553,313,T2,17244,17255,1.1000,1,0.7352,0.7694,0.3421,0.6397,866,1802,0.7352,0.0342,0.2306,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,314,T2,17255,17289,3.4000,0,0.1963,0.3798,0.6056,0.2852,1802,866,0.8037,-0.1835,0.3798,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,398,T4,21532,21539,0.7000,1,0.3889,0.7050,0.3421,0.4181,866,1802,0.3889,0.3162,0.2950,reading,positioning,reading,reading,reading,reading,reading
+1874553,404,T7,21664,21685,2.1000,0,0.0517,0.1119,0.3421,0.1372,1802,866,0.9483,-0.0601,0.1119,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,405,T5,21685,21712,2.7000,1,0.7573,0.9668,0.6056,0.6561,1802,866,0.7573,0.2094,0.0332,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,417,T7,21964,21974,1.0000,1,0.8783,0.8289,0.6056,0.7614,866,1802,0.8783,-0.0494,0.1711,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,421,T7,22122,22141,1.9000,0,0.9368,0.8176,0.4272,0.8324,1802,866,0.0632,0.1192,0.8176,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1874553,475,T4,28347,28352,0.5000,0,0.4165,0.6062,0.4272,0.4353,1802,866,0.5835,-0.1897,0.6062,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,482,T4,28625,28639,1.4000,1,0.9993,0.9977,0.7596,0.9876,1802,866,0.9993,-0.0015,0.0023,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,484,T2,28716,28731,1.5000,0,0.3549,0.4737,0.4272,0.3965,866,1802,0.6451,-0.1188,0.4737,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,490,T7,29139,29155,1.6000,1,0.4156,0.7532,0.6878,0.4348,1802,866,0.4156,0.3376,0.2468,reading,positioning,reading,reading,reading,reading,reading
+1874553,491,T7,29155,29170,1.5000,0,0.8920,0.8451,0.2660,0.7761,866,1802,0.1080,0.0468,0.8451,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1874553,504,T7,29978,30003,2.5000,0,0.1225,0.0208,0.4272,0.2206,1802,866,0.8775,0.1017,0.0208,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,507,T7,30055,30070,1.5000,1,0.8101,0.9224,0.5169,0.6980,866,1802,0.8101,0.1123,0.0776,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,521,T2,30758,30776,1.8000,1,0.3913,0.7216,0.2016,0.4196,1802,866,0.3913,0.3303,0.2784,reading,positioning,reading,after the anchor,reading,reading,reading
+1874553,523,T2,30832,30869,3.7000,1,0.9972,0.9975,0.4272,0.9719,1802,866,0.9972,0.0003,0.0025,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,533,T2,31475,31500,2.5000,1,0.1366,0.1413,0.3421,0.2341,1802,866,0.1366,0.0047,0.8587,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1874553,559,T7,32726,32756,3.0000,0,0.4230,0.5340,0.5169,0.4393,1802,866,0.5770,-0.1111,0.5340,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,561,T4,32782,32787,0.5000,0,0.4675,0.4749,0.5169,0.4668,1802,866,0.5325,-0.0075,0.4749,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,562,T4,32831,32849,1.8000,1,0.9076,0.9540,0.5169,0.7941,1802,866,0.9076,0.0465,0.0460,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,568,T2,33094,33109,1.5000,0,0.5227,0.6035,0.6056,0.5007,866,1802,0.4773,-0.0808,0.6035,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1874553,575,T3,33320,33350,3.0000,1,0.3885,0.3290,0.5169,0.4178,866,1802,0.3885,-0.0594,0.6710,after the anchor,reading,reading,after the anchor,after the anchor,after the anchor,after the anchor
+1874553,576,T4,33430,33438,0.8000,0,0.1136,0.2209,0.3421,0.2117,1802,866,0.8864,-0.1073,0.2209,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,591,T4,34222,34235,1.3000,1,0.6591,0.5308,0.5169,0.5871,1802,866,0.6591,-0.1283,0.4692,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,593,T2,34252,34268,1.6000,0,0.0847,0.1301,0.4272,0.1802,866,1802,0.9153,-0.0454,0.1301,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,594,T4,34276,34286,1.0000,0,0.5798,0.5878,0.8193,0.5361,1802,866,0.4202,-0.0080,0.5878,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1874553,617,T7,35632,35664,3.2000,1,0.7173,0.4490,0.6878,0.6268,1802,866,0.7173,-0.2682,0.5510,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,664,T7,38674,38681,0.7000,0,0.2130,0.6026,0.3421,0.2983,1802,866,0.7870,-0.3896,0.6026,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,695,T7,40182,40210,2.8000,1,0.3393,0.3447,0.6056,0.3865,866,1802,0.3393,0.0054,0.6553,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1874553,696,T7,40227,40240,1.3000,0,0.4804,0.3242,0.4272,0.4747,1802,866,0.5196,0.1562,0.3242,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,704,T2,41173,41194,2.1000,1,0.6137,0.6417,0.5169,0.5576,866,1802,0.6137,0.0280,0.3583,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,723,T7,43578,43588,1.0000,1,0.8292,0.9384,0.6056,0.7145,866,1802,0.8292,0.1092,0.0616,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,733,T4,43925,43939,1.4000,0,0.3428,0.2751,0.3421,0.3887,1802,866,0.6572,0.0677,0.2751,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,741,T7,44107,44122,1.5000,1,0.9949,0.9979,0.6056,0.9601,866,1802,0.9949,0.0031,0.0021,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,747,T4,44559,44574,1.5000,1,0.4335,0.7271,0.6056,0.4459,1802,866,0.4335,0.2936,0.2729,reading,positioning,reading,reading,reading,reading,reading
+1874553,772,T7,46614,46632,1.8000,0,0.3540,0.7199,0.3421,0.3960,866,1802,0.6460,-0.3659,0.7199,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,784,T4,47267,47284,1.7000,1,0.6652,0.9108,0.6056,0.5911,866,1802,0.6652,0.2456,0.0892,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,785,T2,47335,47346,1.1000,1,0.9980,0.9973,0.4272,0.9772,866,1802,0.9980,-0.0006,0.0027,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,795,T2,47995,48015,2.0000,0,0.2368,0.2596,0.4272,0.3161,1802,866,0.7632,-0.0228,0.2596,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,833,T4,51056,51068,1.2000,1,0.4112,0.4099,0.5169,0.4320,1802,866,0.4112,-0.0012,0.5901,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1874553,899,T7,55207,55228,2.1000,0,0.2636,0.1990,0.2016,0.3354,866,1802,0.7364,0.0646,0.1990,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,901,T4,55276,55295,1.9000,0,0.1578,0.1505,0.2660,0.2533,1802,866,0.8422,0.0074,0.1505,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1874553,911,T7,55939,55952,1.3000,0,0.5425,0.3507,0.4272,0.5129,866,1802,0.4575,0.1918,0.3507,reading,positioning,reading,reading,reading,reading,reading
+1899585,0,T2,11,30,1.9000,1,0.9995,0.9993,0.8668,0.9899,4177,867,0.9995,-0.0002,0.0007,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,34,T7,1596,1609,1.3000,0,0.0220,0.0069,0.3421,0.0846,867,4177,0.9780,0.0151,0.0069,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,40,T1,2261,2274,1.3000,0,0.0132,0.0128,0.3421,0.0628,867,4177,0.9868,0.0003,0.0128,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,49,T2,2869,2891,2.2000,1,0.9802,0.9659,0.5169,0.9125,4177,867,0.9802,-0.0144,0.0341,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,51,T2,2917,2964,4.7000,1,0.8395,0.9250,0.6056,0.7237,4177,867,0.8395,0.0855,0.0750,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,57,T7,3234,3261,2.7000,0,0.0627,0.0631,0.4272,0.1526,867,4177,0.9373,-0.0004,0.0631,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,73,T1,3885,3891,0.6000,0,0.1632,0.2592,0.3421,0.2579,4177,867,0.8368,-0.0960,0.2592,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,105,T2,4952,4961,0.9000,1,0.4871,0.4180,0.3421,0.4788,867,4177,0.4871,-0.0691,0.5820,after the anchor,positioning,after the anchor,reading,after the anchor,after the anchor,reading
+1899585,120,T4,6066,6082,1.6000,0,0.0214,0.0070,0.4272,0.0831,867,4177,0.9786,0.0144,0.0070,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,135,T2,7081,7122,4.1000,0,0.0785,0.0765,0.2660,0.1729,4177,867,0.9215,0.0019,0.0765,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,147,T4,7516,7525,0.9000,0,0.1662,0.2706,0.5169,0.2605,4177,867,0.8338,-0.1045,0.2706,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,158,T4,7836,7848,1.2000,0,0.4176,0.4065,0.3421,0.4360,867,4177,0.5824,0.0110,0.4065,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,181,T7,8709,8721,1.2000,1,0.5738,0.4770,0.2016,0.5323,867,4177,0.5738,-0.0968,0.5230,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,197,T4,9387,9395,0.8000,0,0.4136,0.2396,0.2016,0.4335,4177,867,0.5864,0.1740,0.2396,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,201,T3,9489,9499,1.0000,0,0.1711,0.0472,0.2016,0.2646,4177,867,0.8289,0.1239,0.0472,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,202,T1,9530,9549,1.9000,0,0.0606,0.0063,0.3421,0.1498,867,4177,0.9394,0.0543,0.0063,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,228,T7,11186,11205,1.9000,0,0.8232,0.2093,0.2660,0.7092,4177,867,0.1768,0.6139,0.2093,reading,reading,reading,reading,reading,reading,after the anchor
+1899585,230,T7,11254,11266,1.2000,0,0.4207,0.1488,0.2016,0.4379,867,4177,0.5793,0.2719,0.1488,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,234,T2,11403,11410,0.7000,0,0.4852,0.3498,0.2016,0.4777,4177,867,0.5148,0.1354,0.3498,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,235,T5,11410,11430,2.0000,0,0.4297,0.3818,0.8193,0.4436,867,4177,0.5703,0.0480,0.3818,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,246,T7,11973,11994,2.1000,1,0.0627,0.0391,0.4272,0.1526,4177,867,0.0627,-0.0235,0.9609,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1899585,275,T7,15433,15458,2.5000,0,0.2336,0.3922,0.6056,0.3138,4177,867,0.7664,-0.1586,0.3922,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,282,T2,17027,17036,0.9000,0,0.5254,0.5189,0.6878,0.5024,4177,867,0.4746,0.0066,0.5189,after the anchor,reading,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1899585,301,T4,19095,19110,1.5000,0,0.0639,0.0513,0.2016,0.1543,4177,867,0.9361,0.0126,0.0513,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,332,T7,20669,20682,1.3000,0,0.6973,0.1211,0.3421,0.6129,4177,867,0.3027,0.5762,0.1211,reading,reading,reading,reading,reading,reading,reading
+1899585,366,T4,22501,22511,1.0000,0,0.1233,0.1540,0.4272,0.2214,867,4177,0.8767,-0.0307,0.1540,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,369,T2,22574,22588,1.4000,0,0.4426,0.2451,0.3421,0.4515,4177,867,0.5574,0.1975,0.2451,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,382,T2,23193,23203,1.0000,0,0.5609,0.3841,0.4272,0.5243,4177,867,0.4391,0.1768,0.3841,reading,reading,reading,after the anchor,reading,reading,reading
+1899585,388,T2,23536,23562,2.6000,0,0.0005,0.0004,0.4272,0.0091,867,4177,0.9995,0.0002,0.0004,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,400,T4,24066,24071,0.5000,0,0.1245,0.4274,0.2660,0.2226,867,4177,0.8755,-0.3029,0.4274,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,423,T4,26221,26254,3.3000,1,0.9761,0.9691,0.6056,0.9025,867,4177,0.9761,-0.0070,0.0309,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,425,T4,26470,26488,1.8000,0,0.2420,0.1530,0.1497,0.3199,4177,867,0.7580,0.0889,0.1530,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,426,T5,26488,26495,0.7000,1,0.9437,0.8283,0.8193,0.8426,4177,867,0.9437,-0.1153,0.1717,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,429,T7,26536,26542,0.6000,1,0.8116,0.6992,0.6878,0.6992,867,4177,0.8116,-0.1124,0.3008,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,430,T7,26542,26549,0.7000,0,0.7380,0.5110,0.6878,0.6418,4177,867,0.2620,0.2270,0.5110,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1899585,431,T4,26570,26576,0.6000,1,0.6224,0.6915,0.5169,0.5631,4177,867,0.6224,0.0691,0.3085,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,463,T2,29772,29784,1.2000,1,0.9995,0.9997,0.7596,0.9904,867,4177,0.9995,0.0002,0.0003,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,475,T7,30131,30163,3.2000,1,0.0324,0.0171,0.5169,0.1054,867,4177,0.0324,-0.0153,0.9829,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1899585,486,T7,30457,30477,2.0000,0,0.0837,0.1504,0.3421,0.1791,4177,867,0.9163,-0.0667,0.1504,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,511,T4,31771,31779,0.8000,1,0.4908,0.3646,0.6878,0.4811,867,4177,0.4908,-0.1262,0.6354,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1899585,526,T7,32556,32575,1.9000,0,0.3322,0.1928,0.4272,0.3818,867,4177,0.6678,0.1394,0.1928,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,533,T7,34005,34023,1.8000,1,0.0920,0.3740,0.5169,0.1887,867,4177,0.0920,0.2819,0.6260,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1899585,536,T4,34111,34124,1.3000,1,0.3806,0.8786,0.6056,0.4129,4177,867,0.3806,0.4980,0.1214,reading,positioning,reading,reading,reading,reading,reading
+1899585,550,T2,36106,36153,4.7000,1,0.5000,0.5000,0.5169,0.4867,4177,867,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+1899585,562,T2,36802,36828,2.6000,1,0.8745,0.7964,0.6056,0.7575,867,4177,0.8745,-0.0781,0.2036,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,626,T2,41324,41355,3.1000,0,0.3569,0.8926,0.4272,0.3978,4177,867,0.6431,-0.5356,0.8926,positioning,after the anchor,positioning,positioning,positioning,positioning,positioning
+1899585,634,T7,41599,41608,0.9000,1,0.9758,0.9717,0.6878,0.9018,867,4177,0.9758,-0.0041,0.0283,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,635,T4,41628,41633,0.5000,0,0.2586,0.2061,0.4272,0.3318,4177,867,0.7414,0.0525,0.2061,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,649,T2,42372,42417,4.5000,0,0.5000,0.5000,0.5169,0.4867,867,4177,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+1899585,652,T2,42750,42771,2.1000,0,0.0900,0.0637,0.6056,0.1864,867,4177,0.9100,0.0263,0.0637,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,653,T4,42781,42793,1.2000,0,0.4871,0.4075,0.8193,0.4788,4177,867,0.5129,0.0796,0.4075,positioning,reading,positioning,positioning,positioning,positioning,positioning
+1899585,662,T3,43127,43158,3.1000,1,0.9719,0.9468,0.5169,0.8932,867,4177,0.9719,-0.0251,0.0532,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,669,T4,43386,43397,1.1000,0,0.3884,0.1194,0.3421,0.4178,4177,867,0.6116,0.2689,0.1194,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,672,T4,43457,43475,1.8000,0,0.2941,0.2991,0.3421,0.3565,867,4177,0.7059,-0.0050,0.2991,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,683,T4,45418,45435,1.7000,1,0.5028,0.8590,0.6056,0.4885,867,4177,0.5028,0.3562,0.1410,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,700,T2,46203,46251,4.8000,0,0.0524,0.1085,0.1093,0.1382,867,4177,0.9476,-0.0561,0.1085,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,709,T3,46494,46503,0.9000,1,0.5252,0.5388,0.2660,0.5022,4177,867,0.5252,0.0136,0.4612,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,745,T7,48934,48956,2.2000,1,0.7229,0.7510,0.5169,0.6308,4177,867,0.7229,0.0281,0.2490,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,760,T7,51332,51351,1.9000,0,0.5152,0.1065,0.2660,0.4960,867,4177,0.4848,0.4086,0.1065,reading,positioning,reading,reading,reading,reading,reading
+1899585,768,T4,51536,51579,4.3000,0,0.0171,0.1606,0.2660,0.0730,4177,867,0.9829,-0.1435,0.1606,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,771,T2,51815,51825,1.0000,1,0.9787,0.9811,0.6056,0.9087,867,4177,0.9787,0.0023,0.0189,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,781,T4,52767,52785,1.8000,0,0.6580,0.8091,0.5169,0.5863,4177,867,0.3420,-0.1511,0.8091,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1899585,784,T7,53195,53205,1.0000,0,0.1822,0.2925,0.3421,0.2739,867,4177,0.8178,-0.1103,0.2925,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,800,T7,53953,53959,0.6000,0,0.2976,0.2966,0.1497,0.3588,867,4177,0.7024,0.0010,0.2966,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,809,T7,54277,54291,1.4000,1,0.9778,0.9910,0.4272,0.9064,867,4177,0.9778,0.0132,0.0090,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,812,T7,54366,54378,1.2000,0,0.2569,0.2753,0.2016,0.3306,4177,867,0.7431,-0.0184,0.2753,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,822,T4,54615,54634,1.9000,0,0.2127,0.1806,0.5169,0.2980,4177,867,0.7873,0.0321,0.1806,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,824,T7,54783,54812,2.9000,0,0.0316,0.0122,0.2660,0.1040,867,4177,0.9684,0.0194,0.0122,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,827,T2,55467,55477,1.0000,1,0.5721,0.6376,0.4272,0.5313,4177,867,0.5721,0.0655,0.3624,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,834,T7,55747,55771,2.4000,1,0.1886,0.2321,0.4272,0.2790,4177,867,0.1886,0.0436,0.7679,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1899585,847,T2,56257,56272,1.5000,0,0.0417,0.0331,0.2660,0.1215,867,4177,0.9583,0.0085,0.0331,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,849,T4,56302,56309,0.7000,0,0.0252,0.0569,0.3421,0.0914,4177,867,0.9748,-0.0317,0.0569,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,858,T4,57169,57179,1.0000,1,0.2083,0.5307,0.2660,0.2946,4177,867,0.2083,0.3224,0.4693,reading,reading,reading,after the anchor,reading,reading,after the anchor
+1899585,859,T4,57200,57208,0.8000,0,0.2004,0.1427,0.4272,0.2884,867,4177,0.7996,0.0577,0.1427,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1899585,868,T2,57624,57662,3.8000,0,0.9238,0.7786,0.4272,0.8145,867,4177,0.0762,0.1452,0.7786,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1899585,876,T4,57879,57896,1.7000,1,0.7598,0.4669,0.5169,0.6579,867,4177,0.7598,-0.2928,0.5331,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,2,T7,106,143,3.7000,1,0.3497,0.4680,0.7596,0.3932,1802,871,0.3497,0.1183,0.5320,after the anchor,reading,after the anchor,after the anchor,after the anchor,positioning,after the anchor
+1925299,3,T1,159,173,1.4000,0,0.0028,0.0007,0.3421,0.0251,871,1802,0.9972,0.0021,0.0007,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,21,T2,1272,1308,3.6000,1,0.9091,0.8058,0.6056,0.7959,1802,871,0.9091,-0.1032,0.1942,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,96,T2,4887,4899,1.2000,1,0.7953,0.8052,0.2660,0.6858,871,1802,0.7953,0.0099,0.1948,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,97,T4,4906,4926,2.0000,1,0.0983,0.2553,0.2660,0.1957,871,1802,0.0983,0.1569,0.7447,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1925299,101,T4,4969,4981,1.2000,0,0.1236,0.1720,0.3421,0.2217,1802,871,0.8764,-0.0484,0.1720,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,112,T4,5431,5438,0.7000,0,0.1547,0.5013,0.3421,0.2506,1802,871,0.8453,-0.3466,0.5013,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,116,T4,5575,5589,1.4000,0,0.1815,0.3766,0.5169,0.2733,1802,871,0.8185,-0.1951,0.3766,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,121,T1,5695,5705,1.0000,0,0.0015,0.0003,0.4272,0.0174,1802,871,0.9985,0.0013,0.0003,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,152,T4,6738,6754,1.6000,0,0.5219,0.5032,0.3421,0.5002,871,1802,0.4781,0.0187,0.5032,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1925299,163,T2,7165,7179,1.4000,0,0.0049,0.0009,0.4272,0.0349,1802,871,0.9951,0.0040,0.0009,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,177,T2,8534,8546,1.2000,0,0.7181,0.2271,0.4272,0.6274,1802,871,0.2819,0.4911,0.2271,reading,reading,reading,reading,reading,reading,reading
+1925299,179,T4,8573,8586,1.3000,0,0.5555,0.5060,0.3421,0.5209,1802,871,0.4445,0.0495,0.5060,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1925299,196,T2,9134,9146,1.2000,0,0.3321,0.1397,0.4272,0.3818,1802,871,0.6679,0.1924,0.1397,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,225,T2,11109,11124,1.5000,0,0.1578,0.1482,0.6056,0.2533,1802,871,0.8422,0.0097,0.1482,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,228,T2,11660,11688,2.8000,1,0.5566,0.4983,0.7596,0.5216,1802,871,0.5566,-0.0583,0.5017,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,239,T2,12043,12061,1.8000,0,0.2340,0.2846,0.6878,0.3141,871,1802,0.7660,-0.0507,0.2846,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,271,T2,13966,14006,4.0000,1,0.5623,0.4951,0.4272,0.5252,871,1802,0.5623,-0.0672,0.5049,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,274,T7,14076,14083,0.7000,0,0.0188,0.0435,0.5169,0.0771,871,1802,0.9812,-0.0247,0.0435,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,290,T3,14786,14795,0.9000,0,0.3348,0.4811,0.1497,0.3835,1802,871,0.6652,-0.1463,0.4811,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,297,T2,14933,14956,2.3000,1,0.3719,0.8196,0.5169,0.4073,871,1802,0.3719,0.4477,0.1804,reading,positioning,reading,reading,reading,reading,reading
+1925299,299,T2,15050,15068,1.8000,0,0.1832,0.1322,0.3421,0.2747,1802,871,0.8168,0.0511,0.1322,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,300,T4,15199,15224,2.5000,0,0.2625,0.2305,0.4272,0.3346,871,1802,0.7375,0.0319,0.2305,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,318,T6,17540,17550,1.0000,1,0.5286,0.5022,0.7596,0.5043,1802,871,0.5286,-0.0263,0.4978,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,429,T2,24122,24131,0.9000,1,0.3441,0.5978,0.4272,0.3896,871,1802,0.3441,0.2537,0.4022,reading,reading,reading,reading,reading,reading,after the anchor
+1925299,441,T4,24630,24638,0.8000,0,0.2418,0.3921,0.3421,0.3198,1802,871,0.7582,-0.1503,0.3921,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,445,T2,24771,24796,2.5000,1,0.5520,0.8312,0.5169,0.5188,1802,871,0.5520,0.2791,0.1688,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,472,T4,25802,25818,1.6000,1,0.9805,0.9881,0.5169,0.9132,871,1802,0.9805,0.0076,0.0119,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,481,T4,26894,26910,1.6000,0,0.3517,0.5154,0.4272,0.3944,1802,871,0.6483,-0.1638,0.5154,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,505,T7,28035,28050,1.5000,1,0.3827,0.8997,0.3421,0.4142,1802,871,0.3827,0.5169,0.1003,reading,positioning,reading,reading,reading,reading,reading
+1925299,518,T2,29537,29545,0.8000,0,0.4724,0.4278,0.4272,0.4698,871,1802,0.5276,0.0447,0.4278,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,523,T4,29822,29830,0.8000,1,0.3725,0.7244,0.4272,0.4077,871,1802,0.3725,0.3519,0.2756,reading,reading,reading,reading,reading,reading,reading
+1925299,538,T7,30366,30376,1.0000,0,0.0025,0.0004,0.2660,0.0234,871,1802,0.9975,0.0021,0.0004,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,539,T7,30535,30546,1.1000,0,0.2938,0.2987,0.2660,0.3562,1802,871,0.7062,-0.0049,0.2987,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,560,T7,31263,31278,1.5000,0,0.3671,0.2754,0.4272,0.4043,871,1802,0.6329,0.0917,0.2754,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,571,T2,31699,31715,1.6000,0,0.5585,0.3969,0.5169,0.5228,871,1802,0.4415,0.1615,0.3969,reading,reading,reading,reading,reading,reading,reading
+1925299,595,T7,32712,32740,2.8000,1,0.9987,0.9992,0.6878,0.9823,871,1802,0.9987,0.0006,0.0008,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,612,T7,33763,33790,2.7000,0,0.0734,0.1141,0.3421,0.1665,1802,871,0.9266,-0.0407,0.1141,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,644,T2,35931,35949,1.8000,1,0.9795,0.9742,0.4272,0.9105,871,1802,0.9795,-0.0053,0.0258,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,656,T4,36513,36527,1.4000,1,0.0793,0.3773,0.2660,0.1739,871,1802,0.0793,0.2980,0.6227,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1925299,687,T7,37516,37528,1.2000,1,0.1755,0.2673,0.2660,0.2683,871,1802,0.1755,0.0919,0.7327,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1925299,695,T2,38261,38287,2.6000,1,0.0289,0.0238,0.5169,0.0988,871,1802,0.0289,-0.0051,0.9762,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1925299,697,T7,38342,38362,2.0000,1,0.2710,0.3228,0.4272,0.3406,871,1802,0.2710,0.0518,0.6772,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1925299,708,T7,39251,39265,1.4000,0,0.7593,0.6284,0.5169,0.6576,1802,871,0.2407,0.1310,0.6284,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1925299,716,T2,39514,39520,0.6000,1,0.9990,0.9995,0.6056,0.9853,871,1802,0.9990,0.0005,0.0005,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,726,T4,39774,39790,1.6000,0,0.7464,0.4113,0.2660,0.6479,871,1802,0.2536,0.3351,0.4113,reading,reading,reading,reading,reading,reading,after the anchor
+1925299,803,T5,46469,46475,0.6000,0,0.1263,0.0471,0.7596,0.2243,871,1802,0.8737,0.0792,0.0471,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,804,T3,46475,46489,1.4000,1,0.5898,0.7486,0.2660,0.5424,871,1802,0.5898,0.1588,0.2514,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,805,T3,46489,46497,0.8000,1,0.8308,0.6041,0.3421,0.7159,871,1802,0.8308,-0.2267,0.3959,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,833,T4,47549,47555,0.6000,0,0.2136,0.3412,0.4272,0.2987,1802,871,0.7864,-0.1277,0.3412,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,848,T4,48143,48154,1.1000,0,0.4856,0.3393,0.3421,0.4779,871,1802,0.5144,0.1463,0.3393,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,854,T2,48359,48372,1.3000,0,0.4441,0.2673,0.7596,0.4524,871,1802,0.5559,0.1768,0.2673,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,858,T7,49380,49434,5.4000,0,0.4993,0.4246,0.4272,0.4863,871,1802,0.5007,0.0747,0.4246,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,873,T2,50176,50189,1.3000,1,0.6337,0.7600,0.3421,0.5704,1802,871,0.6337,0.1264,0.2400,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,874,T4,50255,50261,0.6000,0,0.1940,0.2814,0.2660,0.2834,871,1802,0.8060,-0.0873,0.2814,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,960,T7,55911,55947,3.6000,1,0.9882,0.9859,0.6056,0.9351,871,1802,0.9882,-0.0023,0.0141,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,961,T3,55986,56014,2.8000,0,0.1618,0.1136,0.2660,0.2567,1802,871,0.8382,0.0482,0.1136,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,983,T7,57292,57319,2.7000,0,0.6937,0.7240,0.5169,0.6104,1802,871,0.3063,-0.0303,0.7240,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1925299,993,T4,58198,58228,3.0000,1,0.1408,0.2096,0.2660,0.2380,1802,871,0.1408,0.0688,0.7904,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1925299,995,T7,58277,58289,1.2000,0,0.6609,0.5124,0.3421,0.5883,871,1802,0.3391,0.1485,0.5124,after the anchor,reading,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1925299,999,T4,58388,58404,1.6000,0,0.5623,0.4212,0.6056,0.5251,1802,871,0.4377,0.1411,0.4212,reading,reading,reading,reading,reading,reading,reading
+1925299,1013,T2,59820,59854,3.4000,0,0.4204,0.4981,0.7596,0.4378,871,1802,0.5796,-0.0776,0.4981,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,1025,T2,60229,60238,0.9000,1,0.8551,0.7771,0.6878,0.7383,1802,871,0.8551,-0.0780,0.2229,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,1027,T4,60277,60293,1.6000,0,0.6848,0.2610,0.3421,0.6043,871,1802,0.3152,0.4238,0.2610,reading,reading,reading,reading,reading,reading,after the anchor
+1925299,1045,T2,61008,61024,1.6000,0,0.0339,0.1111,0.2016,0.1081,1802,871,0.9661,-0.0772,0.1111,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1925299,1052,T7,61186,61219,3.3000,1,0.2153,0.0209,0.4272,0.3001,1802,871,0.2153,-0.1945,0.9791,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1927964,1,T2,90,108,1.8000,0,0.2790,0.2136,0.4272,0.3461,867,2902,0.7210,0.0654,0.2136,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,42,T2,2572,2592,2.0000,1,0.6588,0.8585,0.6878,0.5868,2902,867,0.6588,0.1998,0.1415,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,64,T4,3234,3241,0.7000,0,0.3622,0.3309,0.3421,0.4012,2902,867,0.6378,0.0314,0.3309,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,88,T2,4036,4049,1.3000,0,0.2906,0.5925,0.2016,0.3541,2902,867,0.7094,-0.3019,0.5925,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,124,T2,5341,5363,2.2000,0,0.4742,0.5938,0.5169,0.4709,2902,867,0.5258,-0.1196,0.5938,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,134,T4,6391,6403,1.2000,1,0.9671,0.9269,0.5169,0.8832,2902,867,0.9671,-0.0403,0.0731,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,154,T2,6855,6877,2.2000,1,0.0921,0.2694,0.4272,0.1887,867,2902,0.0921,0.1773,0.7306,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1927964,166,T4,7145,7152,0.7000,0,0.2784,0.4243,0.4272,0.3457,2902,867,0.7216,-0.1459,0.4243,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,171,T4,7330,7343,1.3000,1,0.9944,0.9991,0.6056,0.9578,2902,867,0.9944,0.0048,0.0009,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,208,T4,9259,9269,1.0000,1,0.6162,0.8261,0.3421,0.5591,2902,867,0.6162,0.2099,0.1739,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,212,T2,9410,9423,1.3000,0,0.2367,0.0207,0.1497,0.3161,867,2902,0.7633,0.2160,0.0207,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,255,T4,11497,11504,0.7000,1,0.3294,0.7663,0.5169,0.3800,2902,867,0.3294,0.4369,0.2337,reading,reading,reading,reading,reading,reading,reading
+1927964,266,T7,12400,12420,2.0000,0,0.0809,0.0103,0.4272,0.1757,867,2902,0.9191,0.0706,0.0103,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,320,T7,15136,15149,1.3000,1,0.6188,0.6719,0.6056,0.5608,2902,867,0.6188,0.0531,0.3281,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,323,T6,15209,15224,1.5000,1,0.9889,0.9973,0.8193,0.9372,867,2902,0.9889,0.0084,0.0027,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,324,T4,15233,15239,0.6000,1,0.9389,0.8964,0.7596,0.8354,867,2902,0.9389,-0.0425,0.1036,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,331,T2,15467,15494,2.7000,1,0.6107,0.6410,0.5169,0.5557,867,2902,0.6107,0.0302,0.3590,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,343,T4,15916,15923,0.7000,0,0.1367,0.2472,0.4272,0.2342,867,2902,0.8633,-0.1105,0.2472,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,413,T4,19461,19482,2.1000,0,0.3410,0.0630,0.4272,0.3875,867,2902,0.6590,0.2779,0.0630,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,426,T7,19852,19865,1.3000,1,0.2991,0.6860,0.2016,0.3599,867,2902,0.2991,0.3869,0.3140,reading,reading,reading,reading,reading,reading,after the anchor
+1927964,467,T4,21623,21629,0.6000,1,0.4097,0.5212,0.4272,0.4311,2902,867,0.4097,0.1115,0.4788,reading,reading,reading,reading,reading,reading,after the anchor
+1927964,527,T2,23770,23785,1.5000,1,0.9559,0.9824,0.4272,0.8625,2902,867,0.9559,0.0264,0.0176,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,532,T7,24021,24039,1.8000,0,0.1349,0.1556,0.5169,0.2325,867,2902,0.8651,-0.0207,0.1556,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,592,T4,25765,25779,1.4000,0,0.1266,0.0625,0.4272,0.2246,867,2902,0.8734,0.0641,0.0625,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,605,T4,27058,27076,1.8000,0,0.0129,0.0431,0.4272,0.0620,867,2902,0.9871,-0.0302,0.0431,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,631,T2,28456,28478,2.2000,1,0.8927,0.8279,0.5169,0.7770,867,2902,0.8927,-0.0648,0.1721,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,634,T7,28531,28542,1.1000,0,0.5276,0.7713,0.3421,0.5037,867,2902,0.4724,-0.2437,0.7713,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1927964,649,T7,28896,28907,1.1000,1,0.8550,0.9437,0.5169,0.7381,867,2902,0.8550,0.0887,0.0563,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,650,T4,28915,28924,0.9000,0,0.4968,0.3470,0.4272,0.4848,2902,867,0.5032,0.1497,0.3470,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,668,T4,30612,30624,1.2000,1,0.6824,0.8620,0.4272,0.6027,2902,867,0.6824,0.1796,0.1380,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,670,T4,30656,30661,0.5000,0,0.5010,0.4931,0.6056,0.4874,2902,867,0.4990,0.0079,0.4931,reading,positioning,reading,after the anchor,reading,reading,reading
+1927964,672,T5,31122,31127,0.5000,0,0.0006,0.0086,0.4272,0.0102,2902,867,0.9994,-0.0080,0.0086,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,691,T4,31991,32011,2.0000,0,0.0829,0.2748,0.4272,0.1781,867,2902,0.9171,-0.1920,0.2748,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,703,T4,32255,32265,1.0000,1,0.8314,0.7461,0.6878,0.7164,2902,867,0.8314,-0.0853,0.2539,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,714,T7,32549,32562,1.3000,1,0.9772,0.9898,0.6878,0.9049,867,2902,0.9772,0.0126,0.0102,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,749,T3,33910,33932,2.2000,0,0.1398,0.0667,0.3421,0.2371,2902,867,0.8602,0.0731,0.0667,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,752,T7,33970,33995,2.5000,0,0.3793,0.2618,0.3421,0.4121,867,2902,0.6207,0.1175,0.2618,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,781,T4,35450,35470,2.0000,0,0.2461,0.3929,0.3421,0.3229,2902,867,0.7539,-0.1468,0.3929,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,825,T7,37757,37769,1.2000,1,0.3417,0.4133,0.6878,0.3880,867,2902,0.3417,0.0716,0.5867,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1927964,828,T2,37898,37912,1.4000,1,0.2321,0.2197,0.2660,0.3126,867,2902,0.2321,-0.0124,0.7803,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1927964,840,T4,38592,38644,5.2000,0,0.5000,0.5000,0.5169,0.4867,2902,867,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+1927964,851,T7,39028,39063,3.5000,0,0.5000,0.5000,0.5169,0.4867,867,2902,0.5000,0.0000,0.5000,after the anchor,positioning,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+1927964,866,T2,39420,39428,0.8000,1,0.7687,0.6379,0.5169,0.6647,867,2902,0.7687,-0.1309,0.3621,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,867,T1,39454,39469,1.5000,1,0.1926,0.7854,0.5169,0.2823,867,2902,0.1926,0.5928,0.2146,reading,reading,reading,reading,reading,reading,after the anchor
+1927964,878,T7,40328,40344,1.6000,0,0.4093,0.3213,0.5169,0.4309,2902,867,0.5907,0.0879,0.3213,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,888,T7,40633,40657,2.4000,1,0.5000,0.5000,0.5169,0.4867,867,2902,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+1927964,944,T4,44773,44781,0.8000,1,0.8725,0.6843,0.7596,0.7555,867,2902,0.8725,-0.1882,0.3157,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,945,T1,44802,44809,0.7000,0,0.0074,0.0027,0.4272,0.0447,2902,867,0.9926,0.0047,0.0027,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,954,T3,45286,45322,3.6000,1,0.5000,0.5000,0.5169,0.4867,867,2902,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+1927964,1001,T7,48522,48538,1.6000,0,0.0037,0.0005,0.4272,0.0295,2902,867,0.9963,0.0031,0.0005,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,1004,T1,48626,48649,2.3000,0,0.4631,0.0911,0.4272,0.4641,2902,867,0.5369,0.3719,0.0911,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,1011,T2,49336,49352,1.6000,0,0.2456,0.2805,0.2660,0.3225,2902,867,0.7544,-0.0349,0.2805,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,1051,T7,52475,52491,1.6000,0,0.4943,0.4969,0.6056,0.4833,867,2902,0.5057,-0.0026,0.4969,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,1065,T4,52932,52939,0.7000,1,0.9590,0.8533,0.1093,0.8679,867,2902,0.9590,-0.1057,0.1467,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,1066,T3,52957,52966,0.9000,1,0.5699,0.7662,0.1497,0.5299,867,2902,0.5699,0.1963,0.2338,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,1075,T4,53369,53377,0.8000,0,0.2184,0.2881,0.3421,0.3024,867,2902,0.7816,-0.0696,0.2881,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,1101,T4,54966,54980,1.4000,1,0.3644,0.8437,0.5169,0.4026,867,2902,0.3644,0.4792,0.1563,reading,positioning,reading,reading,reading,reading,reading
+1927964,1110,T4,55594,55599,0.5000,0,0.2690,0.4589,0.3421,0.3392,2902,867,0.7310,-0.1900,0.4589,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,1128,T4,56929,56942,1.3000,0,0.4124,0.1216,0.4272,0.4328,867,2902,0.5876,0.2908,0.1216,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,1133,T3,57078,57088,1.0000,0,0.1106,0.0854,0.3421,0.2087,2902,867,0.8894,0.0252,0.0854,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1927964,1136,T2,57118,57144,2.6000,1,0.1748,0.1666,0.2016,0.2677,867,2902,0.1748,-0.0082,0.8334,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1953632,78,T4,4027,4042,1.5000,0,0.2935,0.1812,0.2016,0.3561,2380,870,0.7065,0.1124,0.1812,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,83,T4,4140,4163,2.3000,1,0.0173,0.0477,0.2660,0.0736,870,2380,0.0173,0.0304,0.9523,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1953632,103,T7,5173,5190,1.7000,0,0.0297,0.0038,0.2660,0.1004,870,2380,0.9703,0.0259,0.0038,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,128,T4,6058,6080,2.2000,0,0.3415,0.7018,0.4272,0.3879,2380,870,0.6585,-0.3603,0.7018,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,154,T7,7901,7919,1.8000,0,0.2441,0.5144,0.4272,0.3215,2380,870,0.7559,-0.2702,0.5144,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,158,T4,8120,8134,1.4000,1,0.3915,0.3006,0.6056,0.4198,2380,870,0.3915,-0.0909,0.6994,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1953632,161,T4,8601,8616,1.5000,1,0.9991,0.9996,0.6056,0.9862,2380,870,0.9991,0.0004,0.0004,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,178,T4,9230,9243,1.3000,0,0.2960,0.3836,0.5169,0.3578,870,2380,0.7040,-0.0876,0.3836,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,211,T4,10163,10172,0.9000,1,0.9992,0.9995,0.6056,0.9871,870,2380,0.9992,0.0003,0.0005,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,246,T2,11780,11802,2.2000,0,0.3351,0.4285,0.4272,0.3837,870,2380,0.6649,-0.0933,0.4285,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,259,T7,12304,12324,2.0000,1,0.3644,0.3844,0.2660,0.4026,870,2380,0.3644,0.0200,0.6156,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1953632,264,T2,12603,12626,2.3000,0,0.6189,0.4035,0.2016,0.5609,870,2380,0.3811,0.2154,0.4035,reading,reading,reading,reading,reading,reading,after the anchor
+1953632,315,T4,14923,14942,1.9000,0,0.4289,0.0613,0.4272,0.4430,870,2380,0.5711,0.3676,0.0613,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,320,T4,15011,15018,0.7000,1,0.5973,0.7539,0.6056,0.5471,2380,870,0.5973,0.1566,0.2461,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,355,T4,16639,16651,1.2000,1,0.8940,0.8867,0.4272,0.7784,870,2380,0.8940,-0.0073,0.1133,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,398,T4,19001,19009,0.8000,1,0.3208,0.6533,0.2660,0.3744,870,2380,0.3208,0.3324,0.3467,reading,reading,reading,reading,reading,reading,after the anchor
+1953632,416,T4,22520,22533,1.3000,0,0.0776,0.0877,0.4272,0.1718,2380,870,0.9224,-0.0101,0.0877,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,436,T7,23207,23229,2.2000,1,0.1268,0.6150,0.5169,0.2248,870,2380,0.1268,0.4882,0.3850,reading,reading,reading,reading,reading,reading,after the anchor
+1953632,471,T4,25195,25212,1.7000,1,0.7800,0.8330,0.5169,0.6735,870,2380,0.7800,0.0530,0.1670,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,507,T2,26740,26759,1.9000,1,0.7939,0.9690,0.6056,0.6846,870,2380,0.7939,0.1752,0.0310,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,525,T2,27190,27242,5.2000,1,0.9753,0.9939,0.5169,0.9006,870,2380,0.9753,0.0186,0.0061,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,540,T4,27675,27681,0.6000,0,0.1753,0.3225,0.5169,0.2682,870,2380,0.8247,-0.1471,0.3225,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,545,T4,27868,27874,0.6000,0,0.4528,0.5024,0.5169,0.4578,870,2380,0.5472,-0.0497,0.5024,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,559,T2,29004,29017,1.3000,1,0.9995,0.9996,0.6878,0.9901,2380,870,0.9995,0.0001,0.0004,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,573,T4,30247,30253,0.6000,0,0.2706,0.0797,0.4272,0.3403,870,2380,0.7294,0.1909,0.0797,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,587,T2,31075,31101,2.6000,1,0.9278,0.9277,0.2660,0.8199,870,2380,0.9278,-0.0001,0.0723,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,614,T4,32351,32370,1.9000,1,0.5680,0.4782,0.4272,0.5287,870,2380,0.5680,-0.0898,0.5218,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,615,T2,32387,32407,2.0000,1,0.8189,0.9288,0.6056,0.7055,870,2380,0.8189,0.1099,0.0712,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,621,T2,32612,32637,2.5000,1,0.3061,0.1004,0.4272,0.3646,870,2380,0.3061,-0.2057,0.8996,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1953632,642,T5,34923,34941,1.8000,0,0.0102,0.0016,0.4272,0.0542,2380,870,0.9898,0.0087,0.0016,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,643,T3,34962,34980,1.8000,0,0.3333,0.2420,0.5169,0.3826,870,2380,0.6667,0.0913,0.2420,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,675,T2,37181,37189,0.8000,0,0.4307,0.1231,0.4272,0.4441,870,2380,0.5693,0.3076,0.1231,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,708,T2,39711,39721,1.0000,1,0.6420,0.8257,0.5169,0.5758,870,2380,0.6420,0.1836,0.1743,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,727,T2,40356,40364,0.8000,1,0.3808,0.6209,0.5169,0.4130,2380,870,0.3808,0.2401,0.3791,reading,reading,reading,reading,reading,reading,after the anchor
+1953632,740,T4,41639,41658,1.9000,0,0.2592,0.2161,0.4272,0.3323,870,2380,0.7408,0.0431,0.2161,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,748,T2,43548,43566,1.8000,0,0.6814,0.0799,0.4272,0.6020,2380,870,0.3186,0.6015,0.0799,reading,reading,reading,reading,reading,reading,reading
+1953632,770,T2,44542,44555,1.3000,0,0.3855,0.3757,0.4272,0.4160,870,2380,0.6145,0.0098,0.3757,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,787,T7,44984,45002,1.8000,0,0.2951,0.4030,0.3421,0.3572,870,2380,0.7049,-0.1079,0.4030,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,797,T2,45413,45439,2.6000,0,0.7951,0.7690,0.3421,0.6856,870,2380,0.2049,0.0261,0.7690,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,positioning,after the anchor
+1953632,821,T2,48961,48993,3.2000,0,0.0987,0.1928,0.4272,0.1961,870,2380,0.9013,-0.0940,0.1928,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,868,T7,51962,51979,1.7000,0,0.0556,0.0094,0.4272,0.1428,2380,870,0.9444,0.0462,0.0094,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,887,T7,53411,53432,2.1000,0,0.0927,0.0228,0.4272,0.1894,2380,870,0.9073,0.0699,0.0228,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,889,T4,53468,53474,0.6000,0,0.1935,0.2057,0.4272,0.2830,870,2380,0.8065,-0.0122,0.2057,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,912,T7,55196,55205,0.9000,1,0.5451,0.8048,0.5169,0.5145,870,2380,0.5451,0.2596,0.1952,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1953632,937,T7,56242,56266,2.4000,1,0.3978,0.6166,0.2016,0.4237,870,2380,0.3978,0.2187,0.3834,reading,reading,reading,reading,reading,reading,reading
+1953632,963,T4,57408,57422,1.4000,1,0.9232,0.7439,0.3421,0.8136,870,2380,0.9232,-0.1792,0.2561,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,6,T7,156,202,4.6000,0,0.8384,0.9279,0.6056,0.7227,4177,2902,0.1616,-0.0895,0.9279,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1986691,20,T3,687,712,2.5000,0,0.6293,0.3731,0.2660,0.5676,4177,2902,0.3707,0.2563,0.3731,reading,reading,reading,reading,reading,reading,after the anchor
+1986691,21,T1,735,761,2.6000,1,0.2143,0.4573,0.5169,0.2993,4177,2902,0.2143,0.2430,0.5427,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1986691,37,T4,1492,1526,3.4000,1,0.5000,0.5000,0.5169,0.4867,4177,2902,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+1986691,82,T7,3333,3349,1.6000,0,0.5712,0.7609,0.2660,0.5307,4177,2902,0.4288,-0.1898,0.7609,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1986691,86,T5,4001,4008,0.7000,1,0.6175,0.7874,0.6878,0.5600,4177,2902,0.6175,0.1699,0.2126,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,113,T4,5930,5946,1.6000,0,0.1228,0.2523,0.3421,0.2209,4177,2902,0.8772,-0.1295,0.2523,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,127,T7,7744,7753,0.9000,1,0.9567,0.9395,0.5169,0.8638,4177,2902,0.9567,-0.0171,0.0605,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,143,T4,8417,8441,2.4000,0,0.5197,0.2933,0.5169,0.4989,2902,4177,0.4803,0.2265,0.2933,reading,positioning,reading,reading,reading,reading,reading
+1986691,150,T4,8576,8587,1.1000,0,0.0221,0.0724,0.2660,0.0847,4177,2902,0.9779,-0.0503,0.0724,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,177,T4,10936,10952,1.6000,1,0.6606,0.7446,0.1497,0.5880,2902,4177,0.6606,0.0841,0.2554,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,218,T4,13057,13064,0.7000,1,0.2203,0.5978,0.3421,0.3038,4177,2902,0.2203,0.3775,0.4022,reading,reading,reading,reading,reading,reading,reading
+1986691,231,T2,14192,14211,1.9000,1,0.0136,0.1756,0.4272,0.0640,4177,2902,0.0136,0.1620,0.8244,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1986691,253,T7,15025,15037,1.2000,0,0.4350,0.2411,0.2660,0.4468,4177,2902,0.5650,0.1939,0.2411,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,256,T2,15247,15266,1.9000,1,0.2717,0.2098,0.6056,0.3411,4177,2902,0.2717,-0.0619,0.7902,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1986691,258,T2,15286,15307,2.1000,0,0.0782,0.1947,0.2660,0.1726,4177,2902,0.9218,-0.1164,0.1947,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,265,T3,15561,15571,1.0000,1,0.9908,0.9893,0.4272,0.9439,2902,4177,0.9908,-0.0016,0.0107,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,269,T7,15692,15737,4.5000,0,0.7034,0.7000,0.4272,0.6171,4177,2902,0.2966,0.0034,0.7000,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1986691,280,T4,16130,16138,0.8000,1,0.5482,0.7658,0.7596,0.5165,4177,2902,0.5482,0.2176,0.2342,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,306,T4,18323,18337,1.4000,0,0.4440,0.2525,0.6056,0.4524,2902,4177,0.5560,0.1916,0.2525,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,308,T4,18379,18399,2.0000,0,0.1327,0.2602,0.1497,0.2304,4177,2902,0.8673,-0.1276,0.2602,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,314,T7,18587,18622,3.5000,0,0.4592,0.2509,0.2660,0.4617,4177,2902,0.5408,0.2083,0.2509,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,331,T2,19263,19297,3.4000,0,0.5000,0.5000,0.5169,0.4867,2902,4177,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+1986691,354,T4,20901,20933,3.2000,1,0.6433,0.7431,0.6056,0.5767,4177,2902,0.6433,0.0998,0.2569,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,370,T7,21882,21892,1.0000,0,0.5784,0.3846,0.3421,0.5352,2902,4177,0.4216,0.1938,0.3846,reading,reading,reading,reading,reading,reading,reading
+1986691,377,T5,22560,22586,2.6000,1,0.6119,0.8339,0.6056,0.5564,4177,2902,0.6119,0.2220,0.1661,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,397,T4,24342,24353,1.1000,1,0.3080,0.4309,0.2016,0.3658,4177,2902,0.3080,0.1230,0.5691,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1986691,399,T3,24362,24377,1.5000,1,0.8639,0.7109,0.4272,0.7468,4177,2902,0.8639,-0.1529,0.2891,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,403,T3,25592,25602,1.0000,0,0.1785,0.0509,0.2016,0.2708,4177,2902,0.8215,0.1276,0.0509,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,413,T7,26410,26424,1.4000,1,0.5579,0.6023,0.1497,0.5225,2902,4177,0.5579,0.0443,0.3977,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,415,T7,26479,26503,2.4000,0,0.2503,0.0927,0.3421,0.3260,2902,4177,0.7497,0.1576,0.0927,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,426,T7,26871,26890,1.9000,0,0.2118,0.3489,0.5169,0.2974,4177,2902,0.7882,-0.1371,0.3489,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,443,T7,27881,27905,2.4000,0,0.0495,0.1394,0.2016,0.1338,4177,2902,0.9505,-0.0899,0.1394,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,446,T5,28028,28037,0.9000,0,0.4672,0.3152,0.3421,0.4666,4177,2902,0.5328,0.1520,0.3152,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,453,T7,28887,28895,0.8000,0,0.5639,0.2597,0.4272,0.5262,4177,2902,0.4361,0.3042,0.2597,reading,reading,reading,reading,reading,reading,after the anchor
+1986691,466,T7,29184,29203,1.9000,0,0.3715,0.3639,0.5169,0.4071,4177,2902,0.6285,0.0076,0.3639,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,467,T1,29204,29225,2.1000,1,0.4937,0.4421,0.6056,0.4829,4177,2902,0.4937,-0.0516,0.5579,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+1986691,491,T4,30272,30285,1.3000,0,0.0230,0.0645,0.4272,0.0866,2902,4177,0.9770,-0.0415,0.0645,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,494,T3,30403,30421,1.8000,1,0.1524,0.3698,0.2016,0.2485,4177,2902,0.1524,0.2174,0.6302,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1986691,495,T3,30421,30436,1.5000,0,0.2083,0.2296,0.1497,0.2947,2902,4177,0.7917,-0.0213,0.2296,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,516,T4,31821,31827,0.6000,0,0.6507,0.5649,0.4272,0.5815,2902,4177,0.3493,0.0858,0.5649,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1986691,556,T2,34296,34310,1.4000,0,0.7372,0.1479,0.1093,0.6411,4177,2902,0.2628,0.5893,0.1479,reading,reading,reading,reading,reading,reading,after the anchor
+1986691,576,T3,35019,35031,1.2000,1,0.4546,0.6209,0.3421,0.4589,2902,4177,0.4546,0.1663,0.3791,reading,reading,reading,reading,reading,reading,reading
+1986691,579,T2,35359,35389,3.0000,0,0.1442,0.1486,0.3421,0.2411,4177,2902,0.8558,-0.0044,0.1486,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,597,T7,37067,37086,1.9000,0,0.5546,0.1228,0.2660,0.5204,2902,4177,0.4454,0.4318,0.1228,reading,positioning,reading,reading,reading,reading,reading
+1986691,602,T7,37780,37796,1.6000,0,0.9527,0.8234,0.6056,0.8570,2902,4177,0.0473,0.1293,0.8234,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1986691,610,T3,38073,38088,1.5000,1,0.3968,0.7063,0.2660,0.4230,2902,4177,0.3968,0.3095,0.2937,reading,reading,reading,reading,reading,reading,reading
+1986691,639,T4,39346,39352,0.6000,0,0.2878,0.0845,0.4272,0.3522,4177,2902,0.7122,0.2033,0.0845,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,647,T4,39553,39558,0.5000,1,0.6552,0.6350,0.2016,0.5845,2902,4177,0.6552,-0.0203,0.3650,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,649,T1,39598,39629,3.1000,0,0.0724,0.1175,0.5169,0.1654,2902,4177,0.9276,-0.0451,0.1175,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,658,T7,40263,40286,2.3000,0,0.1451,0.1779,0.2660,0.2420,4177,2902,0.8549,-0.0327,0.1779,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,659,T5,40286,40320,3.4000,0,0.1361,0.3452,0.4272,0.2337,2902,4177,0.8639,-0.2091,0.3452,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,690,T4,42382,42393,1.1000,1,0.8194,0.7894,0.6056,0.7059,4177,2902,0.8194,-0.0300,0.2106,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,694,T7,42508,42524,1.6000,0,0.3219,0.3264,0.2016,0.3751,4177,2902,0.6781,-0.0045,0.3264,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,696,T7,42578,42605,2.7000,1,0.4364,0.5017,0.4272,0.4476,2902,4177,0.4364,0.0654,0.4983,reading,reading,reading,reading,reading,reading,after the anchor
+1986691,712,T4,43648,43653,0.5000,1,0.7946,0.6431,0.3421,0.6852,4177,2902,0.7946,-0.1516,0.3569,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,722,T2,44316,44329,1.3000,0,0.3132,0.5042,0.4272,0.3693,4177,2902,0.6868,-0.1911,0.5042,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,724,T7,44352,44378,2.6000,0,0.9785,0.9811,0.6056,0.9081,2902,4177,0.0215,-0.0026,0.9811,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+1986691,727,T3,44435,44456,2.1000,1,0.7483,0.8245,0.4272,0.6493,2902,4177,0.7483,0.0763,0.1755,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,760,T2,45857,45862,0.5000,1,0.8894,0.7742,0.6056,0.7733,4177,2902,0.8894,-0.1152,0.2258,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,803,T4,50273,50290,1.7000,0,0.0529,0.0325,0.6056,0.1388,4177,2902,0.9471,0.0204,0.0325,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,853,T4,53836,53842,0.6000,1,0.4881,0.8168,0.6056,0.4794,2902,4177,0.4881,0.3287,0.1832,reading,positioning,reading,reading,reading,reading,reading
+1986691,880,T4,56897,56903,0.6000,0,0.0936,0.2516,0.2660,0.1905,4177,2902,0.9064,-0.1579,0.2516,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,882,T4,56936,56943,0.7000,0,0.4442,0.3561,0.2660,0.4525,2902,4177,0.5558,0.0881,0.3561,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,892,T1,57397,57453,5.6000,1,0.9098,0.9829,0.6878,0.7968,4177,2902,0.9098,0.0731,0.0171,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,893,T4,57453,57464,1.1000,0,0.3335,0.2766,0.6056,0.3827,2902,4177,0.6665,0.0570,0.2766,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+1986691,905,T4,58740,58761,2.1000,1,0.4816,0.5056,0.4272,0.4754,2902,4177,0.4816,0.0241,0.4944,reading,reading,reading,after the anchor,reading,reading,after the anchor
+2006229,5,T2,116,159,4.3000,1,0.5000,0.5000,0.5169,0.4867,2380,1804,0.5000,0.0000,0.5000,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006229,22,T2,1199,1232,3.3000,1,0.2527,0.4083,0.5169,0.3277,1804,2380,0.2527,0.1556,0.5917,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2006229,45,T7,3002,3011,0.9000,0,0.6013,0.6108,0.6056,0.5496,1804,2380,0.3987,-0.0095,0.6108,after the anchor,reading,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006229,48,T2,3049,3098,4.9000,0,0.0072,0.0118,0.3421,0.0440,1804,2380,0.9928,-0.0046,0.0118,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,53,T2,3367,3393,2.6000,0,0.0842,0.1764,0.3421,0.1797,1804,2380,0.9158,-0.0922,0.1764,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,118,T4,7250,7262,1.2000,0,0.0539,0.0645,0.4272,0.1404,1804,2380,0.9461,-0.0106,0.0645,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,123,T7,7484,7498,1.4000,0,0.2364,0.2499,0.4272,0.3158,2380,1804,0.7636,-0.0135,0.2499,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,125,T4,7517,7524,0.7000,1,0.3167,0.6710,0.3421,0.3716,2380,1804,0.3167,0.3543,0.3290,reading,reading,reading,reading,reading,reading,after the anchor
+2006229,128,T4,7648,7661,1.3000,1,0.9998,0.9997,0.6056,0.9940,1804,2380,0.9998,-0.0001,0.0003,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,134,T4,7881,7902,2.1000,1,0.9567,0.9694,0.6056,0.8639,2380,1804,0.9567,0.0127,0.0306,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,171,T3,9439,9447,0.8000,0,0.6104,0.5371,0.2016,0.5554,2380,1804,0.3896,0.0733,0.5371,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2006229,197,T2,11715,11730,1.5000,0,0.5935,0.1761,0.4272,0.5447,1804,2380,0.4065,0.4174,0.1761,reading,positioning,reading,reading,reading,reading,reading
+2006229,207,T4,12607,12628,2.1000,0,0.0199,0.0153,0.4272,0.0797,2380,1804,0.9801,0.0046,0.0153,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,211,T4,12793,12800,0.7000,1,0.9990,0.9997,0.6056,0.9853,1804,2380,0.9990,0.0007,0.0003,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,224,T7,13479,13488,0.9000,0,0.0197,0.0159,0.4272,0.0792,2380,1804,0.9803,0.0038,0.0159,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,227,T4,13597,13602,0.5000,0,0.2097,0.2728,0.2660,0.2957,1804,2380,0.7903,-0.0631,0.2728,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,230,T2,13766,13785,1.9000,1,0.3271,0.4830,0.5169,0.3785,2380,1804,0.3271,0.1559,0.5170,after the anchor,reading,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006229,267,T4,15628,15644,1.6000,0,0.4974,0.4886,0.2660,0.4852,1804,2380,0.5026,0.0088,0.4886,positioning,reading,positioning,positioning,positioning,positioning,positioning
+2006229,273,T2,15936,15986,5.0000,0,0.0009,0.0007,0.4272,0.0123,2380,1804,0.9991,0.0001,0.0007,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,277,T7,16081,16089,0.8000,0,0.4095,0.2025,0.4272,0.4310,1804,2380,0.5905,0.2070,0.2025,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,289,T2,17211,17229,1.8000,1,0.3379,0.4755,0.2660,0.3855,1804,2380,0.3379,0.1375,0.5245,after the anchor,reading,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006229,308,T2,18638,18648,1.0000,0,0.2988,0.0640,0.3421,0.3596,2380,1804,0.7012,0.2348,0.0640,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,325,T2,19408,19442,3.4000,1,0.5000,0.5000,0.5169,0.4867,1804,2380,0.5000,0.0000,0.5000,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006229,332,T4,20300,20308,0.8000,0,0.5696,0.3089,0.3421,0.5297,1804,2380,0.4304,0.2607,0.3089,reading,positioning,reading,reading,reading,reading,reading
+2006229,341,T3,20603,20637,3.4000,1,0.1138,0.5662,0.2660,0.2120,2380,1804,0.1138,0.4524,0.4338,reading,reading,reading,reading,reading,reading,after the anchor
+2006229,351,T4,21453,21469,1.6000,0,0.0147,0.0742,0.3421,0.0670,1804,2380,0.9853,-0.0594,0.0742,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,356,T4,21627,21638,1.1000,0,0.4850,0.4273,0.6056,0.4776,1804,2380,0.5150,0.0577,0.4273,positioning,positioning,positioning,positioning,positioning,after the anchor,positioning
+2006229,452,T2,25053,25069,1.6000,1,0.5296,0.5865,0.3421,0.5049,1804,2380,0.5296,0.0569,0.4135,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,470,T7,25615,25665,5.0000,0,0.1984,0.0647,0.4272,0.2869,1804,2380,0.8016,0.1337,0.0647,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,473,T7,25737,25754,1.7000,1,0.9910,0.9948,0.5169,0.9445,1804,2380,0.9910,0.0038,0.0052,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,477,T7,26718,26745,2.7000,0,0.0597,0.0582,0.3421,0.1485,2380,1804,0.9403,0.0014,0.0582,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,499,T7,28568,28592,2.4000,0,0.4506,0.1934,0.5169,0.4564,1804,2380,0.5494,0.2572,0.1934,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,506,T2,28813,28842,2.9000,1,0.9970,0.9991,0.6056,0.9713,1804,2380,0.9970,0.0021,0.0009,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,529,T1,29664,29681,1.7000,1,0.1889,0.5932,0.7596,0.2793,1804,2380,0.1889,0.4043,0.4068,reading,reading,reading,reading,reading,reading,after the anchor
+2006229,546,T2,30242,30265,2.3000,1,0.4371,0.4640,0.4272,0.4481,2380,1804,0.4371,0.0269,0.5360,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006229,555,T1,30589,30600,1.1000,0,0.2326,0.0135,0.4272,0.3130,2380,1804,0.7674,0.2191,0.0135,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,572,T2,31342,31385,4.3000,0,0.2152,0.3345,0.3421,0.2999,1804,2380,0.7848,-0.1194,0.3345,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,649,T4,35475,35483,0.8000,0,0.0296,0.0195,0.4272,0.1002,1804,2380,0.9704,0.0102,0.0195,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,674,T7,37248,37257,0.9000,0,0.4949,0.3845,0.4272,0.4836,1804,2380,0.5051,0.1104,0.3845,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,675,T2,37288,37303,1.5000,1,0.1163,0.2946,0.4272,0.2144,1804,2380,0.1163,0.1783,0.7054,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006229,701,T4,39787,39792,0.5000,0,0.2012,0.5541,0.2660,0.2891,2380,1804,0.7988,-0.3529,0.5541,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,714,T2,40287,40307,2.0000,1,0.3489,0.1082,0.2016,0.3926,1804,2380,0.3489,-0.2407,0.8918,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006229,719,T4,40563,40571,0.8000,0,0.2215,0.3023,0.2660,0.3047,1804,2380,0.7785,-0.0808,0.3023,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,734,T7,40974,40989,1.5000,0,0.8612,0.4439,0.3421,0.7442,1804,2380,0.1388,0.4173,0.4439,reading,reading,reading,reading,reading,reading,after the anchor
+2006229,778,T7,42312,42321,0.9000,0,0.5892,0.5170,0.5169,0.5420,1804,2380,0.4108,0.0722,0.5170,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2006229,785,T2,42731,42776,4.5000,1,0.5000,0.5000,0.5169,0.4867,1804,2380,0.5000,0.0000,0.5000,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006229,791,T3,42896,42927,3.1000,0,0.0930,0.0753,0.3421,0.1897,2380,1804,0.9070,0.0177,0.0753,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,818,T7,48410,48427,1.7000,1,0.9744,0.9634,0.6056,0.8986,1804,2380,0.9744,-0.0110,0.0366,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,843,T2,49524,49531,0.7000,0,0.3691,0.2893,0.4272,0.4056,1804,2380,0.6309,0.0798,0.2893,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,849,T2,49738,49754,1.6000,1,0.2889,0.5521,0.5169,0.3529,1804,2380,0.2889,0.2633,0.4479,reading,reading,reading,reading,reading,reading,after the anchor
+2006229,859,T2,50383,50401,1.8000,1,0.4246,0.3999,0.3421,0.4404,2380,1804,0.4246,-0.0247,0.6001,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2006229,868,T7,51461,51472,1.1000,1,0.4043,0.8211,0.4272,0.4278,1804,2380,0.4043,0.4167,0.1789,reading,reading,reading,reading,reading,reading,reading
+2006229,907,T2,54202,54210,0.8000,1,0.6254,0.8807,0.6056,0.5651,2380,1804,0.6254,0.2553,0.1193,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006229,941,T2,55938,55956,1.8000,0,0.5749,0.5981,0.3421,0.5330,2380,1804,0.4251,-0.0232,0.5981,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006229,975,T6,59039,59058,1.9000,0,0.7788,0.6181,0.4272,0.6726,1804,2380,0.2212,0.1608,0.6181,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2006363,0,T2,17,34,1.7000,1,0.9995,0.9995,0.6878,0.9901,870,868,0.9995,-0.0000,0.0005,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,1,T2,78,98,2.0000,1,0.1732,0.8067,0.3421,0.2664,870,868,0.1732,0.6335,0.1933,reading,reading,reading,reading,reading,reading,after the anchor
+2006363,5,T7,196,213,1.7000,0,0.7310,0.4952,0.2660,0.6367,868,870,0.2690,0.2358,0.4952,reading,reading,reading,reading,reading,reading,after the anchor
+2006363,23,T2,698,722,2.4000,1,0.8369,0.8853,0.6878,0.7213,868,870,0.8369,0.0484,0.1147,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,70,T2,2592,2612,2.0000,0,0.1508,0.0253,0.4272,0.2471,868,870,0.8492,0.1255,0.0253,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,125,T4,4866,4871,0.5000,0,0.4952,0.7061,0.4272,0.4838,870,868,0.5048,-0.2108,0.7061,positioning,after the anchor,positioning,positioning,positioning,positioning,positioning
+2006363,149,T7,6569,6607,3.8000,0,0.0163,0.0059,0.4272,0.0712,870,868,0.9837,0.0105,0.0059,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,183,T7,7896,7908,1.2000,0,0.2686,0.1996,0.3421,0.3389,868,870,0.7314,0.0690,0.1996,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,203,T7,8878,8909,3.1000,0,0.1372,0.0546,0.4272,0.2347,868,870,0.8628,0.0826,0.0546,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,224,T2,9548,9588,4.0000,1,0.5000,0.5000,0.5169,0.4867,868,870,0.5000,0.0000,0.5000,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006363,249,T6,12248,12253,0.5000,1,0.5710,0.6816,0.7596,0.5306,868,870,0.5710,0.1107,0.3184,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,261,T7,13119,13133,1.4000,1,0.9802,0.9692,0.5169,0.9123,868,870,0.9802,-0.0110,0.0308,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,276,T4,14284,14297,1.3000,0,0.1179,0.0745,0.5169,0.2160,870,868,0.8821,0.0434,0.0745,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,288,T7,14746,14772,2.6000,0,0.3987,0.3962,0.2660,0.4243,870,868,0.6013,0.0026,0.3962,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,302,T4,15306,15320,1.4000,0,0.1569,0.3733,0.3421,0.2525,868,870,0.8431,-0.2164,0.3733,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,306,T4,15455,15465,1.0000,0,0.0136,0.0238,0.1497,0.0639,870,868,0.9864,-0.0102,0.0238,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,310,T7,15576,15589,1.3000,0,0.1127,0.1226,0.4272,0.2108,868,870,0.8873,-0.0099,0.1226,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,341,T3,17077,17094,1.7000,1,0.3215,0.8742,0.4272,0.3748,870,868,0.3215,0.5527,0.1258,reading,positioning,reading,reading,reading,reading,reading
+2006363,359,T2,18139,18153,1.4000,1,0.1827,0.2922,0.5169,0.2743,870,868,0.1827,0.1094,0.7078,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2006363,397,T3,19599,19611,1.2000,1,0.4534,0.4968,0.2016,0.4582,870,868,0.4534,0.0433,0.5032,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor,reading
+2006363,408,T4,20460,20477,1.7000,1,0.8661,0.9457,0.3421,0.7490,870,868,0.8661,0.0796,0.0543,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,423,T2,21651,21662,1.1000,1,0.9985,0.9988,0.5169,0.9807,870,868,0.9985,0.0003,0.0012,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,444,T2,25050,25065,1.5000,1,0.5550,0.5438,0.5169,0.5206,868,870,0.5550,-0.0112,0.4562,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,453,T4,25449,25479,3.0000,0,0.0443,0.0538,0.5169,0.1258,868,870,0.9557,-0.0095,0.0538,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,469,T7,26425,26453,2.8000,1,0.8459,0.7934,0.6056,0.7296,870,868,0.8459,-0.0525,0.2066,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,470,T7,26453,26475,2.2000,0,0.6268,0.5579,0.3421,0.5659,868,870,0.3732,0.0689,0.5579,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2006363,471,T7,26475,26503,2.8000,1,0.7509,0.7006,0.3421,0.6512,868,870,0.7509,-0.0503,0.2994,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,480,T7,26723,26743,2.0000,1,0.2465,0.2765,0.5169,0.3232,870,868,0.2465,0.0300,0.7235,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2006363,481,T4,26783,26802,1.9000,0,0.0146,0.0096,0.3421,0.0667,868,870,0.9854,0.0050,0.0096,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,487,T2,27335,27372,3.7000,1,0.5000,0.5000,0.5169,0.4867,868,870,0.5000,0.0000,0.5000,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006363,489,T2,27588,27599,1.1000,1,0.3255,0.8514,0.3421,0.3774,870,868,0.3255,0.5260,0.1486,reading,reading,reading,reading,reading,reading,reading
+2006363,491,T4,27627,27636,0.9000,1,0.5002,0.6712,0.3421,0.4869,870,868,0.5002,0.1709,0.3288,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,514,T7,29068,29085,1.7000,1,0.9818,0.9894,0.5169,0.9165,868,870,0.9818,0.0076,0.0106,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,516,T2,29123,29138,1.5000,1,0.3500,0.4460,0.4272,0.3933,868,870,0.3500,0.0960,0.5540,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2006363,517,T6,29138,29145,0.7000,0,0.2258,0.2242,0.3421,0.3080,870,868,0.7742,0.0016,0.2242,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,520,T4,29228,29238,1.0000,0,0.5268,0.4980,0.5169,0.5032,870,868,0.4732,0.0288,0.4980,reading,reading,reading,after the anchor,reading,reading,after the anchor
+2006363,537,T7,30756,30766,1.0000,0,0.6030,0.4225,0.4272,0.5508,870,868,0.3970,0.1806,0.4225,reading,reading,reading,reading,reading,reading,after the anchor
+2006363,549,T7,31033,31056,2.3000,1,0.8399,0.8759,0.4272,0.7241,870,868,0.8399,0.0360,0.1241,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,562,T4,31666,31690,2.4000,1,0.9846,0.9881,0.6056,0.9242,870,868,0.9846,0.0034,0.0119,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,572,T2,32110,32120,1.0000,1,0.1163,0.6224,0.3421,0.2144,870,868,0.1163,0.5061,0.3776,reading,reading,reading,reading,reading,reading,after the anchor
+2006363,590,T7,33000,33006,0.6000,0,0.5419,0.4443,0.6056,0.5125,868,870,0.4581,0.0976,0.4443,reading,positioning,reading,reading,reading,reading,reading
+2006363,606,T7,33775,33813,3.8000,1,0.4699,0.3438,0.5169,0.4683,870,868,0.4699,-0.1261,0.6562,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006363,619,T2,36298,36307,0.9000,1,0.9570,0.9238,0.4272,0.8644,868,870,0.9570,-0.0332,0.0762,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,633,T4,38247,38258,1.1000,1,0.9136,0.7905,0.3421,0.8014,870,868,0.9136,-0.1230,0.2095,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,652,T7,39220,39241,2.1000,1,0.8342,0.6678,0.6056,0.7189,868,870,0.8342,-0.1664,0.3322,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,658,T2,39427,39445,1.8000,1,0.2287,0.3365,0.6056,0.3101,868,870,0.2287,0.1078,0.6635,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006363,670,T4,41070,41093,2.3000,1,0.9952,0.9762,0.6056,0.9616,868,870,0.9952,-0.0189,0.0238,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,676,T7,41384,41393,0.9000,1,0.9945,0.9747,0.6056,0.9584,870,868,0.9945,-0.0198,0.0253,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,678,T7,41425,41440,1.5000,0,0.6307,0.3545,0.4272,0.5685,868,870,0.3693,0.2762,0.3545,reading,reading,reading,reading,reading,reading,reading
+2006363,685,T7,41669,41714,4.5000,1,0.1419,0.1107,0.4272,0.2390,870,868,0.1419,-0.0312,0.8893,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2006363,693,T4,42184,42193,0.9000,0,0.6280,0.1265,0.4272,0.5667,868,870,0.3720,0.5015,0.1265,reading,reading,reading,reading,reading,reading,reading
+2006363,732,T4,44188,44194,0.6000,0,0.5740,0.4999,0.4272,0.5325,870,868,0.4260,0.0741,0.4999,reading,reading,reading,after the anchor,after the anchor,reading,after the anchor
+2006363,735,T7,44244,44257,1.3000,0,0.2342,0.4926,0.4272,0.3142,868,870,0.7658,-0.2584,0.4926,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,744,T4,44549,44556,0.7000,1,0.4246,0.6059,0.3421,0.4404,868,870,0.4246,0.1813,0.3941,reading,reading,reading,reading,reading,reading,after the anchor
+2006363,763,T7,45724,45735,1.1000,0,0.5209,0.4997,0.6056,0.4996,868,870,0.4791,0.0213,0.4997,reading,reading,reading,after the anchor,reading,reading,after the anchor
+2006363,768,T2,45858,45869,1.1000,1,0.3620,0.5512,0.5169,0.4010,868,870,0.3620,0.1893,0.4488,reading,reading,reading,after the anchor,reading,reading,after the anchor
+2006363,769,T4,45877,45888,1.1000,1,0.8955,0.9015,0.4272,0.7800,868,870,0.8955,0.0061,0.0985,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,801,T4,48081,48102,2.1000,0,0.3065,0.1797,0.2660,0.3649,868,870,0.6935,0.1268,0.1797,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,824,T7,49538,49552,1.4000,1,0.6468,0.4319,0.4272,0.5790,870,868,0.6468,-0.2150,0.5681,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,840,T4,50673,50678,0.5000,0,0.5696,0.5004,0.4272,0.5297,870,868,0.4304,0.0691,0.5004,after the anchor,reading,after the anchor,after the anchor,reading,after the anchor,after the anchor
+2006363,855,T1,51027,51032,0.5000,0,0.1848,0.2284,0.5169,0.2760,870,868,0.8152,-0.0436,0.2284,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,930,T4,56499,56515,1.6000,1,0.5293,0.9408,0.4272,0.5047,870,868,0.5293,0.4115,0.0592,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,936,T7,57354,57362,0.8000,0,0.2417,0.2860,0.3421,0.3197,870,868,0.7583,-0.0442,0.2860,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,945,T7,57679,57701,2.2000,1,0.9075,0.9575,0.3421,0.7940,868,870,0.9075,0.0500,0.0425,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,947,T4,57727,57734,0.7000,1,0.9299,0.9560,0.6878,0.8227,870,868,0.9299,0.0261,0.0440,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,956,T7,57914,57936,2.2000,0,0.8681,0.8554,0.6056,0.7510,870,868,0.1319,0.0127,0.8554,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2006363,958,T7,57973,57987,1.4000,0,0.0062,0.0245,0.3421,0.0402,868,870,0.9938,-0.0183,0.0245,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2006363,968,T7,58405,58428,2.3000,0,0.0194,0.3626,0.4272,0.0787,868,870,0.9806,-0.3431,0.3626,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,27,T7,1605,1635,3.0000,1,0.1597,0.0371,0.2660,0.2549,4177,870,0.1597,-0.1226,0.9629,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2007721,37,T7,2158,2164,0.6000,0,0.5404,0.3379,0.2660,0.5116,870,4177,0.4596,0.2025,0.3379,reading,positioning,reading,reading,reading,reading,reading
+2007721,61,T7,3584,3605,2.1000,1,0.9924,0.9846,0.6878,0.9499,870,4177,0.9924,-0.0079,0.0154,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,67,T7,3796,3806,1.0000,0,0.2575,0.2985,0.3421,0.3311,4177,870,0.7425,-0.0410,0.2985,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,92,T6,4700,4736,3.6000,1,0.5000,0.5000,0.5169,0.4867,870,4177,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+2007721,95,T2,5054,5072,1.8000,0,0.0225,0.0730,0.5169,0.0856,870,4177,0.9775,-0.0505,0.0730,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,96,T2,5118,5137,1.9000,1,0.2392,0.1639,0.3421,0.3179,870,4177,0.2392,-0.0753,0.8361,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2007721,110,T7,6571,6591,2.0000,0,0.4961,0.3848,0.5169,0.4844,4177,870,0.5039,0.1113,0.3848,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,132,T7,8471,8504,3.3000,1,0.9989,0.9996,0.6878,0.9841,870,4177,0.9989,0.0007,0.0004,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,145,T2,8999,9012,1.3000,1,0.4501,0.5612,0.4272,0.4561,4177,870,0.4501,0.1111,0.4388,reading,reading,reading,reading,reading,reading,after the anchor
+2007721,146,T4,9017,9022,0.5000,0,0.3272,0.3688,0.3421,0.3786,870,4177,0.6728,-0.0416,0.3688,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,167,T2,10325,10332,0.7000,0,0.0309,0.1073,0.4272,0.1026,870,4177,0.9691,-0.0764,0.1073,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,175,T7,10576,10583,0.7000,1,0.4651,0.5975,0.4272,0.4653,870,4177,0.4651,0.1324,0.4025,reading,positioning,reading,reading,reading,reading,reading
+2007721,178,T1,10657,10662,0.5000,0,0.0684,0.1764,0.4272,0.1602,870,4177,0.9316,-0.1080,0.1764,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,246,T2,13924,13948,2.4000,1,0.4459,0.5971,0.6056,0.4535,870,4177,0.4459,0.1512,0.4029,reading,reading,reading,reading,reading,reading,reading
+2007721,257,T7,14644,14662,1.8000,0,0.0136,0.0082,0.4272,0.0638,870,4177,0.9864,0.0053,0.0082,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,281,T3,15695,15724,2.9000,0,0.5000,0.5000,0.5169,0.4867,870,4177,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+2007721,312,T4,17074,17095,2.1000,0,0.0242,0.0121,0.5169,0.0892,870,4177,0.9758,0.0121,0.0121,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,336,T4,17787,17801,1.4000,1,0.7709,0.6801,0.5169,0.6664,4177,870,0.7709,-0.0908,0.3199,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,357,T2,18746,18757,1.1000,0,0.2268,0.1882,0.4272,0.3087,4177,870,0.7732,0.0386,0.1882,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,361,T7,18875,18889,1.4000,0,0.0008,0.0136,0.3421,0.0119,870,4177,0.9992,-0.0127,0.0136,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,381,T7,20208,20221,1.3000,0,0.1898,0.2749,0.1497,0.2801,870,4177,0.8102,-0.0851,0.2749,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,417,T4,21811,21821,1.0000,1,0.6101,0.7092,0.3421,0.5553,4177,870,0.6101,0.0991,0.2908,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,430,T7,23302,23315,1.3000,0,0.5681,0.2120,0.2660,0.5288,4177,870,0.4319,0.3561,0.2120,reading,positioning,reading,reading,reading,reading,reading
+2007721,438,T7,23555,23571,1.6000,1,0.5161,0.4385,0.2660,0.4967,870,4177,0.5161,-0.0776,0.5615,positioning,after the anchor,positioning,positioning,positioning,positioning,positioning
+2007721,442,T7,23769,23788,1.9000,0,0.6339,0.8187,0.2660,0.5706,4177,870,0.3661,-0.1847,0.8187,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2007721,443,T1,23806,23813,0.7000,0,0.0847,0.1413,0.5169,0.1802,870,4177,0.9153,-0.0567,0.1413,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,462,T7,25299,25333,3.4000,0,0.1999,0.2221,0.4272,0.2881,870,4177,0.8001,-0.0222,0.2221,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,489,T2,26667,26696,2.9000,0,0.4142,0.5808,0.6056,0.4339,870,4177,0.5858,-0.1666,0.5808,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,493,T4,26787,26801,1.4000,1,0.6379,0.7567,0.4272,0.5731,870,4177,0.6379,0.1188,0.2433,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,502,T7,27801,27810,0.9000,0,0.3140,0.5464,0.4272,0.3698,870,4177,0.6860,-0.2324,0.5464,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,505,T4,27895,27905,1.0000,1,0.9920,0.9670,0.6878,0.9480,4177,870,0.9920,-0.0249,0.0330,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,519,T4,28705,28710,0.5000,1,0.4998,0.6835,0.4272,0.4866,870,4177,0.4998,0.1837,0.3165,reading,positioning,reading,reading,reading,reading,reading
+2007721,526,T3,28951,28959,0.8000,0,0.1641,0.0401,0.3421,0.2587,4177,870,0.8359,0.1240,0.0401,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,529,T7,29058,29085,2.7000,0,0.3653,0.3788,0.4272,0.4032,870,4177,0.6347,-0.0135,0.3788,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,537,T2,29696,29737,4.1000,1,0.0019,0.0287,0.5169,0.0201,4177,870,0.0019,0.0268,0.9713,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2007721,539,T2,29812,29850,3.8000,0,0.5000,0.5000,0.5169,0.4867,870,4177,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+2007721,545,T7,30115,30136,2.1000,1,0.6196,0.5080,0.2016,0.5613,4177,870,0.6196,-0.1116,0.4920,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,548,T2,30186,30218,3.2000,0,0.5000,0.5000,0.5169,0.4867,4177,870,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+2007721,572,T7,31214,31249,3.5000,1,0.1956,0.3042,0.6056,0.2846,4177,870,0.1956,0.1086,0.6958,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2007721,583,T4,32037,32048,1.1000,1,0.4432,0.7284,0.3421,0.4519,4177,870,0.4432,0.2851,0.2716,reading,positioning,reading,reading,reading,reading,reading
+2007721,590,T7,32588,32627,3.9000,1,0.8510,0.8471,0.5169,0.7344,4177,870,0.8510,-0.0039,0.1529,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,601,T7,33024,33058,3.4000,0,0.7307,0.1043,0.2660,0.6364,4177,870,0.2693,0.6264,0.1043,reading,positioning,reading,reading,reading,reading,reading
+2007721,604,T4,33180,33191,1.1000,0,0.1297,0.0289,0.3421,0.2276,870,4177,0.8703,0.1008,0.0289,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,610,T2,33397,33406,0.9000,0,0.0193,0.0172,0.4272,0.0784,4177,870,0.9807,0.0022,0.0172,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,611,T4,33432,33445,1.3000,0,0.5924,0.3659,0.6878,0.5440,870,4177,0.4076,0.2265,0.3659,reading,reading,reading,reading,reading,reading,after the anchor
+2007721,632,T4,34714,34722,0.8000,0,0.0052,0.0389,0.2016,0.0363,870,4177,0.9948,-0.0337,0.0389,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,640,T2,35022,35033,1.1000,0,0.4822,0.3656,0.5169,0.4758,870,4177,0.5178,0.1166,0.3656,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,663,T4,35635,35641,0.6000,1,0.5893,0.6657,0.7596,0.5421,870,4177,0.5893,0.0764,0.3343,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,707,T4,38495,38502,0.7000,1,0.9480,0.7681,0.4272,0.8493,870,4177,0.9480,-0.1798,0.2319,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,726,T2,39958,39970,1.2000,0,0.4581,0.3779,0.6056,0.4610,870,4177,0.5419,0.0802,0.3779,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,764,T4,41642,41655,1.3000,0,0.0501,0.0298,0.3421,0.1348,4177,870,0.9499,0.0203,0.0298,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,792,T2,44349,44389,4.0000,0,0.5406,0.9110,0.6056,0.5117,4177,870,0.4594,-0.3703,0.9110,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2007721,796,T2,44498,44509,1.1000,1,0.5040,0.8298,0.6056,0.4892,870,4177,0.5040,0.3258,0.1702,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,801,T4,45191,45214,2.3000,1,0.6148,0.6144,0.4272,0.5582,870,4177,0.6148,-0.0004,0.3856,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,821,T7,48107,48136,2.9000,1,0.3081,0.6255,0.4272,0.3659,4177,870,0.3081,0.3173,0.3745,reading,reading,reading,reading,reading,reading,after the anchor
+2007721,822,T2,48177,48191,1.4000,1,0.9964,0.9994,0.6056,0.9679,4177,870,0.9964,0.0029,0.0006,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,875,T7,51448,51468,2.0000,0,0.9978,0.9905,0.4272,0.9761,870,4177,0.0022,0.0073,0.9905,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2007721,919,T1,53824,53840,1.6000,0,0.0003,0.0003,0.4272,0.0065,4177,870,0.9997,-0.0000,0.0003,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,929,T2,54131,54147,1.6000,1,0.4230,0.7121,0.5169,0.4394,4177,870,0.4230,0.2891,0.2879,reading,positioning,reading,reading,reading,reading,reading
+2007721,933,T7,54231,54244,1.3000,1,0.0239,0.3407,0.3421,0.0886,4177,870,0.0239,0.3168,0.6593,after the anchor,reading,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2007721,934,T3,54251,54264,1.3000,1,0.7003,0.6514,0.2660,0.6150,4177,870,0.7003,-0.0489,0.3486,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2007721,937,T2,55101,55125,2.4000,0,0.5777,0.5408,0.5169,0.5348,4177,870,0.4223,0.0369,0.5408,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2007721,944,T4,55796,55805,0.9000,0,0.0730,0.2014,0.2660,0.1660,4177,870,0.9270,-0.1285,0.2014,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,0,T2,12,27,1.5000,1,0.9996,0.9996,0.7596,0.9918,870,2380,0.9996,-0.0001,0.0004,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,15,T7,1280,1295,1.5000,0,0.3363,0.1981,0.2660,0.3845,870,2380,0.6637,0.1382,0.1981,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,21,T4,1420,1435,1.5000,1,0.3374,0.6549,0.6878,0.3852,2380,870,0.3374,0.3175,0.3451,reading,reading,reading,reading,reading,reading,after the anchor
+2010085,38,T4,2127,2141,1.4000,1,0.7268,0.5978,0.4272,0.6336,870,2380,0.7268,-0.1290,0.4022,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,56,T7,4743,4769,2.6000,0,0.5761,0.8130,0.6056,0.5338,2380,870,0.4239,-0.2369,0.8130,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2010085,60,T2,5721,5737,1.6000,1,0.7330,0.7124,0.5169,0.6381,2380,870,0.7330,-0.0206,0.2876,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,61,T7,5768,5780,1.2000,0,0.1112,0.2894,0.4272,0.2092,870,2380,0.8888,-0.1783,0.2894,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,87,T2,6621,6646,2.5000,1,0.8156,0.8451,0.4272,0.7027,2380,870,0.8156,0.0295,0.1549,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,98,T4,6956,6974,1.8000,0,0.6858,0.3615,0.3421,0.6050,2380,870,0.3142,0.3243,0.3615,reading,reading,reading,reading,reading,reading,reading
+2010085,105,T4,7230,7240,1.0000,0,0.7612,0.7414,0.6056,0.6590,2380,870,0.2388,0.0199,0.7414,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,positioning,after the anchor
+2010085,110,T4,7718,7727,0.9000,0,0.2252,0.3115,0.4272,0.3075,2380,870,0.7748,-0.0863,0.3115,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,136,T2,9114,9124,1.0000,1,0.9984,0.9905,0.6056,0.9805,2380,870,0.9984,-0.0079,0.0095,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,144,T7,9382,9411,2.9000,1,0.2815,0.4976,0.5169,0.3478,2380,870,0.2815,0.2162,0.5024,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2010085,149,T2,10475,10488,1.3000,0,0.2934,0.3081,0.2016,0.3560,2380,870,0.7066,-0.0147,0.3081,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,153,T7,10588,10600,1.2000,0,0.8807,0.5269,0.5169,0.7640,870,2380,0.1193,0.3538,0.5269,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2010085,161,T2,11188,11199,1.1000,0,0.5709,0.1273,0.3421,0.5305,870,2380,0.4291,0.4436,0.1273,reading,positioning,reading,reading,reading,reading,reading
+2010085,170,T4,11601,11612,1.1000,0,0.7141,0.4433,0.4272,0.6246,870,2380,0.2859,0.2708,0.4433,reading,reading,reading,after the anchor,reading,reading,after the anchor
+2010085,206,T7,13830,13842,1.2000,1,0.1593,0.2187,0.2660,0.2545,870,2380,0.1593,0.0594,0.7813,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2010085,208,T7,14259,14308,4.9000,0,0.9636,0.8163,0.3421,0.8764,870,2380,0.0364,0.1472,0.8163,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2010085,210,T4,14341,14354,1.3000,0,0.2010,0.3411,0.2660,0.2890,2380,870,0.7990,-0.1401,0.3411,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,230,T7,14952,14970,1.8000,1,0.9273,0.9324,0.6056,0.8191,870,2380,0.9273,0.0052,0.0676,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,264,T7,16007,16047,4.0000,0,0.1450,0.1013,0.5169,0.2418,2380,870,0.8550,0.0436,0.1013,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,265,T1,16065,16079,1.4000,0,0.1544,0.0923,0.3421,0.2502,870,2380,0.8456,0.0621,0.0923,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,280,T2,18337,18381,4.4000,0,0.0393,0.0248,0.4272,0.1176,870,2380,0.9607,0.0146,0.0248,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,281,T7,18433,18448,1.5000,0,0.6108,0.8480,0.4272,0.5557,2380,870,0.3892,-0.2372,0.8480,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2010085,318,T2,19632,19646,1.4000,1,0.9653,0.9741,0.6056,0.8797,2380,870,0.9653,0.0087,0.0259,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,394,T2,23345,23375,3.0000,0,0.4633,0.5260,0.4272,0.4642,870,2380,0.5367,-0.0627,0.5260,positioning,reading,positioning,positioning,positioning,positioning,positioning
+2010085,401,T7,23781,23830,4.9000,1,0.5839,0.4344,0.4272,0.5387,870,2380,0.5839,-0.1494,0.5656,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,402,T2,23857,23871,1.4000,1,0.2118,0.8260,0.4272,0.2974,870,2380,0.2118,0.6142,0.1740,reading,reading,reading,reading,reading,reading,reading
+2010085,410,T2,24020,24030,1.0000,1,0.5718,0.8343,0.5169,0.5311,870,2380,0.5718,0.2624,0.1657,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,418,T7,24813,24825,1.2000,0,0.3210,0.1410,0.2660,0.3745,2380,870,0.6790,0.1800,0.1410,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,431,T2,25397,25408,1.1000,0,0.6607,0.1886,0.5169,0.5881,2380,870,0.3393,0.4721,0.1886,reading,reading,reading,reading,reading,reading,reading
+2010085,442,T7,26698,26717,1.9000,0,0.0139,0.0004,0.4272,0.0646,2380,870,0.9861,0.0135,0.0004,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,454,T4,27045,27055,1.0000,0,0.1052,0.3073,0.2016,0.2030,870,2380,0.8948,-0.2022,0.3073,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,457,T4,28847,28853,0.6000,1,0.4870,0.6649,0.4272,0.4788,870,2380,0.4870,0.1779,0.3351,reading,positioning,reading,reading,reading,reading,reading
+2010085,462,T7,29101,29109,0.8000,0,0.7801,0.7229,0.5169,0.6736,2380,870,0.2199,0.0572,0.7229,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2010085,465,T2,29139,29159,2.0000,1,0.9719,0.9913,0.6878,0.8932,870,2380,0.9719,0.0194,0.0087,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,473,T4,29523,29530,0.7000,1,0.9003,0.9166,0.5169,0.7856,2380,870,0.9003,0.0162,0.0834,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,475,T2,29733,29754,2.1000,0,0.4276,0.4472,0.5169,0.4423,870,2380,0.5724,-0.0196,0.4472,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,486,T2,30491,30516,2.5000,0,0.4166,0.7259,0.4272,0.4354,870,2380,0.5834,-0.3093,0.7259,positioning,after the anchor,positioning,positioning,positioning,positioning,positioning
+2010085,525,T2,31953,31960,0.7000,0,0.0097,0.0011,0.3421,0.0524,2380,870,0.9903,0.0086,0.0011,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,557,T2,35078,35097,1.9000,1,0.9522,0.9472,0.6056,0.8562,870,2380,0.9522,-0.0050,0.0528,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,559,T7,35143,35179,3.6000,0,0.2405,0.2755,0.4272,0.3188,870,2380,0.7595,-0.0351,0.2755,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,567,T3,35892,35903,1.1000,1,0.5496,0.8334,0.1497,0.5173,870,2380,0.5496,0.2838,0.1666,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,578,T4,36283,36318,3.5000,1,0.9599,0.9008,0.2660,0.8695,870,2380,0.9599,-0.0591,0.0992,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,633,T4,38339,38346,0.7000,0,0.1697,0.3615,0.4272,0.2634,870,2380,0.8303,-0.1918,0.3615,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,643,T7,39067,39074,0.7000,0,0.3854,0.4416,0.4272,0.4159,2380,870,0.6146,-0.0562,0.4416,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,659,T4,40278,40307,2.9000,1,0.7477,0.5826,0.3421,0.6489,2380,870,0.7477,-0.1651,0.4174,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,664,T7,40457,40464,0.7000,1,0.9705,0.8650,0.5169,0.8902,2380,870,0.9705,-0.1055,0.1350,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,666,T4,40508,40519,1.1000,1,0.4855,0.5516,0.4272,0.4778,2380,870,0.4855,0.0661,0.4484,reading,reading,reading,reading,reading,reading,reading
+2010085,672,T4,40777,40791,1.4000,1,0.6419,0.5462,0.3421,0.5758,2380,870,0.6419,-0.0958,0.4538,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,695,T4,41548,41554,0.6000,0,0.5258,0.5931,0.3421,0.5026,870,2380,0.4742,-0.0672,0.5931,after the anchor,reading,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2010085,711,T2,43302,43347,4.5000,0,0.0161,0.0097,0.4272,0.0706,870,2380,0.9839,0.0064,0.0097,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,721,T2,43670,43686,1.6000,1,0.5047,0.6781,0.5169,0.4896,870,2380,0.5047,0.1734,0.3219,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,786,T5,48530,48540,1.0000,0,0.2404,0.2590,0.4272,0.3187,2380,870,0.7596,-0.0186,0.2590,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,799,T4,48968,48992,2.4000,0,0.1425,0.2195,0.3421,0.2396,870,2380,0.8575,-0.0770,0.2195,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,800,T1,49009,49027,1.8000,0,0.0133,0.0042,0.4272,0.0632,2380,870,0.9867,0.0092,0.0042,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,806,T7,49238,49284,4.6000,0,0.6668,0.2303,0.3421,0.5922,870,2380,0.3332,0.4365,0.2303,reading,reading,reading,reading,reading,reading,after the anchor
+2010085,811,T2,49383,49392,0.9000,0,0.1192,0.0174,0.4272,0.2174,2380,870,0.8808,0.1018,0.0174,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,820,T7,50073,50084,1.1000,1,0.6498,0.7607,0.4272,0.5809,870,2380,0.6498,0.1109,0.2393,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,821,T7,50209,50284,7.5000,1,0.5960,0.4408,0.6056,0.5463,870,2380,0.5960,-0.1552,0.5592,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,830,T2,50536,50569,3.3000,1,0.5000,0.5000,0.5169,0.4867,870,2380,0.5000,0.0000,0.5000,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2010085,881,T4,54811,54817,0.6000,0,0.5191,0.4918,0.5169,0.4985,870,2380,0.4809,0.0273,0.4918,reading,reading,reading,reading,reading,reading,after the anchor
+2010085,883,T7,55091,55106,1.5000,0,0.2219,0.3575,0.2016,0.3050,2380,870,0.7781,-0.1356,0.3575,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,889,T2,55210,55247,3.7000,0,0.2686,0.2083,0.4272,0.3389,870,2380,0.7314,0.0602,0.2083,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,893,T2,55393,55398,0.5000,1,0.5672,0.8793,0.4272,0.5282,2380,870,0.5672,0.3121,0.1207,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,899,T2,57130,57154,2.4000,0,0.2460,0.3077,0.4272,0.3229,870,2380,0.7540,-0.0617,0.3077,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,904,T7,57541,57573,3.2000,1,0.6202,0.7048,0.6056,0.5617,2380,870,0.6202,0.0846,0.2952,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,905,T7,57597,57606,0.9000,0,0.3197,0.3971,0.3421,0.3736,870,2380,0.6803,-0.0774,0.3971,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,906,T2,57606,57620,1.4000,1,0.7346,0.8267,0.6878,0.6393,870,2380,0.7346,0.0921,0.1733,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,916,T4,58127,58138,1.1000,0,0.1209,0.0925,0.4272,0.2190,2380,870,0.8791,0.0283,0.0925,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2010085,920,T2,58403,58413,1.0000,1,0.9437,0.9844,0.6056,0.8426,2380,870,0.9437,0.0407,0.0156,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,13,T7,2678,2688,1.0000,1,0.5842,0.6418,0.2016,0.5388,867,868,0.5842,0.0576,0.3582,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,20,T7,3323,3336,1.3000,0,0.2388,0.2980,0.4272,0.3176,868,867,0.7612,-0.0592,0.2980,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,22,T7,3362,3372,1.0000,0,0.3949,0.2436,0.4272,0.4219,867,868,0.6051,0.1513,0.2436,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,54,T3,5260,5274,1.4000,0,0.6156,0.2946,0.6056,0.5588,867,868,0.3844,0.3211,0.2946,reading,reading,reading,reading,reading,reading,reading
+2011166,66,T4,6527,6541,1.4000,1,0.6242,0.8134,0.6878,0.5643,867,868,0.6242,0.1892,0.1866,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,92,T7,7939,7958,1.9000,0,0.5666,0.4362,0.4272,0.5279,868,867,0.4334,0.1304,0.4362,reading,reading,reading,reading,reading,reading,after the anchor
+2011166,117,T4,9580,9585,0.5000,0,0.5398,0.5235,0.2660,0.5112,867,868,0.4602,0.0163,0.5235,after the anchor,positioning,after the anchor,reading,after the anchor,after the anchor,reading
+2011166,137,T4,10545,10552,0.7000,0,0.4119,0.4803,0.1497,0.4325,868,867,0.5881,-0.0684,0.4803,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,146,T4,11063,11069,0.6000,1,0.8312,0.4138,0.4272,0.7162,868,867,0.8312,-0.4174,0.5862,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,148,T7,11284,11312,2.8000,1,0.7556,0.7069,0.6056,0.6548,868,867,0.7556,-0.0487,0.2931,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,151,T4,11348,11367,1.9000,1,0.9540,0.9942,0.7596,0.8592,867,868,0.9540,0.0402,0.0058,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,154,T7,11391,11399,0.8000,0,0.5150,0.4396,0.3421,0.4959,868,867,0.4850,0.0754,0.4396,reading,reading,reading,reading,reading,reading,reading
+2011166,157,T4,11669,11681,1.2000,0,0.3311,0.4132,0.4272,0.3811,867,868,0.6689,-0.0820,0.4132,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,161,T7,11940,11958,1.8000,1,0.6225,0.5817,0.5169,0.5632,867,868,0.6225,-0.0408,0.4183,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,165,T2,12446,12465,1.9000,0,0.2149,0.5074,0.2016,0.2997,868,867,0.7851,-0.2925,0.5074,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,168,T7,12506,12525,1.9000,0,0.1139,0.1537,0.2660,0.2120,868,867,0.8861,-0.0398,0.1537,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,208,T2,14815,14841,2.6000,1,0.5000,0.5000,0.5169,0.4867,867,868,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+2011166,209,T4,14893,14912,1.9000,0,0.0317,0.0475,0.3421,0.1041,868,867,0.9683,-0.0157,0.0475,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,217,T2,16054,16061,0.7000,0,0.2675,0.2937,0.5169,0.3381,868,867,0.7325,-0.0263,0.2937,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,218,T2,16068,16073,0.5000,1,0.7436,0.4855,0.5169,0.6458,868,867,0.7436,-0.2581,0.5145,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,222,T4,16166,16173,0.7000,1,0.7205,0.6197,0.5169,0.6291,867,868,0.7205,-0.1009,0.3803,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,238,T2,17971,17986,1.5000,1,0.9266,0.9034,0.3421,0.8181,867,868,0.9266,-0.0232,0.0966,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,251,T4,18876,18888,1.2000,0,0.6465,0.4493,0.4272,0.5788,867,868,0.3535,0.1972,0.4493,reading,reading,reading,reading,reading,reading,after the anchor
+2011166,255,T5,19223,19239,1.6000,0,0.3325,0.2993,0.2016,0.3820,867,868,0.6675,0.0332,0.2993,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,276,T7,21265,21270,0.5000,0,0.4622,0.5191,0.5169,0.4636,867,868,0.5378,-0.0569,0.5191,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,301,T3,23406,23421,1.5000,1,0.6029,0.8402,0.4272,0.5507,867,868,0.6029,0.2373,0.1598,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,315,T2,24626,24641,1.5000,1,0.4584,0.4886,0.5169,0.4612,868,867,0.4584,0.0302,0.5114,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2011166,317,T4,24669,24699,3.0000,1,0.5000,0.5000,0.5169,0.4867,868,867,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+2011166,320,T4,24811,24830,1.9000,0,0.0470,0.0261,0.4272,0.1300,868,867,0.9530,0.0209,0.0261,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,324,T4,25029,25041,1.2000,0,0.0351,0.0458,0.4272,0.1104,868,867,0.9649,-0.0107,0.0458,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,361,T2,29170,29202,3.2000,1,0.5000,0.5000,0.5169,0.4867,868,867,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+2011166,381,T2,41117,41123,0.6000,1,0.8206,0.6875,0.4272,0.7070,868,867,0.8206,-0.1331,0.3125,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,391,T4,41439,41461,2.2000,0,0.1938,0.1936,0.4272,0.2833,867,868,0.8062,0.0003,0.1936,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,396,T3,41925,41961,3.6000,1,0.9938,0.9922,0.5169,0.9555,867,868,0.9938,-0.0016,0.0078,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,399,T1,41992,42015,2.3000,0,0.0497,0.0059,0.4272,0.1341,867,868,0.9503,0.0438,0.0059,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,410,T2,42396,42409,1.3000,1,0.9836,0.9915,0.6056,0.9214,867,868,0.9836,0.0079,0.0085,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,413,T2,42536,42557,2.1000,1,0.5400,0.6978,0.4272,0.5114,867,868,0.5400,0.1578,0.3022,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,418,T4,43018,43030,1.2000,1,0.4315,0.5425,0.6056,0.4446,867,868,0.4315,0.1110,0.4575,reading,reading,reading,reading,reading,reading,after the anchor
+2011166,433,T2,43645,43660,1.5000,1,0.9773,0.9869,0.5169,0.9053,868,867,0.9773,0.0096,0.0131,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,460,T7,46296,46305,0.9000,0,0.9300,0.5959,0.4272,0.8227,867,868,0.0700,0.3341,0.5959,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2011166,480,T7,49107,49119,1.2000,1,0.8079,0.9154,0.6056,0.6962,868,867,0.8079,0.1075,0.0846,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,482,T4,49164,49182,1.8000,0,0.0008,0.0006,0.4272,0.0113,867,868,0.9992,0.0001,0.0006,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,495,T3,49746,49752,0.6000,1,0.9201,0.7262,0.7596,0.8096,867,868,0.9201,-0.1939,0.2738,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,497,T4,49791,49815,2.4000,0,0.6873,0.5391,0.5169,0.6060,868,867,0.3127,0.1482,0.5391,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2011166,503,T7,50121,50138,1.7000,0,0.4076,0.4191,0.5169,0.4298,867,868,0.5924,-0.0115,0.4191,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,505,T7,50182,50222,4.0000,0,0.0004,0.0005,0.4272,0.0077,868,867,0.9996,-0.0001,0.0005,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,507,T4,50535,50546,1.1000,0,0.3640,0.4805,0.2660,0.4023,867,868,0.6360,-0.1165,0.4805,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,576,T7,56212,56225,1.3000,1,0.9991,0.9998,0.6056,0.9857,867,868,0.9991,0.0007,0.0002,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,592,T7,57031,57040,0.9000,0,0.4147,0.2878,0.1497,0.4343,868,867,0.5853,0.1269,0.2878,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,593,T1,57072,57094,2.2000,0,0.0047,0.0013,0.4272,0.0343,867,868,0.9953,0.0034,0.0013,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,620,T2,58533,58546,1.3000,0,0.7145,0.5374,0.4272,0.6249,868,867,0.2855,0.1771,0.5374,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2011166,632,T7,59436,59442,0.6000,0,0.6330,0.2702,0.5169,0.5699,867,868,0.3670,0.3627,0.2702,reading,reading,reading,reading,reading,reading,reading
+2011166,657,T2,62178,62211,3.3000,1,0.9290,0.9437,0.5169,0.8215,868,867,0.9290,0.0146,0.0563,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,665,T7,63506,63524,1.8000,0,0.0246,0.0453,0.4272,0.0900,867,868,0.9754,-0.0208,0.0453,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,684,T4,64138,64150,1.2000,1,0.6795,0.8469,0.5169,0.6007,867,868,0.6795,0.1674,0.1531,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,690,T7,64486,64491,0.5000,1,0.6114,0.5109,0.5169,0.5561,867,868,0.6114,-0.1005,0.4891,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,691,T4,64510,64519,0.9000,1,0.6256,0.5840,0.4272,0.5652,867,868,0.6256,-0.0415,0.4160,positioning,positioning,positioning,positioning,positioning,after the anchor,positioning
+2011166,692,T7,64519,64538,1.9000,1,0.7634,0.7656,0.6056,0.6607,867,868,0.7634,0.0022,0.2344,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,703,T7,64989,65005,1.6000,1,0.7910,0.8045,0.2016,0.6823,868,867,0.7910,0.0135,0.1955,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,706,T2,65482,65493,1.1000,1,0.3195,0.1526,0.3421,0.3735,867,868,0.3195,-0.1669,0.8474,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2011166,719,T7,66646,66664,1.8000,1,0.5000,0.5000,0.5169,0.4867,868,867,0.5000,0.0000,0.5000,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2011166,724,T7,67558,67577,1.9000,1,0.9907,0.9909,0.5169,0.9435,868,867,0.9907,0.0002,0.0091,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,727,T2,68175,68194,1.9000,0,0.3513,0.2123,0.5169,0.3942,867,868,0.6487,0.1390,0.2123,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,746,T7,69929,69948,1.9000,1,0.6956,0.7183,0.5169,0.6117,868,867,0.6956,0.0227,0.2817,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2011166,747,T4,69964,69979,1.5000,0,0.8391,0.7927,0.6056,0.7234,867,868,0.1609,0.0464,0.7927,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2011166,754,T4,71237,71249,1.2000,0,0.4095,0.4623,0.2660,0.4310,868,867,0.5905,-0.0528,0.4623,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,35,T4,5556,5562,0.6000,0,0.2769,0.3536,0.2660,0.3447,869,1803,0.7231,-0.0766,0.3536,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,41,T2,6292,6317,2.5000,1,0.1749,0.7268,0.3421,0.2679,869,1803,0.1749,0.5519,0.2732,reading,reading,reading,reading,reading,reading,after the anchor
+2013725,84,T4,9546,9554,0.8000,0,0.2874,0.3605,0.3421,0.3519,869,1803,0.7126,-0.0731,0.3605,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,97,T2,10022,10035,1.3000,0,0.1330,0.1937,0.4272,0.2308,1803,869,0.8670,-0.0606,0.1937,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,112,T2,10949,10956,0.7000,0,0.0067,0.0079,0.2016,0.0422,869,1803,0.9933,-0.0011,0.0079,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,164,T2,14674,14692,1.8000,1,0.4428,0.4593,0.5169,0.4516,1803,869,0.4428,0.0164,0.5407,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2013725,169,T7,15076,15086,1.0000,0,0.0006,0.0005,0.2660,0.0102,869,1803,0.9994,0.0001,0.0005,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,181,T7,16058,16082,2.4000,0,0.0350,0.1031,0.4272,0.1101,869,1803,0.9650,-0.0681,0.1031,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,201,T7,16853,16872,1.9000,0,0.2209,0.6139,0.5169,0.3042,869,1803,0.7791,-0.3930,0.6139,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,209,T7,17409,17437,2.8000,0,0.1262,0.1275,0.2660,0.2242,869,1803,0.8738,-0.0013,0.1275,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,210,T4,17540,17550,1.0000,1,0.9978,0.9996,0.7596,0.9760,869,1803,0.9978,0.0018,0.0004,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,216,T2,17713,17725,1.2000,1,0.9976,0.9997,0.6056,0.9747,869,1803,0.9976,0.0021,0.0003,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,249,T4,19429,19436,0.7000,0,0.4708,0.1702,0.4272,0.4688,869,1803,0.5292,0.3006,0.1702,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,273,T2,20804,20820,1.6000,0,0.4411,0.1773,0.4272,0.4505,869,1803,0.5589,0.2638,0.1773,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,276,T7,20851,20860,0.9000,0,0.1874,0.1490,0.3421,0.2781,1803,869,0.8126,0.0384,0.1490,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,281,T3,21696,21710,1.4000,0,0.7168,0.2050,0.2660,0.6265,1803,869,0.2832,0.5118,0.2050,reading,reading,reading,reading,reading,reading,reading
+2013725,303,T7,22346,22355,0.9000,0,0.4601,0.1951,0.4272,0.4623,1803,869,0.5399,0.2650,0.1951,positioning,reading,positioning,positioning,positioning,positioning,positioning
+2013725,306,T4,22401,22407,0.6000,0,0.8045,0.3660,0.3421,0.6933,869,1803,0.1955,0.4385,0.3660,reading,reading,reading,reading,reading,reading,after the anchor
+2013725,308,T7,22486,22494,0.8000,1,0.9096,0.9815,0.3421,0.7965,869,1803,0.9096,0.0720,0.0185,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,325,T4,23809,23815,0.6000,1,0.9986,0.9982,0.6056,0.9821,869,1803,0.9986,-0.0004,0.0018,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,331,T7,24517,24535,1.8000,0,0.0767,0.0091,0.3421,0.1707,1803,869,0.9233,0.0676,0.0091,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,336,T4,24688,24695,0.7000,1,0.9995,0.9991,0.5169,0.9903,1803,869,0.9995,-0.0004,0.0009,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,357,T2,25944,25975,3.1000,0,0.3732,0.2818,0.5169,0.4082,1803,869,0.6268,0.0914,0.2818,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,367,T2,26225,26241,1.6000,1,0.6953,0.6771,0.5169,0.6115,869,1803,0.6953,-0.0182,0.3229,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,373,T7,26790,26803,1.3000,0,0.0825,0.0657,0.2016,0.1777,869,1803,0.9175,0.0168,0.0657,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,378,T7,26931,26974,4.3000,0,0.5000,0.5000,0.5169,0.4867,869,1803,0.5000,0.0000,0.5000,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2013725,391,T4,28455,28466,1.1000,1,0.6065,0.5977,0.5169,0.5530,869,1803,0.6065,-0.0088,0.4023,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,396,T4,28602,28608,0.6000,1,0.9869,0.9198,0.6878,0.9309,869,1803,0.9869,-0.0670,0.0802,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,404,T2,29120,29132,1.2000,1,0.6292,0.6980,0.6056,0.5675,869,1803,0.6292,0.0687,0.3020,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,408,T4,29200,29206,0.6000,1,0.5719,0.5828,0.5169,0.5312,1803,869,0.5719,0.0109,0.4172,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,409,T4,29225,29233,0.8000,1,0.7716,0.6878,0.4272,0.6669,1803,869,0.7716,-0.0837,0.3122,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,425,T4,30446,30457,1.1000,0,0.2013,0.1446,0.4272,0.2892,1803,869,0.7987,0.0567,0.1446,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,426,T2,30476,30488,1.2000,1,0.8048,0.9270,0.4272,0.6935,1803,869,0.8048,0.1223,0.0730,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,430,T2,30734,30739,0.5000,0,0.0174,0.0152,0.4272,0.0739,869,1803,0.9826,0.0022,0.0152,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,433,T4,30837,30846,0.9000,0,0.2548,0.1972,0.2660,0.3292,1803,869,0.7452,0.0576,0.1972,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,434,T4,30861,30869,0.8000,0,0.4464,0.0839,0.6056,0.4538,869,1803,0.5536,0.3626,0.0839,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,460,T2,40981,41006,2.5000,1,0.9981,0.9941,0.6056,0.9781,1803,869,0.9981,-0.0040,0.0059,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,486,T4,42279,42287,0.8000,1,0.5383,0.9659,0.4272,0.5103,869,1803,0.5383,0.4276,0.0341,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,491,T7,43083,43098,1.5000,0,0.8203,0.7033,0.5169,0.7067,1803,869,0.1797,0.1170,0.7033,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2013725,495,T2,43473,43516,4.3000,0,0.5000,0.5000,0.5169,0.4867,869,1803,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+2013725,499,T7,43820,43868,4.8000,0,0.8944,0.4611,0.6056,0.7788,869,1803,0.1056,0.4333,0.4611,reading,after the anchor,reading,after the anchor,reading,reading,after the anchor
+2013725,501,T2,43904,43945,4.1000,1,0.9260,0.9000,0.4272,0.8174,869,1803,0.9260,-0.0261,0.1000,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,512,T7,44939,44955,1.6000,0,0.0486,0.0798,0.4272,0.1324,1803,869,0.9514,-0.0312,0.0798,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,562,T2,47492,47503,1.1000,1,0.1757,0.4376,0.6056,0.2685,869,1803,0.1757,0.2620,0.5624,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2013725,564,T2,47520,47539,1.9000,1,0.4746,0.6170,0.5169,0.4711,869,1803,0.4746,0.1424,0.3830,reading,positioning,reading,after the anchor,reading,reading,reading
+2013725,584,T2,49223,49240,1.7000,0,0.2776,0.2139,0.5169,0.3452,869,1803,0.7224,0.0637,0.2139,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,585,T7,49263,49272,0.9000,0,0.4401,0.5811,0.4272,0.4500,1803,869,0.5599,-0.1410,0.5811,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,614,T4,51276,51288,1.2000,1,0.5657,0.7385,0.4272,0.5273,1803,869,0.5657,0.1728,0.2615,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,627,T7,52826,52867,4.1000,1,0.0068,0.0237,0.2660,0.0425,869,1803,0.0068,0.0169,0.9763,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2013725,642,T2,53494,53525,3.1000,1,0.2941,0.3234,0.5169,0.3565,1803,869,0.2941,0.0293,0.6766,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2013725,643,T2,53583,53597,1.4000,1,0.3098,0.7982,0.3421,0.3670,1803,869,0.3098,0.4884,0.2018,reading,reading,reading,reading,reading,reading,after the anchor
+2013725,644,T7,53608,53617,0.9000,0,0.6153,0.3054,0.2660,0.5585,869,1803,0.3847,0.3099,0.3054,reading,reading,reading,reading,reading,reading,after the anchor
+2013725,647,T4,53700,53709,0.9000,0,0.5596,0.4834,0.5169,0.5235,1803,869,0.4404,0.0762,0.4834,reading,reading,reading,after the anchor,reading,reading,reading
+2013725,648,T4,53709,53725,1.6000,1,0.4712,0.7300,0.5169,0.4691,1803,869,0.4712,0.2588,0.2700,reading,positioning,reading,reading,reading,reading,reading
+2013725,650,T2,53751,53766,1.5000,0,0.2031,0.5196,0.6878,0.2906,869,1803,0.7969,-0.3165,0.5196,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,652,T4,53785,53795,1.0000,0,0.3213,0.2870,0.4272,0.3747,869,1803,0.6787,0.0343,0.2870,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,678,T4,54907,54915,0.8000,1,0.6942,0.8358,0.2016,0.6107,1803,869,0.6942,0.1417,0.1642,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,679,T3,54915,54939,2.4000,1,0.8873,0.8705,0.4272,0.7710,1803,869,0.8873,-0.0168,0.1295,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,681,T1,55000,55026,2.6000,0,0.2760,0.0589,0.3421,0.3441,1803,869,0.7240,0.2171,0.0589,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,694,T2,55437,55458,2.1000,1,0.1462,0.2338,0.5169,0.2429,1803,869,0.1462,0.0876,0.7662,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2013725,695,T7,55509,55515,0.6000,1,0.9983,0.9971,0.5169,0.9794,1803,869,0.9983,-0.0012,0.0029,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,719,T3,56947,56998,5.1000,1,0.7463,0.9878,0.6878,0.6478,869,1803,0.7463,0.2415,0.0122,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,746,T2,58290,58335,4.5000,0,0.0541,0.1509,0.5169,0.1406,1803,869,0.9459,-0.0968,0.1509,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,752,T7,59140,59146,0.6000,0,0.2536,0.4191,0.4272,0.3283,869,1803,0.7464,-0.1655,0.4191,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,757,T4,59489,59494,0.5000,1,0.8847,0.5065,0.6056,0.7682,869,1803,0.8847,-0.3781,0.4935,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,774,T4,60046,60053,0.7000,0,0.4697,0.1076,0.4272,0.4682,1803,869,0.5303,0.3622,0.1076,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,781,T2,60561,60582,2.1000,1,0.5259,0.6328,0.6056,0.5027,869,1803,0.5259,0.1069,0.3672,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,793,T4,61121,61128,0.7000,1,0.6046,0.4136,0.5169,0.5517,1803,869,0.6046,-0.1910,0.5864,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,816,T3,62468,62479,1.1000,0,0.0840,0.2459,0.3421,0.1794,1803,869,0.9160,-0.1619,0.2459,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,846,T4,63995,64011,1.6000,1,0.4163,0.5420,0.4272,0.4352,1803,869,0.4163,0.1257,0.4580,reading,reading,reading,reading,reading,reading,after the anchor
+2013725,875,T4,67599,67609,1.0000,0,0.1513,0.4140,0.4272,0.2475,869,1803,0.8487,-0.2626,0.4140,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2013725,897,T4,68698,68706,0.8000,1,0.5078,0.5907,0.5169,0.4916,1803,869,0.5078,0.0829,0.4093,positioning,reading,positioning,positioning,positioning,positioning,positioning
+2013725,899,T4,68736,68754,1.8000,0,0.5000,0.2986,0.2660,0.4867,869,1803,0.5000,0.2014,0.2986,positioning,reading,positioning,positioning,positioning,positioning,positioning
+2013725,919,T4,69725,69731,0.6000,0,0.0462,0.0314,0.4272,0.1288,1803,869,0.9538,0.0149,0.0314,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,6,T7,2564,2576,1.2000,0,0.6079,0.3633,0.4272,0.5538,1803,4177,0.3921,0.2446,0.3633,reading,reading,reading,reading,reading,reading,after the anchor
+2015213,13,T7,3097,3109,1.2000,0,0.8067,0.3152,0.6056,0.6951,4177,1803,0.1933,0.4914,0.3152,reading,reading,reading,reading,reading,reading,after the anchor
+2015213,28,T4,3899,3917,1.8000,1,0.5753,0.6982,0.5169,0.5333,4177,1803,0.5753,0.1229,0.3018,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,49,T7,4672,4751,7.9000,0,0.0305,0.0900,0.2016,0.1018,1803,4177,0.9695,-0.0595,0.0900,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,69,T2,5288,5316,2.8000,1,0.9938,0.9212,0.6878,0.9553,1803,4177,0.9938,-0.0725,0.0788,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,85,T7,6279,6284,0.5000,0,0.0122,0.0994,0.5169,0.0601,1803,4177,0.9878,-0.0872,0.0994,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,106,T4,7039,7056,1.7000,0,0.1458,0.1963,0.6056,0.2426,1803,4177,0.8542,-0.0505,0.1963,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,119,T2,7772,7778,0.6000,0,0.0360,0.0233,0.3421,0.1119,1803,4177,0.9640,0.0127,0.0233,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,144,T2,9039,9085,4.6000,0,0.5000,0.5000,0.5169,0.4867,1803,4177,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+2015213,162,T7,10193,10203,1.0000,1,0.8562,0.8824,0.5169,0.7394,1803,4177,0.8562,0.0262,0.1176,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,210,T7,12873,12886,1.3000,0,0.0877,0.1276,0.6056,0.1837,4177,1803,0.9123,-0.0399,0.1276,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,217,T2,13784,13800,1.6000,0,0.7195,0.4181,0.6056,0.6284,4177,1803,0.2805,0.3014,0.4181,reading,reading,reading,after the anchor,reading,reading,after the anchor
+2015213,218,T4,13809,13816,0.7000,0,0.5790,0.2002,0.3421,0.5356,1803,4177,0.4210,0.3789,0.2002,reading,positioning,reading,reading,reading,reading,reading
+2015213,233,T7,14517,14525,0.8000,0,0.6337,0.1105,0.3421,0.5704,1803,4177,0.3663,0.5232,0.1105,reading,positioning,reading,reading,reading,reading,reading
+2015213,238,T7,14832,14845,1.3000,1,0.7545,0.7713,0.6056,0.6539,1803,4177,0.7545,0.0168,0.2287,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,255,T7,16454,16480,2.6000,1,0.8167,0.6920,0.6056,0.7036,4177,1803,0.8167,-0.1247,0.3080,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,270,T7,18094,18112,1.8000,1,0.1090,0.0868,0.3421,0.2070,1803,4177,0.1090,-0.0222,0.9132,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2015213,281,T7,19020,19042,2.2000,1,0.8882,0.8390,0.6878,0.7720,4177,1803,0.8882,-0.0492,0.1610,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,316,T4,20778,20796,1.8000,0,0.1701,0.2431,0.5169,0.2638,4177,1803,0.8299,-0.0730,0.2431,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,318,T4,20894,20904,1.0000,0,0.4804,0.5652,0.3421,0.4747,1803,4177,0.5196,-0.0848,0.5652,positioning,reading,positioning,positioning,positioning,positioning,positioning
+2015213,319,T7,20965,20983,1.8000,0,0.1689,0.0793,0.4272,0.2628,4177,1803,0.8311,0.0896,0.0793,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,321,T4,21043,21054,1.1000,1,0.3886,0.4384,0.3421,0.4179,4177,1803,0.3886,0.0497,0.5616,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2015213,352,T7,22746,22770,2.4000,0,0.2376,0.2175,0.5169,0.3167,4177,1803,0.7624,0.0201,0.2175,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,353,T7,22801,22816,1.5000,1,0.5591,0.6184,0.5169,0.5232,4177,1803,0.5591,0.0594,0.3816,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,371,T2,23632,23652,2.0000,1,0.0928,0.5527,0.5169,0.1895,1803,4177,0.0928,0.4599,0.4473,reading,reading,reading,reading,reading,reading,after the anchor
+2015213,372,T7,23660,23685,2.5000,0,0.9590,0.9566,0.3421,0.8679,4177,1803,0.0410,0.0024,0.9566,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2015213,374,T7,23720,23731,1.1000,0,0.0390,0.0519,0.3421,0.1171,1803,4177,0.9610,-0.0128,0.0519,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,384,T2,24092,24104,1.2000,1,0.3972,0.4997,0.5169,0.4233,1803,4177,0.3972,0.1025,0.5003,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2015213,392,T2,24330,24345,1.5000,0,0.8916,0.6028,0.4272,0.7758,4177,1803,0.1084,0.2888,0.6028,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2015213,403,T2,24679,24742,6.3000,1,0.5000,0.5000,0.5169,0.4867,1803,4177,0.5000,0.0000,0.5000,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2015213,407,T2,25155,25196,4.1000,0,0.2316,0.0927,0.3421,0.3122,4177,1803,0.7684,0.1389,0.0927,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,413,T4,25338,25362,2.4000,1,0.9128,0.9635,0.6056,0.8004,1803,4177,0.9128,0.0507,0.0365,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,438,T4,27090,27103,1.3000,0,0.0005,0.0003,0.3421,0.0084,4177,1803,0.9995,0.0002,0.0003,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,445,T2,27264,27287,2.3000,0,0.7486,0.6099,0.3421,0.6495,1803,4177,0.2514,0.1387,0.6099,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2015213,461,T4,27735,27753,1.8000,1,0.8730,0.9911,0.5169,0.7560,1803,4177,0.8730,0.1181,0.0089,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,486,T2,30418,30427,0.9000,0,0.1380,0.2210,0.2660,0.2354,1803,4177,0.8620,-0.0830,0.2210,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,489,T2,30722,30763,4.1000,0,0.0254,0.0090,0.4272,0.0917,4177,1803,0.9746,0.0164,0.0090,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,491,T2,40286,40302,1.6000,1,0.9993,0.9994,0.7596,0.9884,4177,1803,0.9993,0.0001,0.0006,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,493,T7,40378,40401,2.3000,0,0.0069,0.0005,0.4272,0.0430,1803,4177,0.9931,0.0064,0.0005,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,503,T4,41020,41031,1.1000,1,0.2635,0.5193,0.4272,0.3353,1803,4177,0.2635,0.2558,0.4807,reading,reading,reading,reading,reading,reading,after the anchor
+2015213,512,T7,41712,41731,1.9000,1,0.4719,0.7716,0.4272,0.4695,1803,4177,0.4719,0.2997,0.2284,reading,positioning,reading,reading,reading,reading,reading
+2015213,517,T4,41860,41871,1.1000,0,0.0526,0.1248,0.3421,0.1384,4177,1803,0.9474,-0.0722,0.1248,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,520,T7,42142,42175,3.3000,0,0.2555,0.0638,0.6056,0.3296,1803,4177,0.7445,0.1917,0.0638,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,527,T4,42561,42574,1.3000,0,0.4511,0.4887,0.4272,0.4567,4177,1803,0.5489,-0.0376,0.4887,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,531,T2,42631,42647,1.6000,1,0.4652,0.8629,0.5169,0.4654,4177,1803,0.4652,0.3977,0.1371,reading,positioning,reading,reading,reading,reading,reading
+2015213,544,T2,43662,43678,1.6000,1,0.9988,0.9983,0.6056,0.9836,1803,4177,0.9988,-0.0005,0.0017,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,555,T7,44202,44231,2.9000,1,0.7184,0.6967,0.6056,0.6276,4177,1803,0.7184,-0.0216,0.3033,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,556,T2,44249,44269,2.0000,1,0.2483,0.2442,0.4272,0.3245,4177,1803,0.2483,-0.0042,0.7558,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2015213,572,T7,45044,45062,1.8000,1,0.8434,0.9359,0.6056,0.7273,4177,1803,0.8434,0.0925,0.0641,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,573,T7,45095,45122,2.7000,0,0.0014,0.0008,0.4272,0.0165,1803,4177,0.9986,0.0006,0.0008,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,581,T4,45437,45449,1.2000,0,0.4838,0.5600,0.4272,0.4768,4177,1803,0.5162,-0.0762,0.5600,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,589,T7,46369,46385,1.6000,1,0.4343,0.2228,0.5169,0.4464,1803,4177,0.4343,-0.2115,0.7772,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2015213,591,T7,46619,46644,2.5000,1,0.2781,0.2417,0.7596,0.3455,1803,4177,0.2781,-0.0364,0.7583,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2015213,613,T2,48602,48607,0.5000,0,0.0031,0.0005,0.4272,0.0266,1803,4177,0.9969,0.0026,0.0005,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,619,T7,48749,48774,2.5000,1,0.3907,0.3501,0.4272,0.4192,1803,4177,0.3907,-0.0406,0.6499,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2015213,625,T2,49504,49529,2.5000,0,0.7366,0.5842,0.6056,0.6407,1803,4177,0.2634,0.1524,0.5842,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2015213,634,T7,51637,51660,2.3000,1,0.4676,0.4407,0.5169,0.4668,1803,4177,0.4676,-0.0269,0.5593,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2015213,653,T2,53219,53238,1.9000,0,0.5602,0.3434,0.6056,0.5239,4177,1803,0.4398,0.2168,0.3434,reading,positioning,reading,after the anchor,reading,reading,reading
+2015213,664,T2,53572,53591,1.9000,1,0.9267,0.9148,0.3421,0.8183,4177,1803,0.9267,-0.0119,0.0852,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,669,T7,53692,53702,1.0000,0,0.8626,0.4995,0.4272,0.7456,1803,4177,0.1374,0.3632,0.4995,reading,reading,reading,reading,after the anchor,reading,after the anchor
+2015213,678,T4,54401,54408,0.7000,0,0.1894,0.3577,0.2016,0.2797,1803,4177,0.8106,-0.1683,0.3577,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,699,T4,55687,55703,1.6000,1,0.3344,0.4507,0.2660,0.3833,1803,4177,0.3344,0.1163,0.5493,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2015213,716,T7,56984,57010,2.6000,0,0.0025,0.0011,0.4272,0.0232,1803,4177,0.9975,0.0014,0.0011,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,727,T2,57916,57936,2.0000,1,0.4801,0.8014,0.4272,0.4745,4177,1803,0.4801,0.3213,0.1986,reading,positioning,reading,reading,reading,reading,reading
+2015213,733,T4,58040,58056,1.6000,1,0.3766,0.7800,0.6056,0.4104,4177,1803,0.3766,0.4034,0.2200,reading,positioning,reading,reading,reading,reading,reading
+2015213,734,T2,58081,58093,1.2000,0,0.2264,0.4023,0.5169,0.3084,1803,4177,0.7736,-0.1759,0.4023,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,735,T4,58112,58121,0.9000,0,0.1676,0.3805,0.5169,0.2617,4177,1803,0.8324,-0.2128,0.3805,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,747,T2,59118,59167,4.9000,1,0.9994,0.9987,0.6878,0.9892,1803,4177,0.9994,-0.0007,0.0013,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,750,T4,59200,59210,1.0000,0,0.6164,0.3146,0.5169,0.5593,1803,4177,0.3836,0.3018,0.3146,reading,reading,reading,reading,reading,reading,reading
+2015213,756,T1,60385,60399,1.4000,0,0.0630,0.1757,0.5169,0.1531,1803,4177,0.9370,-0.1127,0.1757,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,809,T7,65018,65023,0.5000,0,0.7120,0.8352,0.6878,0.6231,4177,1803,0.2880,-0.1232,0.8352,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2015213,814,T7,65201,65213,1.2000,0,0.7755,0.7745,0.4272,0.6700,4177,1803,0.2245,0.0010,0.7745,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2015213,815,T2,65238,65259,2.1000,1,0.5536,0.7831,0.6056,0.5198,4177,1803,0.5536,0.2296,0.2169,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,828,T4,66177,66188,1.1000,0,0.0452,0.0129,0.4272,0.1271,1803,4177,0.9548,0.0322,0.0129,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,829,T4,66193,66215,2.2000,0,0.8131,0.7584,0.6056,0.7005,4177,1803,0.1869,0.0546,0.7584,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2015213,843,T4,67315,67324,0.9000,0,0.0863,0.1564,0.2660,0.1822,4177,1803,0.9137,-0.0701,0.1564,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,847,T4,67467,67484,1.7000,1,0.4705,0.7690,0.4272,0.4687,4177,1803,0.4705,0.2984,0.2310,reading,positioning,reading,reading,reading,reading,reading
+2015213,851,T7,67866,67892,2.6000,0,0.3190,0.2534,0.2660,0.3732,4177,1803,0.6810,0.0656,0.2534,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2015213,855,T4,68705,68715,1.0000,0,0.3923,0.1530,0.2016,0.4202,4177,1803,0.6077,0.2392,0.1530,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,4,T7,1366,1393,2.7000,0,0.6039,0.5532,0.5169,0.5513,866,1803,0.3961,0.0507,0.5532,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2016236,11,T4,1513,1522,0.9000,1,0.5039,0.6669,0.4272,0.4892,1803,866,0.5039,0.1630,0.3331,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,20,T2,1827,1842,1.5000,1,0.7224,0.9167,0.4272,0.6305,1803,866,0.7224,0.1943,0.0833,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,24,T7,1974,1994,2.0000,1,0.0884,0.4741,0.4272,0.1846,1803,866,0.0884,0.3857,0.5259,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2016236,28,T4,2099,2112,1.3000,0,0.1320,0.1838,0.5169,0.2298,1803,866,0.8680,-0.0518,0.1838,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,57,T7,4725,4752,2.7000,0,0.0590,0.0489,0.4272,0.1476,1803,866,0.9410,0.0101,0.0489,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,58,T4,4834,4855,2.1000,0,0.0432,0.0067,0.3421,0.1240,866,1803,0.9568,0.0366,0.0067,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,63,T7,4979,4997,1.8000,0,0.4058,0.3122,0.5169,0.4287,866,1803,0.5942,0.0936,0.3122,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,84,T4,5925,5939,1.4000,0,0.6177,0.5669,0.3421,0.5601,1803,866,0.3823,0.0508,0.5669,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2016236,90,T3,6126,6142,1.6000,1,0.0217,0.1333,0.3421,0.0839,866,1803,0.0217,0.1115,0.8667,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2016236,110,T4,7717,7727,1.0000,1,0.9982,0.9983,0.6056,0.9784,866,1803,0.9982,0.0001,0.0017,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,116,T2,7925,7940,1.5000,0,0.1293,0.0390,0.4272,0.2272,1803,866,0.8707,0.0902,0.0390,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,125,T2,9437,9464,2.7000,0,0.0710,0.0970,0.4272,0.1636,866,1803,0.9290,-0.0260,0.0970,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,136,T7,9943,9956,1.3000,1,0.9073,0.9639,0.6056,0.7938,866,1803,0.9073,0.0566,0.0361,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,138,T2,9979,10005,2.6000,0,0.3369,0.0965,0.5169,0.3849,1803,866,0.6631,0.2404,0.0965,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,142,T2,10078,10095,1.7000,1,0.6299,0.9219,0.6056,0.5680,1803,866,0.6299,0.2920,0.0781,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,156,T2,12256,12262,0.6000,1,0.8408,0.6395,0.4272,0.7249,1803,866,0.8408,-0.2013,0.3605,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,166,T2,12816,12831,1.5000,1,0.2306,0.2249,0.2660,0.3115,866,1803,0.2306,-0.0057,0.7751,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2016236,182,T2,13952,13980,2.8000,0,0.3324,0.4324,0.4272,0.3819,866,1803,0.6676,-0.1000,0.4324,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,203,T4,15046,15061,1.5000,0,0.7475,0.2016,0.6878,0.6488,866,1803,0.2525,0.5459,0.2016,reading,positioning,reading,reading,reading,reading,reading
+2016236,206,T2,15142,15165,2.3000,1,0.5000,0.5000,0.5169,0.4867,866,1803,0.5000,0.0000,0.5000,after the anchor,positioning,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+2016236,217,T2,15473,15478,0.5000,0,0.6812,0.4617,0.6056,0.6018,866,1803,0.3188,0.2195,0.4617,reading,reading,reading,reading,reading,reading,after the anchor
+2016236,218,T4,15488,15493,0.5000,0,0.4557,0.4072,0.4272,0.4595,1803,866,0.5443,0.0484,0.4072,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,220,T2,15728,15738,1.0000,1,0.8637,0.9710,0.4272,0.7467,1803,866,0.8637,0.1072,0.0290,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,222,T4,16005,16011,0.6000,0,0.1088,0.2437,0.3421,0.2067,1803,866,0.8912,-0.1349,0.2437,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,227,T4,16554,16560,0.6000,1,0.7516,0.7082,0.4272,0.6518,1803,866,0.7516,-0.0433,0.2918,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,228,T4,16568,16581,1.3000,0,0.0322,0.0367,0.3421,0.1050,866,1803,0.9678,-0.0046,0.0367,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,244,T2,17076,17084,0.8000,0,0.5224,0.3579,0.3421,0.5005,1803,866,0.4776,0.1645,0.3579,reading,positioning,reading,after the anchor,reading,reading,reading
+2016236,245,T1,17106,17116,1.0000,0,0.0066,0.0008,0.4272,0.0417,866,1803,0.9934,0.0058,0.0008,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,258,T7,18354,18383,2.9000,1,0.8980,0.9140,0.6878,0.7829,1803,866,0.8980,0.0160,0.0860,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,286,T2,20541,20592,5.1000,0,0.3598,0.5614,0.5169,0.3996,866,1803,0.6402,-0.2016,0.5614,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,291,T4,20671,20679,0.8000,0,0.1902,0.1350,0.2016,0.2804,1803,866,0.8098,0.0552,0.1350,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,331,T7,22868,22884,1.6000,0,0.3995,0.5105,0.2016,0.4248,866,1803,0.6005,-0.1110,0.5105,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,339,T7,23331,23355,2.4000,0,0.2783,0.2784,0.3421,0.3456,866,1803,0.7217,-0.0001,0.2784,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,387,T2,25480,25491,1.1000,0,0.3815,0.4037,0.5169,0.4135,1803,866,0.6185,-0.0221,0.4037,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,404,T7,26082,26114,3.2000,0,0.3280,0.2837,0.4272,0.3790,1803,866,0.6720,0.0442,0.2837,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,407,T7,26433,26445,1.2000,0,0.0565,0.0092,0.5169,0.1441,1803,866,0.9435,0.0473,0.0092,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,444,T7,29029,29045,1.6000,0,0.4235,0.3052,0.5169,0.4397,866,1803,0.5765,0.1183,0.3052,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,446,T4,29976,29992,1.6000,0,0.5349,0.8268,0.7596,0.5082,866,1803,0.4651,-0.2919,0.8268,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2016236,448,T3,30350,30394,4.4000,1,0.6034,0.6157,0.6056,0.5510,866,1803,0.6034,0.0123,0.3843,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,463,T2,31301,31347,4.6000,1,0.0170,0.0267,0.5169,0.0728,1803,866,0.0170,0.0097,0.9733,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2016236,467,T4,31475,31486,1.1000,0,0.5269,0.4534,0.6878,0.5033,866,1803,0.4731,0.0734,0.4534,reading,reading,reading,reading,reading,reading,after the anchor
+2016236,481,T4,41301,41306,0.5000,0,0.2086,0.3061,0.3421,0.2949,1803,866,0.7914,-0.0975,0.3061,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,491,T7,41590,41605,1.5000,0,0.0587,0.0486,0.2660,0.1471,866,1803,0.9413,0.0100,0.0486,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,504,T4,42186,42197,1.1000,1,0.6525,0.5662,0.6056,0.5827,1803,866,0.6525,-0.0863,0.4338,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,505,T4,42215,42227,1.2000,1,0.8987,0.8952,0.5169,0.7837,1803,866,0.8987,-0.0034,0.1048,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,506,T7,42243,42269,2.6000,0,0.3301,0.3226,0.4272,0.3805,866,1803,0.6699,0.0076,0.3226,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,541,T7,44282,44302,2.0000,0,0.4051,0.3742,0.4272,0.4283,866,1803,0.5949,0.0309,0.3742,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,550,T4,44584,44590,0.6000,0,0.6720,0.2970,0.4272,0.5956,866,1803,0.3280,0.3750,0.2970,reading,reading,reading,reading,reading,reading,reading
+2016236,630,T1,49656,49676,2.0000,0,0.1936,0.0160,0.4272,0.2831,1803,866,0.8064,0.1776,0.0160,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,633,T2,49866,49882,1.6000,1,0.7017,0.5119,0.5169,0.6159,866,1803,0.7017,-0.1897,0.4881,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,647,T4,50950,50955,0.5000,0,0.6790,0.1267,0.6056,0.6004,866,1803,0.3210,0.5522,0.1267,reading,reading,reading,reading,reading,reading,reading
+2016236,699,T7,54483,54489,0.6000,0,0.3510,0.2086,0.6056,0.3940,1803,866,0.6490,0.1423,0.2086,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,713,T4,55136,55142,0.6000,1,0.9778,0.8333,0.6056,0.9065,866,1803,0.9778,-0.1445,0.1667,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,721,T4,55362,55369,0.7000,0,0.3074,0.3067,0.2660,0.3655,866,1803,0.6926,0.0007,0.3067,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,747,T4,56749,56759,1.0000,1,0.9994,0.9991,0.6878,0.9894,1803,866,0.9994,-0.0003,0.0009,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,780,T7,58218,58236,1.8000,1,0.6309,0.6498,0.6056,0.5686,1803,866,0.6309,0.0189,0.3502,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,797,T4,59216,59231,1.5000,0,0.3058,0.2567,0.4272,0.3644,866,1803,0.6942,0.0491,0.2567,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,800,T4,59271,59281,1.0000,0,0.4391,0.2908,0.5169,0.4493,866,1803,0.5609,0.1483,0.2908,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,803,T4,59904,59922,1.8000,0,0.1116,0.0964,0.2660,0.2097,1803,866,0.8884,0.0153,0.0964,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,843,T2,62300,62309,0.9000,1,0.1825,0.3721,0.5169,0.2741,1803,866,0.1825,0.1896,0.6279,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2016236,852,T4,62617,62629,1.2000,0,0.6095,0.6107,0.5169,0.5548,866,1803,0.3905,-0.0013,0.6107,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2016236,861,T7,63049,63076,2.7000,0,0.0414,0.1017,0.2660,0.1210,1803,866,0.9586,-0.0603,0.1017,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,865,T2,63133,63148,1.5000,0,0.5816,0.5745,0.2660,0.5372,866,1803,0.4184,0.0071,0.5745,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2016236,870,T3,63465,63503,3.8000,1,0.2620,0.1739,0.3421,0.3343,866,1803,0.2620,-0.0881,0.8261,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2016236,872,T5,63519,63526,0.7000,0,0.2812,0.1437,0.7596,0.3477,866,1803,0.7188,0.1375,0.1437,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,919,T2,66934,66941,0.7000,0,0.1799,0.0657,0.2660,0.2720,866,1803,0.8201,0.1143,0.0657,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,927,T7,67452,67458,0.6000,0,0.1330,0.3045,0.4272,0.2307,1803,866,0.8670,-0.1715,0.3045,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,929,T7,67496,67512,1.6000,0,0.4137,0.6467,0.6056,0.4336,866,1803,0.5863,-0.2329,0.6467,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,943,T2,69068,69079,1.1000,0,0.5139,0.4302,0.5169,0.4953,1803,866,0.4861,0.0837,0.4302,reading,positioning,reading,reading,reading,reading,reading
+2016236,955,T2,70244,70274,3.0000,0,0.0622,0.0801,0.4272,0.1520,866,1803,0.9378,-0.0179,0.0801,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2016236,956,T2,70284,70341,5.7000,0,0.5000,0.5000,0.5169,0.4867,1803,866,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+2017461,0,T2,2511,2525,1.4000,1,0.9992,0.9994,0.8668,0.9872,4177,868,0.9992,0.0002,0.0006,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,9,T2,3003,3029,2.6000,0,0.3035,0.2085,0.3421,0.3628,868,4177,0.6965,0.0950,0.2085,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,16,T4,3262,3268,0.6000,0,0.1817,0.3782,0.3421,0.2735,868,4177,0.8183,-0.1965,0.3782,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,39,T7,4370,4385,1.5000,0,0.7879,0.8105,0.5169,0.6798,4177,868,0.2121,-0.0226,0.8105,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2017461,41,T2,4583,4590,0.7000,0,0.5377,0.5740,0.3421,0.5099,4177,868,0.4623,-0.0364,0.5740,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2017461,46,T2,4838,4869,3.1000,0,0.1965,0.2461,0.5169,0.2854,4177,868,0.8035,-0.0496,0.2461,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,56,T7,5620,5629,0.9000,0,0.0203,0.0508,0.3421,0.0805,4177,868,0.9797,-0.0305,0.0508,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,59,T4,5698,5707,0.9000,0,0.3774,0.4125,0.2660,0.4108,868,4177,0.6226,-0.0351,0.4125,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,73,T4,6427,6433,0.6000,0,0.6539,0.4770,0.5169,0.5836,868,4177,0.3461,0.1769,0.4770,reading,reading,reading,reading,reading,reading,after the anchor
+2017461,74,T4,6455,6465,1.0000,0,0.0928,0.1450,0.4272,0.1895,4177,868,0.9072,-0.0522,0.1450,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,83,T2,6716,6725,0.9000,1,0.9996,0.9997,0.7596,0.9921,4177,868,0.9996,0.0001,0.0003,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,89,T7,6840,6852,1.2000,1,0.3898,0.2517,0.6056,0.4187,4177,868,0.3898,-0.1381,0.7483,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2017461,93,T4,6968,6982,1.4000,1,0.2437,0.2080,0.1497,0.3211,4177,868,0.2437,-0.0357,0.7920,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2017461,100,T4,7525,7531,0.6000,0,0.4147,0.1241,0.4272,0.4342,4177,868,0.5853,0.2906,0.1241,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,120,T7,9856,9874,1.8000,0,0.6110,0.6092,0.5169,0.5558,4177,868,0.3890,0.0019,0.6092,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2017461,139,T4,10733,10751,1.8000,1,0.7405,0.8824,0.5169,0.6436,868,4177,0.7405,0.1419,0.1176,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,140,T2,10751,10781,3.0000,0,0.0897,0.0333,0.5169,0.1860,4177,868,0.9103,0.0564,0.0333,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,141,T4,10805,10818,1.3000,1,0.3910,0.3398,0.6056,0.4194,4177,868,0.3910,-0.0512,0.6602,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2017461,147,T7,11032,11061,2.9000,1,0.9761,0.9905,0.4272,0.9024,4177,868,0.9761,0.0145,0.0095,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,153,T7,11227,11263,3.6000,1,0.4160,0.6582,0.3421,0.4350,4177,868,0.4160,0.2422,0.3418,reading,reading,reading,reading,reading,after the anchor,reading
+2017461,156,T4,11304,11315,1.1000,0,0.1951,0.3728,0.3421,0.2843,868,4177,0.8049,-0.1777,0.3728,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,167,T7,11772,11787,1.5000,0,0.0285,0.0255,0.2660,0.0979,868,4177,0.9715,0.0030,0.0255,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,180,T7,12171,12181,1.0000,1,0.9996,0.9998,0.6056,0.9910,4177,868,0.9996,0.0002,0.0002,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,193,T3,13075,13089,1.4000,1,0.1550,0.1460,0.1497,0.2508,868,4177,0.1550,-0.0090,0.8540,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2017461,203,T2,14517,14532,1.5000,0,0.4941,0.5212,0.5169,0.4831,4177,868,0.5059,-0.0271,0.5212,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,205,T6,15042,15047,0.5000,1,0.9944,0.9537,0.5169,0.9579,4177,868,0.9944,-0.0407,0.0463,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,212,T2,15279,15290,1.1000,1,0.7576,0.8250,0.3421,0.6563,4177,868,0.7576,0.0674,0.1750,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,216,T1,15419,15444,2.5000,1,0.8358,0.7710,0.3421,0.7203,868,4177,0.8358,-0.0647,0.2290,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,233,T7,17930,17962,3.2000,0,0.0751,0.1043,0.4272,0.1686,868,4177,0.9249,-0.0292,0.1043,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,238,T4,18191,18202,1.1000,0,0.7749,0.3590,0.4272,0.6696,868,4177,0.2251,0.4159,0.3590,reading,reading,reading,reading,reading,reading,after the anchor
+2017461,267,T7,20334,20364,3.0000,1,0.6222,0.4953,0.5169,0.5630,868,4177,0.6222,-0.1269,0.5047,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,303,T3,22888,22906,1.8000,1,0.2187,0.5794,0.5169,0.3026,868,4177,0.2187,0.3606,0.4206,reading,reading,reading,reading,reading,reading,after the anchor
+2017461,318,T4,24016,24030,1.4000,0,0.2631,0.2882,0.4272,0.3350,868,4177,0.7369,-0.0251,0.2882,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,319,T4,24073,24088,1.5000,0,0.0308,0.0942,0.2660,0.1023,4177,868,0.9692,-0.0635,0.0942,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,324,T2,24227,24241,1.4000,1,0.7048,0.9878,0.6056,0.6181,868,4177,0.7048,0.2830,0.0122,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,326,T3,24284,24300,1.6000,1,0.5727,0.9250,0.4272,0.5317,868,4177,0.5727,0.3522,0.0750,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,379,T4,28321,28342,2.1000,1,0.3446,0.3941,0.4272,0.3899,868,4177,0.3446,0.0496,0.6059,after the anchor,after the anchor,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2017461,383,T2,28490,28510,2.0000,1,0.9127,0.6725,0.6056,0.8003,868,4177,0.9127,-0.2402,0.3275,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,401,T2,39679,39691,1.2000,1,0.9996,0.9997,0.8193,0.9915,868,4177,0.9996,0.0001,0.0003,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,438,T4,41600,41609,0.9000,0,0.0280,0.0278,0.6878,0.0970,868,4177,0.9720,0.0002,0.0278,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,457,T1,44415,44433,1.8000,0,0.2633,0.0300,0.4272,0.3352,4177,868,0.7367,0.2334,0.0300,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,460,T7,44534,44546,1.2000,0,0.2403,0.3664,0.3421,0.3187,868,4177,0.7597,-0.1261,0.3664,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,462,T4,44664,44670,0.6000,1,0.9963,0.9825,0.5169,0.9672,4177,868,0.9963,-0.0138,0.0175,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,483,T2,47646,47671,2.5000,1,0.1563,0.6042,0.4272,0.2519,868,4177,0.1563,0.4479,0.3958,reading,reading,reading,reading,reading,reading,after the anchor
+2017461,493,T4,47838,47852,1.4000,0,0.2779,0.2432,0.6878,0.3454,4177,868,0.7221,0.0347,0.2432,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,498,T2,48841,48861,2.0000,0,0.2068,0.3906,0.3421,0.2935,868,4177,0.7932,-0.1838,0.3906,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,504,T2,48975,48992,1.7000,0,0.3310,0.3241,0.2016,0.3810,868,4177,0.6690,0.0068,0.3241,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,516,T4,49708,49725,1.7000,0,0.4946,0.4395,0.2660,0.4834,868,4177,0.5054,0.0551,0.4395,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,533,T4,52330,52335,0.5000,0,0.3447,0.2743,0.4272,0.3900,868,4177,0.6553,0.0704,0.2743,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,535,T7,52367,52380,1.3000,1,0.3808,0.7258,0.5169,0.4130,868,4177,0.3808,0.3450,0.2742,reading,reading,reading,reading,reading,reading,reading
+2017461,542,T7,52890,52911,2.1000,1,0.9617,0.9702,0.6056,0.8729,868,4177,0.9617,0.0084,0.0298,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,557,T4,53339,53350,1.1000,0,0.1487,0.0433,0.4272,0.2452,868,4177,0.8513,0.1054,0.0433,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,563,T2,53552,53564,1.2000,0,0.0571,0.0118,0.2660,0.1450,4177,868,0.9429,0.0453,0.0118,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,585,T4,54596,54606,1.0000,1,0.5120,0.4188,0.3421,0.4941,4177,868,0.5120,-0.0932,0.5812,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,589,T2,55184,55228,4.4000,0,0.5000,0.5000,0.5169,0.4867,4177,868,0.5000,0.0000,0.5000,after the anchor,after the anchor,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+2017461,598,T4,55529,55539,1.0000,0,0.3777,0.3606,0.4272,0.4111,868,4177,0.6223,0.0171,0.3606,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,599,T2,55539,55552,1.3000,0,0.4103,0.2880,0.5169,0.4315,4177,868,0.5897,0.1224,0.2880,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,613,T4,57226,57239,1.3000,1,0.9042,0.8844,0.4272,0.7901,4177,868,0.9042,-0.0198,0.1156,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,622,T7,58214,58231,1.7000,0,0.1093,0.1222,0.4272,0.2073,868,4177,0.8907,-0.0129,0.1222,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,627,T7,58344,58372,2.8000,0,0.6290,0.8199,0.5169,0.5674,4177,868,0.3710,-0.1908,0.8199,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor,after the anchor
+2017461,631,T4,58794,58817,2.3000,0,0.5000,0.5000,0.5169,0.4867,4177,868,0.5000,0.0000,0.5000,after the anchor,positioning,positioning,after the anchor,after the anchor,after the anchor,after the anchor
+2017461,634,T4,58901,58917,1.6000,1,0.9994,0.9998,0.6056,0.9888,4177,868,0.9994,0.0004,0.0002,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,652,T4,61322,61338,1.6000,0,0.3011,0.0643,0.4272,0.3612,4177,868,0.6989,0.2368,0.0643,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,671,T4,61861,61868,0.7000,1,0.7665,0.9454,0.4272,0.6630,4177,868,0.7665,0.1790,0.0546,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,681,T2,62109,62134,2.5000,0,0.3277,0.6044,0.3421,0.3789,4177,868,0.6723,-0.2767,0.6044,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,683,T4,62218,62225,0.7000,0,0.2481,0.1438,0.2016,0.3243,868,4177,0.7519,0.1043,0.1438,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,691,T7,63380,63388,0.8000,1,0.9996,0.9991,0.6056,0.9910,4177,868,0.9996,-0.0005,0.0009,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,693,T2,63466,63475,0.9000,1,0.9986,0.9947,0.7596,0.9814,4177,868,0.9986,-0.0038,0.0053,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,730,T7,66407,66417,1.0000,0,0.4595,0.4653,0.3421,0.4619,868,4177,0.5405,-0.0057,0.4653,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,741,T4,66980,66985,0.5000,0,0.4157,0.5206,0.4272,0.4349,868,4177,0.5843,-0.1049,0.5206,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,743,T7,67019,67033,1.4000,1,0.8439,0.9892,0.6878,0.7277,868,4177,0.8439,0.1453,0.0108,positioning,positioning,positioning,positioning,positioning,positioning,positioning
+2017461,746,T4,67092,67104,1.2000,1,0.1525,0.3858,0.4272,0.2486,868,4177,0.1525,0.2333,0.6142,after the anchor,reading,after the anchor,reading,after the anchor,after the anchor,after the anchor
+2017461,767,T7,68371,68378,0.7000,0,0.6345,0.4431,0.2660,0.5709,868,4177,0.3655,0.1914,0.4431,reading,positioning,reading,after the anchor,reading,reading,reading
+2017461,801,T7,69791,69801,1.0000,1,0.9511,0.9461,0.4272,0.8543,4177,868,0.9511,-0.0049,0.0539,positioning,positioning,positioning,positioning,positioning,positioning,positioning

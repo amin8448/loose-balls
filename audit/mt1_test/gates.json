@@ -1,0 +1,11 @@
+{
+  "set": "test",
+  "matches": 15,
+  "anchored pairs": 1566,
+  "analysis set": 1003,
+  "radius": 15.0,
+  "V1": true,
+  "V2": true,
+  "V3": true,
+  "camera gate": true
+}

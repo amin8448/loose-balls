@@ -1865,3 +1865,250 @@ Report-only on the test set, in this order:
 The worked-example match (D8) is drawn after the run with seed 20261029 (numpy default_rng) from the 15 test match ids in ascending order, as an illustration and never a check. The find_episodes adapter, the README, the figures and the video are step 3.
 
 MAIN-TEST-PLAN: MT1, logged 2026-10-29, code at commit 682aa2c, frozen parameters sha256 129bfdea2d1dd5547e3f8fdeb1f1f5de57514ca3b79ab5de2bb16a93fa9fab4c
+
+### MT1 results on the 15 test matches (2026-10-29)
+
+Run once, `scripts/mt1.py test`, after the marker commit 3a104ab; code unchanged since 682aa2c; no bug fixes. Outputs: audit/mt1_test/ (episodes.csv with the verdict under each V3 variant, episodes_ungated.csv, team_verdicts.csv, team_shares.csv, clips.csv, gates.json).
+
+MT1 on the test matches (15): anchored main pairs 1566; camera-gate drop share at 15 m 0.2771; radius of the main analysis 15 m; analysis set 1003 lost balls
+
+Gates V1 and V2 (difference: log-loss of the comparison minus log-loss of p_dynamic):
+
+| gate                | comparison   |   log-loss p_dynamic |   log-loss comparison |   difference |     lo |     hi |   matches p_dynamic lower (of 15) | result   |
+|:--------------------|:-------------|---------------------:|----------------------:|-------------:|-------:|-------:|----------------------------------:|:---------|
+| V1 against B0       | p_B0         |               0.4578 |                0.6397 |       0.1819 | 0.1471 | 0.2162 |                                15 | pass     |
+| V1 against B1       | p_B1         |               0.4578 |                0.5516 |       0.0938 | 0.0718 | 0.1140 |                                15 | pass     |
+| V2 against p_static | p_static     |               0.4578 |                0.5743 |       0.1165 | 0.0902 | 0.1440 |                                15 | pass     |
+
+Gate V3 (verdict unchanged under each variant on its own; base set fixed; frozen D5 parameter):
+
+| variant                                  |   lost balls |   verdict unchanged | result   |
+|:-----------------------------------------|-------------:|--------------------:|:---------|
+| anchor 0.2 s later                       |         1003 |              0.9113 | pass     |
+| growing radius max(radius, 8 m/s x lead) |         1003 |              0.9771 | pass     |
+| pleuler turning penalty                  |         1003 |              0.9242 | pass     |
+| smoothing window 7                       |         1003 |              0.9970 | pass     |
+| extrapolated players dropped             |         1003 |              0.9940 | pass     |
+| reaction time 0.35 s                     |         1003 |              0.9372 | pass     |
+
+Camera gate (D7, at most 30% of anchored main pairs dropped):
+
+|   anchored pairs |   dropped at 15 m |   drop share at 15 m | result   |   drop rate, releasing team won |   drop rate, other team won |   difference |
+|-----------------:|------------------:|---------------------:|:---------|--------------------------------:|----------------------------:|-------------:|
+|             1566 |               434 |               0.2771 | pass     |                          0.2815 |                      0.2738 |       0.0078 |
+
+Consequences fixed in the brief:
+
+| gate        | result   | consequence       |
+|:------------|:---------|:------------------|
+| V1          | pass     | verdicts reported |
+| V2          | pass     | reading term kept |
+| V3          | pass     | one verdict label |
+| camera gate | pass     | 15 m radius       |
+
+R1. Categorical verdict shares of lost loose balls, pooled over teams (headline: True):
+
+| verdict          |   gated (D7 on) |   ungated (D7 off, extrapolated positions kept) |
+|:-----------------|----------------:|------------------------------------------------:|
+| positioning      |          0.6899 |                                          0.6952 |
+| reading          |          0.1346 |                                          0.1261 |
+| after the anchor |          0.1755 |                                          0.1788 |
+| lost balls       |       1003.0000 |                                       1404.0000 |
+
+R2. Gated against ungated, by trigger (share of lost balls under each verdict):
+
+| set     | trigger   |   lost balls |   positioning |   reading |   after the anchor |
+|:--------|:----------|-------------:|--------------:|----------:|-------------------:|
+| gated   | T1        |           30 |         0.867 |     0.067 |              0.067 |
+| gated   | T2        |          281 |         0.641 |     0.125 |              0.235 |
+| gated   | T3        |           45 |         0.622 |     0.178 |              0.200 |
+| gated   | T4        |          327 |         0.743 |     0.153 |              0.104 |
+| gated   | T5        |           13 |         1.000 |     0.000 |              0.000 |
+| gated   | T6        |            7 |         0.714 |     0.000 |              0.286 |
+| gated   | T7        |          300 |         0.657 |     0.133 |              0.210 |
+| ungated | T1        |           69 |         0.797 |     0.043 |              0.159 |
+| ungated | T2        |          401 |         0.661 |     0.115 |              0.224 |
+| ungated | T3        |           74 |         0.581 |     0.189 |              0.230 |
+| ungated | T4        |          405 |         0.743 |     0.146 |              0.111 |
+| ungated | T5        |           21 |         0.952 |     0.048 |              0.000 |
+| ungated | T6        |            9 |         0.778 |     0.000 |              0.222 |
+| ungated | T7        |          425 |         0.671 |     0.127 |              0.202 |
+
+R2b. The 401 lost balls that D7 drops, verdict shares:
+
+|   lost balls |   positioning |   reading |   after the anchor |
+|-------------:|--------------:|----------:|-------------------:|
+|      401.000 |         0.708 |     0.105 |              0.187 |
+
+R3. Continuous deficit shares of the losing team, pooled and by trigger:
+
+| trigger   |   lost balls |   deficit positioning |   deficit reading |   deficit after the anchor |
+|:----------|-------------:|----------------------:|------------------:|---------------------------:|
+| T1        |           30 |                 0.814 |             0.071 |                      0.116 |
+| T2        |          281 |                 0.635 |             0.055 |                      0.310 |
+| T3        |           45 |                 0.601 |             0.098 |                      0.300 |
+| T4        |          327 |                 0.672 |             0.042 |                      0.286 |
+| T5        |           13 |                 0.762 |             0.055 |                      0.183 |
+| T6        |            7 |                 0.654 |             0.031 |                      0.315 |
+| T7        |          300 |                 0.626 |             0.043 |                      0.331 |
+| all       |         1003 |                 0.650 |             0.049 |                      0.301 |
+
+R4. Calibration of p_dynamic, five bins:
+
+| bin        |   episodes |   mean predicted |   observed share |
+|:-----------|-----------:|-----------------:|-----------------:|
+| 0.0 to 0.2 |        241 |            0.080 |            0.087 |
+| 0.2 to 0.4 |        207 |            0.299 |            0.188 |
+| 0.4 to 0.6 |        215 |            0.496 |            0.433 |
+| 0.6 to 0.8 |        140 |            0.697 |            0.786 |
+| 0.8 to 1.0 |        200 |            0.927 |            0.905 |
+
+R5. Immediate class (lead < 0.5 s), anchored main pairs, by trigger and by winner:
+
+| trigger   |   episodes |   immediate |   share |
+|:----------|-----------:|------------:|--------:|
+| T1        |         79 |          10 |   0.127 |
+| T2        |        415 |          14 |   0.034 |
+| T3        |         89 |          15 |   0.169 |
+| T4        |        500 |          95 |   0.190 |
+| T5        |         24 |           3 |   0.125 |
+| T6        |         13 |           4 |   0.308 |
+| T7        |        446 |          21 |   0.047 |
+| all       |       1566 |         162 |   0.103 |
+
+| winner         |   episodes |   immediate |   share |
+|:---------------|-----------:|------------:|--------:|
+| other team     |        884 |         104 |   0.118 |
+| releasing team |        682 |          58 |   0.085 |
+| all            |       1566 |         162 |   0.103 |
+
+R6. D7 drop rates by trigger and by winner, and the releasing team's win-share difference:
+
+| trigger   |   episodes |   dropped |   drop rate |
+|:----------|-----------:|----------:|------------:|
+| T1        |         79 |        44 |       0.557 |
+| T2        |        415 |       123 |       0.296 |
+| T3        |         89 |        32 |       0.360 |
+| T4        |        500 |        92 |       0.184 |
+| T5        |         24 |         8 |       0.333 |
+| T6        |         13 |         4 |       0.308 |
+| T7        |        446 |       131 |       0.294 |
+| all       |       1566 |       434 |       0.277 |
+
+| winner         |   episodes |   dropped |   drop rate |
+|:---------------|-----------:|----------:|------------:|
+| other team     |        884 |       242 |       0.274 |
+| releasing team |        682 |       192 |       0.282 |
+| all            |       1566 |       434 |       0.277 |
+
+|   win share dropped |   win share kept |   difference |     lo |    hi |
+|--------------------:|-----------------:|-------------:|-------:|------:|
+|               0.442 |            0.433 |        0.010 | -0.043 | 0.069 |
+
+R7. S2 reachability check by trigger (winner reach time <= lead + 0.3 s):
+
+analysis set:
+
+| trigger   |   episodes |   share |   winner not on anchor frame |
+|:----------|-----------:|--------:|-----------------------------:|
+| T1        |         30 |   0.700 |                            0 |
+| T2        |        281 |   0.744 |                            0 |
+| T3        |         45 |   0.689 |                            0 |
+| T4        |        327 |   0.682 |                            0 |
+| T5        |         13 |   0.462 |                            0 |
+| T6        |          7 |   0.571 |                            0 |
+| T7        |        300 |   0.767 |                            0 |
+| all       |       1003 |   0.722 |                            0 |
+
+all anchored pairs:
+
+| trigger   |   episodes |   share |   winner not on anchor frame |
+|:----------|-----------:|--------:|-----------------------------:|
+| T1        |         79 |   0.557 |                            0 |
+| T2        |        415 |   0.747 |                            1 |
+| T3        |         89 |   0.573 |                            0 |
+| T4        |        500 |   0.554 |                            0 |
+| T5        |         24 |   0.500 |                            0 |
+| T6        |         13 |   0.462 |                            0 |
+| T7        |        446 |   0.722 |                            0 |
+| all       |       1566 |   0.653 |                            1 |
+
+lead >= 0.5 s:
+
+| trigger   |   episodes |   share |   winner not on anchor frame |
+|:----------|-----------:|--------:|-----------------------------:|
+| T1        |         69 |   0.638 |                            0 |
+| T2        |        401 |   0.773 |                            1 |
+| T3        |         74 |   0.689 |                            0 |
+| T4        |        405 |   0.684 |                            0 |
+| T5        |         21 |   0.571 |                            0 |
+| T6        |          9 |   0.667 |                            0 |
+| T7        |        425 |   0.758 |                            0 |
+| all       |       1404 |   0.728 |                            1 |
+
+R8. Constant-acceleration model (report-only):
+
+|   log-loss DataBallPy p_dynamic |   log-loss constant-acceleration p_dynamic |   verdicts that agree |
+|--------------------------------:|-------------------------------------------:|----------------------:|
+|                          0.4578 |                                     0.4697 |                0.9472 |
+
+R9a. Team-level categorical verdict shares over lost balls, 95% bootstrap intervals within match:
+
+| team            | sample-size flag   |   matches in the set |   lost |   positioning |   positioning lo |   positioning hi |   reading |   reading lo |   reading hi |   after the anchor |   after the anchor lo |   after the anchor hi |
+|:----------------|:-------------------|---------------------:|-------:|--------------:|-----------------:|-----------------:|----------:|-------------:|-------------:|-------------------:|----------------------:|----------------------:|
+| Adelaide United | flag               |                    2 |     67 |         0.642 |            0.523 |            0.755 |     0.149 |        0.066 |        0.243 |              0.209 |                 0.111 |                 0.310 |
+| Wellington P FC |                    |                    3 |    109 |         0.752 |            0.673 |            0.832 |     0.073 |        0.028 |        0.126 |              0.174 |                 0.105 |                 0.246 |
+| Melbourne V FC  |                    |                    3 |    100 |         0.710 |            0.617 |            0.802 |     0.150 |        0.083 |        0.224 |              0.140 |                 0.078 |                 0.212 |
+| Sydney FC       | flag               |                    1 |     40 |         0.775 |            0.647 |            0.896 |     0.125 |        0.028 |        0.231 |              0.100 |                 0.023 |                 0.205 |
+| CC Mariners     |                    |                    4 |    141 |         0.695 |            0.617 |            0.770 |     0.156 |        0.098 |        0.219 |              0.149 |                 0.092 |                 0.209 |
+| Perth Glory     | flag               |                    1 |     35 |         0.629 |            0.465 |            0.795 |     0.171 |        0.056 |        0.313 |              0.200 |                 0.071 |                 0.333 |
+| Brisbane FC     | flag               |                    2 |     65 |         0.738 |            0.623 |            0.840 |     0.092 |        0.030 |        0.169 |              0.169 |                 0.083 |                 0.269 |
+| Western United  |                    |                    3 |    110 |         0.682 |            0.590 |            0.762 |     0.136 |        0.078 |        0.204 |              0.182 |                 0.114 |                 0.257 |
+| Macarthur FC    | flag               |                    1 |     36 |         0.583 |            0.421 |            0.730 |     0.167 |        0.056 |        0.300 |              0.250 |                 0.121 |                 0.400 |
+| Melbourne City  |                    |                    3 |     65 |         0.692 |            0.571 |            0.797 |     0.123 |        0.049 |        0.211 |              0.185 |                 0.100 |                 0.284 |
+| Western Sydney  | flag               |                    2 |     52 |         0.692 |            0.574 |            0.814 |     0.212 |        0.111 |        0.321 |              0.096 |                 0.020 |                 0.183 |
+| Auckland FC     |                    |                    5 |    183 |         0.656 |            0.590 |            0.724 |     0.126 |        0.080 |        0.174 |              0.219 |                 0.160 |                 0.281 |
+
+R9b. Team-level continuous deficit shares over lost balls, 95% bootstrap intervals within match:
+
+| name            |   matches in the set | sample-size flag   |   lost |   won |   deficit positioning |   deficit positioning lo |   deficit positioning hi |   deficit reading |   deficit reading lo |   deficit reading hi |   deficit after the anchor |   deficit after the anchor lo |   deficit after the anchor hi |
+|:----------------|---------------------:|:-------------------|-------:|------:|----------------------:|-------------------------:|-------------------------:|------------------:|---------------------:|---------------------:|---------------------------:|------------------------------:|------------------------------:|
+| Adelaide United |                    2 | flag               |     67 |    68 |                 0.621 |                    0.562 |                    0.681 |             0.041 |                0.003 |                0.079 |                      0.338 |                         0.280 |                         0.398 |
+| Wellington P FC |                    3 |                    |    109 |    94 |                 0.686 |                    0.639 |                    0.735 |             0.038 |                0.010 |                0.067 |                      0.276 |                         0.232 |                         0.323 |
+| Melbourne V FC  |                    3 |                    |    100 |   108 |                 0.678 |                    0.629 |                    0.725 |             0.030 |               -0.001 |                0.061 |                      0.292 |                         0.252 |                         0.332 |
+| Sydney FC       |                    1 | flag               |     40 |    34 |                 0.671 |                    0.586 |                    0.754 |             0.062 |               -0.007 |                0.127 |                      0.267 |                         0.204 |                         0.336 |
+| CC Mariners     |                    4 |                    |    141 |   109 |                 0.639 |                    0.596 |                    0.681 |             0.051 |                0.023 |                0.081 |                      0.309 |                         0.271 |                         0.349 |
+| Perth Glory     |                    1 | flag               |     35 |    31 |                 0.593 |                    0.492 |                    0.695 |             0.086 |                0.037 |                0.137 |                      0.320 |                         0.238 |                         0.402 |
+| Brisbane FC     |                    2 | flag               |     65 |    64 |                 0.643 |                    0.578 |                    0.704 |             0.018 |               -0.023 |                0.059 |                      0.339 |                         0.281 |                         0.402 |
+| Western United  |                    3 |                    |    110 |   115 |                 0.661 |                    0.610 |                    0.709 |             0.062 |                0.034 |                0.091 |                      0.276 |                         0.236 |                         0.321 |
+| Macarthur FC    |                    1 | flag               |     36 |    19 |                 0.603 |                    0.509 |                    0.692 |             0.087 |                0.038 |                0.142 |                      0.311 |                         0.237 |                         0.390 |
+| Melbourne City  |                    3 |                    |     65 |   108 |                 0.685 |                    0.619 |                    0.747 |             0.045 |                0.003 |                0.091 |                      0.270 |                         0.213 |                         0.330 |
+| Western Sydney  |                    2 | flag               |     52 |    76 |                 0.644 |                    0.583 |                    0.708 |             0.062 |                0.021 |                0.104 |                      0.294 |                         0.236 |                         0.351 |
+| Auckland FC     |                    5 |                    |    183 |   177 |                 0.631 |                    0.593 |                    0.672 |             0.053 |                0.028 |                0.077 |                      0.316 |                         0.278 |                         0.355 |
+
+
+Gate verdicts.
+
+| gate | number | rule | result |
+|:--|:--|:--|:--|
+| V1 against B0 | log-loss 0.4578 against 0.6397; difference 0.1819 (0.1471 to 0.2162); p_dynamic lower in 15 of 15 matches | interval above 0, at least 10 of 15 | pass |
+| V1 against B1 | 0.4578 against 0.5516; difference 0.0938 (0.0718 to 0.1140); 15 of 15 | same | pass |
+| V2 against p_static | 0.4578 against 0.5743; difference 0.1165 (0.0902 to 0.1440); 15 of 15 | same | pass |
+| V3 | verdict unchanged: anchor 0.2 s later 0.911, pleuler 0.924, reaction 0.35 s 0.937, growing radius 0.977, extrapolated dropped 0.994, window 7 0.997 | at least 0.70 each | pass |
+| camera gate | 434 of 1566 anchored pairs dropped (0.277); drop rate 0.282 when the releasing team won, 0.274 when the other team won (difference 0.008) | at most 0.30 | pass |
+
+Consequences: all gates pass, so verdicts are reported as one label, the reading term is kept and the radius stays 15 m.
+
+Headline (R1): of 1003 lost loose balls in the analysis set, 69.0% are positioning, 13.5% reading and 17.6% after the anchor.
+
+Gated against ungated (R1, R2): with D7 off (1404 lost balls, extrapolated positions kept), 69.5% positioning, 12.6% reading, 17.9% after the anchor. The 401 lost balls that D7 drops split 70.8%, 10.5% and 18.7%. The largest differences by trigger are in T1 (gated 30 lost balls: 86.7% positioning; ungated 69: 79.7%) and T5 (13 and 21). D7 drops 55.7% of T1 episodes and 18.4% of T4.
+
+Notes. Newcastle (team id 1805) plays in none of the 15 test matches; its only match is exploration match 1886347, so its sample-size flag has nothing to apply to. Teams flagged for sample size (2 or fewer test matches): Adelaide United, Brisbane FC, Western Sydney (2), Sydney FC, Perth Glory, Macarthur FC (1). In R7 one anchored pair (T2) has the winner absent from the anchor frame; it is counted as not meeting the criterion and is not in the analysis set. Team lost and won counts each sum to 1003. Calibration (R4) over-predicts in the 0.2 to 0.4 bin (0.299 against 0.188, 207 episodes), as on exploration, and under-predicts in the 0.6 to 0.8 bin (0.697 against 0.786, 140 episodes).
+
+### Worked-example match, D8 (2026-10-29)
+
+Drawn after the run as logged: seed 20261029, numpy default_rng, from the 15 test match ids in ascending order. Illustration only, never a check.
+
+| match | teams | date | lost balls in the analysis set |
+|:--|:--|:--|--:|
+| 1927964 | Western Sydney v Wellington P FC | 2024-12-22 | 61 |

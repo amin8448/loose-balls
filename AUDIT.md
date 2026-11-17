@@ -2258,3 +2258,32 @@ Reproduce runs so far, same machine (Python 3.12.3, numpy 2.2.6, pandas 3.1.0):
 | 3c.0 | 5 min 52 s | 813 MB |
 | figure revision, first | 7 min 10 s | 846 MB |
 | figure revision, final | 5 min 47 s | 826 MB |
+
+### 3c. README numbers and their sources (2026-10-29)
+
+Every number in README.md, with its source. Derived values are computed from the logged values shown.
+
+| README number | source |
+|:--|:--|
+| 20 matches, 5 build, 15 held out; A-League 2024/25 | step 1 and MT1 match lists |
+| 69.0%, 13.5%, 17.6% | MT1 R1, gated |
+| 1,566 balls; about 104 a match | MT1, anchored main pairs; 1,566 / 15 = 104.4 |
+| 10.3% decided within half a second | MT1 R5, immediate share of anchored pairs |
+| 35.2% drop zone off screen at release (build matches) | diagnostic after G4: 164 of 466 main pairs |
+| 33.0% of players near it seen | diagnostic after G4, release frame, pickup point outside the view, 15 m |
+| 0.7 s reaction, 5 m/s top speed | step 2 setup, decision 3 |
+| 28.4% lower log-loss than the player count (B0) | MT1 V1: (0.6397 - 0.4578) / 0.6397 = 0.1819 / 0.6397 |
+| 17.0% lower than the nearest player (B1) | MT1 V1: 0.0938 / 0.5516 |
+| in all 15 matches; intervals clear of zero | MT1 V1 and V2 (15 of 15; intervals 0.1471 to 0.2162 and 0.0718 to 0.1140) |
+| 17.2% lower than the static expectation with its own temperature, in all 15 matches | 3c.0: 0.0951 / 0.5529; 15 of 15; interval 0.0731 to 0.1154 |
+| static line no better than the nearest player, lower in 4 of 15 | 3c.0: difference -0.0013 (-0.0028 to 0.0001), 4 of 15 |
+| six changes, anchor 0.2 s later to 0.35 s reaction; 91.1% to 99.7% | MT1 V3 |
+| camera gate: 85% within 15 m; 27.7% dropped; limit 30%; 28.2% and 27.4% | D7 and MT1 camera gate |
+| 1,404 lost balls ungated; 69.5%, 12.6%, 17.9% | MT1 R1, ungated |
+| about one lost ball in seven | MT1 R1 reading share 13.5% (1 / 0.135 = 7.4) |
+| worked match: 61 lost balls; 46, 6, 9 | audit/mt1_test/episodes.csv, match 1927964 (MT1 worked-example draw) |
+| 55.7% of clearances dropped; 30 remain | MT1 R6 (T1 drop rate) and R2 (T1 gated, 30) |
+| calibration 29.9% against 18.8%, 69.7% against 78.6% | MT1 R4, bins 0.2 to 0.4 and 0.6 to 0.8 |
+| 1 to 5 held-out matches per team | MT1 R9a, matches in the set |
+| commit 4340d27; Python 3.12; Git LFS | setup; environment; the open-data clone stores *.jsonl with Git LFS (.gitattributes) |
+| about 6 minutes, about 0.8 GB | 3b revision, reproduce runs (final run 5 min 47 s, 826 MB) |

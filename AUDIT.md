@@ -2412,3 +2412,142 @@ Consequence, fixed now: the P3 number goes into the README limitations whatever 
 | tests | 16 new on synthetic data: moving by 5 x D gives t_w; the rotation formula against a brute-force scan over angles (including a 3.5 m drift on a 2 m distance) and against the bisection; no rotation possible; pleuler bisections reach t_w; smallest rotation and its tie rule; best-placed ties on distance then column_id; empty losing side; D <= 0; after the anchor; the new file's columns, rows and order equal clips.csv on its six columns; clips.csv bytes unchanged; looseball run writes both; check_reproduce passes with the extra file and fails when clips.csv changes; path check favourite rule, loser first on the path, unreached, tie, aerial, undetected frames. Full suite: 85 passed |
 
 Equivalence check, exploration matches only (the full `looseball reproduce` reads the test matches and is not run in this step). The MT1 compute and write were run on the five exploration matches with the code before this build (commit fc816df) and after it; all seven outputs (clips.csv, episodes.csv, episodes_ungated.csv, gates.json, team_shares.csv, team_verdicts.csv, report.md) are byte-identical, 326 analysis-set balls. Five of them are also byte-identical to the committed audit/mt1_exploration record; gates.json differs from that record as it did before the build (the public writer labels the set "test" and applies the 10-of-15 match rule to 5 matches). `looseball run --match 1886347` writes the same clips_enough.csv rows as the reproduce path (62 balls). Run time of the exploration compute: 96 s before, 102 s after (with the 3h tables), peak memory 0.7 GB.
+
+
+### 3h rehearsal on the exploration matches (2026-11-17)
+
+A bug check on the five exploration matches (326 lost balls in the analysis set), not a test; run after the 3h definitions, checks and the path check were logged (commit fc816df) and the code was built (commit 3365a0d). No test match was read. Script: scripts/s3h.py exploration; outputs audit/s3h_exploration/ (report.md, clips_enough.csv, enough_all_sets.csv, pathcheck.csv) and four figures in audit/figures/. Every table below is report.md as written by the script.
+
+3h rehearsal on 5 matches: 326 lost balls in the analysis set.
+
+C1. Counts by enough_type, by verdict and by trigger:
+
+| verdict          |   redirect |   move |   already_favourite |   no_player_in_race |   blank (after the anchor) |   all |
+|:-----------------|-----------:|-------:|--------------------:|--------------------:|---------------------------:|------:|
+| after the anchor |          0 |      0 |                   0 |                   0 |                         53 |    53 |
+| positioning      |         52 |    141 |                  19 |                  27 |                          0 |   239 |
+| reading          |         24 |     10 |                   0 |                   0 |                          0 |    34 |
+| all              |         76 |    151 |                  19 |                  27 |                         53 |   326 |
+
+| trigger   |   redirect |   move |   already_favourite |   no_player_in_race |   blank (after the anchor) |   all |
+|:----------|-----------:|-------:|--------------------:|--------------------:|---------------------------:|------:|
+| T1        |          2 |      2 |                   0 |                   4 |                          3 |    11 |
+| T2        |         22 |     47 |                   4 |                  12 |                         19 |   104 |
+| T3        |          6 |      9 |                   1 |                   2 |                          4 |    22 |
+| T4        |         23 |     53 |                   4 |                   3 |                          7 |    90 |
+| T5        |          1 |      2 |                   0 |                   2 |                          2 |     7 |
+| T6        |          0 |      2 |                   0 |                   1 |                          0 |     3 |
+| T7        |         22 |     36 |                  10 |                   3 |                         18 |    89 |
+| all       |         76 |    151 |                  19 |                  27 |                         53 |   326 |
+
+C2 and C3. metres_short (balls with D > 0) and enough_degrees (redirect balls), by verdict:
+
+| quantity                | verdict     |   n |   p10 |   p50 |    p90 |
+|:------------------------|:------------|----:|------:|------:|-------:|
+| metres_short, m         | positioning | 220 |  0.81 |  3.09 |   8.95 |
+| enough_degrees          | positioning |  52 | 14.15 | 51.17 | 105.62 |
+| enough_metres (move), m | positioning | 141 |  1.15 |  3.34 |   8.01 |
+| metres_short, m         | reading     |  34 |  0.10 |  0.81 |   2.88 |
+| enough_degrees          | reading     |  24 |  3.08 | 41.44 |  95.10 |
+| enough_metres (move), m | reading     |  10 |  0.42 |  0.81 |   2.92 |
+
+Reading rule (median metres_short above 10 m): positioning 3.09 m, reading 0.81 m; neither is above 10 m.
+
+C4. Reading verdicts fixed by one redirection: 24 of 34 (0.706).
+
+C5. Of 227 balls with an enough player: extrapolated at the anchor 5 (0.022); goalkeeper 0 (0.000).
+
+C6. Stability under each V3 variant (positioning and reading balls whose verdict is unchanged):
+
+| variant                                  |   balls |   left out (verdict changed) |   kept |   type and player unchanged |   redirect: n both |   redirect: Spearman |   move: n both |   move: Spearman |
+|:-----------------------------------------|--------:|-----------------------------:|-------:|----------------------------:|-------------------:|---------------------:|---------------:|-----------------:|
+| anchor 0.2 s later                       |     273 |                        0.059 |    257 |                       0.829 |                 47 |                0.925 |            142 |            0.960 |
+| growing radius max(radius, 8 m/s x lead) |     273 |                        0.000 |    273 |                       0.967 |                 76 |                1.000 |            151 |            1.000 |
+| pleuler turning penalty                  |     273 |                        0.033 |    264 |                       0.542 |                 57 |                0.624 |             77 |            0.935 |
+| smoothing window 7                       |     273 |                        0.000 |    273 |                       1.000 |                 76 |                0.999 |            151 |            1.000 |
+| extrapolated players dropped             |     273 |                        0.018 |    268 |                       0.978 |                 72 |                1.000 |            150 |            0.998 |
+| reaction time 0.35 s                     |     273 |                        0.055 |    258 |                       0.740 |                 32 |                0.338 |            142 |            0.939 |
+
+C7. Ungated lost balls (D7 off), report-only line:
+
+| verdict     |   ungated lost balls |   median metres_short |   median enough_degrees |
+|:------------|---------------------:|----------------------:|------------------------:|
+| positioning |                  296 |                  3.40 |                   50.79 |
+| reading     |                   43 |                  0.78 |                   43.04 |
+
+Diagnostics: precedence rule (a) (D <= 0 with an empty losing side, typed already_favourite) applied to 0 balls; the best-placed tie rule decided 0 balls and the rotation tie rule 0.
+
+Bug check: after the enough change the player's reach time equals t_w for all 227 redirect and move balls (largest difference 1.55e-15 s).
+
+Path check on 326 lost balls: 179 ground, 147 aerial (left out). Ball-detected path frames per ground ball: median 14.
+
+P1, tolerance 0.3 s. Dynamic path favourite against the frozen dynamic favourite (share agree 0.598 of 179):
+
+| category             |   balls |
+|:---------------------|--------:|
+| agree                |     107 |
+| disagree             |      25 |
+| path: tie            |       7 |
+| path: unreached      |      38 |
+| frozen: no favourite |       2 |
+
+P2, tolerance 0.3 s. Frozen verdict by the loser's static path status:
+
+| verdict          |   loser is path favourite |   tie |   unreached |   winner is |   all |
+|:-----------------|--------------------------:|------:|------------:|------------:|------:|
+| after the anchor |                        10 |     2 |          12 |           1 |    25 |
+| positioning      |                        13 |     2 |          50 |          69 |   134 |
+| reading          |                         8 |     1 |          11 |           0 |    20 |
+| all              |                        31 |     5 |          73 |          70 |   179 |
+
+P3, tolerance 0.3 s. Positioning verdicts where the loser is the static path favourite: 13 of 134, 0.097 (95% interval 0.052 to 0.149).
+
+P1, tolerance 0 s. Dynamic path favourite against the frozen dynamic favourite (share agree 0.374 of 179):
+
+| category             |   balls |
+|:---------------------|--------:|
+| agree                |      67 |
+| disagree             |      10 |
+| path: tie            |       4 |
+| path: unreached      |      96 |
+| frozen: no favourite |       2 |
+
+P2, tolerance 0 s. Frozen verdict by the loser's static path status:
+
+| verdict          |   loser is path favourite |   tie |   unreached |   winner is |   all |
+|:-----------------|--------------------------:|------:|------------:|------------:|------:|
+| after the anchor |                         8 |     1 |          15 |           1 |    25 |
+| positioning      |                         7 |     1 |          83 |          43 |   134 |
+| reading          |                         3 |     0 |          16 |           1 |    20 |
+| all              |                        18 |     2 |         114 |          45 |   179 |
+
+P3, tolerance 0 s. Positioning verdicts where the loser is the static path favourite: 7 of 134, 0.052 (95% interval 0.022 to 0.090).
+
+Figures: seed 20261117 (numpy default_rng), two drawn without replacement from the 76 redirect balls, then two from the 151 move balls, each pool sorted by match and seq_i.
+
+|   figure |   match_id |   seq_i | trigger   | verdict     | enough_type   | enough_player   |   magnitude | file                                                                   |
+|---------:|-----------:|--------:|:----------|:------------|:--------------|:----------------|------------:|:-----------------------------------------------------------------------|
+|        1 |    1959846 |     340 | T3        | positioning | redirect      | home_10         |       25.95 | audit/figures/s3h_exploration_seed20261117_01_redirect_1959846_340.png |
+|        2 |    1996436 |     329 | T7        | positioning | redirect      | home_6          |       86.20 | audit/figures/s3h_exploration_seed20261117_02_redirect_1996436_329.png |
+|        3 |    1996436 |     618 | T3        | positioning | move          | home_27         |        7.72 | audit/figures/s3h_exploration_seed20261117_03_move_1996436_618.png     |
+|        4 |    1959846 |     114 | T7        | positioning | move          | home_3          |        2.70 | audit/figures/s3h_exploration_seed20261117_04_move_1959846_114.png     |
+
+Ground flag against step 1: the path check's ground flag agrees with the aerial column of audit/loose_episodes_exploration.csv on all 326 balls (179 ground, 147 aerial; step 1 A5: 45% of main pairs aerial).
+
+Figure reading (all four inspected). In each figure the enough player is ringed; after the change his drifted position (black square) lies on the dotted circle of radius 5 x (t_w - 0.7) around the pickup point, as the definition requires. Figures 1 and 2: the rotation is partial, not a full turn to the pickup point (figure 1: 26 degrees for a player already moving near the pickup point; figure 2: 86 degrees for a slow player whose 0.7 s drift is short). Figures 3 and 4: the displacement runs parallel to the line from the recorded drifted position (orange square) to the pickup point, by metres_short. One rendering bug fixed before the final run: players outside the square panel had their velocity arrows drawn without a marker (the panel filter used a circle); the tables were identical before and after the fix.
+
+Findings from the rehearsal, reported and not acted on (no definition changed):
+
+| # | finding | evidence |
+|:--|:--|:--|
+| 1 | redirect is tried before move, so a positioning verdict often gets a movement change as its enough change | 52 of 239 positioning balls are typed redirect (median 51 degrees) |
+| 2 | the redirection acts only through the 0.7 s reaction drift (r = 0.7 x speed), so its type and size depend strongly on the reaction parameter and on pleuler | C6: type and player unchanged 0.740 under reaction 0.35 s and 0.542 under pleuler (0.83 to 1.00 for the other variants); redirect Spearman 0.338 (n 32) under reaction 0.35 s and 0.624 (n 57) under pleuler |
+| 3 | metres_short is defined for every ball with D > 0, including the 27 no_player_in_race balls, where there is no player to move; C2 includes them | C1 and C2 |
+| 4 | 19 of 239 positioning balls (7.9%) are already_favourite: the loser was the dynamic favourite (reading term negative) | C1 |
+| 5 | the path check covers ground balls only, 179 of 326 (55%) | path check header |
+| 6 | P3 counts unreached balls as "not loser favourite"; at 0.3 s, 50 of the 134 positioning balls are unreached by both teams (83 at 0 s). Among positioning balls with a path favourite, the loser is it in 13 of 82 (0.159), read off P2; this is not a logged statistic | P2 and P3 |
+| 7 | P1 compares a path favourite from all players on the frame with a frozen favourite from the 15 m race | P1: 25 disagreements at 0.3 s |
+| 8 | the goalkeeper and extrapolated flags rarely fire | C5: goalkeeper 0 of 227, extrapolated 5 of 227 |
+| 9 | precedence rule (a) and both tie rules were never needed on these matches | diagnostics line |
+
+Reading rule: the median metres_short is 3.09 m for positioning and 0.81 m for reading, neither above 10 m.

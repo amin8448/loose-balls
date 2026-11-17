@@ -2399,3 +2399,16 @@ Report-only, new. Reason, as given by the project lead: reach times are measured
 | report P3 | share of positioning verdicts where the loser is the static path favourite (ties and unreached count as not), with its interval |
 
 Consequence, fixed now: the P3 number goes into the README limitations whatever it is. No verdict or headline changes.
+
+### 3h build: code, tests and the equivalence check (2026-11-17)
+
+| item | value |
+|:--|:--|
+| src/looseball/enough.py | the 3h definitions (DESIGN.md): deficit, best-placed player, metres short (closed form; bisection under pleuler), redirection (closed form; bisection under pleuler), enough change and type, flags |
+| src/looseball/pathcheck.py | the path check as logged: ground flag, first reachable frame per team, path favourite, static and dynamic, tolerances 0.3 s and 0 |
+| src/looseball/export_clips.py | export_clips_enough writes clips_enough.csv; export_clips and its six columns unchanged |
+| src/looseball/reproduce.py | compute() also returns the per-player reach table and each V3 variant's reach table; enough_tables() and write_enough(); reproduce() writes clips_enough.csv after the MT1 files. write() is unchanged |
+| src/looseball/cli.py | looseball run also writes clips_enough.csv |
+| tests | 16 new on synthetic data: moving by 5 x D gives t_w; the rotation formula against a brute-force scan over angles (including a 3.5 m drift on a 2 m distance) and against the bisection; no rotation possible; pleuler bisections reach t_w; smallest rotation and its tie rule; best-placed ties on distance then column_id; empty losing side; D <= 0; after the anchor; the new file's columns, rows and order equal clips.csv on its six columns; clips.csv bytes unchanged; looseball run writes both; check_reproduce passes with the extra file and fails when clips.csv changes; path check favourite rule, loser first on the path, unreached, tie, aerial, undetected frames. Full suite: 85 passed |
+
+Equivalence check, exploration matches only (the full `looseball reproduce` reads the test matches and is not run in this step). The MT1 compute and write were run on the five exploration matches with the code before this build (commit fc816df) and after it; all seven outputs (clips.csv, episodes.csv, episodes_ungated.csv, gates.json, team_shares.csv, team_verdicts.csv, report.md) are byte-identical, 326 analysis-set balls. Five of them are also byte-identical to the committed audit/mt1_exploration record; gates.json differs from that record as it did before the build (the public writer labels the set "test" and applies the 10-of-15 match rule to 5 matches). `looseball run --match 1886347` writes the same clips_enough.csv rows as the reproduce path (62 balls). Run time of the exploration compute: 96 s before, 102 s after (with the 3h tables), peak memory 0.7 GB.

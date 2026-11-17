@@ -3,7 +3,8 @@
 looseball reproduce --data PATH --out PATH
     Regenerate every MT1 table and figure from the SkillCorner open-data clone at PATH.
 looseball run --data PATH --match ID [--out PATH]
-    Team report and clip export for one match, with the frozen parameters.
+    Team report and clip export for one match, with the frozen parameters; clips_enough.csv adds
+    the 3h columns (report-only).
 """
 
 import argparse
@@ -13,7 +14,8 @@ import pandas as pd
 
 from looseball import decompose, expectations, export_clips, find_episodes, reach_times, team_report
 from looseball.adapters.skillcorner import load_match
-from looseball.export_clips import match_clock
+from looseball.enough import enough
+from looseball.export_clips import export_clips_enough, match_clock
 
 
 def run_match(data, match_id: int, out) -> dict:
@@ -27,13 +29,19 @@ def run_match(data, match_id: int, out) -> dict:
     summary = {"match": int(match_id), "episodes": len(ep), "analysed lost balls": len(a)}
     if a.empty:
         return summary
-    e = expectations(reach_times(a, m.tracking, m.players))
+    reach = reach_times(a, m.tracking, m.players)
+    e = expectations(reach)
     d = decompose(e, a[["match_id", "seq_i"]].assign(winning_team=a["team_id_next"].to_numpy()))
     d.to_csv(out / "decomposed.csv", index=False, float_format="%.4f")
     rep = team_report(d, team_names=m.team_names, matches_per_team={m.home_team_id: 1, m.away_team_id: 1})
     rep["verdicts"].to_csv(out / "team_verdicts.csv", index=False, float_format="%.4f")
     rep["shares"].to_csv(out / "team_shares.csv", index=False, float_format="%.4f")
-    export_clips(d, a, {m.match_id: match_clock(m.tracking)}, path=out / "clips.csv")
+    clocks = {m.match_id: match_clock(m.tracking)}
+    export_clips(d, a, clocks, path=out / "clips.csv")
+    balls = d[["match_id", "seq_i", "loser_side", "verdict"]].merge(
+        a[["match_id", "seq_i", "pickup_x", "pickup_y"]], on=["match_id", "seq_i"], validate="1:1"
+    )
+    export_clips_enough(d, a, clocks, enough(reach, balls), path=out / "clips_enough.csv")
     summary["verdicts"] = d["verdict"].value_counts().to_dict()
     summary["bootstrap seed"] = rep["seed"]
     return summary

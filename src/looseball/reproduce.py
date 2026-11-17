@@ -5,7 +5,7 @@ module regenerates its tables through the public API with the frozen parameters 
 package: it recomputes the measures, it does not refit or re-decide anything. Output, in --out:
 report.md (every MT1 table, as logged), episodes.csv, episodes_ungated.csv, team_verdicts.csv,
 team_shares.csv, clips.csv and gates.json, matching audit/mt1_test; static_temperature.md (3c.0,
-report-only); and figures/ (looseball.figures).
+report-only); clips_enough.csv (3h, report-only); and figures/ (looseball.figures).
 """
 
 import io
@@ -18,6 +18,7 @@ import pandas as pd
 from looseball import decompose, expectations, export_clips, find_episodes, reach_times, team_report
 from looseball.adapters.skillcorner import load_match
 from looseball.decompose import SHARES
+from looseball.enough import enough
 from looseball.expectation import (
     baselines,
     calibration,
@@ -25,8 +26,8 @@ from looseball.expectation import (
     frozen_static_temperature,
     log_loss,
 )
-from looseball.export_clips import match_clock
-from looseball.race import ReachModel
+from looseball.export_clips import export_clips_enough, match_clock
+from looseball.race import REACTION, TURNING_PENALTY, ReachModel
 from looseball.report import bootstrap_within_match
 from looseball.velocities import tracking_velocities
 
@@ -105,12 +106,14 @@ def compute(data, matches=TEST_MATCHES) -> dict:
     radius = RADIUS if drop15 <= GATE_MAX_DROP else FALLBACK_RADIUS  # consequence fixed in the brief
 
     bases, variants, cas, clocks = [], [], [], {}
+    reaches, variant_reaches = [], {name: [] for name in VARIANTS}  # kept for 3h (report-only)
     for mid in matches:
         m = load_match(data, mid)
         clocks[mid] = match_clock(m.tracking)
         ep = find_episodes(m.possessions, m.tracking, m.players, radius=radius)
         ep = ep[ep["anchored"]].reset_index(drop=True)
         reach = reach_times(ep, m.tracking, m.players, radius=radius)
+        reaches.append(reach)
         meas = _measures(ep, reach, frozen)
         base = ep.merge(meas, on=["match_id", "seq_i"], validate="1:1")
         base = base.merge(_static_own(reach), on=["match_id", "seq_i"], validate="1:1")
@@ -119,6 +122,7 @@ def compute(data, matches=TEST_MATCHES) -> dict:
         a = base[base["kept"] & ~base["immediate"]]
         for name, kw in VARIANTS.items():
             r = reach_times(a, m.tracking, m.players, radius=radius, **kw)
+            variant_reaches[name].append(r)
             variants.append(_measures(a, r, frozen)[["match_id", "seq_i", "verdict"]].assign(variant=name))
         r = reach_times(a, m.tracking, m.players, radius=radius, model="constant_acceleration")
         cas.append(_measures(a, r, ca_parameters)[["match_id", "seq_i", "p_dynamic", "verdict"]])
@@ -148,7 +152,8 @@ def compute(data, matches=TEST_MATCHES) -> dict:
         anchored15 = base
     return {"base": base, "base15": anchored15, "a": a, "off": off, "variant_verdicts": variant_verdicts, "ca": ca,
             "drop15": drop15, "radius": radius, "names": names, "n_matches": n_matches, "clocks": clocks,
-            "n_sets": len(matches)}  # fmt: skip
+            "n_sets": len(matches), "reach": pd.concat(reaches, ignore_index=True),
+            "variant_reach": {k: pd.concat(v, ignore_index=True) for k, v in variant_reaches.items()}}  # fmt: skip
 
 
 def _comparison(t: pd.DataFrame, a: str, b: str, n_matches: int) -> dict:
@@ -388,6 +393,39 @@ def _win_share_difference(table: pd.DataFrame) -> dict:
     }
 
 
+def variant_parameters(name: str) -> dict:
+    """Reach-model parameters of a V3 variant, for the 3h stability check."""
+    kw = VARIANTS[name]
+    return {
+        "reaction": kw.get("reaction", REACTION),
+        "turning_penalty": kw.get("turning_penalty", TURNING_PENALTY),
+    }
+
+
+def enough_tables(r: dict) -> dict:
+    """3h (report-only): the enough quantities of the analysis set, of the ungated lost balls, and
+    of the analysis set under each V3 variant (with that variant's verdicts and reach table)."""
+    out = {"a": enough(r["reach"], r["a"]), "off": enough(r["reach"], r["off"])}
+    for name, verdicts in r["variant_verdicts"].items():
+        balls = r["a"].assign(verdict=verdicts)
+        out[name] = enough(r["variant_reach"][name], balls, **variant_parameters(name))
+    return out
+
+
+def write_enough(r: dict, out: Path, table: pd.DataFrame | None = None) -> pd.DataFrame:
+    """clips_enough.csv (3h, report-only): the clip rows of clips.csv with the enough columns.
+    clips.csv itself is written by write() and is not touched."""
+    a = r["a"]
+    table = enough(r["reach"], a) if table is None else table
+    return export_clips_enough(
+        a[["match_id", "seq_i", "losing_team", "verdict"]],
+        a[["match_id", "seq_i", "period_id", "anchor_frame"]],
+        r["clocks"],
+        table,
+        path=Path(out) / "clips_enough.csv",
+    )
+
+
 def reproduce(data, out) -> dict:
     """Regenerate the MT1 tables and the README figures from the open-data clone at `data` into `out`."""
     from looseball.figures import draw_figures
@@ -395,6 +433,7 @@ def reproduce(data, out) -> dict:
     r = compute(data)
     summary = write(r, Path(out))
     write_static_temperature(r, Path(out))
+    write_enough(r, Path(out))
     figures = draw_figures(data, out)
     summary["figure 1 episode"] = (
         f"match {figures['figure 1']['match_id']}, seq_i {figures['figure 1']['seq_i']}"

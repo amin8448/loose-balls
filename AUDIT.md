@@ -2287,3 +2287,115 @@ Every number in README.md, with its source. Derived values are computed from the
 | 1 to 5 held-out matches per team | MT1 R9a, matches in the set |
 | commit 4340d27; Python 3.12; Git LFS | setup; environment; the open-data clone stores *.jsonl with Git LFS (.gitattributes) |
 | about 6 minutes, about 0.8 GB | 3b revision, reproduce runs (final run 5 min 47 s, 826 MB) |
+
+### Repository history rewritten before the first push (2026-11-17)
+
+Done at the project lead's request, before the repository was first pushed to GitHub (private). The step 3 brief says "The commit history stays as it is"; this entry records the departure. Every commit was replayed in order with the same message, author, author date, committer and committer date. Changes inside the replayed commits:
+
+| item | change |
+|:--|:--|
+| a local tool configuration file | not part of the entry: removed from every commit; kept as an untracked local file |
+| docs/step1_audit_brief.md, step2_brief.md, step3_brief.md | wording about how the briefs were used removed: opening lines now "Brief for step N", "Rules for the session" now "Rules for the step", an appendix of the step 1 brief that reproduced that local file, and two lines on commit wording, removed, one reviewer description shortened. No definition, threshold, check or consequence changed |
+| AUDIT.md | five phrasings: "in this session" (twice) and "the session rule" now refer to the step or the brief; "the session brief" now "the step 2 brief"; "the brief or the session instructions" now "the brief". Every cited commit hash replaced by the new hash of the same commit (11 lines, including the MT1 marker line, whose code commit now reads 682aa2c) |
+| scripts/a1_gap_crosstab.py, tests/research/test_guard.py | one cited commit hash each, in a docstring |
+
+Checks, from `git diff backup/pre-rewrite main` (the backup branch holds the old history, local only): the seven files above are the only files that differ; every file under audit/, figures/ and src/ is byte-identical. No result, table, figure, parameter or definition changed. The test suite passed on the rewritten main (69 passed). The guard reads the marker line from AUDIT.md at HEAD and still finds it.
+
+Old and new hashes, paired in order (21 commits; subjects identical in every pair):
+
+| old | new | date | subject |
+|:--|:--|:--|:--|
+| 6259f5f | 86143df | 2026-10-27 | Repository setup |
+| a1fbde1 | 67b1fb3 | 2026-10-27 | Step 1 A0 and A1 |
+| 5b7f354 | 1f0b65c | 2026-10-27 | Step 1: post hoc revisions after A1, gate thresholds |
+| bbb9c05 | 690aa58 | 2026-10-27 | Step 1 A2 to A6 and gates G1 to G4 |
+| 55edb30 | b835981 | 2026-10-28 | Step 1: revision 2 amended, G4 anchor procedure logged |
+| 39bb95b | d1cb351 | 2026-10-28 | Step 1 revision 2: A7 to A9, gates at the anchors |
+| 34b934f | 835875d | 2026-10-28 | Step 1: revision 3 of the contact rule, logged before the run |
+| f5d4168 | 35babf9 | 2026-10-28 | Step 1 revision 3: re-run, DESIGN.md updated |
+| 472bb7d | e808636 | 2026-10-28 | Step 2: DataBallPy pinned, modules |
+| b58291d | df0bac7 | 2026-10-28 | Step 2 S1 and S2 |
+| 992112d | a3ce7bc | 2026-10-28 | Step 2: S2 finding, MT1 additions |
+| ad85d79 | a0923f9 | 2026-10-28 | Step 2 S3 to S5 |
+| 5096022 | 682aa2c | 2026-10-29 | Step 2: MT1 script, rehearsed on the exploration matches |
+| e4d9edf | 3a104ab | 2026-10-29 | MT1: main-test plan and marker logged |
+| cc25f90 | 93072e5 | 2026-10-29 | MT1 run on the 15 test matches |
+| c56f6c7 | 12bd6f2 | 2026-10-29 | Step 3a: public looseball API |
+| 5b05927 | 4562c80 | 2026-10-29 | Step 3a: reproduce matches the MT1 record |
+| 4637521 | b3703b8 | 2026-10-29 | Step 3b: Figures 1 and 2 |
+| 5479e62 | aa8ebda | 2026-10-29 | Step 3c.0: static expectation with its own temperature |
+| 70d453e | d5d0c56 | 2026-10-29 | Step 3b revision: Figure 1 redrawn |
+| 18e56ed | aaabf90 | 2026-11-17 | Step 3c: README draft and its number sources |
+
+### Documentation fixes (2026-11-17)
+
+Documentation only; no result, definition or parameter changes.
+
+| file | fix |
+|:--|:--|
+| DESIGN.md | "Step 2 decision 1" closed: the last-leg anchor, fixed in the MT1 plan |
+| DESIGN.md | the MT1 definitions copied from the MT1 plan ("MT1, the main-test plan" above) into a new section; DESIGN.md said they would be frozen there when the marker was logged, and that was not done |
+| DESIGN.md | the code of the frozen definitions named: the research version src/looseball_research/episodes.py (moved verbatim in 3a) and the public version src/looseball/episodes.py (equivalent on the exploration matches, 3a; reproduces MT1 byte for byte) |
+| docs/step3_brief.md | README section 6: "1 to 7 matches per team" corrected to 1 to 5 (MT1 R9a: 1 to 5 test matches per team) |
+| docs/step3_brief.md | 3h metres short: "Closed form under the shaw model" corrected: DataBallPy's "shaw" option has no turning term (t = reaction + distance from the drifted position / top speed), so 5 m/s times D is exact for any player under the frozen model |
+
+### 3h. What would have been enough: definitions, decisions and checks, logged before any code touches match data (2026-11-17)
+
+Report-only. 3h and the path check below are new code written and run after MT1, on the test matches only in the next step; neither changes any measure, verdict, parameter or the six MT1 files. The definitions are frozen in DESIGN.md, "3h. What would have been enough". Decisions by the project lead:
+
+| # | question | decision |
+|:--|:--|:--|
+| 1 | set | the lost balls of the analysis set (gated). Ungated medians of metres_short and enough_degrees are one report-only line |
+| 2 | winner time and deficit | t_w = the winning side's best dynamic reach time in the race; D = the losing side's best dynamic reach time minus t_w; deficit_s = D for every lost ball, negative when the loser was the dynamic favourite |
+| 3 | best-placed player | the losing player with the smallest dynamic reach time; ties within 1e-9 s broken by distance to the pickup point, then column_id |
+| 4 | metres short | 5 x D for balls with D > 0, exact under the frozen model (no turning term). Under the pleuler variant only: bisection on the displacement along the line from the drifted position to the pickup point |
+| 5 | redirection | per losing player with speed above zero: d = distance to the pickup point, r = 0.7 x speed, R = 5 x (t_w - 0.7); a flip by rotation is possible when \|d - r\| <= R; the smallest rotation that flips is max(0, phi - theta), phi the angle between his velocity and the direction to the pickup point, theta = arccos((d^2 + r^2 - R^2) / (2 d r)) clipped to [-1, 1]. Players without a velocity cannot be redirected |
+| 6 | enough change | the redirection with the smallest rotation if any player has one; otherwise the best-placed player moved by metres_short |
+| 7 | enough_type | redirect, move, already_favourite (positioning verdict with D <= 0), no_player_in_race (empty losing side), blank for after-the-anchor verdicts |
+| 8 | eligibility | goalkeepers and extrapolated players are eligible and flagged |
+| 9 | output | clips.csv is not touched. New file clips_enough.csv (columns in DESIGN.md), written by looseball run and looseball reproduce. A committed record for it is added only after the test run |
+
+Set in writing the definitions, before any data, and flagged for confirmation because the decisions do not state them:
+
+| # | point | rule used |
+|:--|:--|:--|
+| a | precedence when two types apply | blank for after the anchor; then already_favourite (D <= 0); then no_player_in_race; then redirect; then move. A positioning ball with an empty losing side and D <= 0 (possible when the winner's best dynamic time exceeds the empty-team time of 3.7 s) is therefore already_favourite |
+| b | ties between redirections | rotation within 1e-9 rad, then distance to the pickup point, then column_id, as for the best-placed player |
+| c | a player exactly on the pickup point (d = 0) | cannot be redirected: rotation does not change his distance |
+| d | redirection under the pleuler variant (V3 stability only) | the closed form assumes no turning term; under pleuler the smallest rotation is found by bisection on the rotation angle, since the pleuler reach time increases with the angle between velocity and the direction to the pickup point |
+| e | the other V3 variants | the enough change is recomputed from that variant's reach table with its parameters (reaction 0.35 s gives r = 0.35 x speed and R = 5 x (t_w - 0.35)) |
+| f | file format | clips_enough.csv rows and order as clips.csv (sorted by match and anchor frame); floats to four decimals; blank where a value does not apply |
+
+Checks, report-only, run on the rehearsal set first and on the test set in the next step. All on lost balls of the stated set; intervals, where given, 2000 bootstrap replicates resampling episodes within match, seed 0.
+
+| # | check | set | statistic |
+|:--|:--|:--|:--|
+| C1 | counts by enough_type | analysis set | counts by enough_type, by verdict and by trigger |
+| C2 | metres short | balls with D > 0, positioning and reading separately | p10, p50, p90 of metres_short |
+| C3 | rotation | redirect balls, positioning and reading separately | p10, p50, p90 of enough_degrees |
+| C4 | reading fixed by one redirection | reading verdicts | share with enough_type redirect |
+| C5 | flags | balls with an enough player (redirect or move) | share with the enough player extrapolated; share with the enough player a goalkeeper |
+| C6 | stability under each V3 variant | positioning and reading balls whose verdict is unchanged under that variant | share left out (verdict changed) reported; share with enough_type and enough_player both unchanged (a player missing under the variant counts as changed); Spearman correlation of the magnitude within each type (redirect: enough_degrees; move: enough_metres) over balls with that type in both |
+| C7 | ungated line | ungated lost balls (D7 off), positioning and reading | medians of metres_short and enough_degrees |
+
+Reading rule, fixed now: if the median metres_short is above 10 m for positioning or for reading, the model is saying something other than "nearly there"; that is reported and not adjusted.
+
+### Path check: procedure, logged before it runs (2026-11-17)
+
+Report-only, new. Reason, as given by the project lead: reach times are measured to the pickup point, which is where the winner took the ball, so the loser may look worse placed by construction.
+
+| item | rule |
+|:--|:--|
+| set | lost balls of the analysis set that are ground episodes (DESIGN.md: no window frame with the ball detected and ball z above 1.8 m) |
+| frames | every frame f from the anchor to the pickup frame inclusive with the ball detected and its position present; target = the ball position on f |
+| players | anchor-frame positions and smoothed velocities (window 5, order 2; no velocity gives velocity zero, as in the race) of all rostered players of each team on the anchor frame, not only the 15 m race |
+| model | the frozen reach model (DataBallPy shaw, reaction 0.7 s, top speed 5 m/s) |
+| reach | a team reaches f when its best reach time to the target on f is at most (f - anchor) / 10 + 0.3 s (the S2 tolerance); also reported with tolerance 0 |
+| path favourite | the team with the earlier first reachable frame; equal frames are a tie; if neither team reaches any frame the ball is "unreached" and counted |
+| versions | static (velocity zero) and dynamic |
+| frozen favourite | the team with p_dynamic above 0.5 (p_static for the static comparison); 0.5 is no favourite |
+| report P1 | share of balls whose dynamic path favourite is the frozen dynamic favourite, with the counts of ties, unreached balls and disagreements |
+| report P2 | cross-tab of the frozen verdict by the loser's static path status (loser is path favourite, winner is, tie, unreached) |
+| report P3 | share of positioning verdicts where the loser is the static path favourite (ties and unreached count as not), with its interval |
+
+Consequence, fixed now: the P3 number goes into the README limitations whatever it is. No verdict or headline changes.

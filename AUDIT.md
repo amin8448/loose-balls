@@ -2909,3 +2909,89 @@ Report-only, requested by the project lead; run once on the test analysis set (1
 | D1 | no player of either team in the race | both sides of the ball's race are the empty-team row of reach_times (nobody within 15 m of the pickup point on the anchor frame). Count, by verdict and by trigger. Compared ball by ball with the 31 balls of episodes.csv whose p_static and p_dynamic are both 0.5000 (all after the anchor) |
 | D2 | outside the pitch markings | each match's pitch length L and width W from the match metadata, origin at the centre: a point is outside when \|x\| > L/2 or \|y\| > W/2, and more than 1 m outside when \|x\| > L/2 + 1 or \|y\| > W/2 + 1. For the pickup point (the tracked ball on the pickup frame) and for the tracked ball position on the anchor frame (whether or not the ball is detected there; a missing position is counted). Count and share, by verdict and by trigger |
 | D3 | one player staying with the ball | window frames (after the release up to and including the pickup) with the ball detected; for each player on those frames (detected or not, any team), the share of them on which he is within 1.5 m (horizontal) of the ball; the ball's value is the largest share and its player. Distribution (p10, p25, p50, p75, p90). Count of balls with a window of at least 2 s (pickup frame minus release frame at least 20 frames) and that share at least 0.70, by trigger, with that player's role: the winner (player of possession i+1), another player of the winning team, or a player of the losing team. Balls with no detected window frame are counted |
+
+
+### 3h diagnostics D1 to D3: results (2026-11-18)
+
+Run once, `python scripts/s3h_diagnostics.py` (40 s, 654 MB), after the procedure was committed (3afc931). The analysis set rebuilt per match equals the 1,003 balls of audit/mt1_test/episodes.csv. Report-only; nothing changed. Every table below is report.md as written.
+
+Diagnostics on the test analysis set: 1003 lost balls.
+
+D1. Balls with nobody of either team in the 15 m race at the anchor: 31.
+
+| verdict          |   balls |
+|:-----------------|--------:|
+| after the anchor |      31 |
+
+| trigger   |   balls |
+|:----------|--------:|
+| T2        |      20 |
+| T4        |       4 |
+| T7        |       4 |
+| T3        |       2 |
+| T6        |       1 |
+
+Against the 31 balls with p_static and p_dynamic both 0.5000: 31 are in both sets; 0 D1 balls are not among them; 0 of them are not D1 balls.
+
+D2. Outside the pitch markings (each match's pitch size; origin at the centre).
+
+Pickup point:
+
+| verdict          |   balls |   pickup_outside |   pickup_outside_1m |   pickup_outside share |   pickup_outside_1m share |
+|:-----------------|--------:|-----------------:|--------------------:|-----------------------:|--------------------------:|
+| after the anchor |     176 |                0 |                   0 |                  0.000 |                     0.000 |
+| positioning      |     692 |                2 |                   1 |                  0.003 |                     0.001 |
+| reading          |     135 |                0 |                   0 |                  0.000 |                     0.000 |
+| all              |    1003 |                2 |                   1 |                  0.002 |                     0.001 |
+
+| trigger   |   balls |   pickup_outside |   pickup_outside_1m |   pickup_outside share |   pickup_outside_1m share |
+|:----------|--------:|-----------------:|--------------------:|-----------------------:|--------------------------:|
+| T1        |      30 |                0 |                   0 |                  0.000 |                     0.000 |
+| T2        |     281 |                1 |                   1 |                  0.004 |                     0.004 |
+| T3        |      45 |                0 |                   0 |                  0.000 |                     0.000 |
+| T4        |     327 |                1 |                   0 |                  0.003 |                     0.000 |
+| T5        |      13 |                0 |                   0 |                  0.000 |                     0.000 |
+| T6        |       7 |                0 |                   0 |                  0.000 |                     0.000 |
+| T7        |     300 |                0 |                   0 |                  0.000 |                     0.000 |
+| all       |    1003 |                2 |                   1 |                  0.002 |                     0.001 |
+
+Ball on the anchor frame: position missing on 0 balls; ball detected on 997 of 1003 anchor frames.
+
+Ball on the anchor frame:
+
+| verdict          |   balls |   anchor_ball_outside |   anchor_ball_outside_1m |   anchor_ball_outside share |   anchor_ball_outside_1m share |
+|:-----------------|--------:|----------------------:|-------------------------:|----------------------------:|-------------------------------:|
+| after the anchor |     176 |                     0 |                        0 |                       0.000 |                          0.000 |
+| positioning      |     692 |                     3 |                        0 |                       0.004 |                          0.000 |
+| reading          |     135 |                     0 |                        0 |                       0.000 |                          0.000 |
+| all              |    1003 |                     3 |                        0 |                       0.003 |                          0.000 |
+
+| trigger   |   balls |   anchor_ball_outside |   anchor_ball_outside_1m |   anchor_ball_outside share |   anchor_ball_outside_1m share |
+|:----------|--------:|----------------------:|-------------------------:|----------------------------:|-------------------------------:|
+| T1        |      30 |                     0 |                        0 |                       0.000 |                          0.000 |
+| T2        |     281 |                     0 |                        0 |                       0.000 |                          0.000 |
+| T3        |      45 |                     0 |                        0 |                       0.000 |                          0.000 |
+| T4        |     327 |                     3 |                        0 |                       0.009 |                          0.000 |
+| T5        |      13 |                     0 |                        0 |                       0.000 |                          0.000 |
+| T6        |       7 |                     0 |                        0 |                       0.000 |                          0.000 |
+| T7        |     300 |                     0 |                        0 |                       0.000 |                          0.000 |
+| all       |    1003 |                     3 |                        0 |                       0.003 |                          0.000 |
+
+D3. Largest share of detected-ball window frames with one player within 1.5 m of the ball: 1002 balls with a detected window frame (1 without); p10 0.036, p25 0.077, p50 0.143, p75 0.270, p90 0.481; share at least 0.70 on 45 balls.
+
+Balls with a window of at least 2 s: 559; of them, one player within 1.5 m on at least 70% of the detected-ball frames: 5. By trigger and that player's role:
+
+| trigger   |   losing team |   winner |   winning team, not the winner |   all |   balls with a 2 s window |
+|:----------|--------------:|---------:|-------------------------------:|------:|--------------------------:|
+| T4        |             2 |        1 |                              1 |     4 |                        65 |
+| T7        |             1 |        0 |                              0 |     1 |                       225 |
+| all       |             3 |        1 |                              1 |     5 |                       559 |
+
+| verdict          |   losing team |   winner |   winning team, not the winner |   all |
+|:-----------------|--------------:|---------:|-------------------------------:|------:|
+| after the anchor |             2 |        0 |                              0 |     2 |
+| positioning      |             1 |        1 |                              0 |     2 |
+| reading          |             0 |        0 |                              1 |     1 |
+| all              |             3 |        1 |                              1 |     5 |
+
+Reading. D1: the 31 balls with nobody of either team within 15 m are exactly the 31 balls with both probabilities at 0.5000 (both teams get the empty-team time), all after the anchor by the verdict rule. D2: 2 pickup points (1 more than 1 m out) and 3 anchor-frame ball positions (none more than 1 m out) lie outside the markings; 6 of the 1,003 anchor frames do not have the ball detected. D3: one player stays within 1.5 m of the ball on at least 70% of the detected-ball window frames in 45 balls, but in only 5 of the 559 balls with a window of at least 2 s; the high shares come from short windows.

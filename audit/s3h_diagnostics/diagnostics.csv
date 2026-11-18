@@ -1,0 +1,1004 @@
+match_id,seq_i,trigger,verdict,p_half,d1_nobody_in_race,pickup_outside,pickup_outside_1m,anchor_ball_missing,anchor_ball_detected,anchor_ball_outside,anchor_ball_outside_1m,window_s,detected_window_frames,d3_share,d3_player,d3_role
+1874553,4,T2,after the anchor,True,True,False,False,False,True,False,False,6.5000,65,0.0154,home_15,winner
+1874553,7,T4,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.1333,away_9,"winning team, not the winner"
+1874553,19,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.4000,away_51,winner
+1874553,58,T2,positioning,False,False,False,False,False,True,False,False,5.2000,40,0.1750,away_10,"winning team, not the winner"
+1874553,73,T7,reading,False,False,False,False,False,True,False,False,2.2000,22,0.0000,,
+1874553,82,T4,after the anchor,False,False,False,False,False,True,False,False,1.7000,17,0.2941,away_55,losing team
+1874553,106,T1,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.0000,,
+1874553,123,T7,positioning,False,False,False,False,False,True,False,False,4.9000,49,0.3878,away_14,losing team
+1874553,127,T4,positioning,False,False,False,False,False,True,False,False,2.4000,22,0.2727,away_7,winner
+1874553,155,T2,after the anchor,False,False,False,False,False,True,False,False,5.1000,51,0.1176,away_51,"winning team, not the winner"
+1874553,181,T2,positioning,False,False,False,False,False,True,False,False,5.0000,50,0.0000,,
+1874553,198,T7,positioning,False,False,False,False,False,True,False,False,3.5000,35,0.0571,away_6,losing team
+1874553,204,T4,reading,False,False,False,False,False,True,False,False,0.7000,7,0.5714,away_14,losing team
+1874553,212,T7,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.1053,home_15,"winning team, not the winner"
+1874553,237,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.5000,home_8,winner
+1874553,253,T1,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.1200,home_21,winner
+1874553,262,T4,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.3889,away_6,"winning team, not the winner"
+1874553,279,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.0000,,
+1874553,289,T2,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.1250,away_20,"winning team, not the winner"
+1874553,311,T2,reading,False,False,False,False,False,True,False,False,2.5000,25,0.1200,away_1,losing team
+1874553,313,T2,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.1250,away_51,losing team
+1874553,314,T2,positioning,False,False,False,False,False,True,False,False,3.4000,34,0.1765,away_7,"winning team, not the winner"
+1874553,398,T4,reading,False,False,False,False,False,True,False,False,0.7000,7,0.1429,home_3,winner
+1874553,404,T7,positioning,False,False,False,False,False,True,False,False,2.9000,29,0.0000,,
+1874553,405,T5,positioning,False,False,False,False,False,True,False,False,2.7000,27,0.0000,,
+1874553,417,T7,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.0800,home_26,winner
+1874553,421,T7,after the anchor,False,False,False,False,False,True,False,False,1.9000,19,0.1053,away_6,"winning team, not the winner"
+1874553,475,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,1.0000,home_16,losing team
+1874553,482,T4,positioning,False,False,False,False,False,True,False,False,5.2000,52,0.0385,away_14,"winning team, not the winner"
+1874553,484,T2,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.0385,home_8,"winning team, not the winner"
+1874553,490,T7,reading,False,False,False,False,False,True,False,False,3.6000,36,0.1667,away_20,"winning team, not the winner"
+1874553,491,T7,after the anchor,False,False,False,False,False,True,False,False,1.5000,15,0.4000,away_6,losing team
+1874553,504,T7,positioning,False,False,False,False,False,True,False,False,4.4000,44,0.0455,away_20,winner
+1874553,507,T7,positioning,False,False,False,False,False,True,False,False,3.6000,36,0.1944,away_14,losing team
+1874553,521,T2,reading,False,False,False,False,False,True,False,False,2.4000,24,0.1667,home_4,losing team
+1874553,523,T2,positioning,False,False,False,False,False,True,False,False,5.1000,51,0.0392,away_26,"winning team, not the winner"
+1874553,533,T2,after the anchor,False,False,False,False,False,True,False,False,2.5000,25,0.0800,away_7,winner
+1874553,559,T7,positioning,False,False,False,False,False,True,False,False,4.7000,47,0.1277,away_51,"winning team, not the winner"
+1874553,561,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,1.0000,away_14,"winning team, not the winner"
+1874553,562,T4,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.0556,away_7,"winning team, not the winner"
+1874553,568,T2,after the anchor,False,False,False,False,False,True,False,False,6.5000,65,0.1846,home_27,"winning team, not the winner"
+1874553,575,T3,after the anchor,False,False,False,False,False,True,False,False,3.0000,30,0.0333,away_55,losing team
+1874553,576,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.3750,away_55,winner
+1874553,591,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.2308,away_6,"winning team, not the winner"
+1874553,593,T2,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.2500,home_8,"winning team, not the winner"
+1874553,594,T4,after the anchor,False,False,False,False,False,True,False,False,1.0000,10,0.6000,home_8,losing team
+1874553,617,T7,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.1562,home_8,losing team
+1874553,664,T7,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.5385,home_16,losing team
+1874553,695,T7,after the anchor,False,False,False,False,False,True,False,False,2.8000,28,0.1071,home_8,winner
+1874553,696,T7,positioning,False,False,False,False,False,True,False,False,3.0000,30,0.1333,home_16,losing team
+1874553,704,T2,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.0952,away_6,losing team
+1874553,723,T7,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.2000,home_23,winner
+1874553,733,T4,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.2500,away_14,"winning team, not the winner"
+1874553,741,T7,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.1333,home_26,"winning team, not the winner"
+1874553,747,T4,reading,False,False,False,False,False,True,False,False,1.5000,15,0.3333,away_55,winner
+1874553,772,T7,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.2778,away_17,losing team
+1874553,784,T4,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.1176,home_8,winner
+1874553,785,T2,positioning,False,False,False,False,False,True,False,False,5.2000,15,0.2000,home_8,"winning team, not the winner"
+1874553,795,T2,positioning,False,False,False,False,False,True,False,False,5.2000,37,0.0270,away_12,"winning team, not the winner"
+1874553,833,T4,after the anchor,False,False,False,False,False,True,False,False,1.2000,12,0.5833,home_15,losing team
+1874553,899,T7,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.0000,,
+1874553,901,T4,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.1579,away_3,winner
+1874553,911,T7,reading,False,False,False,False,False,True,False,False,1.3000,13,0.1538,home_23,"winning team, not the winner"
+1899585,0,T2,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.0526,away_7,"winning team, not the winner"
+1899585,34,T7,positioning,False,False,False,False,False,True,False,False,3.6000,36,0.1111,home_4,"winning team, not the winner"
+1899585,40,T1,positioning,False,False,False,False,False,True,False,False,5.1000,20,0.3500,away_7,losing team
+1899585,49,T2,positioning,False,False,False,False,False,True,False,False,5.8000,34,0.2059,home_28,losing team
+1899585,51,T2,positioning,False,False,False,False,False,True,False,False,4.7000,26,0.0769,away_25,winner
+1899585,57,T7,positioning,False,False,False,False,False,True,False,False,2.7000,27,0.1111,home_2,"winning team, not the winner"
+1899585,73,T1,positioning,False,False,False,False,False,True,False,False,3.1000,31,0.0968,away_8,"winning team, not the winner"
+1899585,105,T2,after the anchor,False,False,False,False,False,True,False,False,1.6000,16,0.1875,away_8,losing team
+1899585,120,T4,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.0625,away_15,losing team
+1899585,135,T2,positioning,False,False,False,False,False,True,False,False,4.1000,41,0.2195,away_9,"winning team, not the winner"
+1899585,147,T4,positioning,False,False,False,False,False,True,False,False,0.9000,9,0.0000,,
+1899585,158,T4,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.7368,away_9,losing team
+1899585,181,T7,positioning,False,False,False,False,False,True,False,False,3.3000,22,0.1364,home_10,"winning team, not the winner"
+1899585,197,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.6154,away_14,winner
+1899585,201,T3,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.3889,away_15,"winning team, not the winner"
+1899585,202,T1,positioning,False,False,False,False,False,True,False,False,4.4000,44,0.0909,home_23,winner
+1899585,228,T7,reading,False,False,False,False,False,True,False,False,1.9000,19,0.1579,away_14,winner
+1899585,230,T7,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.3684,away_25,losing team
+1899585,234,T2,positioning,False,False,False,False,False,True,False,False,2.3000,23,0.3913,away_4,"winning team, not the winner"
+1899585,235,T5,positioning,False,False,False,False,False,True,False,False,2.0000,20,0.1500,away_15,losing team
+1899585,246,T7,after the anchor,False,False,False,False,False,True,False,False,5.6000,56,0.0714,away_25,"winning team, not the winner"
+1899585,275,T7,positioning,False,False,False,False,False,True,False,False,4.3000,31,0.0645,away_25,"winning team, not the winner"
+1899585,282,T2,after the anchor,False,False,False,False,False,True,False,False,3.1000,31,0.2258,away_8,"winning team, not the winner"
+1899585,301,T4,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.5333,away_8,"winning team, not the winner"
+1899585,332,T7,reading,False,False,False,False,False,True,False,False,1.3000,13,0.0769,away_14,"winning team, not the winner"
+1899585,366,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.2000,away_19,losing team
+1899585,369,T2,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.2143,away_9,"winning team, not the winner"
+1899585,382,T2,reading,False,False,False,False,False,True,False,False,1.7000,17,0.4118,away_14,"winning team, not the winner"
+1899585,388,T2,positioning,False,False,False,False,False,True,False,False,6.0000,60,0.0500,home_4,"winning team, not the winner"
+1899585,400,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,0.4000,home_7,winner
+1899585,423,T4,positioning,False,False,False,False,False,True,False,False,3.3000,33,0.1212,away_8,losing team
+1899585,425,T4,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.5556,home_10,losing team
+1899585,426,T5,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.1429,away_6,"winning team, not the winner"
+1899585,429,T7,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.2727,home_22,winner
+1899585,430,T7,after the anchor,False,False,False,False,False,True,False,False,0.7000,7,0.4286,home_22,losing team
+1899585,431,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.3333,away_6,winner
+1899585,463,T2,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.2500,home_7,winner
+1899585,475,T7,after the anchor,False,False,False,False,False,True,False,False,3.2000,8,0.1250,home_4,"winning team, not the winner"
+1899585,486,T7,positioning,False,False,False,False,False,True,False,False,3.0000,30,0.0667,away_8,"winning team, not the winner"
+1899585,511,T4,after the anchor,False,False,False,False,False,True,False,False,0.8000,8,0.6250,away_8,losing team
+1899585,526,T7,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.1667,away_7,losing team
+1899585,533,T7,after the anchor,False,False,False,False,False,True,False,False,11.7000,76,0.2632,home_4,"winning team, not the winner"
+1899585,536,T4,reading,False,False,False,False,False,True,False,False,1.3000,13,0.1538,away_9,"winning team, not the winner"
+1899585,550,T2,after the anchor,True,True,False,False,False,True,False,False,5.1000,51,0.0588,away_7,"winning team, not the winner"
+1899585,562,T2,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.1923,home_7,"winning team, not the winner"
+1899585,626,T2,positioning,False,False,False,False,False,True,False,False,6.1000,22,0.2727,home_10,losing team
+1899585,634,T7,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.0909,away_7,losing team
+1899585,635,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,0.8000,away_14,winner
+1899585,649,T2,after the anchor,True,True,False,False,False,True,False,False,7.7000,77,0.0000,,
+1899585,652,T2,positioning,False,False,False,False,False,True,False,False,3.6000,36,0.1111,away_25,losing team
+1899585,653,T4,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.3333,away_25,"winning team, not the winner"
+1899585,662,T3,positioning,False,False,False,False,False,True,False,False,3.1000,31,0.0968,home_25,winner
+1899585,669,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.1818,away_21,winner
+1899585,672,T4,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.0556,away_21,losing team
+1899585,683,T4,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.2353,away_11,losing team
+1899585,700,T2,positioning,False,False,False,False,False,True,False,False,4.8000,22,0.1364,home_4,winner
+1899585,709,T3,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.0667,away_7,"winning team, not the winner"
+1899585,745,T7,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.1875,home_7,losing team
+1899585,760,T7,reading,False,False,False,False,False,True,False,False,4.3000,43,0.2791,home_5,"winning team, not the winner"
+1899585,768,T4,positioning,False,False,False,False,False,True,False,False,4.3000,43,0.0930,away_19,"winning team, not the winner"
+1899585,771,T2,positioning,False,False,False,False,False,True,False,False,3.1000,31,0.1290,away_21,losing team
+1899585,781,T4,after the anchor,False,False,False,False,False,True,False,False,2.0000,20,0.1000,home_25,losing team
+1899585,784,T7,positioning,False,False,False,False,False,True,False,False,3.0000,30,0.0667,home_23,"winning team, not the winner"
+1899585,800,T7,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.1562,home_5,"winning team, not the winner"
+1899585,809,T7,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.0714,home_28,"winning team, not the winner"
+1899585,812,T7,positioning,False,False,False,False,False,True,False,False,2.3000,23,0.1739,away_14,winner
+1899585,822,T4,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.0000,,
+1899585,824,T7,positioning,False,False,False,False,False,True,False,False,3.4000,34,0.1176,home_23,winner
+1899585,827,T2,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.3000,away_21,winner
+1899585,834,T7,after the anchor,False,False,False,False,False,True,False,False,4.1000,41,0.0976,home_23,losing team
+1899585,847,T2,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.1333,home_28,winner
+1899585,849,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.1429,home_25,losing team
+1899585,858,T4,reading,False,False,False,False,False,True,False,False,1.0000,10,0.5000,away_14,winner
+1899585,859,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.5000,home_10,winner
+1899585,868,T2,after the anchor,False,False,False,False,False,True,False,False,4.0000,40,0.0500,away_21,losing team
+1899585,876,T4,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.0588,home_10,"winning team, not the winner"
+1925299,2,T7,after the anchor,False,False,False,False,False,True,False,False,4.9000,49,0.1429,away_21,"winning team, not the winner"
+1925299,3,T1,positioning,False,False,False,False,False,True,False,False,3.0000,30,0.1000,home_12,winner
+1925299,21,T2,positioning,False,False,False,False,False,True,False,False,3.6000,36,0.1111,home_23,losing team
+1925299,96,T2,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.2500,home_43,winner
+1925299,97,T4,after the anchor,False,False,False,False,False,True,False,False,2.0000,20,0.1500,away_7,losing team
+1925299,101,T4,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.2500,away_2,winner
+1925299,112,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.2857,home_23,losing team
+1925299,116,T4,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.2500,home_26,losing team
+1925299,121,T1,positioning,False,False,False,False,False,True,False,False,3.6000,23,0.0435,away_29,winner
+1925299,152,T4,after the anchor,False,False,False,False,False,True,False,False,1.6000,16,0.0000,,
+1925299,163,T2,positioning,False,False,False,False,False,True,False,False,4.1000,41,0.0976,away_29,winner
+1925299,177,T2,reading,False,False,False,False,False,True,False,False,4.6000,46,0.0217,home_16,losing team
+1925299,179,T4,after the anchor,False,False,False,False,False,True,False,False,1.3000,13,0.3077,home_16,losing team
+1925299,196,T2,positioning,False,False,False,False,False,True,False,False,5.6000,37,0.1622,away_16,"winning team, not the winner"
+1925299,225,T2,positioning,False,False,False,False,False,True,False,False,3.8000,38,0.1842,home_8,losing team
+1925299,228,T2,positioning,False,False,False,False,False,True,False,False,2.8000,15,0.3333,away_21,"winning team, not the winner"
+1925299,239,T2,positioning,False,False,False,False,False,True,False,False,4.1000,41,0.1220,home_8,winner
+1925299,271,T2,positioning,False,False,False,False,False,True,False,False,4.0000,40,0.1000,away_7,losing team
+1925299,274,T7,positioning,False,False,False,False,False,True,False,False,4.1000,41,0.0732,home_21,"winning team, not the winner"
+1925299,290,T3,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.6923,away_7,"winning team, not the winner"
+1925299,297,T2,reading,False,False,False,False,False,True,False,False,2.3000,23,0.0435,away_21,losing team
+1925299,299,T2,positioning,False,False,False,False,False,True,False,False,3.7000,37,0.1081,away_7,"winning team, not the winner"
+1925299,300,T4,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.0000,,
+1925299,318,T6,positioning,False,False,False,False,False,False,False,False,1.0000,0,,,
+1925299,429,T2,reading,False,False,False,False,False,True,False,False,0.9000,9,0.3333,away_20,losing team
+1925299,441,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.3750,away_20,winner
+1925299,445,T2,positioning,False,False,False,False,False,True,False,False,6.1000,28,0.2500,away_21,"winning team, not the winner"
+1925299,472,T4,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.1250,home_26,winner
+1925299,481,T4,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.1250,home_10,losing team
+1925299,505,T7,reading,False,False,False,False,False,True,False,False,2.8000,28,0.1071,away_16,"winning team, not the winner"
+1925299,518,T2,positioning,False,False,False,False,False,True,False,False,4.1000,41,0.2439,away_20,losing team
+1925299,523,T4,reading,False,False,False,False,False,True,False,False,0.8000,8,0.3750,away_24,losing team
+1925299,538,T7,positioning,False,False,False,False,False,True,False,False,5.0000,50,0.1800,home_12,"winning team, not the winner"
+1925299,539,T7,positioning,False,False,False,False,False,True,False,False,3.1000,31,0.0645,away_12,"winning team, not the winner"
+1925299,560,T7,positioning,False,False,False,False,False,True,False,False,2.0000,20,0.2000,away_21,losing team
+1925299,571,T2,reading,False,False,False,False,False,True,False,False,4.2000,42,0.1429,home_21,"winning team, not the winner"
+1925299,595,T7,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.1071,home_21,"winning team, not the winner"
+1925299,612,T7,positioning,False,False,False,False,False,True,False,False,3.6000,36,0.0278,away_16,"winning team, not the winner"
+1925299,644,T2,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.0556,home_10,winner
+1925299,656,T4,after the anchor,False,False,False,False,False,True,False,False,1.4000,14,0.0714,home_43,"winning team, not the winner"
+1925299,687,T7,after the anchor,False,False,False,False,False,True,False,False,3.4000,34,0.2353,away_29,losing team
+1925299,695,T2,after the anchor,False,False,False,False,False,True,False,False,2.6000,26,0.0000,,
+1925299,697,T7,after the anchor,False,False,False,False,False,True,False,False,3.7000,37,0.4054,home_16,"winning team, not the winner"
+1925299,708,T7,after the anchor,False,False,False,False,False,True,False,False,3.1000,31,0.0645,away_29,"winning team, not the winner"
+1925299,716,T2,positioning,False,False,False,False,False,True,False,False,4.7000,23,0.0000,,
+1925299,726,T4,reading,False,False,False,False,False,True,False,False,1.6000,16,0.1250,away_16,losing team
+1925299,803,T5,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.0000,,
+1925299,804,T3,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.1429,home_23,winner
+1925299,805,T3,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.3750,home_23,"winning team, not the winner"
+1925299,833,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.6667,home_30,losing team
+1925299,848,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.2727,home_26,winner
+1925299,854,T2,positioning,False,False,False,False,False,True,False,False,3.1000,31,0.1613,home_8,"winning team, not the winner"
+1925299,858,T7,positioning,False,False,False,False,False,True,False,False,7.3000,73,0.4795,away_14,losing team
+1925299,873,T2,positioning,False,False,False,False,False,True,False,False,4.9000,27,0.1111,away_14,winner
+1925299,874,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.1667,home_12,"winning team, not the winner"
+1925299,960,T7,positioning,False,False,False,False,False,True,False,False,3.8000,38,0.0789,away_24,losing team
+1925299,961,T3,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.2812,away_14,"winning team, not the winner"
+1925299,983,T7,after the anchor,False,False,False,False,False,True,False,False,2.7000,27,0.4815,home_19,losing team
+1925299,993,T4,after the anchor,False,False,False,False,False,True,False,False,5.2000,33,0.0000,,
+1925299,995,T7,after the anchor,False,False,False,False,False,True,False,False,1.9000,19,0.1579,away_12,losing team
+1925299,999,T4,reading,False,False,False,False,False,True,False,False,1.6000,16,0.0625,away_9,winner
+1925299,1013,T2,positioning,False,False,False,False,False,True,False,False,3.4000,34,0.3824,away_27,losing team
+1925299,1025,T2,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.1053,home_18,losing team
+1925299,1027,T4,reading,False,False,False,False,False,True,False,False,1.6000,16,0.2500,away_27,losing team
+1925299,1045,T2,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.3125,away_17,winner
+1925299,1052,T7,after the anchor,False,False,False,False,False,True,False,False,4.8000,48,0.0625,away_14,"winning team, not the winner"
+1927964,1,T2,positioning,False,False,False,False,False,True,False,False,5.3000,53,0.0943,home_5,"winning team, not the winner"
+1927964,42,T2,positioning,False,False,False,False,False,True,False,False,2.0000,20,0.4500,home_7,losing team
+1927964,64,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.2857,home_14,losing team
+1927964,88,T2,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.3846,away_8,winner
+1927964,124,T2,positioning,False,False,False,False,False,True,False,False,2.2000,22,0.2273,away_15,winner
+1927964,134,T4,positioning,False,False,False,False,False,True,False,False,2.4000,13,0.3846,away_4,winner
+1927964,154,T2,after the anchor,False,False,False,False,False,True,False,False,4.8000,48,0.0625,away_15,losing team
+1927964,166,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.1429,away_15,"winning team, not the winner"
+1927964,171,T4,positioning,False,False,False,False,False,True,False,False,2.1000,14,0.5000,away_19,winner
+1927964,208,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.1000,away_9,winner
+1927964,212,T2,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.2400,home_5,"winning team, not the winner"
+1927964,255,T4,reading,False,False,False,False,False,True,False,False,0.7000,7,0.7143,away_8,"winning team, not the winner"
+1927964,266,T7,positioning,False,False,False,False,False,True,False,False,4.4000,44,0.0455,away_19,losing team
+1927964,320,T7,positioning,False,False,False,False,False,True,False,False,3.8000,38,0.2105,away_6,"winning team, not the winner"
+1927964,323,T6,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.0000,,
+1927964,324,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.3333,home_23,winner
+1927964,331,T2,positioning,False,False,False,False,False,True,False,False,6.0000,60,0.0833,home_23,"winning team, not the winner"
+1927964,343,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.2857,away_9,losing team
+1927964,413,T4,positioning,False,False,False,False,False,True,False,False,2.7000,27,0.0370,home_2,"winning team, not the winner"
+1927964,426,T7,reading,False,False,False,False,False,True,False,False,2.3000,23,0.2609,home_7,"winning team, not the winner"
+1927964,467,T4,reading,False,False,False,False,False,True,False,False,3.6000,36,1.0000,away_25,"winning team, not the winner"
+1927964,527,T2,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.0667,home_19,losing team
+1927964,532,T7,positioning,False,False,False,False,False,True,False,False,3.1000,31,0.3226,home_5,"winning team, not the winner"
+1927964,592,T4,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.0714,home_5,"winning team, not the winner"
+1927964,605,T4,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.0000,,
+1927964,631,T2,positioning,False,False,False,False,False,True,False,False,5.0000,50,0.0400,away_27,losing team
+1927964,634,T7,after the anchor,False,False,False,False,False,True,False,False,1.1000,11,0.3636,away_41,losing team
+1927964,649,T7,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.1154,away_15,losing team
+1927964,650,T4,positioning,False,False,False,False,False,True,False,False,0.9000,9,0.1111,away_3,winner
+1927964,668,T4,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.3333,away_41,winner
+1927964,670,T4,reading,False,False,False,False,False,True,False,False,0.5000,5,1.0000,away_41,winner
+1927964,672,T5,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.0800,away_15,"winning team, not the winner"
+1927964,691,T4,positioning,False,False,False,False,False,True,False,False,2.0000,20,0.1500,home_26,winner
+1927964,703,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,1.0000,home_5,losing team
+1927964,714,T7,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.1538,home_25,"winning team, not the winner"
+1927964,749,T3,positioning,False,False,False,False,False,True,False,False,2.2000,22,0.0455,home_14,losing team
+1927964,752,T7,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.2000,home_5,"winning team, not the winner"
+1927964,781,T4,positioning,False,False,False,False,False,True,False,False,2.0000,20,0.2000,away_9,winner
+1927964,825,T7,after the anchor,False,False,False,False,False,True,False,False,9.8000,98,0.2143,away_4,losing team
+1927964,828,T2,after the anchor,False,False,False,False,False,True,False,False,2.2000,22,0.1364,away_3,losing team
+1927964,840,T4,after the anchor,True,True,False,False,False,True,False,False,5.4000,54,0.0000,,
+1927964,851,T7,after the anchor,True,True,False,False,False,True,False,False,7.9000,79,0.0253,away_25,losing team
+1927964,866,T2,positioning,False,False,False,False,False,True,False,False,4.2000,42,0.2381,away_27,losing team
+1927964,867,T1,reading,False,False,False,False,False,True,False,False,4.1000,41,0.1220,home_14,"winning team, not the winner"
+1927964,878,T7,positioning,False,False,False,False,False,True,False,False,2.7000,27,0.1852,home_19,losing team
+1927964,888,T7,after the anchor,True,True,False,False,False,True,False,False,2.4000,24,0.1250,home_21,"winning team, not the winner"
+1927964,944,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.3750,home_13,winner
+1927964,945,T1,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.0714,away_27,winner
+1927964,954,T3,after the anchor,True,True,False,False,False,True,False,False,4.5000,45,0.0000,,
+1927964,1001,T7,positioning,False,False,False,False,False,True,False,False,4.5000,45,0.0667,away_3,winner
+1927964,1004,T1,positioning,False,False,False,False,False,True,False,False,5.1000,51,0.0000,,
+1927964,1011,T2,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.1562,away_6,"winning team, not the winner"
+1927964,1051,T7,positioning,False,False,False,False,False,True,False,False,2.9000,29,0.2069,away_12,losing team
+1927964,1065,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.2857,home_21,winner
+1927964,1066,T3,positioning,False,False,False,False,False,True,False,False,0.9000,9,0.1111,away_18,losing team
+1927964,1075,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.1250,away_12,losing team
+1927964,1101,T4,reading,False,False,False,False,False,True,False,False,1.4000,14,0.2857,away_29,losing team
+1927964,1110,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,0.8000,away_4,"winning team, not the winner"
+1927964,1128,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.2308,home_2,"winning team, not the winner"
+1927964,1133,T3,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.5000,away_3,"winning team, not the winner"
+1927964,1136,T2,after the anchor,False,False,False,False,False,True,False,False,2.6000,26,0.1538,away_27,losing team
+1953632,78,T4,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.0000,,
+1953632,83,T4,after the anchor,False,False,False,False,False,True,False,False,2.3000,23,0.3043,away_13,"winning team, not the winner"
+1953632,103,T7,positioning,False,False,False,False,False,True,False,False,6.7000,67,0.0299,away_19,"winning team, not the winner"
+1953632,128,T4,positioning,False,False,False,False,False,True,False,False,2.2000,22,0.0455,away_16,losing team
+1953632,154,T7,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.1111,away_13,losing team
+1953632,158,T4,after the anchor,False,False,False,False,False,True,False,False,2.7000,27,0.0370,away_38,losing team
+1953632,161,T4,positioning,False,False,False,False,False,True,False,False,2.3000,16,0.1250,home_5,winner
+1953632,178,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.0769,away_27,winner
+1953632,211,T4,positioning,False,False,False,False,False,True,False,False,2.4000,10,0.3000,away_26,winner
+1953632,246,T2,positioning,False,False,False,False,False,True,False,False,3.6000,36,0.3056,away_26,winner
+1953632,259,T7,after the anchor,False,False,False,False,False,True,False,False,3.3000,33,0.2121,home_8,losing team
+1953632,264,T2,reading,False,False,False,False,False,True,False,False,5.1000,51,0.0980,home_10,losing team
+1953632,315,T4,positioning,False,False,False,False,False,True,False,False,4.9000,39,0.0000,,
+1953632,320,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.2857,away_6,losing team
+1953632,355,T4,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.2500,home_4,losing team
+1953632,398,T4,reading,False,False,False,False,False,True,False,False,0.8000,8,0.2500,away_35,winner
+1953632,416,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.0769,home_4,winner
+1953632,436,T7,reading,False,False,False,False,False,True,False,False,2.2000,22,0.0909,away_35,"winning team, not the winner"
+1953632,471,T4,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.1765,away_38,winner
+1953632,507,T2,positioning,False,False,False,False,False,True,False,False,4.7000,35,0.0286,home_5,losing team
+1953632,525,T2,positioning,False,False,False,False,False,True,False,False,5.2000,52,0.0577,away_2,winner
+1953632,540,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.1667,away_35,winner
+1953632,545,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.5000,away_46,"winning team, not the winner"
+1953632,559,T2,positioning,False,False,False,False,False,True,False,False,1.9000,14,0.0000,,
+1953632,573,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,1.0000,away_19,"winning team, not the winner"
+1953632,587,T2,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.1538,home_16,losing team
+1953632,614,T4,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.0526,away_27,"winning team, not the winner"
+1953632,615,T2,positioning,False,False,False,False,False,True,False,False,3.7000,37,0.0541,away_13,"winning team, not the winner"
+1953632,621,T2,after the anchor,False,False,False,False,False,True,False,False,2.7000,8,0.2500,away_16,"winning team, not the winner"
+1953632,642,T5,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.1111,home_28,winner
+1953632,643,T3,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.0625,away_2,winner
+1953632,675,T2,positioning,False,False,False,False,False,True,False,False,3.7000,22,0.2727,away_27,"winning team, not the winner"
+1953632,708,T2,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.6842,away_46,"winning team, not the winner"
+1953632,727,T2,reading,False,False,False,False,False,True,False,False,1.6000,16,0.3750,away_35,losing team
+1953632,740,T4,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.3158,away_13,winner
+1953632,748,T2,reading,False,False,False,False,False,True,False,False,4.5000,45,0.1333,away_46,losing team
+1953632,770,T2,positioning,False,False,False,False,False,True,False,False,4.9000,35,0.1429,away_26,"winning team, not the winner"
+1953632,787,T7,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.1111,away_27,"winning team, not the winner"
+1953632,797,T2,after the anchor,False,False,False,False,False,True,False,False,2.6000,26,0.1154,away_19,"winning team, not the winner"
+1953632,821,T2,positioning,False,False,False,False,False,False,False,False,5.2000,40,0.1750,away_2,"winning team, not the winner"
+1953632,868,T7,positioning,False,False,False,False,False,True,False,False,4.5000,34,0.0588,home_3,"winning team, not the winner"
+1953632,887,T7,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.0000,,
+1953632,889,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.1667,away_27,winner
+1953632,912,T7,positioning,False,False,False,False,False,True,False,False,3.8000,38,0.0789,away_50,"winning team, not the winner"
+1953632,937,T7,reading,False,False,False,False,False,True,False,False,2.4000,24,0.1250,away_6,"winning team, not the winner"
+1953632,963,T4,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.3571,home_28,losing team
+1986691,6,T7,after the anchor,False,False,False,False,False,True,False,False,4.6000,46,0.1522,home_23,winner
+1986691,20,T3,reading,False,False,False,False,False,True,False,False,2.5000,25,0.0800,home_14,winner
+1986691,21,T1,after the anchor,False,False,False,False,False,True,False,False,4.9000,49,0.1020,home_7,"winning team, not the winner"
+1986691,37,T4,after the anchor,True,True,False,False,False,True,False,False,3.4000,34,0.0588,home_64,winner
+1986691,82,T7,after the anchor,False,False,False,False,False,True,False,False,4.9000,49,0.2245,away_10,losing team
+1986691,86,T5,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.4286,away_21,losing team
+1986691,113,T4,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.1250,away_6,losing team
+1986691,127,T7,positioning,False,False,False,False,False,True,False,False,3.7000,37,0.1081,away_27,losing team
+1986691,143,T4,reading,False,False,False,False,False,True,False,False,2.4000,24,0.2083,away_22,winner
+1986691,150,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.2727,home_19,winner
+1986691,177,T4,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.2500,away_21,"winning team, not the winner"
+1986691,218,T4,reading,False,False,False,False,False,True,False,False,0.7000,7,0.1429,home_64,"winning team, not the winner"
+1986691,231,T2,after the anchor,False,False,False,False,False,True,False,False,5.2000,52,0.0962,home_7,"winning team, not the winner"
+1986691,253,T7,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.1429,home_19,winner
+1986691,256,T2,after the anchor,False,False,False,False,False,True,False,False,2.1000,21,0.2381,home_19,"winning team, not the winner"
+1986691,258,T2,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.1429,home_19,"winning team, not the winner"
+1986691,265,T3,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.2000,away_15,winner
+1986691,269,T7,after the anchor,False,False,False,False,False,True,False,False,4.7000,47,0.2553,home_7,"winning team, not the winner"
+1986691,280,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.0000,,
+1986691,306,T4,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.3571,home_18,losing team
+1986691,308,T4,positioning,False,False,False,False,False,True,False,False,3.7000,37,0.2162,home_23,"winning team, not the winner"
+1986691,314,T7,positioning,False,False,False,False,False,True,False,False,3.5000,35,0.2000,away_21,losing team
+1986691,331,T2,after the anchor,True,True,False,False,False,True,False,False,5.0000,50,0.0200,home_14,losing team
+1986691,354,T4,positioning,False,False,False,False,False,True,False,False,3.3000,33,0.0909,home_25,winner
+1986691,370,T7,reading,False,False,False,False,False,True,False,False,2.2000,22,0.1818,home_7,losing team
+1986691,377,T5,positioning,False,False,False,False,False,True,False,False,11.5000,115,0.1217,away_6,losing team
+1986691,397,T4,after the anchor,False,False,False,False,False,True,False,False,1.1000,11,0.6364,away_6,losing team
+1986691,399,T3,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.2667,home_7,winner
+1986691,403,T3,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.1000,home_4,"winning team, not the winner"
+1986691,413,T7,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.1429,away_10,"winning team, not the winner"
+1986691,415,T7,positioning,False,False,False,False,False,True,False,False,3.7000,37,0.1351,away_15,winner
+1986691,426,T7,positioning,False,False,False,False,False,True,False,False,2.3000,23,0.0870,home_19,winner
+1986691,443,T7,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.2500,away_9,losing team
+1986691,446,T5,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.6364,home_25,"winning team, not the winner"
+1986691,453,T7,reading,False,False,False,False,False,True,False,False,2.0000,20,0.2000,away_9,losing team
+1986691,466,T7,positioning,False,False,False,False,False,True,False,False,3.4000,34,0.0588,away_10,losing team
+1986691,467,T1,after the anchor,False,False,False,False,False,True,False,False,2.2000,8,0.0000,,
+1986691,491,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.0769,away_4,winner
+1986691,494,T3,after the anchor,False,False,False,False,False,True,False,False,2.0000,20,0.0500,away_4,losing team
+1986691,495,T3,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.2000,away_15,winner
+1986691,516,T4,after the anchor,False,False,False,False,False,True,False,False,0.6000,6,1.0000,home_14,losing team
+1986691,556,T2,reading,False,False,False,False,False,True,False,False,1.4000,14,0.2143,home_18,winner
+1986691,576,T3,reading,False,False,False,False,False,True,False,False,1.2000,12,0.1667,home_19,losing team
+1986691,579,T2,positioning,False,False,False,False,False,True,False,False,3.0000,30,0.2333,home_64,winner
+1986691,597,T7,reading,False,False,False,False,False,True,False,False,1.9000,19,0.0526,away_2,"winning team, not the winner"
+1986691,602,T7,after the anchor,False,False,False,False,False,True,False,False,3.3000,33,0.2424,home_64,losing team
+1986691,610,T3,reading,False,False,False,False,False,True,False,False,1.5000,15,0.2000,home_22,losing team
+1986691,639,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.1667,home_14,winner
+1986691,647,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,1.0000,away_9,"winning team, not the winner"
+1986691,649,T1,positioning,False,False,False,False,False,True,False,False,5.7000,57,0.0877,away_22,winner
+1986691,658,T7,positioning,False,False,False,False,False,True,False,False,2.3000,23,0.1739,away_9,losing team
+1986691,659,T5,positioning,False,False,False,False,False,True,False,False,3.4000,34,0.0000,,
+1986691,690,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.0000,,
+1986691,694,T7,positioning,False,False,False,False,False,True,False,False,3.6000,36,0.2500,away_22,losing team
+1986691,696,T7,reading,False,False,False,False,False,True,False,False,2.7000,27,0.1852,home_64,losing team
+1986691,712,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,0.0000,,
+1986691,722,T2,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.7692,home_21,"winning team, not the winner"
+1986691,724,T7,after the anchor,False,False,False,False,False,True,False,False,2.6000,26,0.1154,home_18,losing team
+1986691,727,T3,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.0476,away_11,"winning team, not the winner"
+1986691,760,T2,positioning,False,False,False,False,False,True,False,False,4.3000,26,0.0769,away_4,losing team
+1986691,803,T4,positioning,False,False,True,False,False,True,True,False,7.1000,71,0.9014,home_22,winner
+1986691,853,T4,reading,False,False,False,False,False,True,False,False,0.6000,6,0.0000,,
+1986691,880,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.5000,home_6,winner
+1986691,882,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.1429,away_7,winner
+1986691,892,T1,positioning,False,False,False,False,False,True,False,False,5.6000,56,0.0536,away_25,losing team
+1986691,893,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.5455,away_25,"winning team, not the winner"
+1986691,905,T4,reading,False,False,False,False,False,True,False,False,2.1000,21,0.1429,home_22,losing team
+2006229,5,T2,after the anchor,True,True,False,False,False,True,False,False,4.3000,43,0.1860,home_47,losing team
+2006229,22,T2,after the anchor,False,False,False,False,False,True,False,False,3.3000,33,0.0303,away_26,losing team
+2006229,45,T7,after the anchor,False,False,False,False,False,True,False,False,0.9000,9,0.0000,,
+2006229,48,T2,positioning,False,False,False,False,False,True,False,False,4.9000,49,0.0612,away_44,losing team
+2006229,53,T2,positioning,False,False,False,False,False,True,False,False,4.7000,47,0.1064,home_27,"winning team, not the winner"
+2006229,118,T4,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.3333,home_16,winner
+2006229,123,T7,positioning,False,False,False,False,False,True,False,False,6.8000,68,0.1912,home_17,losing team
+2006229,125,T4,reading,False,False,False,False,False,True,False,False,0.7000,7,0.7143,home_27,losing team
+2006229,128,T4,positioning,False,False,False,False,False,True,False,False,3.7000,37,0.2703,home_23,"winning team, not the winner"
+2006229,134,T4,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.2857,away_20,"winning team, not the winner"
+2006229,171,T3,after the anchor,False,False,False,False,False,True,False,False,0.8000,8,0.2500,home_22,losing team
+2006229,197,T2,reading,False,False,False,False,False,True,False,False,6.1000,29,0.1724,away_9,losing team
+2006229,207,T4,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.0952,away_39,winner
+2006229,211,T4,positioning,False,False,False,False,False,True,False,False,1.5000,8,0.3750,home_13,winner
+2006229,224,T7,positioning,False,False,False,False,False,True,False,False,2.0000,20,0.1500,home_7,losing team
+2006229,227,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,0.6000,home_17,"winning team, not the winner"
+2006229,230,T2,after the anchor,False,False,False,False,False,True,False,False,1.9000,19,0.1579,away_95,winner
+2006229,267,T4,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.1111,away_9,losing team
+2006229,273,T2,positioning,False,False,False,False,False,True,False,False,5.0000,43,0.0930,home_7,losing team
+2006229,277,T7,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.1667,away_13,losing team
+2006229,289,T2,after the anchor,False,False,False,False,False,True,False,False,1.8000,18,0.1111,home_27,winner
+2006229,308,T2,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.3529,home_47,losing team
+2006229,325,T2,after the anchor,True,True,False,False,False,True,False,False,5.3000,53,0.0755,away_20,losing team
+2006229,332,T4,reading,False,False,False,False,False,True,False,False,0.8000,8,0.2500,home_27,winner
+2006229,341,T3,reading,False,False,False,False,False,True,False,False,3.4000,34,0.1471,home_22,losing team
+2006229,351,T4,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.1250,away_13,losing team
+2006229,356,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,1.0000,home_47,winner
+2006229,452,T2,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.1250,away_8,losing team
+2006229,470,T7,positioning,False,False,False,False,False,True,False,False,5.0000,50,0.1200,home_22,"winning team, not the winner"
+2006229,473,T7,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.1176,home_23,"winning team, not the winner"
+2006229,477,T7,positioning,False,False,False,False,False,True,False,False,3.5000,35,0.0571,home_17,losing team
+2006229,499,T7,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.0000,,
+2006229,506,T2,positioning,False,False,False,False,False,True,False,False,3.8000,38,0.1316,home_7,"winning team, not the winner"
+2006229,529,T1,reading,False,False,False,False,False,True,False,False,1.7000,17,0.0588,home_13,"winning team, not the winner"
+2006229,546,T2,after the anchor,False,False,False,False,False,True,False,False,2.3000,23,0.0870,home_7,losing team
+2006229,555,T1,positioning,False,False,False,False,False,True,False,False,4.8000,48,0.0208,home_27,losing team
+2006229,572,T2,positioning,False,False,False,False,False,True,False,False,4.3000,43,0.0000,,
+2006229,649,T4,positioning,False,False,False,False,False,True,False,False,2.5000,9,0.0000,,
+2006229,674,T7,positioning,False,False,False,False,False,True,False,False,4.1000,41,0.1707,away_22,losing team
+2006229,675,T2,after the anchor,False,False,False,False,False,True,False,False,1.5000,15,0.4000,away_6,losing team
+2006229,701,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,0.2000,away_39,winner
+2006229,714,T2,after the anchor,False,False,False,False,False,True,False,False,2.0000,20,0.2000,away_22,losing team
+2006229,719,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,1.0000,away_44,losing team
+2006229,734,T7,reading,False,False,False,False,False,True,False,False,1.5000,15,0.2000,away_28,losing team
+2006229,778,T7,after the anchor,False,False,False,False,False,True,False,False,0.9000,9,0.5556,away_13,losing team
+2006229,785,T2,after the anchor,True,True,False,False,False,True,False,False,4.5000,45,0.0889,away_20,losing team
+2006229,791,T3,positioning,False,False,False,False,False,True,False,False,3.1000,31,0.0968,away_13,winner
+2006229,818,T7,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.4706,home_27,"winning team, not the winner"
+2006229,843,T2,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.1786,home_27,winner
+2006229,849,T2,reading,False,False,False,False,False,True,False,False,7.3000,50,0.0800,away_11,losing team
+2006229,859,T2,after the anchor,False,False,False,False,False,True,False,False,1.8000,18,0.1111,home_38,losing team
+2006229,868,T7,reading,False,False,False,False,False,True,False,False,2.8000,28,0.1071,home_38,"winning team, not the winner"
+2006229,907,T2,positioning,False,False,False,False,False,True,False,False,4.2000,26,0.1923,away_26,"winning team, not the winner"
+2006229,941,T2,after the anchor,False,False,False,False,False,True,False,False,7.9000,79,0.1139,home_50,losing team
+2006229,975,T6,after the anchor,False,False,False,False,False,False,False,False,3.7000,7,0.0000,,
+2006363,0,T2,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.0588,home_5,winner
+2006363,1,T2,reading,False,False,False,False,False,True,False,False,5.3000,53,0.0566,away_36,losing team
+2006363,5,T7,reading,False,False,False,False,False,True,False,False,1.7000,17,0.1765,away_16,winner
+2006363,23,T2,positioning,False,False,False,False,False,True,False,False,9.7000,57,0.1930,home_17,losing team
+2006363,70,T2,positioning,False,False,False,False,False,True,False,False,5.2000,52,0.0385,away_40,winner
+2006363,125,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,0.0000,,
+2006363,149,T7,positioning,False,False,False,False,False,True,False,False,5.9000,59,0.0678,away_10,losing team
+2006363,183,T7,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.4211,home_7,losing team
+2006363,203,T7,positioning,False,False,False,False,False,True,False,False,4.0000,40,0.0500,away_4,winner
+2006363,224,T2,after the anchor,True,True,False,False,False,True,False,False,7.8000,78,0.0256,away_23,winner
+2006363,249,T6,positioning,False,False,False,False,False,True,False,False,0.5000,5,0.4000,away_36,winner
+2006363,261,T7,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.0000,,
+2006363,276,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.0000,,
+2006363,288,T7,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.1923,away_23,losing team
+2006363,302,T4,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.7143,away_12,"winning team, not the winner"
+2006363,306,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.2000,home_5,winner
+2006363,310,T7,positioning,False,False,False,False,False,True,False,False,5.0000,50,0.0600,away_33,winner
+2006363,341,T3,reading,False,False,False,False,False,True,False,False,1.7000,17,0.1765,home_27,winner
+2006363,359,T2,after the anchor,False,False,False,False,False,True,False,False,1.4000,14,0.1429,home_17,winner
+2006363,397,T3,after the anchor,False,False,False,False,False,True,False,False,1.2000,12,0.1667,away_36,losing team
+2006363,408,T4,positioning,False,False,False,False,False,True,False,False,2.9000,29,0.1379,home_7,"winning team, not the winner"
+2006363,423,T2,positioning,False,False,False,False,False,True,False,False,3.4000,34,0.0882,home_6,winner
+2006363,444,T2,positioning,False,False,True,True,False,True,False,False,7.1000,71,0.0704,away_12,winner
+2006363,453,T4,positioning,False,False,False,False,False,True,False,False,3.0000,30,0.2333,home_6,losing team
+2006363,469,T7,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.1786,away_36,losing team
+2006363,470,T7,after the anchor,False,False,False,False,False,True,False,False,2.2000,22,0.1818,home_27,losing team
+2006363,471,T7,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.1786,away_12,"winning team, not the winner"
+2006363,480,T7,after the anchor,False,False,False,False,False,True,False,False,3.5000,35,0.2000,away_4,losing team
+2006363,481,T4,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.2105,away_3,"winning team, not the winner"
+2006363,487,T2,after the anchor,True,True,False,False,False,True,False,False,5.4000,54,0.0185,away_3,"winning team, not the winner"
+2006363,489,T2,reading,False,False,False,False,False,True,False,False,4.0000,40,0.1000,away_12,losing team
+2006363,491,T4,positioning,False,False,False,False,False,True,False,False,0.9000,9,0.0000,,
+2006363,514,T7,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.0769,away_7,"winning team, not the winner"
+2006363,516,T2,after the anchor,False,False,False,False,False,True,False,False,2.0000,20,0.1000,away_29,"winning team, not the winner"
+2006363,517,T6,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.2857,home_28,winner
+2006363,520,T4,reading,False,False,False,False,False,True,False,False,1.0000,10,0.3000,home_17,winner
+2006363,537,T7,reading,False,False,False,False,False,True,False,False,1.0000,10,0.2000,away_29,losing team
+2006363,549,T7,positioning,False,False,False,False,False,True,False,False,2.3000,23,0.1304,home_14,"winning team, not the winner"
+2006363,562,T4,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.0417,home_7,winner
+2006363,572,T2,reading,False,False,False,False,False,True,False,False,1.0000,10,0.0000,,
+2006363,590,T7,reading,False,False,False,False,False,True,False,False,1.8000,18,0.4444,home_22,losing team
+2006363,606,T7,after the anchor,False,False,False,False,False,True,False,False,4.5000,45,0.1333,home_7,"winning team, not the winner"
+2006363,619,T2,positioning,False,False,False,False,False,True,False,False,4.9000,49,0.0000,,
+2006363,633,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.4545,home_17,"winning team, not the winner"
+2006363,652,T7,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.0952,away_36,"winning team, not the winner"
+2006363,658,T2,after the anchor,False,False,False,False,False,True,False,False,1.8000,18,0.1667,home_10,losing team
+2006363,670,T4,positioning,False,False,False,False,False,True,False,False,2.3000,23,0.0435,away_4,"winning team, not the winner"
+2006363,676,T7,positioning,False,False,False,False,False,True,False,False,0.9000,9,0.2222,home_27,"winning team, not the winner"
+2006363,678,T7,reading,False,False,False,False,False,True,False,False,1.5000,15,0.1333,away_12,winner
+2006363,685,T7,after the anchor,False,False,False,False,False,True,False,False,6.1000,61,0.0656,away_16,losing team
+2006363,693,T4,reading,False,False,False,False,False,True,False,False,0.9000,9,1.0000,away_27,"winning team, not the winner"
+2006363,732,T4,reading,False,False,False,False,False,True,False,False,0.6000,6,0.1667,away_36,losing team
+2006363,735,T7,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.5385,away_4,"winning team, not the winner"
+2006363,744,T4,reading,False,False,False,False,False,True,False,False,1.8000,18,0.8889,home_23,losing team
+2006363,763,T7,reading,False,False,False,False,False,True,False,False,3.3000,33,0.1515,away_27,winner
+2006363,768,T2,reading,False,False,False,False,False,True,False,False,1.7000,17,0.2353,home_14,losing team
+2006363,769,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.5455,home_14,losing team
+2006363,801,T4,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.1429,away_16,"winning team, not the winner"
+2006363,824,T7,positioning,False,False,False,False,False,True,False,False,4.7000,47,0.4255,home_8,"winning team, not the winner"
+2006363,840,T4,after the anchor,False,False,False,False,False,True,False,False,0.5000,5,1.0000,away_16,losing team
+2006363,855,T1,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.3750,home_10,"winning team, not the winner"
+2006363,930,T4,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.0625,home_23,winner
+2006363,936,T7,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.2500,home_22,winner
+2006363,945,T7,positioning,False,False,False,False,False,True,False,False,2.2000,22,0.0909,away_36,winner
+2006363,947,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.0000,,
+2006363,956,T7,after the anchor,False,False,False,False,False,True,False,False,2.2000,22,0.1364,away_27,losing team
+2006363,958,T7,positioning,False,False,False,False,False,True,False,False,2.0000,20,0.0500,away_16,"winning team, not the winner"
+2006363,968,T7,positioning,False,False,False,False,False,True,False,False,2.3000,23,0.2609,away_24,"winning team, not the winner"
+2007721,27,T7,after the anchor,False,False,False,False,False,True,False,False,3.0000,30,0.1667,away_8,winner
+2007721,37,T7,reading,False,False,False,False,False,True,False,False,2.5000,25,0.5600,away_11,losing team
+2007721,61,T7,positioning,False,False,False,False,False,True,False,False,3.9000,39,0.1538,away_36,losing team
+2007721,67,T7,positioning,False,False,False,False,False,True,False,False,4.3000,43,0.2791,home_25,losing team
+2007721,92,T6,after the anchor,True,True,False,False,False,True,False,False,3.6000,36,0.0278,home_21,"winning team, not the winner"
+2007721,95,T2,positioning,False,False,False,False,False,True,False,False,3.1000,31,0.3226,away_9,losing team
+2007721,96,T2,after the anchor,False,False,False,False,False,True,False,False,1.9000,19,0.2105,away_7,losing team
+2007721,110,T7,positioning,False,False,False,False,False,True,False,False,2.0000,20,0.2000,home_21,losing team
+2007721,132,T7,positioning,False,False,False,False,False,True,False,False,3.5000,35,0.0857,home_2,"winning team, not the winner"
+2007721,145,T2,reading,False,False,False,False,False,True,False,False,6.9000,69,0.3478,away_10,"winning team, not the winner"
+2007721,146,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,1.0000,home_15,"winning team, not the winner"
+2007721,167,T2,positioning,False,False,False,False,False,True,False,False,4.0000,40,0.0750,home_15,"winning team, not the winner"
+2007721,175,T7,reading,False,False,False,False,False,True,False,False,2.3000,23,0.1739,home_21,"winning team, not the winner"
+2007721,178,T1,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.0625,home_5,"winning team, not the winner"
+2007721,246,T2,reading,False,False,False,False,False,True,False,False,2.4000,24,0.1250,away_12,losing team
+2007721,257,T7,positioning,False,False,False,False,False,True,False,False,4.4000,44,0.0455,home_22,"winning team, not the winner"
+2007721,281,T3,after the anchor,True,True,False,False,False,True,False,False,5.4000,54,0.0185,away_12,losing team
+2007721,312,T4,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.1429,away_12,losing team
+2007721,336,T4,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.8571,home_25,losing team
+2007721,357,T2,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.2727,away_3,winner
+2007721,361,T7,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.0714,home_12,winner
+2007721,381,T7,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.1538,home_2,"winning team, not the winner"
+2007721,417,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.0000,,
+2007721,430,T7,reading,False,False,False,False,False,True,False,False,1.3000,13,0.1538,away_8,winner
+2007721,438,T7,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.1250,away_11,losing team
+2007721,442,T7,after the anchor,False,False,False,False,False,True,False,False,1.9000,19,0.2632,away_12,"winning team, not the winner"
+2007721,443,T1,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.1200,home_28,"winning team, not the winner"
+2007721,462,T7,positioning,False,False,False,False,False,True,False,False,6.1000,61,0.0328,home_28,"winning team, not the winner"
+2007721,489,T2,positioning,False,False,False,False,False,True,False,False,2.9000,29,0.1034,away_36,losing team
+2007721,493,T4,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.3158,away_11,losing team
+2007721,502,T7,positioning,False,False,False,False,False,True,False,False,4.0000,40,0.0500,away_9,losing team
+2007721,505,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.2000,home_10,losing team
+2007721,519,T4,reading,False,False,False,False,False,True,False,False,1.0000,10,0.6000,home_10,winner
+2007721,526,T3,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.2500,away_36,winner
+2007721,529,T7,positioning,False,False,False,False,False,True,False,False,5.4000,40,0.1000,away_9,losing team
+2007721,537,T2,after the anchor,False,False,False,False,False,True,False,False,6.4000,64,0.3594,home_28,losing team
+2007721,539,T2,after the anchor,True,True,False,False,False,True,False,False,3.8000,38,0.0526,home_15,"winning team, not the winner"
+2007721,545,T7,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.0476,away_7,winner
+2007721,548,T2,after the anchor,True,True,False,False,False,True,False,False,3.4000,34,0.0588,home_10,losing team
+2007721,572,T7,after the anchor,False,False,False,False,False,True,False,False,3.5000,35,0.2000,home_10,losing team
+2007721,583,T4,reading,False,False,False,False,False,True,False,False,1.1000,11,0.0000,,
+2007721,590,T7,positioning,False,False,False,False,False,True,False,False,3.9000,39,0.0256,away_11,"winning team, not the winner"
+2007721,601,T7,reading,False,False,False,False,False,True,False,False,3.4000,34,0.0882,away_3,"winning team, not the winner"
+2007721,604,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.1818,home_28,winner
+2007721,610,T2,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.1053,home_21,losing team
+2007721,611,T4,reading,False,False,False,False,False,True,False,False,1.3000,13,0.1538,home_21,winner
+2007721,632,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.2500,home_2,winner
+2007721,640,T2,positioning,False,False,False,False,False,True,False,False,5.6000,56,0.0714,home_28,"winning team, not the winner"
+2007721,663,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,1.0000,home_5,"winning team, not the winner"
+2007721,707,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.2857,home_22,winner
+2007721,726,T2,positioning,False,False,False,False,False,True,False,False,2.7000,27,0.2593,away_36,losing team
+2007721,764,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.0769,away_7,winner
+2007721,792,T2,after the anchor,False,False,False,False,False,True,False,False,5.8000,58,0.0345,home_10,losing team
+2007721,796,T2,positioning,False,False,False,False,False,True,False,False,6.0000,60,0.2667,away_9,losing team
+2007721,801,T4,positioning,False,False,False,False,False,True,False,False,4.1000,41,0.8537,away_11,losing team
+2007721,821,T7,reading,False,False,False,False,False,True,False,False,6.4000,64,0.0625,home_28,losing team
+2007721,822,T2,positioning,False,False,False,False,False,True,False,False,5.5000,55,0.0364,away_40,winner
+2007721,875,T7,after the anchor,False,False,False,False,False,True,False,False,2.0000,20,0.0500,away_3,losing team
+2007721,919,T1,positioning,False,False,False,False,False,True,False,False,5.3000,53,0.0566,away_40,winner
+2007721,929,T2,reading,False,False,False,False,False,True,False,False,2.3000,23,0.2174,away_8,winner
+2007721,933,T7,after the anchor,False,False,False,False,False,True,False,False,1.3000,13,0.2308,away_16,"winning team, not the winner"
+2007721,934,T3,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.3846,away_16,"winning team, not the winner"
+2007721,937,T2,after the anchor,False,False,False,False,False,True,False,False,5.4000,54,0.0926,away_23,winner
+2007721,944,T4,positioning,False,False,False,False,False,True,False,False,0.9000,9,1.0000,away_15,"winning team, not the winner"
+2010085,0,T2,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.1333,home_26,winner
+2010085,15,T7,positioning,False,False,False,False,False,True,False,False,3.5000,35,0.1429,home_13,"winning team, not the winner"
+2010085,21,T4,reading,False,False,False,False,False,True,False,False,1.5000,15,0.3333,away_8,"winning team, not the winner"
+2010085,38,T4,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.0714,away_33,losing team
+2010085,56,T7,after the anchor,False,False,False,False,False,True,False,False,2.6000,26,0.0769,away_7,"winning team, not the winner"
+2010085,60,T2,positioning,False,False,False,False,False,True,False,False,5.1000,37,0.3514,away_16,"winning team, not the winner"
+2010085,61,T7,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.7500,away_9,losing team
+2010085,87,T2,positioning,False,False,False,False,False,True,False,False,3.1000,31,0.2903,away_8,"winning team, not the winner"
+2010085,98,T4,reading,False,False,False,False,False,True,False,False,1.8000,18,0.0556,away_16,"winning team, not the winner"
+2010085,105,T4,after the anchor,False,False,False,False,False,True,False,False,1.0000,10,1.0000,home_26,losing team
+2010085,110,T4,positioning,False,False,False,False,False,True,False,False,0.9000,9,0.2222,away_10,winner
+2010085,136,T2,positioning,False,False,False,False,False,True,False,False,4.7000,47,0.0638,home_17,losing team
+2010085,144,T7,after the anchor,False,False,False,False,False,True,False,False,3.5000,35,0.0571,away_7,"winning team, not the winner"
+2010085,149,T2,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.4615,home_17,losing team
+2010085,153,T7,after the anchor,False,False,False,False,False,True,False,False,1.2000,12,0.5000,away_10,losing team
+2010085,161,T2,reading,False,False,False,False,False,True,False,False,4.9000,49,0.1429,away_9,losing team
+2010085,170,T4,reading,False,False,False,False,False,True,False,False,1.1000,11,0.0909,home_21,"winning team, not the winner"
+2010085,206,T7,after the anchor,False,False,False,False,False,True,False,False,1.2000,12,0.2500,away_3,losing team
+2010085,208,T7,after the anchor,False,False,False,False,False,True,False,False,4.9000,30,0.1333,home_21,winner
+2010085,210,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.2308,away_3,"winning team, not the winner"
+2010085,230,T7,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.3889,home_23,"winning team, not the winner"
+2010085,264,T7,positioning,False,False,False,False,False,True,False,False,4.0000,20,0.0500,away_12,winner
+2010085,265,T1,positioning,False,False,False,False,False,True,False,False,2.7000,27,0.1852,home_13,winner
+2010085,280,T2,positioning,False,False,False,False,False,True,False,False,4.4000,32,0.0625,away_3,losing team
+2010085,281,T7,after the anchor,False,False,False,False,False,True,False,False,1.5000,15,0.2667,home_30,losing team
+2010085,318,T2,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.1875,home_30,losing team
+2010085,394,T2,positioning,False,False,False,False,False,True,False,False,4.8000,48,0.0625,home_27,"winning team, not the winner"
+2010085,401,T7,positioning,False,False,False,False,False,True,False,False,4.9000,49,0.0612,home_23,"winning team, not the winner"
+2010085,402,T2,reading,False,False,False,False,False,True,False,False,4.1000,41,0.0976,home_17,"winning team, not the winner"
+2010085,410,T2,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.3000,away_10,losing team
+2010085,418,T7,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.1667,away_8,"winning team, not the winner"
+2010085,431,T2,reading,False,False,False,False,False,True,False,False,3.7000,37,0.1351,home_35,losing team
+2010085,442,T7,positioning,False,False,False,False,False,True,False,False,2.9000,29,0.0690,away_33,winner
+2010085,454,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.4000,home_27,winner
+2010085,457,T4,reading,False,False,False,False,False,True,False,False,0.6000,6,0.3333,away_11,losing team
+2010085,462,T7,after the anchor,False,False,False,False,False,True,False,False,6.1000,61,0.1311,home_35,losing team
+2010085,465,T2,positioning,False,False,False,False,False,True,False,False,2.0000,20,0.1500,home_16,winner
+2010085,473,T4,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.0714,away_12,winner
+2010085,475,T2,positioning,False,False,False,False,False,True,False,False,4.2000,42,0.2143,away_7,losing team
+2010085,486,T2,positioning,False,False,False,False,False,True,False,False,4.3000,43,0.0465,home_26,winner
+2010085,525,T2,positioning,False,False,False,False,False,True,False,False,3.4000,34,0.0588,away_10,"winning team, not the winner"
+2010085,557,T2,positioning,False,False,False,False,False,True,False,False,4.7000,31,0.2581,home_17,"winning team, not the winner"
+2010085,559,T7,positioning,False,False,False,False,False,False,False,False,6.5000,53,0.2453,home_30,"winning team, not the winner"
+2010085,567,T3,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.2727,away_40,losing team
+2010085,578,T4,positioning,False,False,False,False,False,True,False,False,3.5000,35,0.1143,away_16,losing team
+2010085,633,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.4286,home_27,winner
+2010085,643,T7,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.2308,away_12,"winning team, not the winner"
+2010085,659,T4,positioning,False,False,False,False,False,True,False,False,2.9000,29,0.0345,home_13,losing team
+2010085,664,T7,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.0417,away_7,"winning team, not the winner"
+2010085,666,T4,reading,False,False,False,False,False,True,False,False,1.1000,11,0.9091,home_21,losing team
+2010085,672,T4,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.5000,away_12,"winning team, not the winner"
+2010085,695,T4,after the anchor,False,False,False,False,False,True,False,False,0.6000,6,0.6667,away_9,losing team
+2010085,711,T2,positioning,False,False,False,False,False,False,False,False,5.8000,39,0.0256,away_16,losing team
+2010085,721,T2,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.1200,away_12,losing team
+2010085,786,T5,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.1250,away_16,"winning team, not the winner"
+2010085,799,T4,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.1250,away_12,losing team
+2010085,800,T1,positioning,False,False,False,False,False,True,False,False,3.5000,35,0.1143,away_33,winner
+2010085,806,T7,reading,False,False,False,False,False,True,False,False,4.6000,46,0.2826,away_23,losing team
+2010085,811,T2,positioning,False,False,False,False,False,True,False,False,3.0000,30,0.0667,home_17,losing team
+2010085,820,T7,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.4545,home_6,"winning team, not the winner"
+2010085,821,T7,positioning,False,False,False,False,False,True,False,False,19.3000,183,0.1585,home_27,"winning team, not the winner"
+2010085,830,T2,after the anchor,True,True,False,False,False,True,False,False,5.1000,51,0.0980,away_3,losing team
+2010085,881,T4,reading,False,False,False,False,False,True,False,False,0.6000,6,0.1667,away_21,losing team
+2010085,883,T7,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.1333,away_8,"winning team, not the winner"
+2010085,889,T2,positioning,False,False,False,False,False,True,False,False,3.7000,37,0.1892,home_47,"winning team, not the winner"
+2010085,893,T2,positioning,False,False,False,False,False,True,False,False,4.2000,20,0.1000,away_29,"winning team, not the winner"
+2010085,899,T2,positioning,False,False,False,False,False,True,False,False,8.5000,85,0.0471,away_8,losing team
+2010085,904,T7,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.0625,away_8,"winning team, not the winner"
+2010085,905,T7,positioning,False,False,False,False,False,True,False,False,3.3000,33,0.3333,away_29,losing team
+2010085,906,T2,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.7143,home_6,winner
+2010085,916,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.1818,away_44,winner
+2010085,920,T2,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.2000,away_8,winner
+2011166,13,T7,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.3000,away_17,"winning team, not the winner"
+2011166,20,T7,positioning,False,False,False,False,False,True,False,False,4.0000,25,0.1200,home_19,"winning team, not the winner"
+2011166,22,T7,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.1000,away_22,"winning team, not the winner"
+2011166,54,T3,reading,False,False,False,False,False,True,False,False,12.8000,128,0.4219,away_8,winner
+2011166,66,T4,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.4286,away_21,"winning team, not the winner"
+2011166,92,T7,reading,False,False,False,False,False,True,False,False,2.1000,21,0.2381,away_8,losing team
+2011166,117,T4,after the anchor,False,False,False,False,False,True,False,False,0.5000,5,0.6000,home_27,losing team
+2011166,137,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.5714,home_14,winner
+2011166,146,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.1667,home_19,winner
+2011166,148,T7,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.5357,home_19,"winning team, not the winner"
+2011166,151,T4,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.2105,away_14,winner
+2011166,154,T7,reading,False,False,False,False,False,True,False,False,0.8000,8,0.1250,home_4,"winning team, not the winner"
+2011166,157,T4,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.5000,home_19,losing team
+2011166,161,T7,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.1667,away_8,"winning team, not the winner"
+2011166,165,T2,positioning,False,False,False,False,False,True,False,False,1.9000,19,1.0000,away_7,losing team
+2011166,168,T7,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.2632,away_8,losing team
+2011166,208,T2,after the anchor,True,True,False,False,False,True,False,False,5.9000,59,0.0508,away_7,winner
+2011166,209,T4,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.1579,home_27,winner
+2011166,217,T2,positioning,False,False,False,False,False,True,False,False,2.0000,20,0.4500,home_27,winner
+2011166,218,T2,positioning,False,False,False,False,False,True,False,False,0.5000,5,1.0000,away_7,losing team
+2011166,222,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.1429,away_8,winner
+2011166,238,T2,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.2667,away_22,winner
+2011166,251,T4,reading,False,False,False,False,False,True,False,False,1.2000,12,0.2500,home_27,losing team
+2011166,255,T5,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.2500,away_14,winner
+2011166,276,T7,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.3158,home_7,losing team
+2011166,301,T3,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.0476,away_7,winner
+2011166,315,T2,after the anchor,False,False,False,False,False,True,False,False,1.5000,15,0.3333,away_6,losing team
+2011166,317,T4,after the anchor,True,True,False,False,False,True,False,False,3.0000,30,0.0667,away_4,losing team
+2011166,320,T4,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.1579,home_15,winner
+2011166,324,T4,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.4167,home_14,"winning team, not the winner"
+2011166,361,T2,after the anchor,True,True,False,False,False,True,False,False,4.4000,44,0.0455,away_21,losing team
+2011166,381,T2,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.1667,home_25,winner
+2011166,391,T4,positioning,False,False,False,False,False,True,False,False,2.2000,22,0.0909,away_4,winner
+2011166,396,T3,positioning,False,False,False,False,False,True,False,False,3.6000,36,0.1389,away_7,"winning team, not the winner"
+2011166,399,T1,positioning,False,False,False,False,False,True,False,False,3.9000,39,0.0256,away_21,winner
+2011166,410,T2,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.1538,home_9,losing team
+2011166,413,T2,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.1154,home_3,losing team
+2011166,418,T4,reading,False,False,False,False,False,True,False,False,1.2000,12,0.5833,home_9,losing team
+2011166,433,T2,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.2667,away_7,losing team
+2011166,460,T7,after the anchor,False,False,False,False,False,True,False,False,2.0000,20,0.2000,home_7,losing team
+2011166,480,T7,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.0000,,
+2011166,482,T4,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.0714,away_4,"winning team, not the winner"
+2011166,495,T3,positioning,False,False,False,False,False,True,False,False,4.1000,41,0.1951,home_15,losing team
+2011166,497,T4,after the anchor,False,False,False,False,False,True,False,False,2.4000,24,0.0417,home_19,"winning team, not the winner"
+2011166,503,T7,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.1154,away_21,winner
+2011166,505,T7,positioning,False,False,False,False,False,True,False,False,4.8000,48,0.0417,home_6,winner
+2011166,507,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.4545,home_18,losing team
+2011166,576,T7,positioning,False,False,False,False,False,True,False,False,4.0000,40,0.1000,away_1,winner
+2011166,592,T7,positioning,False,False,False,False,False,True,False,False,0.9000,9,0.3333,home_6,"winning team, not the winner"
+2011166,593,T1,positioning,False,False,False,False,False,False,False,False,4.1000,17,0.1765,away_14,winner
+2011166,620,T2,after the anchor,False,False,False,False,False,True,False,False,1.6000,16,0.2500,away_17,losing team
+2011166,632,T7,reading,False,False,False,False,False,True,False,False,0.6000,6,0.6667,home_3,losing team
+2011166,657,T2,positioning,False,False,False,False,False,True,False,False,3.3000,33,0.1515,home_19,winner
+2011166,665,T7,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.1429,away_28,winner
+2011166,684,T4,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.0833,away_4,"winning team, not the winner"
+2011166,690,T7,positioning,False,False,False,False,False,True,False,False,0.5000,5,0.8000,away_28,"winning team, not the winner"
+2011166,691,T4,positioning,False,False,False,False,False,True,False,False,0.9000,9,1.0000,home_18,losing team
+2011166,692,T7,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.2632,away_28,winner
+2011166,703,T7,positioning,False,False,False,False,False,True,False,False,7.6000,76,0.1579,away_22,losing team
+2011166,706,T2,after the anchor,False,False,False,False,False,True,False,False,1.1000,11,0.3636,home_15,losing team
+2011166,719,T7,after the anchor,True,True,False,False,False,True,False,False,4.7000,47,0.0638,home_3,"winning team, not the winner"
+2011166,724,T7,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.0625,away_17,losing team
+2011166,727,T2,positioning,False,False,False,False,False,True,False,False,8.7000,87,0.2069,away_17,"winning team, not the winner"
+2011166,746,T7,positioning,False,False,False,False,False,True,False,False,1.9000,19,0.1579,home_41,"winning team, not the winner"
+2011166,747,T4,after the anchor,False,False,False,False,False,True,False,False,1.5000,15,0.5333,away_28,winner
+2011166,754,T4,positioning,False,False,False,False,False,True,True,False,1.5000,15,0.9333,away_10,losing team
+2013725,35,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.6667,home_4,winner
+2013725,41,T2,reading,False,False,False,False,False,True,False,False,5.5000,55,0.0182,home_19,winner
+2013725,84,T4,positioning,False,False,False,False,False,True,False,False,2.7000,27,0.3333,home_10,"winning team, not the winner"
+2013725,97,T2,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.1538,away_25,winner
+2013725,112,T2,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.1429,home_30,"winning team, not the winner"
+2013725,164,T2,after the anchor,False,False,False,False,False,True,False,False,4.2000,42,0.0476,home_77,losing team
+2013725,169,T7,positioning,False,False,False,False,False,True,False,False,4.2000,42,0.0476,away_11,losing team
+2013725,181,T7,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.1250,home_33,winner
+2013725,201,T7,positioning,False,False,False,False,False,True,False,False,2.6000,13,0.3077,away_23,losing team
+2013725,209,T7,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.0714,home_24,"winning team, not the winner"
+2013725,210,T4,positioning,False,False,False,False,False,True,False,False,5.2000,11,0.1818,home_4,winner
+2013725,216,T2,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.1538,away_7,losing team
+2013725,249,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.2857,home_77,winner
+2013725,273,T2,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.1154,away_7,losing team
+2013725,276,T7,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.3889,away_10,"winning team, not the winner"
+2013725,281,T3,reading,False,False,False,False,False,True,False,False,1.4000,14,0.0714,away_23,"winning team, not the winner"
+2013725,303,T7,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.2778,home_24,losing team
+2013725,306,T4,reading,False,False,False,False,False,True,False,False,0.6000,6,0.5000,away_25,losing team
+2013725,308,T7,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.1250,home_24,"winning team, not the winner"
+2013725,325,T4,positioning,False,False,False,False,False,True,False,False,2.7000,7,0.0000,,
+2013725,331,T7,positioning,False,False,False,False,False,True,False,False,4.8000,48,0.0208,away_17,"winning team, not the winner"
+2013725,336,T4,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.1154,away_41,winner
+2013725,357,T2,positioning,False,False,False,False,False,True,False,False,3.1000,31,0.2258,home_23,losing team
+2013725,367,T2,positioning,False,False,False,False,False,True,False,False,2.0000,20,0.4500,away_10,losing team
+2013725,373,T7,positioning,False,False,False,False,False,True,False,False,5.2000,37,0.0811,home_6,winner
+2013725,378,T7,after the anchor,True,True,False,False,False,True,False,False,4.8000,48,0.0208,away_16,losing team
+2013725,391,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.1818,away_24,losing team
+2013725,396,T4,positioning,False,False,False,False,False,True,False,False,1.9000,7,0.0000,,
+2013725,404,T2,positioning,False,False,False,False,False,True,False,False,3.9000,39,0.0769,away_24,losing team
+2013725,408,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.1667,away_10,winner
+2013725,409,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.5000,away_17,winner
+2013725,425,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.4545,away_10,winner
+2013725,426,T2,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.2500,away_7,winner
+2013725,430,T2,positioning,False,False,False,False,False,True,False,False,4.7000,47,0.0851,away_23,losing team
+2013725,433,T4,positioning,False,False,False,False,False,True,False,False,0.9000,9,0.6667,away_23,"winning team, not the winner"
+2013725,434,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.2500,home_17,"winning team, not the winner"
+2013725,460,T2,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.0800,home_24,losing team
+2013725,486,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.3750,away_10,losing team
+2013725,491,T7,after the anchor,False,False,False,False,False,True,False,False,2.3000,23,0.2174,home_77,losing team
+2013725,495,T2,after the anchor,True,True,False,False,False,True,False,False,5.3000,53,0.0377,home_6,"winning team, not the winner"
+2013725,499,T7,reading,False,False,False,False,False,True,False,False,4.8000,48,0.0833,home_77,winner
+2013725,501,T2,positioning,False,False,False,False,False,True,False,False,4.1000,41,0.0976,away_16,losing team
+2013725,512,T7,positioning,False,False,False,False,False,True,False,False,2.3000,23,0.3043,away_4,"winning team, not the winner"
+2013725,562,T2,after the anchor,False,False,False,False,False,True,False,False,1.2000,12,0.0833,away_17,losing team
+2013725,564,T2,reading,False,False,False,False,False,True,False,False,1.9000,19,0.1579,home_23,winner
+2013725,584,T2,positioning,False,False,False,False,False,True,False,False,3.5000,35,0.1143,home_23,"winning team, not the winner"
+2013725,585,T7,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.1250,home_19,losing team
+2013725,614,T4,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.1667,away_8,winner
+2013725,627,T7,after the anchor,False,False,False,False,False,True,False,False,4.1000,41,0.0488,away_11,losing team
+2013725,642,T2,after the anchor,False,False,False,False,False,True,False,False,3.1000,31,0.2258,away_24,"winning team, not the winner"
+2013725,643,T2,reading,False,False,False,False,False,True,False,False,7.2000,72,0.2639,away_7,"winning team, not the winner"
+2013725,644,T7,reading,False,False,False,False,False,True,False,False,0.9000,9,0.2222,home_23,"winning team, not the winner"
+2013725,647,T4,reading,False,False,False,False,False,True,False,False,0.9000,9,0.1111,away_17,winner
+2013725,648,T4,reading,False,False,False,False,False,True,False,False,1.6000,16,0.3750,away_17,"winning team, not the winner"
+2013725,650,T2,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.5000,home_24,"winning team, not the winner"
+2013725,652,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.0000,,
+2013725,678,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.0000,,
+2013725,679,T3,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.0000,,
+2013725,681,T1,positioning,False,False,False,False,False,True,False,False,6.6000,50,0.1600,home_19,losing team
+2013725,694,T2,after the anchor,False,False,False,False,False,True,False,False,2.1000,21,0.1429,away_42,"winning team, not the winner"
+2013725,695,T7,positioning,False,False,False,False,False,True,False,False,4.1000,41,0.0488,away_16,winner
+2013725,719,T3,positioning,False,False,False,False,False,True,False,False,25.5000,187,0.0802,away_41,losing team
+2013725,746,T2,positioning,False,False,False,False,False,True,False,False,4.5000,25,0.0800,away_8,winner
+2013725,752,T7,positioning,False,False,False,False,False,True,False,False,4.9000,49,0.2653,home_20,"winning team, not the winner"
+2013725,757,T4,positioning,False,False,False,False,False,True,False,False,4.6000,19,0.5263,home_20,"winning team, not the winner"
+2013725,774,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.2857,away_17,"winning team, not the winner"
+2013725,781,T2,positioning,False,False,False,False,False,True,False,False,5.9000,59,0.5593,home_20,"winning team, not the winner"
+2013725,793,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,1.0000,home_29,losing team
+2013725,816,T3,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.4167,away_12,"winning team, not the winner"
+2013725,846,T4,reading,False,False,False,False,False,True,False,False,1.6000,16,0.5625,away_24,"winning team, not the winner"
+2013725,875,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.1000,away_17,losing team
+2013725,897,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.5000,away_20,"winning team, not the winner"
+2013725,899,T4,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.4444,home_5,"winning team, not the winner"
+2013725,919,T4,positioning,False,False,False,False,False,True,False,False,2.2000,22,0.1818,away_41,winner
+2015213,6,T7,reading,False,False,False,False,False,True,False,False,3.5000,35,0.1429,away_4,"winning team, not the winner"
+2015213,13,T7,reading,False,False,False,False,False,True,False,False,1.2000,12,0.1667,away_28,losing team
+2015213,28,T4,positioning,False,False,False,False,False,True,True,False,1.8000,18,0.5556,away_27,losing team
+2015213,49,T7,positioning,False,False,False,False,False,True,False,False,7.9000,63,0.0635,away_27,"winning team, not the winner"
+2015213,69,T2,positioning,False,False,False,False,False,True,False,False,8.7000,87,0.3793,home_23,losing team
+2015213,85,T7,positioning,False,False,False,False,False,True,False,False,3.6000,36,0.0000,,
+2015213,106,T4,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.1176,home_10,losing team
+2015213,119,T2,positioning,False,False,False,False,False,True,False,False,4.9000,49,0.0000,,
+2015213,144,T2,after the anchor,True,True,False,False,False,True,False,False,4.6000,46,0.0435,away_2,"winning team, not the winner"
+2015213,162,T7,positioning,False,False,False,False,False,True,False,False,2.2000,22,0.2727,away_11,"winning team, not the winner"
+2015213,210,T7,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.0769,away_11,losing team
+2015213,217,T2,reading,False,False,False,False,False,True,False,False,1.8000,18,0.0556,away_23,losing team
+2015213,218,T4,reading,False,False,False,False,False,True,False,False,0.7000,7,0.7143,away_6,winner
+2015213,233,T7,reading,False,False,False,False,False,True,False,False,1.9000,19,0.1579,home_19,losing team
+2015213,238,T7,positioning,False,False,False,False,False,True,False,False,3.7000,37,0.1081,away_4,"winning team, not the winner"
+2015213,255,T7,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.1538,home_4,winner
+2015213,270,T7,after the anchor,False,False,False,False,False,True,False,False,5.6000,56,0.3036,away_10,"winning team, not the winner"
+2015213,281,T7,positioning,False,False,False,False,False,True,False,False,2.2000,22,0.1364,home_19,"winning team, not the winner"
+2015213,316,T4,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.5556,home_19,"winning team, not the winner"
+2015213,318,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.4000,home_10,losing team
+2015213,319,T7,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.1429,home_30,"winning team, not the winner"
+2015213,321,T4,after the anchor,False,False,False,False,False,True,False,False,1.1000,11,0.3636,away_6,losing team
+2015213,352,T7,positioning,False,False,False,False,False,True,False,False,5.0000,50,0.1200,away_11,losing team
+2015213,353,T7,positioning,False,False,False,False,False,True,False,False,4.6000,46,0.1304,away_28,losing team
+2015213,371,T2,reading,False,False,False,False,False,True,False,False,5.2000,52,0.0769,home_23,losing team
+2015213,372,T7,after the anchor,False,False,False,False,False,True,False,False,2.5000,25,0.0400,home_32,"winning team, not the winner"
+2015213,374,T7,positioning,False,False,False,False,False,True,False,False,2.3000,23,0.1304,away_15,winner
+2015213,384,T2,after the anchor,False,False,False,False,False,True,False,False,3.2000,32,0.1250,home_6,losing team
+2015213,392,T2,after the anchor,False,False,False,False,False,True,False,False,3.5000,35,0.1429,away_10,losing team
+2015213,403,T2,after the anchor,True,True,False,False,False,True,False,False,6.3000,36,0.1389,home_30,losing team
+2015213,407,T2,positioning,False,False,False,False,False,True,False,False,5.4000,54,0.1296,away_9,losing team
+2015213,413,T4,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.0000,,
+2015213,438,T4,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.1176,home_4,winner
+2015213,445,T2,after the anchor,False,False,False,False,False,True,False,False,2.3000,23,0.0000,,
+2015213,461,T4,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.1111,home_32,losing team
+2015213,486,T2,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.1176,home_24,losing team
+2015213,489,T2,positioning,False,False,False,False,False,True,False,False,5.3000,53,0.0943,home_4,"winning team, not the winner"
+2015213,491,T2,positioning,False,False,False,False,False,True,False,False,2.1000,17,0.1765,home_4,winner
+2015213,493,T7,positioning,False,False,False,False,False,True,False,False,6.9000,69,0.1014,home_24,losing team
+2015213,503,T4,reading,False,False,False,False,False,True,False,False,1.1000,11,0.0909,away_10,winner
+2015213,512,T7,reading,False,False,False,False,False,True,False,False,2.9000,29,0.3103,away_25,"winning team, not the winner"
+2015213,517,T4,positioning,False,False,False,False,False,True,False,False,3.8000,38,0.1579,home_17,"winning team, not the winner"
+2015213,520,T7,positioning,False,False,False,False,False,True,False,False,3.3000,33,0.1515,away_17,winner
+2015213,527,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.2308,away_17,losing team
+2015213,531,T2,reading,False,False,False,False,False,True,False,False,2.9000,29,0.1379,away_4,losing team
+2015213,544,T2,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.1875,home_77,losing team
+2015213,555,T7,positioning,False,False,False,False,False,True,False,False,2.9000,29,0.0690,home_32,winner
+2015213,556,T2,after the anchor,False,False,False,False,False,True,False,False,3.8000,38,0.1316,away_2,losing team
+2015213,572,T7,positioning,False,False,False,False,False,True,False,False,2.9000,29,0.1379,home_32,"winning team, not the winner"
+2015213,573,T7,positioning,False,False,False,False,False,True,False,False,4.5000,45,0.1778,away_4,"winning team, not the winner"
+2015213,581,T4,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.2500,away_10,losing team
+2015213,589,T7,after the anchor,False,False,False,False,False,True,False,False,4.0000,40,0.0500,away_9,"winning team, not the winner"
+2015213,591,T7,after the anchor,False,False,False,False,False,True,False,False,3.1000,31,0.3548,away_6,"winning team, not the winner"
+2015213,613,T2,positioning,False,False,False,False,False,True,False,False,5.1000,51,0.0392,away_23,"winning team, not the winner"
+2015213,619,T7,after the anchor,False,False,False,False,False,True,False,False,3.2000,32,0.0000,,
+2015213,625,T2,after the anchor,False,False,False,False,False,True,False,False,2.5000,25,0.0800,away_27,"winning team, not the winner"
+2015213,634,T7,after the anchor,False,False,False,False,False,True,False,False,9.5000,95,0.3474,home_44,losing team
+2015213,653,T2,reading,False,False,False,False,False,True,False,False,5.4000,31,0.0968,away_9,losing team
+2015213,664,T2,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.2500,home_24,winner
+2015213,669,T7,reading,False,False,False,False,False,True,False,False,1.0000,10,0.3000,home_77,losing team
+2015213,678,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.5714,away_22,winner
+2015213,699,T4,after the anchor,False,False,False,False,False,True,False,False,1.6000,16,0.2500,home_44,losing team
+2015213,716,T7,positioning,False,False,False,False,False,True,False,False,4.1000,41,0.0244,away_12,winner
+2015213,727,T2,reading,False,False,False,False,False,True,False,False,5.8000,58,0.0517,away_17,losing team
+2015213,733,T4,reading,False,False,False,False,False,True,False,False,1.6000,16,0.1250,home_17,"winning team, not the winner"
+2015213,734,T2,positioning,False,False,False,False,False,True,False,False,3.7000,37,0.0541,away_23,"winning team, not the winner"
+2015213,735,T4,positioning,False,False,False,False,False,True,False,False,0.9000,9,0.0000,,
+2015213,747,T2,positioning,False,False,False,False,False,True,False,False,4.9000,49,0.0408,away_2,winner
+2015213,750,T4,reading,False,False,False,False,False,True,False,False,1.0000,10,0.1000,home_10,losing team
+2015213,756,T1,positioning,False,False,False,False,False,True,False,False,4.0000,40,0.1500,away_4,"winning team, not the winner"
+2015213,809,T7,after the anchor,False,False,False,False,False,True,False,False,3.9000,39,0.1026,home_17,"winning team, not the winner"
+2015213,814,T7,after the anchor,False,False,False,False,False,True,False,False,2.1000,21,0.1429,away_6,losing team
+2015213,815,T2,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.0476,home_44,winner
+2015213,828,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.0909,away_27,winner
+2015213,829,T4,after the anchor,False,False,False,False,False,True,False,False,2.2000,22,0.2273,away_17,losing team
+2015213,843,T4,positioning,False,False,False,False,False,True,False,False,0.9000,9,0.1111,home_5,winner
+2015213,847,T4,reading,False,False,False,False,False,True,False,False,1.7000,17,0.0588,away_27,losing team
+2015213,851,T7,positioning,False,False,False,False,False,True,False,False,3.4000,34,0.1471,home_4,"winning team, not the winner"
+2015213,855,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.6000,home_30,winner
+2016236,4,T7,after the anchor,False,False,False,False,False,True,False,False,4.1000,41,0.0244,away_51,losing team
+2016236,11,T4,positioning,False,False,False,False,False,True,False,False,0.9000,9,0.2222,home_77,losing team
+2016236,20,T2,positioning,False,False,False,False,False,True,False,False,4.1000,41,0.0732,away_20,"winning team, not the winner"
+2016236,24,T7,after the anchor,False,False,False,False,False,True,False,False,5.0000,50,0.0800,home_32,losing team
+2016236,28,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.0769,away_21,"winning team, not the winner"
+2016236,57,T7,positioning,False,False,False,False,False,True,False,False,2.7000,27,0.0741,away_3,"winning team, not the winner"
+2016236,58,T4,positioning,False,False,False,False,False,True,False,False,4.9000,31,0.0645,away_10,losing team
+2016236,63,T7,positioning,False,False,False,False,False,True,False,False,3.5000,35,0.2000,home_30,"winning team, not the winner"
+2016236,84,T4,after the anchor,False,False,False,False,False,True,False,False,1.4000,14,0.1429,away_9,winner
+2016236,90,T3,after the anchor,False,False,False,False,False,True,False,False,1.6000,16,0.0625,away_13,losing team
+2016236,110,T4,positioning,False,False,False,False,False,True,False,False,4.3000,11,0.0000,,
+2016236,116,T2,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.2692,away_21,winner
+2016236,125,T2,positioning,False,False,False,False,False,True,False,False,5.3000,53,0.1887,away_9,losing team
+2016236,136,T7,positioning,False,False,False,False,False,True,False,False,4.4000,44,0.0682,away_21,losing team
+2016236,138,T2,positioning,False,False,False,False,False,True,False,False,2.6000,26,0.1154,away_7,winner
+2016236,142,T2,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.1176,away_55,winner
+2016236,156,T2,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.3333,home_23,losing team
+2016236,166,T2,after the anchor,False,False,False,False,False,True,False,False,7.8000,78,0.1667,home_19,"winning team, not the winner"
+2016236,182,T2,positioning,False,False,False,False,False,True,False,False,5.2000,52,0.1731,away_9,losing team
+2016236,203,T4,reading,False,False,False,False,False,True,False,False,1.5000,15,0.4000,home_23,winner
+2016236,206,T2,after the anchor,True,True,False,False,False,True,False,False,5.2000,52,0.0577,away_55,losing team
+2016236,217,T2,reading,False,False,False,False,False,True,False,False,2.6000,26,0.4615,away_7,losing team
+2016236,218,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,0.6000,away_8,"winning team, not the winner"
+2016236,220,T2,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.1000,away_20,winner
+2016236,222,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.5000,away_55,winner
+2016236,227,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.0000,,
+2016236,228,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.5385,home_23,"winning team, not the winner"
+2016236,244,T2,reading,False,False,False,False,False,True,False,False,2.4000,24,0.0833,away_8,"winning team, not the winner"
+2016236,245,T1,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.0312,away_6,losing team
+2016236,258,T7,positioning,False,False,False,False,False,True,False,False,2.9000,29,0.0345,away_8,winner
+2016236,286,T2,positioning,False,False,False,False,False,True,False,False,5.1000,51,0.0196,away_55,losing team
+2016236,291,T4,positioning,False,False,False,False,False,True,False,False,0.8000,8,0.3750,away_20,winner
+2016236,331,T7,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.2083,home_30,"winning team, not the winner"
+2016236,339,T7,positioning,False,False,False,False,False,True,False,False,3.9000,39,0.1026,home_6,winner
+2016236,387,T2,positioning,False,False,False,False,False,True,False,False,2.3000,23,0.0000,,
+2016236,404,T7,positioning,False,False,False,False,False,True,False,False,4.8000,48,0.1250,away_3,"winning team, not the winner"
+2016236,407,T7,positioning,False,False,False,False,False,True,False,False,3.5000,35,0.1143,away_51,"winning team, not the winner"
+2016236,444,T7,positioning,False,False,False,False,False,True,False,False,4.6000,46,0.1739,away_7,losing team
+2016236,446,T4,after the anchor,False,False,False,False,False,True,False,False,1.6000,16,0.1250,home_19,"winning team, not the winner"
+2016236,448,T3,positioning,False,False,False,False,False,True,False,False,4.4000,44,0.1364,away_8,losing team
+2016236,463,T2,after the anchor,False,False,False,False,False,True,False,False,5.5000,55,0.0909,home_19,losing team
+2016236,467,T4,reading,False,False,False,False,False,True,False,False,1.1000,11,0.0909,home_13,winner
+2016236,481,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,0.2000,away_7,winner
+2016236,491,T7,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.1429,away_6,losing team
+2016236,504,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.2727,away_20,"winning team, not the winner"
+2016236,505,T4,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.0000,,
+2016236,506,T7,positioning,False,False,False,False,False,True,False,False,4.2000,42,0.1429,away_7,losing team
+2016236,541,T7,positioning,False,False,False,False,False,True,False,False,6.0000,60,0.3500,home_13,"winning team, not the winner"
+2016236,550,T4,reading,False,False,False,False,False,True,False,False,1.3000,13,0.4615,away_8,losing team
+2016236,630,T1,positioning,False,False,False,False,False,True,False,False,4.2000,42,0.0714,away_55,winner
+2016236,633,T2,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.1250,away_6,losing team
+2016236,647,T4,reading,False,False,False,False,False,True,False,False,1.8000,18,0.3333,away_51,losing team
+2016236,699,T7,positioning,False,False,False,False,False,True,False,False,2.2000,22,0.4545,home_17,losing team
+2016236,713,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.0000,,
+2016236,721,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.2857,home_30,winner
+2016236,747,T4,positioning,False,False,False,False,False,True,False,False,2.5000,11,0.0000,,
+2016236,780,T7,positioning,False,False,False,False,False,True,False,False,2.4000,24,0.1667,away_6,"winning team, not the winner"
+2016236,797,T4,positioning,False,False,False,False,False,True,False,False,2.7000,27,0.2222,away_9,losing team
+2016236,800,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.4000,away_20,losing team
+2016236,803,T4,positioning,False,False,False,False,False,True,False,False,2.7000,19,0.0526,away_14,winner
+2016236,843,T2,after the anchor,False,False,False,False,False,True,False,False,1.9000,19,0.8947,home_7,losing team
+2016236,852,T4,after the anchor,False,False,False,False,False,True,False,False,1.2000,12,0.1667,home_5,winner
+2016236,861,T7,positioning,False,False,False,False,False,True,False,False,2.7000,27,0.1481,away_8,winner
+2016236,865,T2,after the anchor,False,False,False,False,False,True,False,False,4.5000,45,0.1111,away_9,losing team
+2016236,870,T3,after the anchor,False,False,False,False,False,True,False,False,3.8000,38,0.0263,away_13,losing team
+2016236,872,T5,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.0714,away_51,losing team
+2016236,919,T2,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.1786,home_23,winner
+2016236,927,T7,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.1818,away_51,winner
+2016236,929,T7,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.3125,away_7,losing team
+2016236,943,T2,reading,False,False,False,False,False,True,False,False,1.1000,11,0.2727,home_7,losing team
+2016236,955,T2,positioning,False,False,False,False,False,True,False,False,4.7000,47,0.0851,home_32,winner
+2016236,956,T2,after the anchor,True,True,False,False,False,True,False,False,5.7000,57,0.0702,away_19,winner
+2017461,0,T2,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.0714,home_5,winner
+2017461,9,T2,positioning,False,False,False,False,False,True,False,False,4.4000,44,0.0909,away_6,"winning team, not the winner"
+2017461,16,T4,positioning,False,False,False,False,False,True,False,False,0.6000,6,0.6667,away_28,winner
+2017461,39,T7,after the anchor,False,False,False,False,False,True,False,False,5.4000,54,0.3519,home_8,winner
+2017461,41,T2,after the anchor,False,False,False,False,False,True,False,False,0.7000,7,1.0000,away_11,losing team
+2017461,46,T2,positioning,False,False,False,False,False,True,False,False,4.3000,43,0.1860,away_27,losing team
+2017461,56,T7,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.0800,away_27,losing team
+2017461,59,T4,positioning,False,False,False,False,False,True,False,False,0.9000,9,1.0000,away_10,"winning team, not the winner"
+2017461,73,T4,reading,False,False,False,False,False,True,False,False,0.6000,6,0.6667,home_17,losing team
+2017461,74,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.3000,away_6,losing team
+2017461,83,T2,positioning,False,False,False,False,False,True,False,False,3.9000,39,0.0513,away_4,losing team
+2017461,89,T7,after the anchor,False,False,False,False,False,True,False,False,2.9000,29,0.7241,away_10,losing team
+2017461,93,T4,after the anchor,False,False,False,False,False,True,False,False,2.4000,24,1.0000,away_28,losing team
+2017461,100,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.0769,home_14,winner
+2017461,120,T7,after the anchor,False,False,False,False,False,True,False,False,3.5000,35,0.2571,away_15,losing team
+2017461,139,T4,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.1111,away_6,winner
+2017461,140,T2,positioning,False,False,False,False,False,True,False,False,3.0000,30,0.1000,home_17,"winning team, not the winner"
+2017461,141,T4,after the anchor,False,False,False,False,False,True,False,False,1.3000,13,0.9231,away_6,losing team
+2017461,147,T7,positioning,False,False,False,False,False,True,False,False,3.7000,37,0.2432,away_28,losing team
+2017461,153,T7,reading,False,False,False,False,False,True,False,False,5.0000,50,0.1400,home_8,"winning team, not the winner"
+2017461,156,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.0000,,
+2017461,167,T7,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.0800,home_8,losing team
+2017461,180,T7,positioning,False,False,False,False,False,True,False,False,1.8000,18,0.1111,home_14,"winning team, not the winner"
+2017461,193,T3,after the anchor,False,False,False,False,False,True,False,False,1.4000,14,0.1429,home_16,losing team
+2017461,203,T2,positioning,False,False,False,False,False,True,False,False,5.1000,51,0.0980,home_16,winner
+2017461,205,T6,positioning,False,False,False,False,False,True,False,False,7.8000,6,0.1667,home_28,winner
+2017461,212,T2,positioning,False,False,False,False,False,True,False,False,3.9000,39,0.1026,away_23,losing team
+2017461,216,T1,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.0800,away_10,winner
+2017461,233,T7,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.1250,home_7,losing team
+2017461,238,T4,reading,False,False,False,False,False,True,False,False,1.1000,11,0.0909,away_4,winner
+2017461,267,T7,positioning,False,False,False,False,False,True,False,False,3.6000,36,0.0833,away_11,"winning team, not the winner"
+2017461,303,T3,reading,False,False,False,False,False,True,False,False,1.8000,18,0.0000,,
+2017461,318,T4,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.2143,away_28,"winning team, not the winner"
+2017461,319,T4,positioning,False,False,False,False,False,True,False,False,1.5000,15,0.2000,home_5,winner
+2017461,324,T2,positioning,False,False,False,False,False,True,False,False,5.0000,50,0.0000,,
+2017461,326,T3,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.0625,away_10,"winning team, not the winner"
+2017461,379,T4,after the anchor,False,False,False,False,False,True,False,False,2.1000,21,0.1905,home_6,losing team
+2017461,383,T2,positioning,False,False,False,False,False,True,False,False,4.8000,48,0.1667,home_17,losing team
+2017461,401,T2,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.1667,away_6,winner
+2017461,438,T4,positioning,False,False,False,False,False,True,False,False,0.9000,9,0.2222,away_10,winner
+2017461,457,T1,positioning,False,False,False,False,False,True,False,False,3.5000,35,0.0857,home_5,winner
+2017461,460,T7,positioning,False,False,False,False,False,True,False,False,1.2000,12,0.4167,away_2,"winning team, not the winner"
+2017461,462,T4,positioning,False,False,False,False,False,True,False,False,3.5000,7,0.0000,,
+2017461,483,T2,reading,False,False,False,False,False,True,False,False,6.6000,66,0.0606,away_6,"winning team, not the winner"
+2017461,493,T4,positioning,False,False,False,False,False,True,False,False,1.4000,14,0.1429,home_7,winner
+2017461,498,T2,positioning,False,False,False,False,False,True,False,False,3.3000,33,0.1515,home_9,losing team
+2017461,504,T2,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.3529,away_28,winner
+2017461,516,T4,positioning,False,False,False,False,False,True,False,False,1.7000,17,0.1176,home_8,losing team
+2017461,533,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,0.4000,away_25,winner
+2017461,535,T7,reading,False,False,False,False,False,True,False,False,1.3000,13,0.2308,away_28,"winning team, not the winner"
+2017461,542,T7,positioning,False,False,False,False,False,True,False,False,2.1000,21,0.2857,away_6,"winning team, not the winner"
+2017461,557,T4,positioning,False,False,False,False,False,True,False,False,1.1000,11,0.1818,away_6,"winning team, not the winner"
+2017461,563,T2,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.1200,home_14,winner
+2017461,585,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.1000,home_8,"winning team, not the winner"
+2017461,589,T2,after the anchor,True,True,False,False,False,True,False,False,4.4000,44,0.0227,away_10,losing team
+2017461,598,T4,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.2000,away_2,winner
+2017461,599,T2,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.3077,home_11,"winning team, not the winner"
+2017461,613,T4,positioning,False,False,False,False,False,True,False,False,1.3000,13,0.0000,,
+2017461,622,T7,positioning,False,False,False,False,False,True,False,False,4.4000,44,0.0682,away_2,"winning team, not the winner"
+2017461,627,T7,after the anchor,False,False,False,False,False,True,False,False,2.8000,28,0.0357,home_10,"winning team, not the winner"
+2017461,631,T4,after the anchor,True,True,False,False,False,True,False,False,3.8000,38,0.2895,home_14,"winning team, not the winner"
+2017461,634,T4,positioning,False,False,False,False,False,True,False,False,1.6000,16,0.0000,,
+2017461,652,T4,positioning,False,False,False,False,False,True,False,False,2.8000,28,0.0357,home_6,"winning team, not the winner"
+2017461,671,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.4286,home_28,winner
+2017461,681,T2,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.2800,home_14,winner
+2017461,683,T4,positioning,False,False,False,False,False,True,False,False,0.7000,7,0.8571,away_6,winner
+2017461,691,T7,positioning,False,False,False,False,False,True,False,False,2.7000,27,0.1111,home_6,winner
+2017461,693,T2,positioning,False,False,False,False,False,True,False,False,3.2000,32,0.0625,home_10,"winning team, not the winner"
+2017461,730,T7,positioning,False,False,False,False,False,True,False,False,2.5000,25,0.4400,home_10,losing team
+2017461,741,T4,positioning,False,False,False,False,False,True,False,False,0.5000,5,1.0000,away_23,winner
+2017461,743,T7,positioning,False,False,False,False,False,True,False,False,3.4000,34,0.1176,away_6,winner
+2017461,746,T4,after the anchor,False,False,False,False,False,True,False,False,1.2000,12,0.1667,away_22,winner
+2017461,767,T7,reading,False,False,False,False,False,True,False,False,2.6000,26,0.1154,away_23,"winning team, not the winner"
+2017461,801,T7,positioning,False,False,False,False,False,True,False,False,1.0000,10,0.2000,home_28,winner

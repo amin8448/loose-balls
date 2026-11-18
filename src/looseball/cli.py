@@ -2,6 +2,8 @@
 
 looseball reproduce --data PATH --out PATH
     Regenerate every MT1 table and figure from the SkillCorner open-data clone at PATH.
+looseball animate --data PATH --match ID --episode SEQ_I --out FILE [--hold SECONDS]
+    One lost ball as recorded, then the one change under the model (3h; not part of reproduce).
 looseball run --data PATH --match ID [--out PATH]
     Team report and clip export for one match, with the frozen parameters; clips_enough.csv adds
     the 3h columns (report-only).
@@ -59,9 +61,24 @@ def main(argv=None) -> int:
     run.add_argument("--data", required=True, help="path to the SkillCorner opendata clone")
     run.add_argument("--match", required=True, type=int, help="match id")
     run.add_argument("--out", default=None, help="output directory (default: looseball_<match id>)")
+    ani = sub.add_parser("animate", help="animation of one lost ball (as recorded, then the one change)")
+    ani.add_argument("--data", required=True, help="path to the SkillCorner opendata clone")
+    ani.add_argument("--match", required=True, type=int, help="match id")
+    ani.add_argument("--episode", required=True, type=int, help="seq_i of the lost ball")
+    ani.add_argument(
+        "--out", required=True, help="output file (.mp4 through ffmpeg when available, else .gif)"
+    )
+    ani.add_argument(
+        "--hold", type=float, default=0.25, help="seconds each data frame is shown (default 0.25)"
+    )
     args = parser.parse_args(argv)
 
-    if args.command == "reproduce":
+    if args.command == "animate":
+        from looseball.animate import animate
+
+        for k, v in animate(args.data, args.match, args.episode, args.out, hold=args.hold).items():
+            print(f"{k}: {v}")
+    elif args.command == "reproduce":
         from looseball.reproduce import reproduce
 
         summary = reproduce(args.data, args.out)

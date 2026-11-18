@@ -2851,3 +2851,28 @@ P3b, tolerance 0 s. Positioning verdicts where the loser is the static path favo
 Checker addition (logged as an addition, after the record existed): scripts/check_reproduce.py also compares OUT/clips_enough.csv with audit/s3h_test/clips_enough.csv, and, when OUT/s3h exists (written by `python scripts/s3h.py test OUT/s3h`), OUT/s3h/report.md with audit/s3h_test/report.md. Run on the reproduce output above: all identical. Tests: 89 passed.
 
 Reading, report-only. The verdict counts agree with MT1 R1 (692 positioning, 135 reading, 176 after the anchor). Of 692 positioning balls, 557 have a move, 50 are already_favourite (7.2%) and 85 have nobody of the losing team in the 15 m race (12.3%; 15 of the 30 gated clearances). The median metres_short is 2.51 m for positioning and 1.08 m for reading, below the 10 m line. The enough player is extrapolated in 15 of 692 move balls and a goalkeeper in 1. The move is least stable under the pleuler variant (type and player unchanged 0.637, Spearman 0.661) and next under reaction 0.35 s (0.846, 0.861); 0.909 to 0.995 under the others. The path check covers 554 ground balls of 1003; at 0.3 s, P3 is 25 of 393 positioning verdicts (0.064, 0.041 to 0.087) and P3b, the number the README limitation will cite, 25 of 211 positioning verdicts with a path favourite (0.118, 0.075 to 0.162); 162 of the 393 are reached by neither team within the tolerance. P1 and P1b agree on 346 and 350 of 554 balls; the 11 balls with no favourite in the race (equal empty-team times) have one under P1b.
+
+### 3h animation: draw rule, logged before the draw (2026-11-18)
+
+Command: `looseball animate --data PATH --match ID --episode SEQ_I --out FILE [--hold SECONDS]` (src/looseball/animate.py). Not part of looseball reproduce and not byte-checked. Specification as given by the project lead: part one "as recorded" from the release frame to the pickup frame, each data frame held 0.25 s, nothing interpolated; before the anchor dots with velocity arrows, hollow when not detected, the camera view outlined, the ball with its trail (hollow at its last detected position when not detected), "drop zone not yet in view", no shading and no pickup marker; at the anchor a 1.5 s hold, the shading as in Figure 1, the pickup marker, the 15 m race circle and one caption line (the losing team's chance from position, with movement, and the verdict); anchor to pickup recorded positions with the shading recomputed each frame; the pickup frame held 1 s naming the team that won the ball. Part two, labelled "model: one change" throughout, only for enough_type move: the anchor frame frozen, the best-placed player as a ghost at his recorded spot and at the moved spot, an arrow with the distance in metres, the shading recomputed with the change, the label "The model now has the race level."; held 3 s. Shirt numbers only; team names as in the figures; mp4 through ffmpeg when present, GIF otherwise.
+
+Choices made in writing it, before the draw (presentation only):
+
+| item | choice |
+|:--|:--|
+| colours | the winning team blue, the losing team orange, the shading from orange (losing team first) through neutral (level) to blue (winning team first), as in Figure 1 |
+| shading | each team's best dynamic reach time from all its players on the frame, frozen reach model, as the winning team's margin clipped at 2 s, 140 x 140 grid, with the level line |
+| extent | fixed for the whole animation: the ball path from release to pickup and 16 m around the pickup point, padded 4 m, cut at the pitch boundary plus 2 m |
+| arrows | one second of current movement (smoothed velocity, window 5), as in Figure 1 |
+| frame size | 1000 x 840 pixels, mp4 (H.264, yuv420p) at 4 frames a second for a 0.25 s hold |
+| model part | the moved player keeps his recorded velocity; his marker is drawn filled; the caption line of part one stays on screen |
+| bug check | the margin at the pickup point after the change, from all players, is printed with each animation (zero when the race is level) |
+
+Draw, fixed now:
+
+| item | rule |
+|:--|:--|
+| pool | lost balls of the test analysis set (all 15 matches) with enough_type move (audit/s3h_test/clips_enough.csv), lead at least 1.5 s (audit/mt1_test/episodes.csv), ball path at least 10 m (audit/s3h_test/pathcheck.csv, ball_path_m, the Figure 1 path length) and the enough player detected on the anchor frame (enough_player_extrapolated False); sorted by match_id and seq_i |
+| draw | seed 20261118, one numpy default_rng: two without replacement from the pool's positioning verdicts, then two from its reading verdicts |
+| output | audit/animations/animation_seed20261118_K_VERDICT_MATCH_SEQ.mp4 and animations.csv; all four are written |
+| script | scripts/s3h_animations.py |

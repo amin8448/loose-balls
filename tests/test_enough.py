@@ -9,6 +9,7 @@ from looseball.enough import (
     displacement_bisection,
     enough,
     enough_one,
+    redirection_one,
     rotation_bisection,
     rotation_closed_form,
 )
@@ -100,30 +101,30 @@ def test_pleuler_bisections_reach_t_w():
     assert model.tti(np.array([8.0, 0.0]), TARGET, v) == pytest.approx(2.6, abs=1e-6)
 
 
-def test_redirect_is_preferred_and_the_smallest_rotation_wins():
+def test_the_enough_change_is_the_move_even_when_a_redirection_would_level_the_race():
     race = _race(
         [
             ("away_2", "other", 7.0, 0.0, 0.0, 0.0),  # t_w = 2.1
             ("home_1", "releasing", 0.0, 8.0, 4.0, 0.0),  # sideways, 90 degrees off
-            (
-                "home_3",
-                "releasing",
-                -8.0,
-                0.0,
-                0.0,
-                -4.0,
-                False,
-                True,
-            ),  # sideways too, extrapolated goalkeeper
+            ("home_3", "releasing", -8.0, 0.0, 0.0, -4.0, False, True),  # same, extrapolated goalkeeper
             ("home_5", "releasing", 0.0, -9.0, 0.0, -4.0),  # running away, 180 degrees off
         ]
-    )
+    )  # fmt: skip
     e = enough_one(race, "releasing", "reading", TARGET)
-    assert e["enough_type"] == "redirect"
-    # home_1 and home_3 need the same rotation (within 1e-9); home_1 is nearer (8 m both) -> column_id
-    assert e["enough_player"] == "home_1"
-    assert e["enough_degrees"] > 0 and e["enough_metres"] is None
-    assert e["enough_player_gk"] is False and e["enough_player_extrapolated"] is False
+    assert e["enough_type"] == "move" and set(e) == set(COLUMNS)
+    best = race[race["side"] == "releasing"].sort_values("t_dynamic").iloc[0]
+    assert e["enough_player"] == best["column_id"]
+    assert e["metres_short"] == pytest.approx(5 * (best["t_dynamic"] - 2.1))
+    # report-only: the smallest redirection; home_1 and home_3 tie on rotation and distance, column_id decides
+    r = redirection_one(race, "releasing", TARGET)
+    assert r["redirect_player"] == "home_1" and r["redirect_degrees"] > 0
+
+
+def test_redirection_is_blank_when_the_loser_is_level_or_has_nobody():
+    race = _race([("away_2", "other", 12.0, 0.0, 0.0, 0.0)], empty_sides=("releasing",))
+    assert redirection_one(race, "releasing", TARGET)["redirect_player"] is None
+    race = _race([("away_2", "other", 9.0, 0.0, 0.0, 0.0), ("home_1", "releasing", 0.0, 10.0, 0.0, -4.0)])
+    assert np.isnan(redirection_one(race, "releasing", TARGET)["redirect_degrees"])
 
 
 def test_ties_for_the_best_placed_player_break_on_distance_then_column_id():
@@ -139,7 +140,7 @@ def test_ties_for_the_best_placed_player_break_on_distance_then_column_id():
     e = enough_one(race, "releasing", "positioning", TARGET)
     assert e["enough_type"] == "move" and e["enough_player"] == "home_3"  # same 9 m: column_id decides
     assert e["enough_player_gk"] is True and e["enough_player_extrapolated"] is True
-    assert e["enough_metres"] == pytest.approx(5.0)  # 5 x (2.5 - 1.5)
+    assert e["metres_short"] == pytest.approx(5.0)  # 5 x (2.5 - 1.5)
     # a nearer player with a time within 1e-9 s wins on distance
     race.loc[race["column_id"] == "home_7", "dist"] = 8.999
     assert enough_one(race, "releasing", "positioning", TARGET)["enough_player"] == "home_7"
@@ -149,7 +150,7 @@ def test_empty_losing_side_negative_deficit_and_after_the_anchor():
     race = _race([("away_2", "other", 12.0, 0.0, 0.0, 0.0)], empty_sides=("releasing",))
     e = enough_one(race, "releasing", "positioning", TARGET)
     assert e["enough_type"] == "no_player_in_race" and e["enough_player"] is None
-    assert e["deficit_s"] == pytest.approx(3.7 - 3.1) and e["metres_short"] == pytest.approx(3.0)
+    assert e["deficit_s"] == pytest.approx(3.7 - 3.1) and e["metres_short"] is None  # R2: nobody to move
 
     race = _race([("away_2", "other", 9.0, 0.0, 0.0, 0.0), ("home_1", "releasing", 0.0, 10.0, 0.0, -4.0)])
     e = enough_one(race, "releasing", "positioning", TARGET)  # moving straight at it: dynamic favourite
@@ -166,4 +167,4 @@ def test_enough_table_shape_and_types():
                            "pickup_x": 0.0, "pickup_y": 0.0}])  # fmt: skip
     t = enough(race, balls)
     assert list(t.columns) == ["match_id", "seq_i", *COLUMNS]
-    assert str(t["enough_player_gk"].dtype) == "boolean" and t.loc[0, "enough_type"] in ("redirect", "move")
+    assert str(t["enough_player_gk"].dtype) == "boolean" and t.loc[0, "enough_type"] == "move"

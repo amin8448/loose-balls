@@ -1,15 +1,17 @@
 """What would have been enough (step 3, 3h; DESIGN.md "3h. What would have been enough").
 
 Report-only. For each lost ball, from the race at the anchor and the frozen reach model, the
-smallest change to one player of the losing team that would have made that team the favourite:
-a rotation of one player's velocity (redirect) or a displacement of the best-placed player
-(move). Nothing is fitted. Never "what should have happened".
+displacement of the best-placed losing player that makes the race level under the model (after
+the post hoc revision R1 of 2026-11-18, the enough change is this move only). Nothing is fitted.
+Never "would have won" or "what should have happened".
 
 The frozen reach model (DataBallPy "shaw") is t = reaction + |pickup - (p + reaction x v)| / top
 speed. It has no turning term, so moving the start point along the line from the drifted position
-p + reaction x v to the pickup point by top speed x D lowers the time by exactly D, and rotating a
-velocity of fixed speed changes only the drifted position. Under the pleuler variant (used only
-for the V3 stability check) both are found by bisection.
+p + reaction x v to the pickup point by top speed x D lowers the time by exactly D. Under the
+pleuler variant (used only for the V3 stability check) the displacement is found by bisection.
+
+The smallest redirection (a rotation of one losing player's velocity at fixed speed) is kept as a
+report-only quantity for the audit tables (redirection()); it is in no export.
 """
 
 import numpy as np
@@ -19,9 +21,10 @@ from looseball.race import REACTION, TOP_SPEED, TURNING_PENALTY, ReachModel
 
 TIE = 1e-9  # seconds for reach times, radians for rotations
 BISECTION_STEPS = 80
-TYPES = ("redirect", "move", "already_favourite", "no_player_in_race")
-COLUMNS = ["deficit_s", "metres_short", "enough_type", "enough_player", "enough_metres", "enough_degrees",
-           "enough_player_gk", "enough_player_extrapolated"]  # fmt: skip
+TYPES = ("move", "already_favourite", "no_player_in_race")
+COLUMNS = ["deficit_s", "metres_short", "enough_type", "enough_player", "enough_player_gk",
+           "enough_player_extrapolated"]  # fmt: skip
+REDIRECT_COLUMNS = ["redirect_player", "redirect_degrees"]
 
 
 def _pick(table: pd.DataFrame, value: str) -> pd.Series:
@@ -91,39 +94,64 @@ def displacement_bisection(model: ReachModel, pos, vel, target, t_w: float) -> f
     return hi
 
 
+def _sides(race: pd.DataFrame, loser_side: str):
+    losing = race[race["side"] == loser_side]
+    t_w = float(race.loc[race["side"] != loser_side, "t_dynamic"].min())
+    deficit = float(losing["t_dynamic"].min()) - t_w
+    return losing[~losing["empty_team"].astype(bool)], t_w, deficit
+
+
 def enough_one(race: pd.DataFrame, loser_side: str, verdict: str, target, reaction: float = REACTION,
                top_speed: float = TOP_SPEED, turning_penalty: str = TURNING_PENALTY) -> dict:  # fmt: skip
     """The 3h quantities of one lost ball.
 
     race: that episode's rows of reach_times() (both sides, empty-team rows included); loser_side:
     "releasing" or "other"; verdict: the ball's verdict; target: the pickup point (x, y).
-    Output: deficit_s, metres_short, enough_type, enough_player (column_id), enough_metres,
-    enough_degrees, enough_player_gk, enough_player_extrapolated.
+    Output: deficit_s, metres_short (blank unless D > 0 and a losing player is in the race),
+    enough_type (blank after the anchor, then already_favourite, no_player_in_race, move),
+    enough_player (column_id of the best-placed player, move only), enough_player_gk,
+    enough_player_extrapolated.
     """
     model = ReachModel(turning_penalty, reaction_time=reaction, max_velocity=top_speed)
     target = np.asarray(target, float)
-    losing = race[race["side"] == loser_side]
-    t_w = float(race.loc[race["side"] != loser_side, "t_dynamic"].min())
-    deficit = float(losing["t_dynamic"].min()) - t_w
-    players = losing[~losing["empty_team"].astype(bool)]
+    players, t_w, deficit = _sides(race, loser_side)
     out = dict.fromkeys(COLUMNS)
     out["deficit_s"] = deficit
-    if deficit > 0:
-        if model.turning_penalty == "shaw" or players.empty:
+    best = _pick(players, "t_dynamic") if not players.empty else None
+    if deficit > 0 and best is not None:
+        if model.turning_penalty == "shaw":
             out["metres_short"] = top_speed * deficit
         else:
-            b = _pick(players, "t_dynamic")
-            vel = np.nan_to_num(np.array([b.vx, b.vy], float))
-            out["metres_short"] = displacement_bisection(model, (b.x, b.y), vel, target, t_w)
+            vel = np.nan_to_num(np.array([best.vx, best.vy], float))
+            out["metres_short"] = displacement_bisection(model, (best.x, best.y), vel, target, t_w)
     if verdict == "after the anchor":
         return out
     if deficit <= 0:
         out["enough_type"] = "already_favourite"
         return out
-    if players.empty:
+    if best is None:
         out["enough_type"] = "no_player_in_race"
         return out
+    out.update(
+        enough_type="move",
+        enough_player=best["column_id"],
+        enough_player_gk=bool(best["goalkeeper"]),
+        enough_player_extrapolated=not bool(best["detected"]),
+    )
+    return out
 
+
+def redirection_one(race: pd.DataFrame, loser_side: str, target, reaction: float = REACTION,
+                    top_speed: float = TOP_SPEED, turning_penalty: str = TURNING_PENALTY) -> dict:  # fmt: skip
+    """Report-only (since R1): the smallest rotation of one losing player's velocity, at fixed
+    speed, that makes the race level; NaN and None when D <= 0, nobody is in the race, or no
+    rotation does. Output: redirect_player (column_id), redirect_degrees."""
+    model = ReachModel(turning_penalty, reaction_time=reaction, max_velocity=top_speed)
+    target = np.asarray(target, float)
+    players, t_w, deficit = _sides(race, loser_side)
+    out = {"redirect_player": None, "redirect_degrees": np.nan}
+    if deficit <= 0 or players.empty:
+        return out
     rotations = []
     for p in players.itertuples(index=False):
         vel = np.array([p.vx, p.vy], float)
@@ -140,17 +168,13 @@ def enough_one(race: pd.DataFrame, loser_side: str, verdict: str, target, reacti
         else:
             rot = rotation_bisection(model, (p.x, p.y), vel, target, t_w)
         if np.isfinite(rot):
-            rotations.append({"column_id": p.column_id, "dist": p.dist, "rotation": rot,
-                              "goalkeeper": p.goalkeeper, "detected": p.detected})  # fmt: skip
+            rotations.append({"column_id": p.column_id, "dist": p.dist, "rotation": rot})
     if rotations:
         chosen = _pick(pd.DataFrame(rotations), "rotation")
-        out.update(enough_type="redirect", enough_degrees=float(np.degrees(chosen["rotation"])))
-    else:
-        chosen = _pick(players, "t_dynamic")
-        out.update(enough_type="move", enough_metres=out["metres_short"])
-    out["enough_player"] = chosen["column_id"]
-    out["enough_player_gk"] = bool(chosen["goalkeeper"])
-    out["enough_player_extrapolated"] = not bool(chosen["detected"])
+        out = {
+            "redirect_player": chosen["column_id"],
+            "redirect_degrees": float(np.degrees(chosen["rotation"])),
+        }
     return out
 
 
@@ -173,6 +197,22 @@ def enough(reach: pd.DataFrame, balls: pd.DataFrame, reaction: float = REACTION,
     out = pd.DataFrame(rows, columns=["match_id", "seq_i", *COLUMNS])
     for c in ("enough_player_gk", "enough_player_extrapolated"):
         out[c] = out[c].astype("boolean")
-    for c in ("deficit_s", "metres_short", "enough_metres", "enough_degrees"):
+    for c in ("deficit_s", "metres_short"):
         out[c] = out[c].astype(float)
+    return out
+
+
+def redirection(reach: pd.DataFrame, balls: pd.DataFrame, reaction: float = REACTION, top_speed: float = TOP_SPEED,
+                turning_penalty: str = TURNING_PENALTY) -> pd.DataFrame:  # fmt: skip
+    """Report-only (since R1): redirection_one() for every ball of `balls` (match_id, seq_i,
+    loser_side, pickup_x, pickup_y). Output: match_id, seq_i, redirect_player, redirect_degrees."""
+    groups = dict(tuple(reach.groupby(["match_id", "seq_i"], sort=False)))
+    rows = [
+        {"match_id": b.match_id, "seq_i": b.seq_i,
+         **redirection_one(groups[(b.match_id, b.seq_i)], b.loser_side, (b.pickup_x, b.pickup_y), reaction,
+                           top_speed, turning_penalty)}
+        for b in balls.itertuples(index=False)
+    ]  # fmt: skip
+    out = pd.DataFrame(rows, columns=["match_id", "seq_i", *REDIRECT_COLUMNS])
+    out["redirect_degrees"] = out["redirect_degrees"].astype(float)
     return out

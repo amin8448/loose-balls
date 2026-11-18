@@ -1,0 +1,327 @@
+match_id,seq_i,period,clock,frame,team,verdict,deficit_s,metres_short,enough_type,enough_player,enough_player_gk,enough_player_extrapolated
+1886347,4,1,00:00:26.20,272,4177,positioning,0.2971,1.4857,move,home_14,False,False
+1886347,5,1,00:00:28.20,292,1805,reading,0.3270,1.6352,move,away_14,False,False
+1886347,16,1,00:01:38.80,998,4177,positioning,0.5647,2.8234,move,home_14,False,False
+1886347,31,1,00:02:25.50,1465,4177,after the anchor,-0.0678,,,,,
+1886347,37,1,00:02:39.60,1606,1805,after the anchor,-0.0203,,,,,
+1886347,38,1,00:02:40.40,1614,4177,positioning,0.5189,2.5944,move,home_28,False,False
+1886347,64,1,00:03:56.30,2373,4177,after the anchor,-0.5344,,,,,
+1886347,96,1,00:06:23.30,3843,1805,positioning,1.2528,6.2640,move,away_17,False,True
+1886347,99,1,00:06:37.90,3989,4177,reading,0.1318,0.6588,move,home_17,False,False
+1886347,117,1,00:07:49.90,4709,1805,positioning,-0.3162,,already_favourite,,,
+1886347,172,1,00:12:19.70,7407,1805,after the anchor,-0.9317,,,,,
+1886347,173,1,00:12:24.60,7456,4177,positioning,1.1103,5.5513,move,home_22,False,False
+1886347,180,1,00:13:51.60,8326,1805,positioning,1.9255,9.6275,move,away_39,False,False
+1886347,199,1,00:14:52.60,8936,1805,positioning,0.9267,4.6336,move,away_22,False,False
+1886347,220,1,00:16:52.30,10133,4177,positioning,0.4699,,no_player_in_race,,,
+1886347,237,1,00:17:57.90,10789,1805,reading,0.1686,0.8431,move,away_22,False,False
+1886347,238,1,00:17:59.10,10801,4177,positioning,0.4145,2.0726,move,home_23,False,False
+1886347,245,1,00:19:33.40,11744,4177,positioning,1.1712,5.8562,move,home_22,False,False
+1886347,246,1,00:19:34.70,11757,4177,positioning,0.3268,1.6338,move,home_22,False,False
+1886347,260,1,00:20:39.50,12405,1805,positioning,0.2779,1.3894,move,away_14,False,False
+1886347,273,1,00:21:53.40,13144,1805,reading,0.4860,2.4302,move,away_19,False,False
+1886347,276,1,00:22:03.10,13241,1805,positioning,0.3543,1.7716,move,away_39,False,False
+1886347,281,1,00:23:58.40,14394,4177,positioning,0.5873,2.9367,move,home_27,False,False
+1886347,282,1,00:24:01.80,14428,1805,positioning,1.0042,5.0211,move,away_37,False,False
+1886347,291,1,00:24:31.20,14722,4177,positioning,1.9888,9.9441,move,home_10,False,False
+1886347,294,1,00:24:45.80,14868,1805,positioning,0.0519,0.2595,move,away_14,False,False
+1886347,317,1,00:26:55.50,16165,1805,positioning,0.6680,3.3401,move,away_14,False,False
+1886347,328,1,00:28:00.30,16813,4177,positioning,0.3903,1.9514,move,home_4,False,False
+1886347,354,1,00:30:12.10,18131,4177,positioning,0.7891,3.9456,move,home_14,False,False
+1886347,395,1,00:33:14.00,19950,4177,positioning,1.5199,7.5995,move,home_10,False,False
+1886347,404,1,00:33:51.70,20327,4177,positioning,0.0504,0.2522,move,home_27,False,False
+1886347,414,1,00:34:20.00,20610,1805,positioning,1.4355,7.1776,move,away_37,False,False
+1886347,448,1,00:38:18.80,22998,1805,positioning,0.8531,4.2655,move,away_22,False,False
+1886347,453,1,00:38:37.00,23180,4177,positioning,0.0199,0.0994,move,home_14,False,False
+1886347,487,1,00:41:34.50,24955,1805,positioning,0.3717,1.8583,move,away_37,False,False
+1886347,497,1,00:42:23.50,25445,4177,positioning,1.6198,8.0991,move,home_14,False,False
+1886347,550,2,00:46:22.40,28624,1805,positioning,1.9739,,no_player_in_race,,,
+1886347,560,2,00:47:03.20,29032,4177,positioning,0.1892,0.9458,move,home_27,False,False
+1886347,561,2,00:47:04.60,29046,1805,after the anchor,-0.3027,,,,,
+1886347,589,2,00:48:27.00,29870,4177,positioning,2.7715,,no_player_in_race,,,
+1886347,619,2,00:50:35.70,31157,4177,positioning,0.1851,0.9257,move,home_28,False,False
+1886347,627,2,00:52:02.30,32023,4177,positioning,1.3028,6.5141,move,home_27,False,False
+1886347,629,2,00:52:11.80,32118,4177,positioning,0.2756,1.3780,move,home_6,False,False
+1886347,656,2,00:54:57.00,33770,1805,after the anchor,-0.4156,,,,,
+1886347,663,2,00:55:27.60,34076,4177,positioning,0.5587,2.7937,move,home_10,False,False
+1886347,674,2,00:56:01.30,34413,4177,positioning,0.6397,3.1987,move,home_14,False,True
+1886347,685,2,00:57:27.40,35274,4177,positioning,0.7044,3.5222,move,home_23,False,False
+1886347,712,2,00:59:29.70,36497,1805,reading,0.0319,0.1593,move,away_14,False,False
+1886347,721,2,01:00:41.80,37218,1805,positioning,0.2762,1.3808,move,away_14,False,False
+1886347,751,2,01:08:01.80,41618,4177,positioning,0.7913,3.9567,move,home_22,False,False
+1886347,790,2,01:12:31.30,44313,1805,positioning,0.0317,0.1587,move,away_17,False,False
+1886347,816,2,01:16:09.50,46495,1805,positioning,0.8780,,no_player_in_race,,,
+1886347,823,2,01:17:31.10,47311,1805,reading,0.0147,0.0737,move,away_39,False,False
+1886347,826,2,01:17:41.10,47411,1805,positioning,0.2793,1.3967,move,away_7,False,False
+1886347,852,2,01:19:30.50,48505,1805,positioning,1.0409,5.2047,move,away_39,False,False
+1886347,859,2,01:20:05.60,48856,1805,reading,0.0427,0.2137,move,away_13,False,False
+1886347,871,2,01:20:50.20,49302,4177,positioning,0.2203,1.1013,move,home_9,False,False
+1886347,879,2,01:21:36.00,49760,1805,positioning,0.4821,2.4104,move,away_17,False,False
+1886347,944,2,01:33:16.00,56760,1805,reading,0.7128,3.5642,move,away_14,False,False
+1886347,947,2,01:33:39.20,56992,4177,positioning,0.5220,2.6098,move,home_25,False,False
+1886347,965,2,01:35:21.90,58019,4177,positioning,0.8742,4.3712,move,home_9,False,False
+1886347,979,2,01:36:03.60,58436,4177,after the anchor,-0.1214,,,,,
+1959846,10,1,00:01:26.10,861,868,positioning,0.3721,1.8603,move,home_14,False,False
+1959846,18,1,00:02:45.00,1650,868,after the anchor,-0.0982,,,,,
+1959846,25,1,00:03:02.60,1826,1803,positioning,0.3116,1.5581,move,away_23,False,False
+1959846,52,1,00:05:00.10,3001,1803,positioning,0.9261,,no_player_in_race,,,
+1959846,61,1,00:05:39.20,3392,868,after the anchor,-0.0324,,,,,
+1959846,65,1,00:05:57.70,3577,868,positioning,0.7500,3.7501,move,home_8,False,False
+1959846,91,1,00:10:06.60,6066,1803,positioning,0.1790,0.8951,move,away_30,False,False
+1959846,95,1,00:10:45.80,6458,1803,positioning,1.7206,,no_player_in_race,,,
+1959846,114,1,00:11:42.20,7022,868,positioning,0.5404,2.7022,move,home_3,False,False
+1959846,126,1,00:12:16.60,7366,868,positioning,-0.3832,,already_favourite,,,
+1959846,158,1,00:15:07.80,9078,868,after the anchor,-0.0258,,,,,
+1959846,171,1,00:17:00.40,10204,868,positioning,0.7164,3.5819,move,home_27,False,False
+1959846,186,1,00:17:59.90,10799,868,positioning,0.8862,4.4309,move,home_27,False,False
+1959846,198,1,00:19:21.70,11617,868,after the anchor,-0.2490,,,,,
+1959846,209,1,00:20:25.60,12256,868,positioning,0.4280,2.1402,move,home_27,False,False
+1959846,210,1,00:20:34.70,12347,868,positioning,1.2196,6.0981,move,home_10,False,False
+1959846,269,1,00:26:31.30,15913,1803,after the anchor,-0.1862,,,,,
+1959846,297,1,00:29:56.00,17960,1803,positioning,0.9062,4.5312,move,away_20,False,False
+1959846,301,1,00:30:06.70,18067,1803,positioning,0.8340,4.1701,move,away_20,False,False
+1959846,335,1,00:33:54.40,20344,868,after the anchor,-0.6858,,,,,
+1959846,340,1,00:34:08.20,20482,868,positioning,0.3685,1.8426,move,home_10,False,False
+1959846,341,1,00:34:08.90,20489,868,positioning,0.4030,2.0148,move,home_7,False,False
+1959846,342,1,00:34:10.80,20508,1803,after the anchor,0.0000,,,,,
+1959846,351,1,00:34:40.90,20809,1803,after the anchor,-0.7301,,,,,
+1959846,357,1,00:35:26.90,21269,1803,positioning,0.3523,1.7616,move,away_37,False,False
+1959846,451,1,00:45:37.00,27370,1803,positioning,2.7098,,no_player_in_race,,,
+1959846,474,2,00:45:49.10,28461,1803,positioning,0.4026,2.0130,move,away_37,False,False
+1959846,487,2,00:47:03.40,29204,868,positioning,0.3249,1.6245,move,home_2,False,False
+1959846,500,2,00:48:32.00,30090,868,after the anchor,-0.6696,,,,,
+1959846,520,2,00:51:18.50,31755,868,positioning,0.5221,2.6107,move,home_10,False,False
+1959846,543,2,00:52:34.90,32519,868,positioning,0.2014,1.0072,move,home_8,False,False
+1959846,547,2,00:53:45.50,33225,868,positioning,-0.3296,,already_favourite,,,
+1959846,559,2,00:54:33.90,33709,868,positioning,2.8569,,no_player_in_race,,,
+1959846,571,2,00:57:50.50,35675,1803,positioning,-0.0179,,already_favourite,,,
+1959846,581,2,00:58:27.70,36047,1803,positioning,0.0529,0.2645,move,away_32,False,False
+1959846,583,2,00:58:30.80,36078,868,positioning,0.1625,0.8127,move,home_10,False,False
+1959846,595,2,01:00:17.70,37147,1803,after the anchor,0.0000,,,,,
+1959846,602,2,01:02:19.90,38369,868,after the anchor,-0.2628,,,,,
+1959846,609,2,01:02:48.00,38650,868,positioning,1.0309,5.1544,move,home_7,False,False
+1959846,611,2,01:02:49.30,38663,1803,positioning,0.4567,2.2837,move,away_9,False,False
+1959846,613,2,01:02:57.10,38741,1803,after the anchor,0.0000,,,,,
+1959846,620,2,01:03:17.80,38948,868,positioning,1.1224,,no_player_in_race,,,
+1959846,631,2,01:04:23.90,39609,868,positioning,1.4454,7.2270,move,home_7,False,False
+1959846,649,2,01:06:01.10,40581,868,reading,0.3155,1.5776,move,home_17,False,False
+1959846,652,2,01:06:08.30,40653,868,positioning,0.3288,1.6440,move,home_8,False,False
+1959846,655,2,01:06:14.90,40719,868,positioning,0.4762,2.3809,move,home_2,False,False
+1959846,658,2,01:06:42.80,40998,868,positioning,0.1429,0.7143,move,home_10,False,False
+1959846,659,2,01:06:48.20,41052,868,positioning,0.8741,4.3706,move,home_17,False,False
+1959846,674,2,01:08:29.90,42069,868,positioning,0.7068,3.5341,move,home_7,False,False
+1959846,707,2,01:11:45.30,44023,1803,positioning,1.5777,7.8883,move,away_13,False,False
+1959846,715,2,01:12:03.60,44206,868,positioning,0.3444,1.7220,move,home_17,False,False
+1959846,723,2,01:12:26.00,44430,1803,reading,0.1816,0.9081,move,away_6,False,False
+1959846,740,2,01:13:57.50,45345,1803,positioning,0.0664,0.3322,move,away_9,False,False
+1959846,752,2,01:15:45.00,46420,1803,positioning,1.0723,5.3615,move,away_9,False,False
+1959846,753,2,01:15:49.30,46463,1803,positioning,0.6741,3.3705,move,away_44,False,False
+1959846,757,2,01:15:59.90,46569,868,after the anchor,-0.1663,,,,,
+1959846,785,2,01:18:26.30,48033,1803,positioning,0.7939,,no_player_in_race,,,
+1959846,836,2,01:23:56.30,51333,1803,positioning,0.3595,1.7973,move,away_10,False,False
+1959846,840,2,01:24:14.80,51518,1803,positioning,0.3426,1.7129,move,away_30,False,False
+1959846,852,2,01:25:11.30,52083,1803,positioning,0.1767,0.8837,move,away_77,False,False
+1959846,878,2,01:27:22.50,53395,1803,reading,0.1662,0.8309,move,away_6,False,False
+1959846,903,2,01:29:18.80,54558,1803,reading,0.1452,0.7261,move,away_77,False,False
+1959846,926,2,01:33:06.20,56832,868,positioning,0.1105,0.5524,move,home_17,False,False
+1959846,933,2,01:33:55.10,57321,868,positioning,1.7377,8.6885,move,home_28,False,False
+1959846,938,2,01:35:21.50,58185,1803,after the anchor,-0.0147,,,,,
+1959846,941,2,01:35:31.80,58288,1803,reading,0.1691,0.8454,move,away_10,False,False
+1996435,26,1,00:01:23.30,843,869,positioning,0.3617,1.8087,move,home_9,False,False
+1996435,27,1,00:01:30.30,913,869,positioning,0.4381,2.1906,move,home_9,False,False
+1996435,50,1,00:02:32.30,1533,869,positioning,1.3890,,no_player_in_race,,,
+1996435,82,1,00:03:54.60,2356,866,positioning,0.7107,3.5537,move,away_6,False,False
+1996435,95,1,00:06:15.20,3762,866,positioning,2.3567,,no_player_in_race,,,
+1996435,116,1,00:07:48.10,4691,869,reading,0.1385,0.6924,move,home_8,False,False
+1996435,118,1,00:07:52.20,4732,869,after the anchor,-0.2393,,,,,
+1996435,139,1,00:09:44.00,5850,866,positioning,0.1338,0.6691,move,away_10,False,False
+1996435,152,1,00:10:39.30,6403,869,positioning,1.8936,,no_player_in_race,,,
+1996435,161,1,00:11:20.20,6812,869,positioning,1.7786,8.8929,move,home_8,False,False
+1996435,162,1,00:11:23.70,6847,866,positioning,0.0423,0.2116,move,away_14,False,False
+1996435,169,1,00:11:45.20,7062,869,positioning,0.9604,4.8020,move,home_15,False,False
+1996435,181,1,00:12:46.70,7677,869,positioning,-0.2707,,already_favourite,,,
+1996435,188,1,00:13:13.30,7943,866,positioning,0.1081,0.5403,move,away_26,False,False
+1996435,242,1,00:15:50.10,9511,866,positioning,0.3885,1.9426,move,away_55,False,False
+1996435,257,1,00:16:45.30,10063,866,positioning,-0.0595,,already_favourite,,,
+1996435,260,1,00:16:59.30,10203,869,positioning,0.6240,3.1202,move,home_9,False,False
+1996435,270,1,00:17:28.10,10491,869,positioning,0.1708,0.8540,move,home_21,False,False
+1996435,279,1,00:19:34.90,11759,866,reading,0.1435,0.7176,move,away_6,False,False
+1996435,306,1,00:21:00.10,12611,869,positioning,1.4888,,no_player_in_race,,,
+1996435,312,1,00:21:56.10,13171,866,after the anchor,-0.0455,,,,,
+1996435,316,1,00:22:16.10,13371,866,positioning,0.8840,4.4201,move,away_55,False,False
+1996435,346,1,00:25:57.40,15584,866,positioning,2.6640,,no_player_in_race,,,
+1996435,355,1,00:26:21.90,15829,866,positioning,2.1281,10.6404,move,away_6,False,False
+1996435,375,1,00:29:16.70,17577,869,positioning,0.3408,1.7041,move,home_42,False,True
+1996435,390,1,00:31:34.70,18957,869,positioning,1.1336,5.6680,move,home_17,False,False
+1996435,397,1,00:32:40.60,19616,869,after the anchor,-0.2966,,,,,
+1996435,404,1,00:33:07.10,19881,869,positioning,0.8312,4.1558,move,home_6,False,False
+1996435,408,1,00:33:17.10,19981,869,positioning,0.8935,4.4677,move,home_8,False,False
+1996435,413,1,00:33:38.40,20194,869,positioning,-0.0278,,already_favourite,,,
+1996435,418,1,00:34:03.00,20440,866,positioning,0.2301,1.1504,move,away_3,False,True
+1996435,452,1,00:36:55.40,22164,866,positioning,1.6594,,no_player_in_race,,,
+1996435,461,1,00:37:28.70,22497,869,after the anchor,-1.3464,,,,,
+1996435,493,1,00:40:13.90,24149,869,positioning,0.7638,3.8191,move,home_6,False,False
+1996435,516,1,00:42:21.70,25427,866,reading,0.0747,0.3737,move,away_55,False,False
+1996435,541,1,00:45:11.20,27122,869,positioning,0.6557,3.2786,move,home_17,False,False
+1996435,544,1,00:45:38.20,27392,869,after the anchor,-0.0036,,,,,
+1996435,558,2,00:45:06.30,28093,866,after the anchor,-0.9476,,,,,
+1996435,566,2,00:47:00.10,29231,869,positioning,0.3094,1.5469,move,home_10,False,False
+1996435,569,2,00:47:11.70,29347,866,positioning,-0.0333,,already_favourite,,,
+1996435,579,2,00:49:58.40,31014,866,positioning,0.5033,2.5163,move,away_62,False,False
+1996435,604,2,00:52:23.60,32466,866,positioning,1.4441,7.2206,move,away_10,False,False
+1996435,612,2,00:53:27.20,33102,866,after the anchor,-0.0836,,,,,
+1996435,625,2,00:55:12.70,34157,869,reading,0.5801,2.9006,move,home_8,False,False
+1996435,678,2,00:59:20.60,36636,866,positioning,0.5131,2.5657,move,away_20,False,False
+1996435,684,2,00:59:58.80,37018,869,positioning,0.4067,2.0336,move,home_9,False,False
+1996435,692,2,01:02:01.80,38248,869,positioning,0.4145,2.0724,move,home_21,False,False
+1996435,697,2,01:02:21.30,38443,866,positioning,0.1122,0.5612,move,away_3,False,False
+1996435,698,2,01:02:22.80,38458,869,positioning,0.5269,2.6347,move,home_10,False,False
+1996435,699,2,01:02:26.60,38496,866,positioning,2.7256,,no_player_in_race,,,
+1996435,723,2,01:03:53.50,39365,866,after the anchor,-0.0985,,,,,
+1996435,751,2,01:06:17.70,40807,866,positioning,1.0807,5.4035,move,away_9,False,False
+1996435,767,2,01:08:29.00,42120,866,positioning,2.2721,,no_player_in_race,,,
+1996435,770,2,01:08:35.80,42188,866,positioning,-0.2208,,already_favourite,,,
+1996435,812,2,01:12:07.40,44304,866,positioning,0.2364,1.1821,move,away_19,False,False
+1996435,823,2,01:13:23.90,45069,869,positioning,0.3612,1.8060,move,home_15,False,False
+1996435,853,2,01:18:10.60,47936,869,after the anchor,0.0000,,,,,
+1996435,868,2,01:18:51.00,48340,869,positioning,1.6169,8.0844,move,home_17,False,False
+1996435,872,2,01:19:09.00,48520,869,positioning,0.1914,0.9571,move,home_9,False,False
+1996435,879,2,01:19:52.30,48953,866,positioning,0.7323,3.6614,move,away_19,False,False
+1996435,883,2,01:19:59.60,49026,869,positioning,0.8395,4.1976,move,home_15,False,False
+1996435,886,2,01:20:16.90,49199,866,positioning,0.3119,1.5597,move,away_20,False,False
+1996435,894,2,01:20:43.70,49467,866,reading,0.0047,0.0235,move,away_9,False,False
+1996435,906,2,01:22:29.90,50529,866,positioning,-0.2098,,already_favourite,,,
+1996435,942,2,01:26:48.30,53113,869,positioning,-0.0853,,already_favourite,,,
+1996435,954,2,01:28:00.10,53831,869,after the anchor,-0.8657,,,,,
+1996435,955,2,01:28:07.00,53900,866,positioning,0.0313,0.1564,move,away_8,False,False
+1996435,956,2,01:28:17.10,54001,866,after the anchor,-0.0339,,,,,
+1996435,969,2,01:29:58.80,55018,866,positioning,0.7081,3.5405,move,away_55,False,False
+1996435,979,2,01:31:25.50,55885,869,after the anchor,-0.0854,,,,,
+1996436,12,1,00:01:46.40,1074,4177,positioning,0.4614,2.3070,move,home_10,False,False
+1996436,13,1,00:01:49.50,1105,1804,after the anchor,-0.1010,,,,,
+1996436,14,1,00:01:55.60,1166,4177,positioning,-0.3709,,already_favourite,,,
+1996436,16,1,00:02:04.00,1250,4177,positioning,-0.1317,,already_favourite,,,
+1996436,19,1,00:02:16.20,1372,4177,positioning,0.0652,0.3258,move,home_10,False,False
+1996436,23,1,00:02:38.90,1599,1804,reading,0.0091,0.0455,move,away_9,False,False
+1996436,55,1,00:05:46.10,3471,4177,positioning,-0.1834,,already_favourite,,,
+1996436,59,1,00:08:19.30,5003,1804,positioning,0.6864,3.4319,move,away_98,False,False
+1996436,74,1,00:11:34.20,6952,1804,positioning,0.1599,0.7994,move,away_26,False,False
+1996436,78,1,00:12:14.90,7359,4177,positioning,0.5675,2.8375,move,home_5,False,False
+1996436,83,1,00:12:27.20,7482,1804,after the anchor,-0.2384,,,,,
+1996436,89,1,00:12:46.60,7676,4177,positioning,2.3786,,no_player_in_race,,,
+1996436,93,1,00:13:02.40,7834,4177,positioning,0.4229,2.1147,move,home_6,False,False
+1996436,106,1,00:14:02.10,8431,4177,positioning,0.8634,4.3168,move,home_5,False,False
+1996436,121,1,00:15:44.60,9456,1804,positioning,1.5988,7.9939,move,away_8,False,False
+1996436,127,1,00:16:28.90,9899,4177,reading,0.5692,2.8461,move,home_4,False,False
+1996436,135,1,00:16:52.10,10131,4177,reading,0.0899,0.4496,move,home_25,False,False
+1996436,140,1,00:18:15.80,10968,4177,reading,0.1419,0.7095,move,home_4,False,False
+1996436,194,1,00:23:43.50,14245,1804,positioning,0.8301,4.1507,move,away_44,False,False
+1996436,206,1,00:24:33.40,14744,4177,positioning,1.7472,8.7360,move,home_2,False,False
+1996436,207,1,00:24:39.00,14800,4177,positioning,1.7563,8.7814,move,home_15,False,False
+1996436,214,1,00:25:45.10,15461,1804,positioning,1.2685,6.3426,move,away_8,False,False
+1996436,244,1,00:30:23.30,18243,4177,positioning,0.6627,3.3136,move,home_25,False,False
+1996436,245,1,00:30:26.00,18270,1804,positioning,0.1878,0.9390,move,away_9,False,False
+1996436,263,1,00:32:26.10,19471,1804,positioning,0.5180,2.5900,move,away_9,False,False
+1996436,266,1,00:32:34.80,19558,1804,positioning,0.2892,1.4459,move,away_6,False,False
+1996436,277,1,00:33:12.20,19932,1804,reading,0.4368,2.1841,move,away_8,False,False
+1996436,308,1,00:37:41.60,22626,4177,positioning,0.0569,0.2844,move,home_25,False,False
+1996436,329,1,00:39:56.30,23973,4177,positioning,0.1974,0.9870,move,home_6,False,False
+1996436,341,1,00:40:40.10,24411,1804,reading,0.1560,0.7801,move,away_9,False,False
+1996436,371,1,00:43:22.60,26036,1804,positioning,0.8312,,no_player_in_race,,,
+1996436,377,1,00:44:25.10,26661,1804,positioning,0.6003,3.0014,move,away_9,False,False
+1996436,378,1,00:44:27.00,26680,1804,positioning,0.1387,0.6937,move,away_26,False,False
+1996436,382,1,00:45:41.00,27420,4177,positioning,0.2082,1.0408,move,home_10,False,False
+1996436,389,1,00:45:56.70,27577,1804,positioning,1.0450,5.2251,move,away_8,False,False
+1996436,390,1,00:45:59.10,27601,4177,positioning,0.3384,1.6921,move,home_10,False,False
+1996436,400,1,00:46:35.80,27968,4177,positioning,0.3622,1.8110,move,home_25,False,False
+1996436,401,1,00:46:40.10,28011,1804,positioning,0.0788,0.3938,move,away_26,False,False
+1996436,405,1,00:47:10.80,28318,1804,positioning,0.0254,0.1269,move,away_98,False,False
+1996436,432,1,00:49:15.20,29562,1804,positioning,0.5227,2.6136,move,away_26,False,False
+1996436,435,1,00:49:24.60,29656,1804,after the anchor,-0.4227,,,,,
+1996436,478,2,00:47:47.30,31823,4177,after the anchor,-0.4489,,,,,
+1996436,480,2,00:47:56.10,31911,4177,positioning,0.6181,3.0906,move,home_17,False,False
+1996436,489,2,00:48:28.70,32237,1804,reading,0.1835,0.9174,move,away_44,False,False
+1996436,491,2,00:48:36.10,32311,4177,positioning,0.6179,3.0895,move,home_10,False,False
+1996436,502,2,00:54:43.50,35985,1804,after the anchor,-0.5010,,,,,
+1996436,511,2,00:56:42.80,37178,1804,positioning,-0.0141,,already_favourite,,,
+1996436,532,2,00:58:26.00,38210,4177,positioning,2.7817,,no_player_in_race,,,
+1996436,540,2,00:58:49.80,38448,1804,reading,0.1500,0.7501,move,away_98,False,False
+1996436,542,2,00:59:53.10,39081,1804,positioning,0.9626,4.8128,move,away_6,False,False
+1996436,550,2,01:00:51.90,39669,4177,positioning,0.4357,2.1784,move,home_9,False,False
+1996436,559,2,01:02:19.00,40540,4177,positioning,2.0927,10.4636,move,home_10,False,False
+1996436,577,2,01:04:01.50,41565,4177,positioning,0.7622,3.8110,move,home_27,False,False
+1996436,578,2,01:04:04.30,41593,1804,positioning,0.1705,0.8526,move,away_8,False,False
+1996436,611,2,01:07:43.80,43788,1804,positioning,0.3086,1.5429,move,away_24,False,False
+1996436,618,2,01:08:23.10,44181,4177,positioning,1.5434,7.7169,move,home_27,False,False
+1996436,646,2,01:12:38.90,46739,1804,after the anchor,0.0000,,,,,
+1996436,648,2,01:13:10.70,47057,1804,positioning,0.2505,1.2524,move,away_28,False,False
+1996436,651,2,01:13:25.10,47201,4177,positioning,0.7302,3.6510,move,home_28,False,False
+1996436,658,2,01:13:46.80,47418,4177,positioning,2.4382,,no_player_in_race,,,
+1996436,677,2,01:18:54.60,50496,4177,positioning,0.3077,1.5385,move,home_11,False,False
+1996436,695,2,01:22:08.60,52436,1804,positioning,0.4640,2.3201,move,away_26,False,False
+1996436,720,2,01:25:00.60,54156,4177,positioning,1.3077,6.5384,move,home_21,False,False
+1996436,728,2,01:25:35.20,54502,1804,after the anchor,-0.3136,,,,,
+1996436,746,2,01:28:39.10,56341,4177,after the anchor,-0.0210,,,,,
+1996436,756,2,01:30:32.60,57476,1804,positioning,0.4940,2.4698,move,away_18,False,False
+1996436,757,2,01:30:34.20,57492,1804,after the anchor,-0.2991,,,,,
+1996436,765,2,01:31:08.40,57834,4177,positioning,1.0312,5.1559,move,home_10,False,False
+1996436,769,2,01:31:24.90,57999,1804,positioning,1.6013,8.0066,move,away_24,False,False
+1996436,776,2,01:33:19.20,59142,1804,positioning,2.1031,10.5154,move,away_18,False,True
+2007448,0,1,00:00:01.20,22,1802,positioning,2.7134,,no_player_in_race,,,
+2007448,1,1,00:00:09.10,101,1802,positioning,-0.0939,,already_favourite,,,
+2007448,40,1,00:03:29.60,2106,871,after the anchor,-0.9039,,,,,
+2007448,79,1,00:09:54.70,5957,871,positioning,1.0030,,no_player_in_race,,,
+2007448,80,1,00:10:00.40,6014,871,after the anchor,-0.1851,,,,,
+2007448,87,1,00:10:22.20,6232,871,positioning,0.3490,1.7450,move,home_7,False,False
+2007448,100,1,00:11:29.80,6908,871,after the anchor,-0.5269,,,,,
+2007448,118,1,00:12:53.20,7742,871,reading,0.6542,3.2712,move,home_10,False,False
+2007448,121,1,00:13:04.30,7853,1802,positioning,0.6167,3.0834,move,away_13,False,False
+2007448,156,1,00:17:59.70,10807,871,after the anchor,-0.2601,,,,,
+2007448,160,1,00:18:15.70,10967,1802,positioning,1.2213,,no_player_in_race,,,
+2007448,194,1,00:21:02.40,12634,871,positioning,0.4524,2.2622,move,home_18,False,False
+2007448,206,1,00:23:35.90,14169,1802,positioning,1.1311,5.6557,move,away_11,False,False
+2007448,209,1,00:23:48.40,14294,1802,reading,0.3266,1.6329,move,away_24,False,False
+2007448,215,1,00:24:41.60,14826,871,positioning,2.0068,10.0339,move,home_18,False,False
+2007448,227,1,00:25:14.80,15158,1802,after the anchor,-0.0544,,,,,
+2007448,266,1,00:28:59.80,17408,871,after the anchor,-0.1681,,,,,
+2007448,272,1,00:29:35.10,17761,1802,positioning,0.5167,2.5835,move,away_13,False,False
+2007448,275,1,00:29:40.90,17819,871,positioning,0.3479,1.7396,move,home_7,False,False
+2007448,300,1,00:32:50.10,19711,1802,positioning,0.0971,0.4855,move,away_11,False,False
+2007448,315,1,00:33:27.80,20088,871,positioning,-0.2610,,already_favourite,,,
+2007448,327,1,00:34:00.20,20412,871,positioning,1.2988,6.4942,move,home_25,False,False
+2007448,368,1,00:38:50.20,23312,1802,positioning,0.1575,0.7873,move,away_19,False,False
+2007448,370,1,00:39:20.20,23612,871,positioning,-0.4321,,already_favourite,,,
+2007448,396,1,00:40:53.10,24541,871,positioning,0.6113,3.0565,move,home_25,False,False
+2007448,409,1,00:41:32.20,24932,871,after the anchor,-0.0211,,,,,
+2007448,430,2,00:46:15.70,29297,1802,positioning,0.1866,0.9330,move,away_11,False,False
+2007448,432,2,00:46:23.90,29379,1802,positioning,0.2762,1.3812,move,away_15,False,False
+2007448,433,2,00:46:26.80,29408,871,after the anchor,0.0000,,,,,
+2007448,447,2,00:47:14.10,29881,1802,positioning,0.1466,0.7328,move,away_23,False,False
+2007448,455,2,00:48:02.60,30366,871,reading,0.0839,0.4196,move,home_29,False,False
+2007448,466,2,00:48:31.80,30658,1802,positioning,0.7698,3.8488,move,away_15,False,False
+2007448,478,2,00:49:13.80,31078,871,positioning,1.2207,6.1036,move,home_22,False,False
+2007448,500,2,00:52:30.10,33041,871,positioning,0.3349,1.6743,move,home_20,False,False
+2007448,516,2,00:53:47.50,33815,1802,positioning,0.2208,1.1038,move,away_11,False,False
+2007448,519,2,00:53:54.00,33880,871,positioning,1.1176,5.5878,move,home_18,False,False
+2007448,552,2,00:59:24.40,37184,1802,reading,0.6766,3.3828,move,away_12,False,False
+2007448,558,2,00:59:47.20,37412,1802,positioning,0.8077,,no_player_in_race,,,
+2007448,578,2,01:01:43.20,38572,1802,positioning,1.7075,8.5376,move,away_11,False,False
+2007448,592,2,01:03:38.00,39720,1802,reading,0.3194,1.5970,move,away_27,False,False
+2007448,599,2,01:05:53.20,41072,1802,positioning,0.7029,3.5147,move,away_11,False,False
+2007448,609,2,01:07:10.50,41845,1802,positioning,1.4137,7.0685,move,away_24,False,False
+2007448,619,2,01:07:38.90,42129,1802,after the anchor,-0.2831,,,,,
+2007448,651,2,01:10:38.60,43926,871,reading,0.0689,0.3444,move,home_25,False,False
+2007448,669,2,01:13:05.20,45392,1802,positioning,0.8921,4.4606,move,away_26,False,False
+2007448,677,2,01:13:38.10,45721,1802,positioning,1.2013,6.0064,move,away_23,False,False
+2007448,678,2,01:13:46.50,45805,1802,reading,0.3482,1.7410,move,away_23,False,False
+2007448,710,2,01:16:25.80,47398,871,positioning,0.2292,1.1461,move,home_31,False,False
+2007448,731,2,01:19:02.70,48967,871,positioning,-0.3051,,already_favourite,,,
+2007448,732,2,01:19:05.00,48990,1802,positioning,1.8918,,no_player_in_race,,,
+2007448,760,2,01:21:34.20,50482,1802,after the anchor,-0.3597,,,,,
+2007448,762,2,01:21:42.30,50563,1802,positioning,0.9104,4.5519,move,away_35,False,False
+2007448,778,2,01:23:49.60,51836,871,positioning,1.1111,5.5557,move,home_17,False,False
+2007448,797,2,01:25:17.60,52716,1802,positioning,2.2042,11.0211,move,away_17,False,False
+2007448,818,2,01:26:26.80,53408,871,positioning,0.3267,1.6333,move,home_4,False,False
+2007448,834,2,01:30:17.60,55716,871,positioning,1.9898,9.9490,move,home_25,False,False
+2007448,846,2,01:31:23.10,56371,1802,reading,0.0091,0.0455,move,away_24,False,False
+2007448,853,2,01:32:56.50,57305,871,after the anchor,-0.4109,,,,,

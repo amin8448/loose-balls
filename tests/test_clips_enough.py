@@ -12,8 +12,7 @@ from looseball.export_clips import COLUMNS, ENOUGH_FILE_COLUMNS, export_clips_en
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = ["match_id", "seq_i", "period", "clock", "frame", "team", "verdict", "deficit_s", "metres_short",
-            "enough_type", "enough_player", "enough_metres", "enough_degrees", "enough_player_gk",
-            "enough_player_extrapolated"]  # fmt: skip
+            "enough_type", "enough_player", "enough_player_gk", "enough_player_extrapolated"]  # fmt: skip
 
 
 def _inputs():
@@ -24,10 +23,9 @@ def _inputs():
     )
     clocks = {1: pd.Series({30: "00:00:02.00", 900: "00:46:29.00"}), 2: pd.Series({50: "00:00:04.00"})}
     table = pd.DataFrame({"match_id": [1, 1, 2], "seq_i": [3, 9, 5], "deficit_s": [-0.2, 0.31234, 0.1],
-                          "metres_short": [None, 1.5617, 0.5], "enough_type": [None, "move", "redirect"],
-                          "enough_player": [None, "away_2", "home_1"], "enough_metres": [None, 1.5617, None],
-                          "enough_degrees": [None, None, 12.5], "enough_player_gk": [None, False, True],
-                          "enough_player_extrapolated": [None, True, False]})  # fmt: skip
+                          "metres_short": [None, 1.5617, None], "enough_type": [None, "move", "no_player_in_race"],
+                          "enough_player": [None, "away_2", None], "enough_player_gk": [None, False, None],
+                          "enough_player_extrapolated": [None, True, None]})  # fmt: skip
     for c in ("enough_player_gk", "enough_player_extrapolated"):
         table[c] = table[c].astype("boolean")
     return decomposed, episodes, clocks, table
@@ -43,8 +41,9 @@ def test_clips_enough_columns_rows_and_order_match_clips(tmp_path):
     assert (tmp_path / "clips.csv").read_bytes() == before
     written = (tmp_path / "clips_enough.csv").read_text().splitlines()
     assert written[0] == ",".join(EXPECTED)
-    assert written[1] == "1,3,1,00:00:02.00,30,10,after the anchor,-0.2000,,,,,,,"
-    assert written[2].endswith(",0.3123,1.5617,move,away_2,1.5617,,False,True")
+    assert written[1] == "1,3,1,00:00:02.00,30,10,after the anchor,-0.2000,,,,,"
+    assert written[2].endswith(",0.3123,1.5617,move,away_2,False,True")
+    assert written[3].endswith(",reading,0.1000,,no_player_in_race,,,")
 
 
 def test_run_writes_clips_enough_and_leaves_clips_as_before(tmp_path, monkeypatch):

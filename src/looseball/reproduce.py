@@ -18,7 +18,7 @@ import pandas as pd
 from looseball import decompose, expectations, export_clips, find_episodes, reach_times, team_report
 from looseball.adapters.skillcorner import load_match
 from looseball.decompose import SHARES
-from looseball.enough import enough
+from looseball.enough import enough, redirection
 from looseball.expectation import (
     baselines,
     calibration,
@@ -404,11 +404,17 @@ def variant_parameters(name: str) -> dict:
 
 def enough_tables(r: dict) -> dict:
     """3h (report-only): the enough quantities of the analysis set, of the ungated lost balls, and
-    of the analysis set under each V3 variant (with that variant's verdicts and reach table)."""
-    out = {"a": enough(r["reach"], r["a"]), "off": enough(r["reach"], r["off"])}
+    of the analysis set under each V3 variant (with that variant's verdicts and reach table), each
+    with the report-only redirection columns beside them (never exported)."""
+    key = ["match_id", "seq_i"]
+
+    def both(reach, balls, **kw):
+        return enough(reach, balls, **kw).merge(redirection(reach, balls, **kw), on=key, validate="1:1")
+
+    out = {"a": both(r["reach"], r["a"]), "off": both(r["reach"], r["off"])}
     for name, verdicts in r["variant_verdicts"].items():
         balls = r["a"].assign(verdict=verdicts)
-        out[name] = enough(r["variant_reach"][name], balls, **variant_parameters(name))
+        out[name] = both(r["variant_reach"][name], balls, **variant_parameters(name))
     return out
 
 

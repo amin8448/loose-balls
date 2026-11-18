@@ -9,11 +9,13 @@ rostered players of each team under the frozen reach model. It changes no verdic
 import numpy as np
 import pandas as pd
 
+from looseball.figures import ball_path_length
 from looseball.race import ReachModel
 from looseball.schema import FPS
 
 AERIAL_Z = 1.8  # metres; DESIGN.md "aerial episode"
 TOLERANCES = (0.3, 0.0)  # seconds; 0.3 is the S2 tolerance
+TIE = 1e-9  # seconds
 
 
 def is_ground(tracking: pd.DataFrame, release: int, pickup: int) -> bool:
@@ -47,11 +49,14 @@ def favourite(first_a, first_b, a, b) -> str:
 
 def path_check(balls: pd.DataFrame, tracking: pd.DataFrame, velocities: pd.DataFrame, players: pd.DataFrame,
                tolerances=TOLERANCES) -> pd.DataFrame:  # fmt: skip
-    """Per lost ball of one match: ground flag, and for the static and dynamic versions and each
-    tolerance the first reachable frame of the losing and winning team and the path favourite
-    ("loser", "winner", "tie" or "unreached"; NaN for aerial balls).
+    """Per lost ball of one match: ground flag; ball_path_m (descriptor, as in the Figure 1
+    constraint); the favourite at the pickup point from all rostered players on the anchor frame
+    (best dynamic reach time, "loser", "winner" or "none" within 1e-9 s; P1b); and for the static
+    and dynamic versions and each tolerance the first reachable frame of the losing and winning
+    team and the path favourite ("loser", "winner", "tie" or "unreached"; NaN for aerial balls).
 
-    balls: match_id, seq_i, release_frame, anchor_frame, pickup_frame, losing_team, winning_team.
+    balls: match_id, seq_i, release_frame, anchor_frame, pickup_frame, pickup_x, pickup_y,
+    losing_team, winning_team.
     velocities: tracking_velocities() of the match (frozen window 5); players: the players table.
     """
     model = ReachModel()
@@ -75,6 +80,21 @@ def path_check(balls: pd.DataFrame, tracking: pd.DataFrame, velocities: pd.DataF
         at = velocities[(velocities["frame"] == anchor) & velocities["column_id"].isin(team_of.index)]
         at = at[at[["x", "y"]].notna().all(axis=1)]
         teams = team_of.reindex(at["column_id"]).to_numpy()
+        row["ball_path_m"] = ball_path_length(tracking, int(b.release_frame), pickup)
+        pickup_xy = np.array([b.pickup_x, b.pickup_y], dtype=float)
+        best = {}
+        for side, team in (("loser", b.losing_team), ("winner", b.winning_team)):
+            t = at[teams == team]
+            pos, vel = t[["x", "y"]].to_numpy(dtype=float), t[["vx", "vy"]].fillna(0.0).to_numpy(dtype=float)
+            best[side] = min((model.tti(q, pickup_xy, v) for q, v in zip(pos, vel)), default=np.inf)
+        row["pickup best loser"], row["pickup best winner"] = best["loser"], best["winner"]
+        row["pickup favourite all players"] = (
+            "loser"
+            if best["loser"] < best["winner"] - TIE
+            else "winner"
+            if best["winner"] < best["loser"] - TIE
+            else "none"
+        )
         for version in ("static", "dynamic"):
             for tol in tolerances:
                 key = f"{version} {tol:g}"

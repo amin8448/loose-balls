@@ -2,6 +2,7 @@
 
 import numpy as np
 import pandas as pd
+import pytest
 import synthetic as syn
 
 from looseball.pathcheck import favourite, is_ground, path_check
@@ -18,8 +19,10 @@ def _match(ball, players, z=None):
 
 
 def _ball(release=10, anchor=15, pickup=35, losing=10, winning=20):
+    x = -20 + 20 * pickup / (N - 1)  # the ball on the pickup frame in these fixtures
     return pd.DataFrame([{"match_id": 1, "seq_i": 0, "release_frame": release, "anchor_frame": anchor,
-                          "pickup_frame": pickup, "losing_team": losing, "winning_team": winning}])  # fmt: skip
+                          "pickup_frame": pickup, "pickup_x": x, "pickup_y": 0.0, "losing_team": losing,
+                          "winning_team": winning}])  # fmt: skip
 
 
 def test_favourite_rule():
@@ -41,6 +44,11 @@ def test_the_loser_reaches_the_path_first_though_the_winner_is_at_the_pickup():
     assert out["static 0.3 first loser"] < out["static 0.3 first winner"]
     # with tolerance 0 the first reachable frames are later
     assert out["static 0 first loser"] >= out["static 0.3 first loser"]
+    # P1b: at the pickup point (-2.05, 0), from all players, the winner standing 2.55 m away is favourite
+    assert out["pickup favourite all players"] == "winner"
+    assert out["pickup best winner"] == pytest.approx(0.7 + np.hypot(0.5 + 20 - 20 * 35 / 39, 0.0) / 5)
+    # ball path from release (frame 10) to pickup (frame 35): 25 steps of 20/39 m
+    assert out["ball_path_m"] == pytest.approx(25 * 20 / 39)
 
 
 def test_unreached_tie_aerial_and_undetected_frames():

@@ -6,6 +6,10 @@ Every file of audit/mt1_test must be byte-identical in OUT, and OUT/report.md mu
 results logged in AUDIT.md (from "MT1 on the test matches" to the gate summary), and
 OUT/static_temperature.md must equal audit/static_temperature_test.md (3c.0). Figures and the
 Figure 1 caption, when present in OUT/figures, are compared byte for byte with figures/.
+
+Added in step 3h (AUDIT.md, "3h on the test matches"): OUT/clips_enough.csv, written by looseball
+reproduce, must equal audit/s3h_test/clips_enough.csv; and when OUT/s3h exists (written by
+`python scripts/s3h.py test OUT/s3h`), its report.md must equal audit/s3h_test/report.md.
 """
 
 import sys
@@ -43,6 +47,15 @@ def main(out: Path) -> int:
             same = g.exists() and g.read_bytes() == f.read_bytes()
             print(f"{'identical' if same else 'DIFFERS  '}  figures/{f.name}")
             failures += [] if same else [f"figures/{f.name}"]
+    pairs = [(out / "clips_enough.csv", ROOT / "audit" / "s3h_test" / "clips_enough.csv")]
+    if (out / "s3h").exists():
+        pairs.append((out / "s3h" / "report.md", ROOT / "audit" / "s3h_test" / "report.md"))
+    for got, record in pairs:
+        same = got.exists() and got.read_bytes() == record.read_bytes()
+        print(
+            f"{'identical' if same else 'DIFFERS  '}  {got.relative_to(out)} against {record.relative_to(ROOT)}"
+        )
+        failures += [] if same else [str(got.relative_to(out))]
     print("all identical" if not failures else f"{len(failures)} differ: {failures}")
     return 1 if failures else 0
 

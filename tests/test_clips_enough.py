@@ -55,9 +55,9 @@ def test_run_writes_clips_enough_and_leaves_clips_as_before(tmp_path, monkeypatc
     assert enough[COLUMNS].equals(clips)
 
 
-def test_check_reproduce_ignores_the_new_file(tmp_path):
-    """The checker compares the six MT1 files, report.md and static_temperature.md; an extra
-    clips_enough.csv in the output does not change its verdict."""
+def test_check_reproduce_with_the_3h_record(tmp_path):
+    """The checker compares the six MT1 files, report.md, static_temperature.md, clips_enough.csv
+    and, when OUT/s3h exists, the 3h report with their records."""
     spec = importlib.util.spec_from_file_location("check_reproduce", ROOT / "scripts" / "check_reproduce.py")
     check = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(check)
@@ -67,7 +67,16 @@ def test_check_reproduce_ignores_the_new_file(tmp_path):
     start = audit.index("MT1 on the test matches (15):")
     (tmp_path / "report.md").write_text(audit[start : audit.index("\nGate verdicts.\n", start)])
     shutil.copy(ROOT / "audit" / "static_temperature_test.md", tmp_path / "static_temperature.md")
-    (tmp_path / "clips_enough.csv").write_text(",".join(EXPECTED) + "\n")
+    shutil.copy(ROOT / "audit" / "s3h_test" / "clips_enough.csv", tmp_path / "clips_enough.csv")
     assert check.main(tmp_path) == 0
+    (tmp_path / "s3h").mkdir()  # the 3h report is checked only when OUT/s3h exists
+    shutil.copy(ROOT / "audit" / "s3h_test" / "report.md", tmp_path / "s3h" / "report.md")
+    assert check.main(tmp_path) == 0
+    (tmp_path / "s3h" / "report.md").write_text("changed\n")
+    assert check.main(tmp_path) == 1
+    shutil.copy(ROOT / "audit" / "s3h_test" / "report.md", tmp_path / "s3h" / "report.md")
+    (tmp_path / "clips_enough.csv").write_text(",".join(EXPECTED) + "\n")
+    assert check.main(tmp_path) == 1
+    shutil.copy(ROOT / "audit" / "s3h_test" / "clips_enough.csv", tmp_path / "clips_enough.csv")
     (tmp_path / "clips.csv").write_text("changed\n")
     assert check.main(tmp_path) == 1

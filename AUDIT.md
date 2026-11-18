@@ -2995,3 +2995,26 @@ Balls with a window of at least 2 s: 559; of them, one player within 1.5 m on at
 | all              |             3 |        1 |                              1 |     5 |
 
 Reading. D1: the 31 balls with nobody of either team within 15 m are exactly the 31 balls with both probabilities at 0.5000 (both teams get the empty-team time), all after the anchor by the verdict rule. D2: 2 pickup points (1 more than 1 m out) and 3 anchor-frame ball positions (none more than 1 m out) lie outside the markings; 6 of the 1,003 anchor frames do not have the ball detected. D3: one player stays within 1.5 m of the ball on at least 70% of the detected-ball window frames in 45 balls, but in only 5 of the 559 balls with a window of at least 2 s; the high shares come from short windows.
+
+### 3h animation revision: choices and draw rule, logged before the draw (2026-11-18)
+
+Requested by the project lead after the first four clips. Presentation only; no measure, verdict, episode definition or frozen parameter changes; looseball reproduce does not use the animation.
+
+| item | revision |
+|:--|:--|
+| label before the anchor | "Drop zone not yet in view" only on frames where the pickup point is outside the camera polygon (the anchor rule's test); on the other frames before the anchor (the drop zone in view before the last contact, in an earlier leg) "Before the last touch". The first four clips said "drop zone not yet in view" on every frame before the anchor; the count of frames where that was wrong is reported with the redrawn clips |
+| shirt numbers | dots of 620 points squared with a 2.2 point edge; numbers 12 point bold, drawn above the dots and the arrows; a test checks that "88" fits inside the dot's inner diameter and that the digits stay about 8 pixels tall at half size |
+| shading (differs from Figure 1, which uses every player on the frame and the whole panel) | each team's best dynamic reach time from its players in the race (within 15 m of the pickup point on the anchor frame; on later frames the same players at their recorded positions; a team with nobody in the race gets the empty-team time, 3.7 s, everywhere), drawn only inside the 15 m race circle; outside it dots and arrows only. With this, the margin at the pickup point equals the race's |
+| start | new option --start-before-anchor SECONDS: the clip starts max(release, anchor - SECONDS); default the whole window from the release |
+| no_player_in_race balls | part one only, ending with the pickup frame held 2 s and the label "LOSING TEAM had no player within 15 m of where the ball was won" |
+| other balls without a move (already_favourite, after the anchor) | part one only, as before |
+| contact sheet | --sheet FILE: the first frame (the release in a full-length clip), the anchor frame, the pickup frame and the "model: one change" or closing frame, at half size, two by two |
+
+Draw, fixed now (scripts/s3h_candidates.py):
+
+| item | rule |
+|:--|:--|
+| set | lost balls of the test analysis set, sorted by match_id and seq_i, with lead at least 1.5 s (audit/mt1_test/episodes.csv), ball path at least 10 m (audit/s3h_test/pathcheck.csv), D3 share below 0.70 and the pickup point inside the pitch markings (audit/s3h_diagnostics/diagnostics.csv; the one ball without a detected window frame has no D3 share and is left out) |
+| pools | A: positioning, enough_type move, metres_short at least 2 m, enough player detected on the anchor frame. B: the same with reading. C: positioning, enough_type no_player_in_race |
+| draw | seed 20261119, one numpy default_rng: six from A, then six from B, then three from C, without replacement; a pool smaller than asked is taken whole and the shortfall reported |
+| output | all drawn balls as full-length clips with contact sheets in audit/animations_v2/candidates/, with candidate_seed20261119.csv; the four seed 20261118 balls redrawn in audit/animations_v2/seed20261118/ for the record, with the count of frames before the anchor with the drop zone in view |

@@ -3,6 +3,7 @@
 looseball reproduce --data PATH --out PATH
     Regenerate every MT1 table and figure from the SkillCorner open-data clone at PATH.
 looseball animate --data PATH --match ID --episode SEQ_I --out FILE [--hold SECONDS]
+                  [--start-before-anchor SECONDS] [--sheet FILE]
     One lost ball as recorded, then the one change under the model (3h; not part of reproduce).
 looseball run --data PATH --match ID [--out PATH]
     Team report and clip export for one match, with the frozen parameters; clips_enough.csv adds
@@ -71,12 +72,22 @@ def main(argv=None) -> int:
     ani.add_argument(
         "--hold", type=float, default=0.25, help="seconds each data frame is shown (default 0.25)"
     )
+    ani.add_argument(
+        "--start-before-anchor",
+        type=float,
+        default=None,
+        metavar="SECONDS",
+        help="start this many seconds before the anchor (default: the whole window from the release)",
+    )
+    ani.add_argument("--sheet", default=None, help="also write a contact sheet image to this file")
     args = parser.parse_args(argv)
 
     if args.command == "animate":
         from looseball.animate import animate
 
-        for k, v in animate(args.data, args.match, args.episode, args.out, hold=args.hold).items():
+        info = animate(args.data, args.match, args.episode, args.out, hold=args.hold,
+                       start_before_anchor=args.start_before_anchor, sheet=args.sheet)  # fmt: skip
+        for k, v in info.items():
             print(f"{k}: {v}")
     elif args.command == "reproduce":
         from looseball.reproduce import reproduce

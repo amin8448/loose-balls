@@ -2899,3 +2899,13 @@ Inspected as contact sheets of every sixth or eighth frame, all four. Before the
 | 2 | the animations run 16.0 to 23.5 s at 0.25 s a frame, mostly before the anchor (animation 2: about 5.4 s of play before the drop zone comes into view); the step 3 brief gives the animation 12 s of the video (30 to 42 s) |
 | 3 | shirt numbers are 7.5 point inside the dots and hard to read at reduced size |
 | 4 | the shading is the minimum over each team's players of a reach time without a turning term, so its level lines are straight-edged and angular |
+
+### 3h diagnostics D1 to D3: procedure, logged before the run (2026-11-18)
+
+Report-only, requested by the project lead; run once on the test analysis set (1,003 lost balls, the balls of audit/mt1_test/episodes.csv). Nothing is changed because of the results. Each match is loaded through the public package (adapter, find_episodes at 15 m, reach_times with the frozen settings); verdict and trigger come from audit/mt1_test/episodes.csv. Script: scripts/s3h_diagnostics.py; output audit/s3h_diagnostics/ (report.md, per-ball diagnostics.csv).
+
+| # | diagnostic | rule |
+|:--|:--|:--|
+| D1 | no player of either team in the race | both sides of the ball's race are the empty-team row of reach_times (nobody within 15 m of the pickup point on the anchor frame). Count, by verdict and by trigger. Compared ball by ball with the 31 balls of episodes.csv whose p_static and p_dynamic are both 0.5000 (all after the anchor) |
+| D2 | outside the pitch markings | each match's pitch length L and width W from the match metadata, origin at the centre: a point is outside when \|x\| > L/2 or \|y\| > W/2, and more than 1 m outside when \|x\| > L/2 + 1 or \|y\| > W/2 + 1. For the pickup point (the tracked ball on the pickup frame) and for the tracked ball position on the anchor frame (whether or not the ball is detected there; a missing position is counted). Count and share, by verdict and by trigger |
+| D3 | one player staying with the ball | window frames (after the release up to and including the pickup) with the ball detected; for each player on those frames (detected or not, any team), the share of them on which he is within 1.5 m (horizontal) of the ball; the ball's value is the largest share and its player. Distribution (p10, p25, p50, p75, p90). Count of balls with a window of at least 2 s (pickup frame minus release frame at least 20 frames) and that share at least 0.70, by trigger, with that player's role: the winner (player of possession i+1), another player of the winning team, or a player of the losing team. Balls with no detected window frame are counted |

@@ -1,0 +1,5 @@
+clip,match_id,seq_i,trigger,verdict,enough_type,lead_s,ball_path_m,metres_short,seconds,frames before the anchor,of them with the drop zone in view,margin at the pickup after the change,file,sheet
+1,1899585,275,T7,positioning,move,2.5000,51.6177,0.7479,16.0000,18,0,0.0000,rerun_seed20261118_01_positioning_move_1899585_275.mp4,rerun_seed20261118_01_positioning_move_1899585_275_sheet.png
+2,1986691,803,T4,positioning,move,1.7000,11.3847,5.7967,23.0000,54,54,0.0000,rerun_seed20261118_02_positioning_move_1986691_803.mp4,rerun_seed20261118_02_positioning_move_1986691_803_sheet.png
+3,2017461,483,T2,reading,move,2.5000,45.9678,0.7226,21.7500,41,32,0.0000,rerun_seed20261118_03_reading_move_2017461_483.mp4,rerun_seed20261118_03_reading_move_2017461_483_sheet.png
+4,2006229,849,T2,reading,move,1.6000,63.9437,0.3575,23.5000,57,43,0.0000,rerun_seed20261118_04_reading_move_2006229_849.mp4,rerun_seed20261118_04_reading_move_2006229_849_sheet.png

@@ -1,0 +1,16 @@
+clip,match_id,seq_i,trigger,verdict,enough_type,lead_s,ball_path_m,metres_short,seconds,frames before the anchor,of them with the drop zone in view,margin at the pickup after the change,file,sheet
+1,1953632,740,T4,positioning,move,1.9000,10.7403,2.2011,10.0000,0,0,-0.0000,candidate_seed20261119_01_positioning_move_1953632_740.mp4,candidate_seed20261119_01_positioning_move_1953632_740_sheet.png
+2,2006363,562,T4,positioning,move,2.4000,17.7877,7.5444,11.2500,0,0,-0.0000,candidate_seed20261119_02_positioning_move_2006363_562.mp4,candidate_seed20261119_02_positioning_move_2006363_562_sheet.png
+3,1927964,1,T2,positioning,move,1.8000,66.7558,2.2262,18.5000,35,34,0.0000,candidate_seed20261119_03_positioning_move_1927964_1.mp4,candidate_seed20261119_03_positioning_move_1927964_1_sheet.png
+4,1953632,615,T2,positioning,move,2.0000,31.6045,4.3878,14.5000,17,17,-0.0000,candidate_seed20261119_04_positioning_move_1953632_615.mp4,candidate_seed20261119_04_positioning_move_1953632_615_sheet.png
+5,2010085,442,T7,positioning,move,1.9000,42.3108,13.4440,12.5000,10,0,0.0000,candidate_seed20261119_05_positioning_move_2010085_442.mp4,candidate_seed20261119_05_positioning_move_2010085_442_sheet.png
+6,1899585,486,T7,positioning,move,2.0000,23.0465,2.9576,12.7500,10,10,-0.0000,candidate_seed20261119_06_positioning_move_1899585_486.mp4,candidate_seed20261119_06_positioning_move_1899585_486_sheet.png
+7,2006229,197,T2,reading,move,1.5000,55.9311,2.6356,20.5000,46,46,-0.0000,candidate_seed20261119_07_reading_move_2006229_197.mp4,candidate_seed20261119_07_reading_move_2006229_197_sheet.png
+8,1927964,867,T1,reading,move,1.5000,36.5436,2.2161,15.5000,26,0,0.0000,candidate_seed20261119_08_reading_move_1927964_867.mp4,candidate_seed20261119_08_reading_move_1927964_867_sheet.png
+9,1899585,760,T7,reading,move,1.9000,32.0484,3.6324,16.0000,24,17,0.0000,candidate_seed20261119_09_reading_move_1899585_760.mp4,candidate_seed20261119_09_reading_move_1899585_760_sheet.png
+10,2015213,512,T7,reading,move,1.9000,16.6833,2.0795,12.5000,10,10,0.0000,candidate_seed20261119_10_reading_move_2015213_512.mp4,candidate_seed20261119_10_reading_move_2015213_512_sheet.png
+11,2006363,1,T2,reading,move,2.0000,64.3792,2.4404,18.5000,33,25,0.0000,candidate_seed20261119_11_reading_move_2006363_1.mp4,candidate_seed20261119_11_reading_move_2006363_1_sheet.png
+12,2010085,806,T7,reading,move,4.6000,27.0714,2.0606,16.7500,0,0,-0.0000,candidate_seed20261119_12_reading_move_2010085_806.mp4,candidate_seed20261119_12_reading_move_2010085_806_sheet.png
+13,1874553,198,T7,positioning,no_player_in_race,2.3000,43.9146,,13.0000,12,0,,candidate_seed20261119_13_positioning_no_player_in_race_1874553_198.mp4,candidate_seed20261119_13_positioning_no_player_in_race_1874553_198_sheet.png
+14,1953632,868,T7,positioning,no_player_in_race,1.7000,52.4980,,15.5000,28,0,,candidate_seed20261119_14_positioning_no_player_in_race_1953632_868.mp4,candidate_seed20261119_14_positioning_no_player_in_race_1953632_868_sheet.png
+15,2010085,711,T2,positioning,no_player_in_race,4.5000,51.9779,,18.7500,13,0,,candidate_seed20261119_15_positioning_no_player_in_race_2010085_711.mp4,candidate_seed20261119_15_positioning_no_player_in_race_2010085_711_sheet.png

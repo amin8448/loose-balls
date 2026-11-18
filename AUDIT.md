@@ -3018,3 +3018,52 @@ Draw, fixed now (scripts/s3h_candidates.py):
 | pools | A: positioning, enough_type move, metres_short at least 2 m, enough player detected on the anchor frame. B: the same with reading. C: positioning, enough_type no_player_in_race |
 | draw | seed 20261119, one numpy default_rng: six from A, then six from B, then three from C, without replacement; a pool smaller than asked is taken whole and the shortfall reported |
 | output | all drawn balls as full-length clips with contact sheets in audit/animations_v2/candidates/, with candidate_seed20261119.csv; the four seed 20261118 balls redrawn in audit/animations_v2/seed20261118/ for the record, with the count of frames before the anchor with the drop zone in view |
+
+
+### 3h animation revision: the draw, the candidates and the redrawn clips (2026-11-18)
+
+Run after the choices and the draw rule were committed (7cbc68d): `python scripts/s3h_candidates.py`. Pools: A 131 balls, B 14, C 59; all fifteen asked were drawn (seed 20261119). Every clip was written with its contact sheet in audit/animations_v2/candidates/; the margin at the pickup point after the change is 0 (to rounding) for every move clip. Tests: 91 passed.
+
+Candidates:
+
+|   clip |   match_id |   seq_i | trigger   | verdict     | enough_type       |   lead_s |   ball_path_m |   metres_short |   seconds |   frames before the anchor |   of them with the drop zone in view | file                                                                    |
+|-------:|-----------:|--------:|:----------|:------------|:------------------|---------:|--------------:|---------------:|----------:|---------------------------:|-------------------------------------:|:------------------------------------------------------------------------|
+|      1 |    1953632 |     740 | T4        | positioning | move              |     1.90 |         10.74 |           2.20 |     10.00 |                          0 |                                    0 | candidate_seed20261119_01_positioning_move_1953632_740.mp4              |
+|      2 |    2006363 |     562 | T4        | positioning | move              |     2.40 |         17.79 |           7.54 |     11.25 |                          0 |                                    0 | candidate_seed20261119_02_positioning_move_2006363_562.mp4              |
+|      3 |    1927964 |       1 | T2        | positioning | move              |     1.80 |         66.76 |           2.23 |     18.50 |                         35 |                                   34 | candidate_seed20261119_03_positioning_move_1927964_1.mp4                |
+|      4 |    1953632 |     615 | T2        | positioning | move              |     2.00 |         31.60 |           4.39 |     14.50 |                         17 |                                   17 | candidate_seed20261119_04_positioning_move_1953632_615.mp4              |
+|      5 |    2010085 |     442 | T7        | positioning | move              |     1.90 |         42.31 |          13.44 |     12.50 |                         10 |                                    0 | candidate_seed20261119_05_positioning_move_2010085_442.mp4              |
+|      6 |    1899585 |     486 | T7        | positioning | move              |     2.00 |         23.05 |           2.96 |     12.75 |                         10 |                                   10 | candidate_seed20261119_06_positioning_move_1899585_486.mp4              |
+|      7 |    2006229 |     197 | T2        | reading     | move              |     1.50 |         55.93 |           2.64 |     20.50 |                         46 |                                   46 | candidate_seed20261119_07_reading_move_2006229_197.mp4                  |
+|      8 |    1927964 |     867 | T1        | reading     | move              |     1.50 |         36.54 |           2.22 |     15.50 |                         26 |                                    0 | candidate_seed20261119_08_reading_move_1927964_867.mp4                  |
+|      9 |    1899585 |     760 | T7        | reading     | move              |     1.90 |         32.05 |           3.63 |     16.00 |                         24 |                                   17 | candidate_seed20261119_09_reading_move_1899585_760.mp4                  |
+|     10 |    2015213 |     512 | T7        | reading     | move              |     1.90 |         16.68 |           2.08 |     12.50 |                         10 |                                   10 | candidate_seed20261119_10_reading_move_2015213_512.mp4                  |
+|     11 |    2006363 |       1 | T2        | reading     | move              |     2.00 |         64.38 |           2.44 |     18.50 |                         33 |                                   25 | candidate_seed20261119_11_reading_move_2006363_1.mp4                    |
+|     12 |    2010085 |     806 | T7        | reading     | move              |     4.60 |         27.07 |           2.06 |     16.75 |                          0 |                                    0 | candidate_seed20261119_12_reading_move_2010085_806.mp4                  |
+|     13 |    1874553 |     198 | T7        | positioning | no_player_in_race |     2.30 |         43.91 |         nan    |     13.00 |                         12 |                                    0 | candidate_seed20261119_13_positioning_no_player_in_race_1874553_198.mp4 |
+|     14 |    1953632 |     868 | T7        | positioning | no_player_in_race |     1.70 |         52.50 |         nan    |     15.50 |                         28 |                                    0 | candidate_seed20261119_14_positioning_no_player_in_race_1953632_868.mp4 |
+|     15 |    2010085 |     711 | T2        | positioning | no_player_in_race |     4.50 |         51.98 |         nan    |     18.75 |                         13 |                                    0 | candidate_seed20261119_15_positioning_no_player_in_race_2010085_711.mp4 |
+
+The four seed 20261118 balls redrawn (audit/animations_v2/seed20261118/):
+
+|   clip |   match_id |   seq_i | trigger   | verdict     | enough_type   |   lead_s |   ball_path_m |   metres_short |   seconds |   frames before the anchor |   of them with the drop zone in view | file                                                   |
+|-------:|-----------:|--------:|:----------|:------------|:--------------|---------:|--------------:|---------------:|----------:|---------------------------:|-------------------------------------:|:-------------------------------------------------------|
+|      1 |    1899585 |     275 | T7        | positioning | move          |     2.50 |         51.62 |           0.75 |     16.00 |                         18 |                                    0 | rerun_seed20261118_01_positioning_move_1899585_275.mp4 |
+|      2 |    1986691 |     803 | T4        | positioning | move          |     1.70 |         11.38 |           5.80 |     23.00 |                         54 |                                   54 | rerun_seed20261118_02_positioning_move_1986691_803.mp4 |
+|      3 |    2017461 |     483 | T2        | reading     | move          |     2.50 |         45.97 |           0.72 |     21.75 |                         41 |                                   32 | rerun_seed20261118_03_reading_move_2017461_483.mp4     |
+|      4 |    2006229 |     849 | T2        | reading     | move          |     1.60 |         63.94 |           0.36 |     23.50 |                         57 |                                   43 | rerun_seed20261118_04_reading_move_2006229_849.mp4     |
+
+Wrong label in the first four clips: they said "drop zone not yet in view" on every frame before the anchor; the pickup point was in fact inside the camera view on 129 of those 170 frames (32.25 s of video at 0.25 s a frame): 0 of 18, 54 of 54, 32 of 41 and 43 of 57.
+
+Reproduce after the revision: `looseball reproduce` (4 min 6 s, 872 MB) and scripts/check_reproduce.py: all identical, including clips_enough.csv.
+
+Inspected: the contact sheets of candidates 2, 5, 9 and 13 and of redrawn clip 2. Reported, not changed:
+
+| # | observation |
+|:--|:--|
+| 1 | in candidates 1, 2 and 12 the anchor is the release frame (no frame before the anchor), so the clip starts at the anchor and the contact sheet has three tiles |
+| 2 | before the anchor, the drop zone is often already in view: on 159 of the 264 frames before the anchor across the fifteen candidates the label reads "before the last touch" (candidates 3, 4, 6, 7, 10: all or all but one of their frames). The anchor waits for the last contact, which can come seconds after the release (redrawn clip 2: 5.4 s with the ball by the touchline) |
+| 3 | candidate 5 moves its player 13.4 m, onto the pickup point (above the 10 m line that applies to the medians; the median for positioning is 2.51 m) |
+| 4 | pool B (reading, move of at least 2 m, the other filters) holds 14 balls; the six drawn are 43% of it |
+| 5 | clips run 10.0 to 20.5 s at full length; the step 3 brief gives the animation 12 s of the video |
+| 6 | the race circle can extend past the panel, which is cut at the pitch boundary plus 2 m |

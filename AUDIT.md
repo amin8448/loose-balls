@@ -2876,3 +2876,26 @@ Draw, fixed now:
 | draw | seed 20261118, one numpy default_rng: two without replacement from the pool's positioning verdicts, then two from its reading verdicts |
 | output | audit/animations/animation_seed20261118_K_VERDICT_MATCH_SEQ.mp4 and animations.csv; all four are written |
 | script | scripts/s3h_animations.py |
+
+
+### 3h animation: the draw and the four animations (2026-11-18)
+
+Run after the draw rule was committed (f24382c): `python scripts/s3h_animations.py audit/animations`. Pool: 237 balls (195 positioning, 42 reading). Drawn with seed 20261118, written to audit/animations/ (mp4 through ffmpeg, 1000 x 840, 4 frames a second); the margin at the pickup point after the change is 0.0000 s in all four (the race is level from all players on the frame, as from the race).
+
+|   animation |   match_id |   seq_i | trigger   | verdict     |   lead_s |   ball_path_m |   metres_short | enough_player   |   seconds |   margin at the pickup after the change |
+|------------:|-----------:|--------:|:----------|:------------|---------:|--------------:|---------------:|:----------------|----------:|----------------------------------------:|
+|           1 |    1899585 |     275 | T7        | positioning |     2.50 |         51.62 |           0.75 | home_27         |     16.00 |                                    0.00 |
+|           2 |    1986691 |     803 | T4        | positioning |     1.70 |         11.38 |           5.80 | away_10         |     23.00 |                                    0.00 |
+|           3 |    2017461 |     483 | T2        | reading     |     2.50 |         45.97 |           0.72 | home_14         |     21.75 |                                    0.00 |
+|           4 |    2006229 |     849 | T2        | reading     |     1.60 |         63.94 |           0.36 | away_39         |     23.50 |                                    0.00 |
+
+Files: animation_seed20261118_1_positioning_1899585_275.mp4, animation_seed20261118_2_positioning_1986691_803.mp4, animation_seed20261118_3_reading_2017461_483.mp4, animation_seed20261118_4_reading_2006229_849.mp4.
+
+Inspected as contact sheets of every sixth or eighth frame, all four. Before the anchor: dots, arrows, hollow estimated players, the camera outline moving with the play, the ball trail (hollow at the last detected position when the ball is not detected), no shading and no pickup marker. From the anchor: shading, the pickup marker and the 15 m circle; the pickup frame names the winning team; the model part shows the ghost, the moved spot, the arrow and the distance, and the level line passes through the pickup point. Reported, not changed:
+
+| # | observation |
+|:--|:--|
+| 1 | three of the four moves are under 1 m (0.75, 0.72, 0.36 m): the arrow and the distance label sit on top of the player's dot and the change is hard to see |
+| 2 | the animations run 16.0 to 23.5 s at 0.25 s a frame, mostly before the anchor (animation 2: about 5.4 s of play before the drop zone comes into view); the step 3 brief gives the animation 12 s of the video (30 to 42 s) |
+| 3 | shirt numbers are 7.5 point inside the dots and hard to read at reduced size |
+| 4 | the shading is the minimum over each team's players of a reach time without a turning term, so its level lines are straight-edged and angular |

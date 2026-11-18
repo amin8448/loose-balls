@@ -1,0 +1,5 @@
+animation,match_id,seq_i,trigger,verdict,lead_s,ball_path_m,metres_short,enough_player,file,seconds,margin at the pickup after the change
+1,1899585,275,T7,positioning,2.5000,51.6177,0.7479,home_27,animation_seed20261118_1_positioning_1899585_275.mp4,16.0000,0.0000
+2,1986691,803,T4,positioning,1.7000,11.3847,5.7967,away_10,animation_seed20261118_2_positioning_1986691_803.mp4,23.0000,0.0000
+3,2017461,483,T2,reading,2.5000,45.9678,0.7226,home_14,animation_seed20261118_3_reading_2017461_483.mp4,21.7500,0.0000
+4,2006229,849,T2,reading,1.6000,63.9437,0.3575,away_39,animation_seed20261118_4_reading_2006229_849.mp4,23.5000,0.0000

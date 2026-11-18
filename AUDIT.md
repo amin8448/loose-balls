@@ -2551,3 +2551,29 @@ Findings from the rehearsal, reported and not acted on (no definition changed):
 | 9 | precedence rule (a) and both tie rules were never needed on these matches | diagnostics line |
 
 Reading rule: the median metres_short is 3.09 m for positioning and 0.81 m for reading, neither above 10 m.
+
+### 3h post hoc revisions after the exploration rehearsal (2026-11-18)
+
+Decided by the project lead after the 3h rehearsal on the exploration matches and before any test match was read by 3h code. Post hoc. Reasons as given. Logged and committed before any code runs on match data. No measure, verdict or frozen parameter changes; the six MT1 files are not affected. DESIGN.md, "3h. What would have been enough", holds the revised definitions.
+
+| # | revision | reason, as given |
+|:--|:--|:--|
+| R1 | the enough change is the move only: the best-placed losing player started metres_short closer. enough_type values: move, already_favourite, no_player_in_race, or blank. Redirection (C3, C4 and its C6 rows) stays as report-only tables in the audit report and is in no export | redirection acts only through the 0.7 s drift and was unstable in rehearsal (Spearman 0.338 under reaction 0.35 s; type and player unchanged 0.542 under pleuler), and it put a movement change on 52 balls with a positioning verdict |
+| R2 | metres_short is blank for no_player_in_race, and C2 leaves those balls out | there is no player to move (rehearsal finding 3) |
+| R3 | clips_enough.csv columns: match_id, seq_i, period, clock, frame, team, verdict, deficit_s, metres_short, enough_type, enough_player, enough_player_gk, enough_player_extrapolated | follows from R1: enough_metres would repeat metres_short and enough_degrees no longer applies |
+| R4 | path check additions. P3b: the P3 share among positioning verdicts that have a path favourite (ties and unreached left out), with the same bootstrap interval. P1b: P1 with the frozen favourite recomputed at the pickup point from all players on the frame, so both sides use the same players. Fixed now: the README limitation will cite P3b at 0.3 s with its denominator and say it covers ground balls only; P3 is reported beside it in AUDIT.md | rehearsal findings 6 and 7: P3 counted unreached balls as "loser not favourite", and P1 compared all players with the 15 m race |
+| R5 | wording: moving by 5 x D makes the race level under the model. Reports and labels say "level", never "would have won" | at D = 0 the expectation is exactly one half |
+
+Checks after the revision, otherwise as logged on 2026-11-17:
+
+| # | check | change |
+|:--|:--|:--|
+| C1 | counts by enough_type, by verdict and by trigger | the revised types |
+| C2 | p10, p50, p90 of metres_short, positioning and reading separately | no_player_in_race balls left out (blank) |
+| C3, C4 | rotation of the smallest redirection; share of reading verdicts that one redirection makes level | report-only, from the redirection table, not the enough change |
+| C5 | enough player extrapolated; goalkeeper | over move balls |
+| C6 | stability under each V3 variant on balls whose verdict is unchanged | enough change: share with type and player unchanged (a missing player counts as changed), Spearman of metres_short over balls typed move in both. Redirection rows, report-only: Spearman of the smallest rotation over balls with a redirection in both |
+| C7 | ungated medians | median metres_short; median rotation of the smallest redirection (report-only) |
+| P1b, P3b | as R4 | new |
+
+Descriptor added to the path-check output, for the animation draw logged later: ball path length from the release to the pickup, as in the Figure 1 constraint (AUDIT.md, 3b revision).

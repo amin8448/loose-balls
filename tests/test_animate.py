@@ -36,6 +36,7 @@ def test_animate_writes_a_gif_with_both_parts_and_a_sheet(tmp_path, monkeypatch)
     assert info["frames"] == 15 + 6 + 4 + 4 + 12 and info["seconds"] == pytest.approx(41 * 0.25)
     assert info["margin at the pickup point after the change"] == pytest.approx(0.0, abs=1e-9)  # level
     assert info["frames before the anchor with the drop zone in view"] == 0  # hidden until frame 25
+    assert info["label clearance px"] >= ani.LABEL_GAP
     with Image.open(info["file"]) as im:
         assert im.format == "GIF" and im.size == (1000, 840)
     with Image.open(tmp_path / "sheet.png") as im:
@@ -76,3 +77,31 @@ def test_shirt_numbers_fit_inside_the_dots():
     inner = (np.sqrt(ani.DOT_SIZE) - ani.DOT_EDGE) * ani.DPI / 72  # pixels inside the edge line
     assert box.width < inner and box.height < inner
     assert ani.NUMBER_SIZE * 0.5 * ani.DPI / 72 >= 8  # at half size the digits are still about 8 pixels tall
+
+
+def test_the_distance_label_is_placed_clear_of_dots_and_the_marker():
+    fig = plt.figure(figsize=ani.FIGSIZE, dpi=ani.DPI)
+    ax = fig.add_axes([0.03, 0.17, 0.94, 0.70])
+    ax.set_xlim(-20, 20)
+    ax.set_ylim(-15, 15)
+    ax.set_aspect("equal")
+    # a crowd of dots around the midpoint, and the pickup marker on it
+    obstacles = [(x, y, ani.DOT_RADIUS_PX) for x in (-2.0, 0.0, 2.0) for y in (-1.5, 0.0, 1.5)]
+    obstacles.append((0.0, 0.0, ani.MARKER_RADIUS_PX))
+    label = ax.text(0.0, 0.0, "13.4 m", ha="center", va="center", fontsize=12, fontweight="bold")
+    clear = ani.place_label(fig, ax, label, (0.0, 0.0), obstacles)
+    box = label.get_window_extent(fig.canvas.get_renderer())
+    to_px = ax.transData.transform
+    gaps = [ani._rect_circle_gap(box, *to_px((x, y)), r) for x, y, r in obstacles]
+    plt.close(fig)
+    assert clear >= ani.LABEL_GAP and min(gaps) == pytest.approx(clear)
+
+
+def test_the_panel_keeps_the_whole_race_circle():
+    _, tr = fx._window_fixture()
+    ep = pd.Series(
+        {"pickup_frame": 30, "pickup_x": 50.0, "pickup_y": 30.0}
+    )  # near a corner of a 104 x 68 pitch
+    xlim, ylim = ani._extent(tr, 10, ep, (104.0, 68.0))
+    assert xlim[1] >= 50.0 + 15.0 and ylim[1] >= 30.0 + 15.0  # past the pitch cut at 54 and 36
+    assert xlim[0] <= 50.0 - 15.0 and ylim[0] <= 30.0 - 15.0

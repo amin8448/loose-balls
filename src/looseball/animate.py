@@ -25,7 +25,9 @@ shading recomputed with the change, and the label that the model now has the rac
 the losing team had no player within 15 m. No recorded track is replayed next to a model-driven
 player.
 
-Players are labelled by shirt number only. Output: mp4 through ffmpeg when available, GIF
+The distance label of part two is placed clear of every player dot, the ghost and the pickup
+marker; the panel is extended where needed so the whole 15 m race circle shows. Players are
+labelled by shirt number only. Output: mp4 through ffmpeg when available, GIF
 otherwise; optionally a contact sheet (first frame, anchor, pickup, and the model or closing frame).
 """
 
@@ -60,6 +62,12 @@ GRID_POINTS = 160
 PAD, AROUND_PICKUP = 4.0, 16.0  # metres
 FIGSIZE, DPI = (10.0, 8.4), 100  # 1000 x 840 pixels, even for the mp4 encoder
 DOT_SIZE, DOT_EDGE, NUMBER_SIZE = 620, 2.2, 12  # points^2, points, points
+DOT_RADIUS_PX = (np.sqrt(DOT_SIZE) + DOT_EDGE) / 2 * DPI / 72
+MARKER_SIZE = 150  # points^2, the pickup marker
+MARKER_RADIUS_PX = (np.sqrt(MARKER_SIZE) + 2.4) / 2 * DPI / 72
+CIRCLE_MARGIN = 1.0  # metres of panel kept beyond the race circle
+LABEL_GAP = 3.0  # pixels between the distance label and any dot or the pickup marker
+LABEL_RINGS = (0, 18, 28, 40, 54, 70, 88, 110, 135, 165)  # pixels from the arrow's midpoint
 CAMERA_COLUMNS = [f"camera_{c}_{a}" for c in CORNERS for a in ("x", "y")]
 
 
@@ -112,7 +120,47 @@ def _extent(tracking: pd.DataFrame, start: int, ep, pitch) -> tuple:
     length, width = pitch
     xlim = (max(xs.min() - PAD, -length / 2 - 2), min(xs.max() + PAD, length / 2 + 2))
     ylim = (max(ys.min() - PAD, -width / 2 - 2), min(ys.max() + PAD, width / 2 + 2))
+    # never cut the race circle: extend the panel past the pitch cut where the circle needs it
+    reach = RADIUS + CIRCLE_MARGIN
+    xlim = (min(xlim[0], px - reach), max(xlim[1], px + reach))
+    ylim = (min(ylim[0], py - reach), max(ylim[1], py + reach))
     return xlim, ylim
+
+
+def _rect_circle_gap(box, cx: float, cy: float, r: float) -> float:
+    """Pixels between a rectangle (a matplotlib Bbox) and a circle; negative when they overlap."""
+    dx = max(box.x0 - cx, 0.0, cx - box.x1)
+    dy = max(box.y0 - cy, 0.0, cy - box.y1)
+    return float(np.hypot(dx, dy)) - r
+
+
+def place_label(fig, ax, label, around, obstacles, gap: float = LABEL_GAP) -> float:
+    """Move `label` (a text in data coordinates) to the nearest spot around `around` that is at least
+    `gap` pixels clear of every obstacle (x, y, radius in pixels) and inside the axes; the spots are
+    tried on rings of growing radius. Returns the clearance in pixels of the spot used (the best
+    found when none is fully clear)."""
+    ax.apply_aspect()
+    renderer = fig.canvas.get_renderer()
+    to_px, to_data = ax.transData.transform, ax.transData.inverted().transform
+    centre = to_px(np.asarray(around, float))
+    obs = [(*to_px((x, y)), r) for x, y, r in obstacles]
+    frame = ax.get_window_extent(renderer)
+    best, best_clear = None, -np.inf
+    for radius in LABEL_RINGS:
+        for angle in np.linspace(0, 2 * np.pi, 1 if radius == 0 else 24, endpoint=False):
+            spot = centre + radius * np.array([np.cos(angle), np.sin(angle)])
+            label.set_position(to_data(spot))
+            box = label.get_window_extent(renderer)
+            if box.x0 < frame.x0 or box.x1 > frame.x1 or box.y0 < frame.y0 or box.y1 > frame.y1:
+                continue
+            clear = min((_rect_circle_gap(box, cx, cy, r) for cx, cy, r in obs), default=np.inf)
+            if clear >= gap:
+                return clear
+            if clear > best_clear:
+                best, best_clear = spot, clear
+    if best is not None:
+        label.set_position(to_data(best))
+    return best_clear
 
 
 def drop_zone_in_view(tracking: pd.DataFrame, frame: int, target) -> bool:
@@ -225,7 +273,7 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
     cb.ax.set_title("shading inside the 15 m race circle: which team gets to each point first", fontsize=9,
                     color=MUTED)  # fmt: skip
     cax.set_visible(False)
-    texts = []
+    texts, clearance = [], []
 
     def draw(stage: str, f: int) -> None:
         ax.clear()
@@ -254,7 +302,7 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
             ax.add_patch(
                 Circle(tuple(target), RADIUS, fill=False, color=MUTED, lw=1.0, ls=(0, (4, 3)), zorder=3)
             )
-            ax.scatter(*target, marker="x", s=150, color=INK, lw=2.4, zorder=6)
+            ax.scatter(*target, marker="x", s=MARKER_SIZE, color=INK, lw=2.4, zorder=6)
         ball = tr.loc[start:f, ["ball_x", "ball_y", "ball_detected"]]
         seen = ball[
             ball["ball_detected"].fillna(False).astype(bool) & ball[["ball_x", "ball_y"]].notna().all(axis=1)
@@ -265,8 +313,10 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
             now_seen = seen.index[-1] == f
             ax.scatter(last["ball_x"], last["ball_y"], s=60, facecolor=INK if now_seen else SURFACE, edgecolor=INK,
                        lw=1.6, zorder=9)  # fmt: skip
+        dots = []
         for team, colour in ((winner, BLUE), (loser, ORANGE)):
             rows = at[(at["team_id"] == team) & at["x"].between(*xlim) & at["y"].between(*ylim)]
+            dots += [(x, y, DOT_RADIUS_PX) for x, y in zip(rows["x"], rows["y"])]
             det = rows["detected"].fillna(False).to_numpy(dtype=bool)
             if stage == "model":
                 det = det | (rows["column_id"] == e["enough_player"]).to_numpy()
@@ -291,12 +341,15 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
             )
             ax.annotate("", tuple(moved), tuple(ghost), zorder=10,
                         arrowprops={"arrowstyle": "-|>", "color": INK, "lw": 1.8, "linestyle": "--"})  # fmt: skip
-            mid = (ghost + moved) / 2
-            ax.text(mid[0], mid[1] + 1.6, f"{float(e['metres_short']):.1f} m", ha="center", fontsize=12, color=INK,
-                    fontweight="bold", zorder=10)  # fmt: skip
         ax.set_xlim(*xlim)
         ax.set_ylim(*ylim)
         ax.set_aspect("equal")
+        if stage == "model":
+            mid = (ghost + moved) / 2
+            label = ax.text(mid[0], mid[1], f"{float(e['metres_short']):.1f} m", ha="center", va="center", fontsize=12,
+                            color=INK, fontweight="bold", zorder=10)  # fmt: skip
+            obstacles = [*dots, (*ghost, DOT_RADIUS_PX), (*target, MARKER_RADIUS_PX)]
+            clearance.append(place_label(fig, ax, label, mid, obstacles))
         ax.set_xticks([])
         ax.set_yticks([])
         head = f"{names[m.home_team_id]} v {names[m.away_team_id]}, match clock {tr.loc[f, 'clock']}"
@@ -338,4 +391,5 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
     return {"file": str(out), "frames": frames, "seconds": frames * hold, "verdict": d["verdict"],
             "enough_type": e["enough_type"], "ending": ending, "start frame": start,
             "frames before the anchor": anchor - start, "frames before the anchor with the drop zone in view": before_in_view,
-            "margin at the pickup point after the change": level_margin}  # fmt: skip
+            "margin at the pickup point after the change": level_margin,
+            "label clearance px": min(clearance) if clearance else None}  # fmt: skip

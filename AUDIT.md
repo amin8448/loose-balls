@@ -3067,3 +3067,23 @@ Inspected: the contact sheets of candidates 2, 5, 9 and 13 and of redrawn clip 2
 | 4 | pool B (reading, move of at least 2 m, the other filters) holds 14 balls; the six drawn are 43% of it |
 | 5 | clips run 10.0 to 20.5 s at full length; the step 3 brief gives the animation 12 s of the video |
 | 6 | the race circle can extend past the panel, which is cut at the pitch boundary plus 2 m |
+
+### 3h animation: label and panel choices, and coach versions (2026-11-18)
+
+Presentation changes only, requested by the project lead; no measure or definition changes, and nothing in the record was regenerated (the committed clips in audit/animations/ and audit/animations_v2/ keep the earlier drawing).
+
+| item | choice |
+|:--|:--|
+| move distance label | placed at the nearest spot around the arrow's midpoint, tried on rings of 0 to 165 pixels, that is at least 3 pixels clear of every player dot (radius from the dot size and edge), the ghost and the pickup marker, and inside the panel; the clearance used is reported with each clip (looseball.animate.place_label) |
+| race circle | when the panel cut (ball path and 16 m around the pickup point, padded 4 m, cut at the pitch boundary plus 2 m) would cut the 15 m race circle, the panel is extended to show the whole circle with 1 m to spare |
+
+Coach versions: candidates 13, 2, 3 and 11 of the seed 20261119 set, chosen by hand by the project lead for a presentation, not drawn. Written by `python scripts/s3h_coach.py` into audit/animations_v2/coach/ (not committed; the folder is in .gitignore): each at full length from the release and as a short cut starting 2 s before the anchor (--start-before-anchor 2), each with a contact sheet.
+
+| candidate | match, ball | verdict | type | full | short | label clearance (full, short) |
+|--:|:--|:--|:--|--:|--:|:--|
+| 13 | 1874553, 198 | positioning | no_player_in_race | 13.00 s | 13.00 s | no label |
+| 2 | 2006363, 562 | positioning | move | 11.25 s | 11.25 s | 10.6, 10.6 px |
+| 3 | 1927964, 1 | positioning | move | 18.50 s | 14.75 s | 9.3, 8.8 px |
+| 11 | 2006363, 1 | reading | move | 18.50 s | 15.25 s | 3.5, 3.1 px |
+
+Inspected (contact sheets of candidate 13 full, 2 full, 3 full and 11 short). Reported, not changed: the short cut equals the full clip for candidate 13 (1.2 s before the anchor) and candidate 2 (the anchor is the release frame); in candidates 2 and 3 the moved player's dot lands on an opponent's dot (33 over 7, 25 over 23), so one number covers another in the model frame. Tests: 93 passed.

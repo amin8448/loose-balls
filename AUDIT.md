@@ -3111,3 +3111,20 @@ README text only, as given by the project lead; no code that produces a number c
 README-limit test: 996 words, 2 figures or tables; passes (limit 1,000 and 2).
 
 Drawing fix, a presentation choice (animation only; the committed clips are not regenerated): in the "model: one change" frame the moved player is drawn as an orange ring under the other players' dots, with his shirt number beside it, placed at least 3 pixels clear of every player dot, the ghost and the pickup marker; the distance label is then placed clear of that number as well. He can no longer hide another player's number. A test checks the clearance of his number. The coach versions (audit/animations_v2/coach/, not committed) were rewritten with it; in candidates 2 and 3 the numbers 7 and 23 now show, with 33 and 25 beside the rings. Where the moved spot coincides with another player, the ring is mostly hidden under that player's dot.
+
+
+### Test-suite failure at the 3c revision commit (2026-11-18)
+
+Incident. The command that made commit 1917d15 was `uv run pytest -q 2>&1 | tail -1; git add ... && git commit ... && git push`. The suite printed "1 failed, 92 passed in 23.18s"; the `;` after the pipe let the commit and push go ahead, and only the summary line was kept, so the failing test was not named at the time. The committed files are the files that run tested (they were staged after it), and no other job was running. Ten later runs passed (93).
+
+Loop. The full suite was then run until a failure or 60 passes, with the full output and a junit file kept for every run. Runs 1 to 22 passed; run 23 failed (1 failed, 92 passed, 30.3 s):
+
+`tests/test_enough.py::test_rotation_formula_against_a_brute_force_scan[2.0-5.0-1.1-1.5]`, in the brute-force scan `_brute_rotation`, inside the frozen reach model's `tti` (DataBallPy `TTIConstraint`, `np.linalg.norm(d, axis=-1)`), on an ordinary two-element float vector (`[-3.858, -2.966]`): `ValueError: input operand has more dimensions than allowed by the axis remapping`, raised by `np.add.reduce` in numpy 2.2.6. That test makes about 1.2 million `tti` calls a suite run (three cases of 400,001 angles), far more numpy calls than any other test.
+
+Outside pytest. The same scan in plain Python (looseball and numpy only), 10 minutes: 144,000,360 calls, 2 errors, the same ValueError on ordinary vectors. numpy only (no looseball, no DataBallPy), the same `np.linalg.norm(d, axis=-1)` on fresh two-element vectors, 10 minutes: 158,800,397 calls, 1 error, the same ValueError. About one fault in 70 to 160 million calls; the 23 suite runs made about 28 million.
+
+Reading of the 3h, animation and label-placement tests for anything that can vary between runs: all random draws are seeded (numpy default_rng with a fixed seed, pandas sample with random_state); no test reads the clock; each test writes only under its own tmp_path; the test order is the file order (no random-order or parallel plugin); no result depends on the iteration order of a set of strings (set iteration in the package is over integer team ids, and every tie-break sorts with a stable key); matplotlib runs on Agg in both plotting modules; the 3h tests compare no floats without a tolerance. Nothing found.
+
+Finding. The failure is not in the tests, the test order or the package: the same call fails, rarely, in numpy alone on this machine (WSL2 5.15.167.4, Intel Core i9-13900K, Python 3.12.3, numpy 2.2.6). Whether the cause is numpy or the machine is not shown and stays open; no test, code or dependency was changed. No module or script of the package catches exceptions, so the fault can stop a run but cannot change a number silently; the byte-identical reproduce checks logged above stand.
+
+Rule from now on: a commit happens only after the suite has passed in the same command, chained with && (`uv run pytest -q && git add ... && git commit ...`), so a failing suite stops the commit and the push.

@@ -2267,7 +2267,7 @@ Every number in README.md, with its source. Derived values are computed from the
 |:--|:--|
 | 20 matches, 5 build, 15 held out; A-League 2024/25 | step 1 and MT1 match lists |
 | 69.0%, 13.5%, 17.6% | MT1 R1, gated |
-| 1,566 balls; about 104 a match | MT1, anchored main pairs; 1,566 / 15 = 104.4 |
+| 1,566 balls with the drop zone seen; about 104 a match | MT1, anchored main pairs (the drop zone came into view in the last leg); 1,566 / 15 = 104.4 (wording revised 2026-11-18) |
 | 10.3% decided within half a second | MT1 R5, immediate share of anchored pairs |
 | 35.2% drop zone off screen at release (build matches) | diagnostic after G4: 164 of 466 main pairs |
 | 33.0% of players near it seen | diagnostic after G4, release frame, pickup point outside the view, 15 m |
@@ -2280,13 +2280,19 @@ Every number in README.md, with its source. Derived values are computed from the
 | six changes, anchor 0.2 s later to 0.35 s reaction; 91.1% to 99.7% | MT1 V3 |
 | camera gate: 85% within 15 m; 27.7% dropped; limit 30%; 28.2% and 27.4% | D7 and MT1 camera gate |
 | 1,404 lost balls ungated; 69.5%, 12.6%, 17.9% | MT1 R1, ungated |
-| about one lost ball in seven | MT1 R1 reading share 13.5% (1 / 0.135 = 7.4) |
 | worked match: 61 lost balls; 46, 6, 9 | audit/mt1_test/episodes.csv, match 1927964 (MT1 worked-example draw) |
 | 55.7% of clearances dropped; 30 remain | MT1 R6 (T1 drop rate) and R2 (T1 gated, 30) |
-| calibration 29.9% against 18.8%, 69.7% against 78.6% | MT1 R4, bins 0.2 to 0.4 and 0.6 to 0.8 |
+| calibration 29.9% against 18.8% | MT1 R4, bin 0.2 to 0.4 (the 0.6 to 0.8 bin removed from the README 2026-11-18) |
 | 1 to 5 held-out matches per team | MT1 R9a, matches in the set |
 | commit 4340d27; Python 3.12; Git LFS | setup; environment; the open-data clone stores *.jsonl with Git LFS (.gitattributes) |
-| about 6 minutes, about 0.8 GB | 3b revision, reproduce runs (final run 5 min 47 s, 826 MB) |
+| about 6 minutes, about 0.9 GB | reproduce runs with the 3h code: 6 min 14 s, 861 MB ("3h on the test matches"); 4 min 6 s, 872 MB ("3h animation revision: the draw"); revised from 0.8 GB 2026-11-18 |
+| the verdicts depend on no fitted parameter | the chosen D5 form is a softmax without intercept, so the expectation is 0.5 exactly at equal best reach times whatever the slope (MT1 definitions; added 2026-11-18) |
+| a median 2.5 m (positioning), 1.1 m (reading) | audit/s3h_test/report.md line 27 (metres_short, positioning, 557 move balls, p50 2.51) and line 29 (reading, 135, p50 1.08); added 2026-11-18 |
+| 85 positioning losses (12.3%) with no player within 15 m | audit/s3h_test/report.md line 8 (no_player_in_race 85 of 692 positioning; 85 / 692 = 0.123); added 2026-11-18 |
+| 11.8% of positioning losses (25 of 211), ground balls with a path favourite | audit/s3h_test/report.md line 93 (P3b at 0.3 s: 25 of 211, 0.118, interval 0.075 to 0.162); added 2026-11-18 |
+| thirty-one after-the-anchor losses with no player of either team within 15 m | audit/s3h_diagnostics/report.md line 3 (D1: 31, all after the anchor) and line 17 (the same 31 balls as p_static = p_dynamic = 0.5000); added 2026-11-18 |
+| 50 positioning losses with the loser favourite once movement counted | audit/s3h_test/report.md line 8 (already_favourite, 50 of 692 positioning); added 2026-11-18 |
+| best-placed player unchanged in 63.7% of balls under a turning penalty | audit/s3h_test/report.md line 44 (C6, pleuler: type and player unchanged 0.637, over the 809 positioning and reading balls whose verdict is unchanged); added 2026-11-18 |
 
 ### Repository history rewritten before the first push (2026-11-17)
 
@@ -3087,3 +3093,21 @@ Coach versions: candidates 13, 2, 3 and 11 of the seed 20261119 set, chosen by h
 | 11 | 2006363, 1 | reading | move | 18.50 s | 15.25 s | 3.5, 3.1 px |
 
 Inspected (contact sheets of candidate 13 full, 2 full, 3 full and 11 short). Reported, not changed: the short cut equals the full clip for candidate 13 (1.2 s before the anchor) and candidate 2 (the anchor is the release frame); in candidates 2 and 3 the moved player's dot lands on an opponent's dot (33 over 7, 25 over 23), so one number covers another in the model frame. Tests: 93 passed.
+
+
+### 3c revision: README text and one drawing fix (2026-11-18)
+
+README text only, as given by the project lead; no code that produces a number changed. Every new number was checked against the committed record before it went in (audit/mt1_test, audit/s3h_test/report.md, audit/s3h_diagnostics/report.md, and the reproduce runs logged above); all matched. The table "3c. README numbers and their sources" is updated: new rows for every new number, the rows for the deleted sentence ("about one lost ball in seven") and the removed calibration bin taken out or revised, the memory figure revised.
+
+| section | edit |
+|:--|:--|
+| 2 | "The held-out matches hold 1,566" becomes "The held-out matches hold 1,566 with the drop zone seen" |
+| 3 | the last sentence becomes "The verdicts depend on no fitted parameter." |
+| 4 | the sentence "Movement changes who wins often enough ..." deleted; "(Sears 2025; Lamberts 2025)" becomes "(Sunjic et al. 2025; Lamberts 2025)" |
+| 5 | the training-week sentence replaced by "A coach might read positioning as shape, ...; the tool sorts the clips and does not test those fixes."; the future-tense 3h sentence replaced by the clips_enough.csv, no-player and looseball animate sentences |
+| 6 | the calibration sentence shortened to the 0.2 to 0.4 bin; the path check (P3b), D1, already_favourite and pleuler stability sentences added |
+| 7 | peak memory about 0.9 GB; the future-work sentence shortened |
+
+README-limit test: 996 words, 2 figures or tables; passes (limit 1,000 and 2).
+
+Drawing fix, a presentation choice (animation only; the committed clips are not regenerated): in the "model: one change" frame the moved player is drawn as an orange ring under the other players' dots, with his shirt number beside it, placed at least 3 pixels clear of every player dot, the ghost and the pickup marker; the distance label is then placed clear of that number as well. He can no longer hide another player's number. A test checks the clearance of his number. The coach versions (audit/animations_v2/coach/, not committed) were rewritten with it; in candidates 2 and 3 the numbers 7 and 23 now show, with 33 and 25 beside the rings. Where the moved spot coincides with another player, the ring is mostly hidden under that player's dot.

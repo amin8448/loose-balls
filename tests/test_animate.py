@@ -37,6 +37,7 @@ def test_animate_writes_a_gif_with_both_parts_and_a_sheet(tmp_path, monkeypatch)
     assert info["margin at the pickup point after the change"] == pytest.approx(0.0, abs=1e-9)  # level
     assert info["frames before the anchor with the drop zone in view"] == 0  # hidden until frame 25
     assert info["label clearance px"] >= ani.LABEL_GAP
+    assert info["moved number clearance px"] >= ani.LABEL_GAP  # his number never sits on another dot
     with Image.open(info["file"]) as im:
         assert im.format == "GIF" and im.size == (1000, 840)
     with Image.open(tmp_path / "sheet.png") as im:

@@ -25,8 +25,9 @@ shading recomputed with the change, and the label that the model now has the rac
 the losing team had no player within 15 m. No recorded track is replayed next to a model-driven
 player.
 
-The distance label of part two is placed clear of every player dot, the ghost and the pickup
-marker; the panel is extended where needed so the whole 15 m race circle shows. Players are
+In part two the moved player is drawn as an outlined ring under the other players, with his shirt
+number beside it, so he never hides another player's number; that number and the distance label
+are placed clear of every player dot, the ghost and the pickup marker; the panel is extended where needed so the whole 15 m race circle shows. Players are
 labelled by shirt number only. Output: mp4 through ffmpeg when available, GIF
 otherwise; optionally a contact sheet (first frame, anchor, pickup, and the model or closing frame).
 """
@@ -66,6 +67,7 @@ DOT_RADIUS_PX = (np.sqrt(DOT_SIZE) + DOT_EDGE) / 2 * DPI / 72
 MARKER_SIZE = 150  # points^2, the pickup marker
 MARKER_RADIUS_PX = (np.sqrt(MARKER_SIZE) + 2.4) / 2 * DPI / 72
 CIRCLE_MARGIN = 1.0  # metres of panel kept beyond the race circle
+MOVED_RING = 3.0  # points, the moved player's ring in the model frame
 LABEL_GAP = 3.0  # pixels between the distance label and any dot or the pickup marker
 LABEL_RINGS = (0, 18, 28, 40, 54, 70, 88, 110, 135, 165)  # pixels from the arrow's midpoint
 CAMERA_COLUMNS = [f"camera_{c}_{a}" for c in CORNERS for a in ("x", "y")]
@@ -273,7 +275,7 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
     cb.ax.set_title("shading inside the 15 m race circle: which team gets to each point first", fontsize=9,
                     color=MUTED)  # fmt: skip
     cax.set_visible(False)
-    texts, clearance = [], []
+    texts, clearance, number_clearance = [], [], []
 
     def draw(stage: str, f: int) -> None:
         ax.clear()
@@ -316,20 +318,21 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
         dots = []
         for team, colour in ((winner, BLUE), (loser, ORANGE)):
             rows = at[(at["team_id"] == team) & at["x"].between(*xlim) & at["y"].between(*ylim)]
-            dots += [(x, y, DOT_RADIUS_PX) for x, y in zip(rows["x"], rows["y"])]
-            det = rows["detected"].fillna(False).to_numpy(dtype=bool)
-            if stage == "model":
-                det = det | (rows["column_id"] == e["enough_player"]).to_numpy()
             for p in rows.itertuples():
                 if np.isfinite(p.vx):
                     ax.annotate("", (p.x + p.vx, p.y + p.vy), (p.x, p.y), zorder=7,
                                 arrowprops={"arrowstyle": "-|>", "color": colour, "lw": 1.6, "mutation_scale": 12})  # fmt: skip
+            if stage == "model":  # the moved player is drawn as a ring with his number beside it
+                rows = rows[rows["column_id"] != e["enough_player"]]
+            dots += [(x, y, DOT_RADIUS_PX) for x, y in zip(rows["x"], rows["y"])]
+            det = rows["detected"].fillna(False).to_numpy(dtype=bool)
             ax.scatter(rows["x"], rows["y"], s=DOT_SIZE, facecolor=np.where(det, colour, SURFACE), edgecolor=colour,
                        lw=DOT_EDGE, zorder=8)  # fmt: skip
             for p, filled in zip(rows.itertuples(), det):
                 ax.text(p.x, p.y, p.column_id.split("_")[-1], ha="center", va="center_baseline", fontsize=NUMBER_SIZE,
                         color="white" if filled else colour, fontweight="bold", zorder=9)  # fmt: skip
         if stage == "model":
+            ax.scatter(*moved, s=DOT_SIZE, facecolor="none", edgecolor=ORANGE, lw=MOVED_RING, zorder=7.5)
             ax.scatter(
                 *ghost,
                 s=DOT_SIZE,
@@ -345,11 +348,17 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
         ax.set_ylim(*ylim)
         ax.set_aspect("equal")
         if stage == "model":
+            obstacles = [*dots, (*moved, DOT_RADIUS_PX), (*ghost, DOT_RADIUS_PX), (*target, MARKER_RADIUS_PX)]
+            number = ax.text(*moved, str(e["enough_player"]).split("_")[-1], ha="center", va="center",
+                             fontsize=NUMBER_SIZE, color=ORANGE, fontweight="bold", zorder=10)  # fmt: skip
+            number_clearance.append(place_label(fig, ax, number, moved, obstacles))
+            box = number.get_window_extent(fig.canvas.get_renderer())
+            centre = ax.transData.inverted().transform(((box.x0 + box.x1) / 2, (box.y0 + box.y1) / 2))
             mid = (ghost + moved) / 2
             label = ax.text(mid[0], mid[1], f"{float(e['metres_short']):.1f} m", ha="center", va="center", fontsize=12,
                             color=INK, fontweight="bold", zorder=10)  # fmt: skip
-            obstacles = [*dots, (*ghost, DOT_RADIUS_PX), (*target, MARKER_RADIUS_PX)]
-            clearance.append(place_label(fig, ax, label, mid, obstacles))
+            number_obstacle = (*centre, float(np.hypot(box.width, box.height)) / 2)
+            clearance.append(place_label(fig, ax, label, mid, [*obstacles, number_obstacle]))
         ax.set_xticks([])
         ax.set_yticks([])
         head = f"{names[m.home_team_id]} v {names[m.away_team_id]}, match clock {tr.loc[f, 'clock']}"
@@ -392,4 +401,5 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
             "enough_type": e["enough_type"], "ending": ending, "start frame": start,
             "frames before the anchor": anchor - start, "frames before the anchor with the drop zone in view": before_in_view,
             "margin at the pickup point after the change": level_margin,
-            "label clearance px": min(clearance) if clearance else None}  # fmt: skip
+            "label clearance px": min(clearance) if clearance else None,
+            "moved number clearance px": min(number_clearance) if number_clearance else None}  # fmt: skip

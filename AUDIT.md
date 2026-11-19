@@ -2275,7 +2275,7 @@ Every number in README.md, with its source. Derived values are computed from the
 | 28.4% lower log-loss than the player count (B0) | MT1 V1: (0.6397 - 0.4578) / 0.6397 = 0.1819 / 0.6397 |
 | 17.0% lower than the nearest player (B1) | MT1 V1: 0.0938 / 0.5516 |
 | in all 15 matches; intervals clear of zero | MT1 V1 and V2 (15 of 15; intervals 0.1471 to 0.2162 and 0.0718 to 0.1140) |
-| 17.2% lower than the static expectation with its own temperature, in all 15 matches | 3c.0: 0.0951 / 0.5529; 15 of 15; interval 0.0731 to 0.1154 |
+| 17.2% lower than the static expectation with its own temperature, in all 15 | 3c.0: 0.0951 / 0.5529; 15 of 15; interval 0.0731 to 0.1154 ("again in all 15 matches" trimmed to "in all 15" 2026-11-19) |
 | static line no better than the nearest player, lower in 4 of 15 | 3c.0: difference -0.0013 (-0.0028 to 0.0001), 4 of 15 |
 | six changes, anchor 0.2 s later to 0.35 s reaction; 91.1% to 99.7% | MT1 V3 |
 | camera gate: 85% within 15 m; 27.7% dropped; limit 30%; 28.2% and 27.4% | D7 and MT1 camera gate |
@@ -2285,14 +2285,14 @@ Every number in README.md, with its source. Derived values are computed from the
 | calibration 29.9% against 18.8% | MT1 R4, bin 0.2 to 0.4 (the 0.6 to 0.8 bin removed from the README 2026-11-18) |
 | 1 to 5 held-out matches per team | MT1 R9a, matches in the set |
 | commit 4340d27; Python 3.12; Git LFS | setup; environment; the open-data clone stores *.jsonl with Git LFS (.gitattributes) |
-| about 6 minutes, about 0.9 GB | reproduce runs with the 3h code: 6 min 14 s, 861 MB ("3h on the test matches"); 4 min 6 s, 872 MB ("3h animation revision: the draw"); revised from 0.8 GB 2026-11-18 |
+| about 6 minutes, peak memory 0.9 GB | reproduce runs with the 3h code: 6 min 14 s, 861 MB ("3h on the test matches"); 4 min 6 s, 872 MB ("3h animation revision: the draw"); revised from 0.8 GB 2026-11-18; "about" before 0.9 GB cut 2026-11-19 (861 and 872 MB round to 0.9 GB) |
 | the verdicts depend on no fitted parameter | the chosen D5 form is a softmax without intercept, so the expectation is 0.5 exactly at equal best reach times whatever the slope (MT1 definitions; added 2026-11-18) |
-| a median 2.5 m (positioning), 1.1 m (reading) | audit/s3h_test/report.md line 27 (metres_short, positioning, 557 move balls, p50 2.51) and line 29 (reading, 135, p50 1.08); added 2026-11-18 |
-| 85 positioning losses (12.3%) with no player within 15 m | audit/s3h_test/report.md line 8 (no_player_in_race 85 of 692 positioning; 85 / 692 = 0.123); added 2026-11-18 |
+| a median 2.5 m over 557 positioning losses with a player to move, 1.1 m (reading) | audit/s3h_test/report.md line 8 (move 557 of 692 positioning), line 27 (metres_short, positioning, n 557, p50 2.51) and line 29 (reading, n 135, p50 1.08); added 2026-11-18, the 557 added 2026-11-19 |
+| 85 positioning losses with no player within 15 m | audit/s3h_test/report.md line 8 (no_player_in_race 85 of 692 positioning); added 2026-11-18; "(12.3%)" trimmed 2026-11-19 |
 | 11.8% of positioning losses (25 of 211), ground balls with a path favourite | audit/s3h_test/report.md line 93 (P3b at 0.3 s: 25 of 211, 0.118, interval 0.075 to 0.162); added 2026-11-18 |
-| thirty-one after-the-anchor losses with no player of either team within 15 m | audit/s3h_diagnostics/report.md line 3 (D1: 31, all after the anchor) and line 17 (the same 31 balls as p_static = p_dynamic = 0.5000); added 2026-11-18 |
+| thirty-one after-the-anchor verdicts are ties with no player of either team within 15 m | audit/s3h_diagnostics/report.md line 3 (D1: 31, all after the anchor) and line 17 (the same 31 balls as p_static = p_dynamic = 0.5000, the tie); added 2026-11-18, reworded 2026-11-19 |
 | 50 positioning losses with the loser favourite once movement counted | audit/s3h_test/report.md line 8 (already_favourite, 50 of 692 positioning); added 2026-11-18 |
-| best-placed player unchanged in 63.7% of balls under a turning penalty | audit/s3h_test/report.md line 44 (C6, pleuler: type and player unchanged 0.637, over the 809 positioning and reading balls whose verdict is unchanged); added 2026-11-18 |
+| under a turning penalty the same change and player hold in 63.7% of balls; the distance has a rank correlation of 0.66 | audit/s3h_test/report.md line 44 (C6, pleuler: type and player unchanged 0.637 over the 809 positioning and reading balls whose verdict is unchanged; move: Spearman metres_short 0.661 over the 610 balls with a move under both); added 2026-11-18, revised 2026-11-19 |
 
 ### Repository history rewritten before the first push (2026-11-17)
 
@@ -3125,6 +3125,61 @@ Outside pytest. The same scan in plain Python (looseball and numpy only), 10 min
 
 Reading of the 3h, animation and label-placement tests for anything that can vary between runs: all random draws are seeded (numpy default_rng with a fixed seed, pandas sample with random_state); no test reads the clock; each test writes only under its own tmp_path; the test order is the file order (no random-order or parallel plugin); no result depends on the iteration order of a set of strings (set iteration in the package is over integer team ids, and every tie-break sorts with a stable key); matplotlib runs on Agg in both plotting modules; the 3h tests compare no floats without a tolerance. Nothing found.
 
-Finding. The failure is not in the tests, the test order or the package: the same call fails, rarely, in numpy alone on this machine (WSL2 5.15.167.4, Intel Core i9-13900K, Python 3.12.3, numpy 2.2.6). Whether the cause is numpy or the machine is not shown and stays open; no test, code or dependency was changed. No module or script of the package catches exceptions, so the fault can stop a run but cannot change a number silently; the byte-identical reproduce checks logged above stand.
+Finding. The failure is not in the tests, the test order or the package: the same call fails, rarely, in numpy alone on this machine (WSL2 5.15.167.4, Intel Core i9-13900K, Python 3.12.3, numpy 2.2.6). Whether the cause is numpy or the machine is not shown and stays open; no test, code or dependency was changed. No module or script of the package catches exceptions, so this fault, when it raises, stops the run.
+
+Correction (2026-11-19, post hoc; reason: the sentence first logged here, "the fault can stop a run but cannot change a number silently", does not follow from the evidence). If the cause is the machine rather than numpy, the same fault could also give a wrong value without raising, and nothing in a single run would show it. What the record shows instead: the committed outputs have been reproduced byte for byte on this machine, by `looseball reproduce` checked with scripts/check_reproduce.py, in these logged runs:
+
+| run | date | compared | wall time |
+|:--|:--|:--|:--|
+| 3a | 2026-10-29 | the six MT1 files and report.md | 4 min 40 s |
+| 3b | 2026-10-29 | the same and the figures | 5 min 15 s |
+| 3c.0 | 2026-10-29 | the MT1 outputs (static_temperature.md written and kept as the record) | 5 min 52 s |
+| 3b revision, final run | 2026-10-29 | the six MT1 files, report.md, static_temperature.md and the four figure files | 5 min 47 s |
+| 3h on the test matches | 2026-11-18 | the same, and the 3h run's clips_enough.csv byte-identical to the one reproduce wrote | 6 min 14 s |
+| 3h animation revision | 2026-11-18 | all identical, including clips_enough.csv | 4 min 6 s |
+
+A random wrong value in any of these runs would have shown as a difference, and none did; but all of them ran on this machine, so they do not settle whether the machine is at fault. Step 3e (reproduce from a fresh clone) will be run on a different machine to settle it, with scripts/numpy_norm_soak.py run there as well.
 
 Rule from now on: a commit happens only after the suite has passed in the same command, chained with && (`uv run pytest -q && git add ... && git commit ...`), so a failing suite stops the commit and the push.
+
+
+### 3c revision 2: README corrections and citation links (2026-11-19)
+
+README text only, as given by the project lead; no code that produces a number changed. Every number was checked against the record first and all matched: 557 move balls among the 692 positioning losses and the median 2.515 m over them (2.5), the reading median 1.0818 m over 135 (1.1), all from audit/s3h_test/clips_enough.csv and report.md lines 8, 27 and 29; the 31 D1 balls are all after-the-anchor verdicts and are exactly the 31 balls with p_static = p_dynamic = 0.5000 (audit/s3h_diagnostics/diagnostics.csv; report.md lines 3 and 17); 0.637 and 0.661 (report.md line 44). The sources table above is updated.
+
+| section | edit |
+|:--|:--|
+| 4 | "(Sunjic et al. 2025; Lamberts 2025)": both made links; "again in all 15 matches" becomes "in all 15" (trim 2) |
+| 5 | "a median 2.5 m for positioning losses" becomes "a median 2.5 m over the 557 positioning losses with a player to move"; "(12.3%)" deleted (trim 1) |
+| 6 | "Thirty-one after-the-anchor losses had no player ..." becomes "Thirty-one after-the-anchor verdicts are ties with no player ..."; the sentence "Which player was best placed ..." replaced by "Under a turning penalty the same change and player hold in 63.7% of balls, and the distance has a rank correlation of 0.66." |
+| 7 | "every held-out table" becomes "the main-test tables"; "Shah 2026" made a link; "Le et al. 2017" left unlinked (link to come from the project lead) |
+
+The README-limit test counts link text and drops link targets (tests/test_readme_limits.py, words()), so the links add no words.
+
+README-limit test: 1,006 words after the edits; 1,005 after trim 1; 1,003 after trim 2. Over the 1,000 limit; stopped there as instructed, no further trimming. test_readme_within_limits fails, so under the rule above these edits are not committed until the count is brought under the limit.
+
+### Animation: the no-player statement moved to the anchor hold (2026-11-19)
+
+Presentation change, at the project lead's request; no measure, definition or frozen parameter changed. For enough_type no_player_in_race the statement that the losing team had no player within 15 m is true on the anchor frame, where the race is set, not on the pickup frame (in candidate 13, three Adelaide United players are inside the circle at the pickup). The statement is now shown during the anchor hold, worded "When the drop zone came into view, TEAM had no player within 15 m of it", in place of "Drop zone in view"; the pickup hold keeps only "TEAM won the ball"; the 2 s closing hold after the pickup is removed, so these clips end on the pickup hold (2 s shorter). `animate` also returns the line shown on each stage. Test added: tests/test_animate.py, a synthetic ball whose losing team has nobody within 15 m (the anchor line, the pickup line, no closing stage, the frame count); the closing case is removed from the schedule test.
+
+The coach version of candidate 13 (audit/animations_v2/coach/, not committed) was rewritten with it, full and short cut (both start at the release, as before): 11.00 s each, from 13.00 s; coach.csv rows for candidate 13 updated, the other rows untouched. Inspected on the contact sheet: the anchor panel reads "When the drop zone came into view, Adelaide United had no player within 15 m of it", the pickup panel "Brisbane FC won the ball". The committed clips (audit/animations_v2/candidates and seed20261118) are the record and are not regenerated.
+
+### 3c revision 2, finished: three more README cuts (2026-11-19)
+
+Given by the project lead after the count stopped at 1,003: "over the 557 positioning losses" becomes "over 557 positioning losses"; "peak memory about 0.9 GB" becomes "peak memory 0.9 GB"; in section 7, "(the tracking files are stored with it)" deleted. README-limit test: 994 words, 2 figures or tables; passes. The sources table is updated for the first two.
+
+### Animation: the three committed no_player_in_race clips regenerated (2026-11-19)
+
+Presentation correction; reason: the old statement "TEAM had no player within 15 m of where the ball was won" was printed over the pickup frame, where it is not true (the race is set on the anchor frame; on the pickup frame players of the losing team can be inside the circle, as in candidates 13 and 15). No number changes. The committed clips with enough_type no_player_in_race are three, candidates 13, 14 and 15 of the seed 20261119 set, each an mp4 and a contact sheet (six files); the 3h seed 20261118 clips and the first four clips have none. Each was regenerated in place under its committed file name with the code of "the no-player statement moved to the anchor hold", from the release as before, with its contact sheet.
+
+| candidate | ball | anchor line | pickup line | seconds |
+|:--|:--|:--|:--|:--|
+| 13 | 1874553, 198 | When the drop zone came into view, Adelaide United had no player within 15 m of it | Brisbane FC won the ball | 13.00 to 11.00 |
+| 14 | 1953632, 868 | When the drop zone came into view, Melbourne City had no player within 15 m of it | CC Mariners won the ball | 15.50 to 13.50 |
+| 15 | 2010085, 711 | When the drop zone came into view, CC Mariners had no player within 15 m of it | Melbourne City won the ball | 18.75 to 16.75 |
+
+In audit/animations_v2/candidates/candidate_seed20261119.csv only the seconds of these three rows changed (the 2 s closing hold is gone); the frames before the anchor and those with the drop zone in view were checked equal to the record. Inspected: the old and new contact sheets of candidate 15 are the same frames apart from the anchor line and the removed closing panel.
+
+### numpy soak script (2026-11-19)
+
+scripts/numpy_norm_soak.py: the numpy-only loop of the incident entry as a script, for a set number of minutes (`python scripts/numpy_norm_soak.py MINUTES`), printing the environment, the calls and errors after each pass of 400,001 angles, every error with its vector, and a final line; exit status 1 when any error was seen. It needs numpy only, so it can be run on another machine. Not part of the reproduce path.

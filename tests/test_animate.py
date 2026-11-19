@@ -25,7 +25,6 @@ def test_schedule_holds_order_and_endings():
     assert [x[1] for x in s if x[0] == "after"] == [15, 16, 17, 18, 19]
     assert s[-2] == ("pickup", 20, 4) and s[-1] == ("model", 14, 12)
     assert ani.schedule(5, 5, 9, ending=None)[-1] == ("pickup", 9, 4)  # no before frames, part one only
-    assert ani.schedule(5, 7, 9, ending="closing")[-1] == ("closing", 9, 8)  # 2 s closing label
 
 
 def test_animate_writes_a_gif_with_both_parts_and_a_sheet(tmp_path, monkeypatch):
@@ -42,6 +41,23 @@ def test_animate_writes_a_gif_with_both_parts_and_a_sheet(tmp_path, monkeypatch)
         assert im.format == "GIF" and im.size == (1000, 840)
     with Image.open(tmp_path / "sheet.png") as im:
         assert im.size == (1000, 840)  # first frame, anchor, pickup, model at half size, two by two
+
+
+def test_no_player_in_race_is_stated_at_the_anchor_not_at_the_pickup(tmp_path, monkeypatch):
+    # the losing team (Home) has both players more than 15 m from the pickup point (10, 10) throughout
+    poss, tr = fx._window_fixture()
+    for cid, (x, y) in {"home_1": (-10.0, 1.0), "home_3": (-8.0, 4.0)}.items():
+        tr[f"{cid}_x"], tr[f"{cid}_y"] = x, y
+    match = Match(1, tr, poss, syn.PLAYERS, 10, 20, {10: "Home", 20: "Away"}, (104.0, 68.0))
+    monkeypatch.setattr(ani, "load_match", lambda *_args: match)
+    info = ani.animate(None, 1, 0, tmp_path / "ball.gif", sheet=tmp_path / "sheet.png")
+    assert info["enough_type"] == "no_player_in_race" and info["ending"] is None
+    assert (
+        info["lines"]["anchor"] == "When the drop zone came into view, Home had no player within 15 m of it"
+    )
+    assert info["lines"]["pickup"] == "Away won the ball"
+    assert set(info["lines"]) == {"before", "anchor", "after", "pickup"}  # the clip ends on the pickup hold
+    assert info["frames"] == 15 + 6 + 4 + 4  # release 10, anchor 25, pickup 30; no closing hold
 
 
 def test_drop_zone_in_view_before_the_last_touch_and_a_short_start(tmp_path, monkeypatch):

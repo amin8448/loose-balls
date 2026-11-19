@@ -21,15 +21,17 @@ Part two, labelled "model: one change" throughout, only for enough_type move: th
 frozen, the best-placed player as a ghost at his recorded spot and at the moved spot (metres_short
 along the line from his drifted position to the pickup point), an arrow with the distance, the
 shading recomputed with the change, and the label that the model now has the race level; held
-3 s. For enough_type no_player_in_race, part one ends with the pickup frame held 2 s and a label that
-the losing team had no player within 15 m. No recorded track is replayed next to a model-driven
-player.
+3 s. For enough_type no_player_in_race the statement is shown during the anchor hold, where it is
+true (the race is set on the anchor frame): "When the drop zone came into view, TEAM had no player
+within 15 m of it"; the clip ends on the pickup hold, which names only the team that won the ball
+(revision of 2026-11-19; before it, a 2 s closing hold after the pickup carried the statement). No
+recorded track is replayed next to a model-driven player.
 
 In part two the moved player is drawn as an outlined ring under the other players, with his shirt
 number beside it, so he never hides another player's number; that number and the distance label
 are placed clear of every player dot, the ghost and the pickup marker; the panel is extended where needed so the whole 15 m race circle shows. Players are
 labelled by shirt number only. Output: mp4 through ffmpeg when available, GIF
-otherwise; optionally a contact sheet (first frame, anchor, pickup, and the model or closing frame).
+otherwise; optionally a contact sheet (first frame, anchor, pickup, and the model frame for a move ball).
 """
 
 from pathlib import Path
@@ -56,7 +58,7 @@ from looseball.schema import CORNERS, FPS
 from looseball.velocities import tracking_velocities
 
 HOLD = 0.25  # seconds per data frame
-ANCHOR_HOLD, PICKUP_HOLD, MODEL_HOLD, CLOSING_HOLD = 1.5, 1.0, 3.0, 2.0
+ANCHOR_HOLD, PICKUP_HOLD, MODEL_HOLD = 1.5, 1.0, 3.0
 MARGIN_CLIP = 2.0
 LEVELS = np.arange(-2.0, 2.01, 0.25)
 GRID_POINTS = 160
@@ -75,7 +77,7 @@ CAMERA_COLUMNS = [f"camera_{c}_{a}" for c in CORNERS for a in ("x", "y")]
 
 def schedule(start: int, anchor: int, pickup: int, ending: str | None, hold: float = HOLD) -> list:
     """The animation as (stage, data frame, repeats). Stages: before, anchor, after, pickup, then
-    "model" (ending "model") or "closing" (ending "closing"), or nothing (ending None)."""
+    "model" (ending "model") or nothing (ending None)."""
 
     def n(seconds: float) -> int:
         return max(1, round(seconds / hold))
@@ -87,8 +89,6 @@ def schedule(start: int, anchor: int, pickup: int, ending: str | None, hold: flo
         steps.append(("pickup", pickup, n(PICKUP_HOLD)))
     if ending == "model":
         steps.append(("model", anchor, n(MODEL_HOLD)))
-    elif ending == "closing":
-        steps.append(("closing", pickup, n(CLOSING_HOLD)))
     return steps
 
 
@@ -231,7 +231,8 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
         release if start_before_anchor is None else max(release, anchor - round(start_before_anchor * FPS))
     )
     target = np.array([ep.pickup_x, ep.pickup_y], float)
-    ending = {"move": "model", "no_player_in_race": "closing"}.get(e["enough_type"])
+    ending = "model" if e["enough_type"] == "move" else None
+    nobody = e["enough_type"] == "no_player_in_race"
     steps = schedule(start, anchor, pickup, ending, hold)
     names = m.team_names
     team_of = m.players.set_index("column_id")["team_id"]
@@ -275,7 +276,7 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
     cb.ax.set_title("shading inside the 15 m race circle: which team gets to each point first", fontsize=9,
                     color=MUTED)  # fmt: skip
     cax.set_visible(False)
-    texts, clearance, number_clearance = [], [], []
+    texts, clearance, number_clearance, lines = [], [], [], {}
 
     def draw(stage: str, f: int) -> None:
         ax.clear()
@@ -369,10 +370,14 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
             sub, line = "As recorded", "Before the last touch" if in_view else "Drop zone not yet in view"
         elif stage == "pickup":
             sub, line = "As recorded", f"{names[winner]} won the ball"
-        elif stage == "closing":
-            sub, line = "As recorded", f"{names[loser]} had no player within 15 m of where the ball was won"
+        elif stage == "anchor" and nobody:
+            sub, line = (
+                "As recorded",
+                f"When the drop zone came into view, {names[loser]} had no player within 15 m of it",
+            )
         else:
             sub, line = "As recorded", "Drop zone in view" if stage == "anchor" else ""
+        lines.setdefault(stage, line)
         texts.append(fig.text(0.03, 0.955, head, fontsize=13, color=INK))
         texts.append(fig.text(0.03, 0.918, sub, fontsize=13, color=INK if stage == "model" else MUTED,
                               fontweight="bold" if stage == "model" else "normal"))  # fmt: skip
@@ -382,7 +387,7 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
         texts.append(fig.text(0.97, 0.02, "dots: shirt numbers; hollow: position estimated, off camera; arrows: one "
                               "second of movement; dashed outline: camera view", fontsize=8, color=MUTED, ha="right"))  # fmt: skip
 
-    frames, captured, firsts = 0, [], {"first", "anchor", "pickup", "model", "closing"}
+    frames, captured, firsts = 0, [], {"first", "anchor", "pickup", "model"}
     with writer.saving(fig, str(out), dpi=DPI):
         for k, (stage, f, repeats) in enumerate(steps):
             draw(stage, f)
@@ -402,4 +407,5 @@ def animate(data, match_id: int, seq_i: int, out, hold: float = HOLD, start_befo
             "frames before the anchor": anchor - start, "frames before the anchor with the drop zone in view": before_in_view,
             "margin at the pickup point after the change": level_margin,
             "label clearance px": min(clearance) if clearance else None,
-            "moved number clearance px": min(number_clearance) if number_clearance else None}  # fmt: skip
+            "moved number clearance px": min(number_clearance) if number_clearance else None,
+            "lines": lines}  # fmt: skip

@@ -3183,3 +3183,9 @@ In audit/animations_v2/candidates/candidate_seed20261119.csv only the seconds of
 ### numpy soak script (2026-11-19)
 
 scripts/numpy_norm_soak.py: the numpy-only loop of the incident entry as a script, for a set number of minutes (`python scripts/numpy_norm_soak.py MINUTES`), printing the environment, the calls and errors after each pass of 400,001 angles, every error with its vector, and a final line; exit status 1 when any error was seen. It needs numpy only, so it can be run on another machine. Not part of the reproduce path.
+
+### Pre-public fixes (2026-11-19)
+
+README: "Le et al. 2017" in section 7 made a link (https://www.sloansportsconference.com/research-papers/data-driven-ghosting-using-deep-imitation-learning). README-limit test: 994 words before and after (link targets are not counted), 2 figures or tables.
+
+Presentation correction: the four seed 20261118 mp4 files in audit/animations/ deleted (animation_seed20261118_1_positioning_1899585_275.mp4, _2_positioning_1986691_803.mp4, _3_reading_2017461_483.mp4, _4_reading_2006229_849.mp4). Reason: they carry the label "drop zone not yet in view" on frames where the pickup point was in the camera view, 129 of their 170 frames before the anchor (logged in "3h animation revision: the draw, the candidates and the redrawn clips"). The corrected versions of the same four balls are in audit/animations_v2/seed20261118/ (rerun_seed20261118_01 to _04, with contact sheets and rerun_seed20261118.csv). audit/animations/animations.csv is kept: scripts/s3h_candidates.py reads its match_id and seq_i to redraw the four balls. Checked before deleting: no test, script or checker reads the mp4 files (scripts/s3h_animations.py writes them; scripts/check_reproduce.py does not look at audit/animations/; the remaining mentions are earlier entries of this log). No number changes. The files stay in the git history.

@@ -65,7 +65,12 @@ def main(argv=None) -> int:
     ani = sub.add_parser("animate", help="animation of one lost ball (as recorded, then the one change)")
     ani.add_argument("--data", required=True, help="path to the SkillCorner opendata clone")
     ani.add_argument("--match", required=True, type=int, help="match id")
-    ani.add_argument("--episode", required=True, type=int, help="seq_i of the lost ball")
+    ani.add_argument(
+        "--episode",
+        required=True,
+        type=int,
+        help="the lost ball: its value in the seq_i column of clips_enough.csv (written by looseball run and reproduce)",
+    )
     ani.add_argument(
         "--out", required=True, help="output file (.mp4 through ffmpeg when available, else .gif)"
     )

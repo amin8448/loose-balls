@@ -2333,6 +2333,33 @@ Old and new hashes, paired in order (21 commits; subjects identical in every pai
 | 70d453e | d5d0c56 | 2026-10-29 | Step 3b revision: Figure 1 redrawn |
 | 18e56ed | aaabf90 | 2026-11-17 | Step 3c: README draft and its number sources |
 
+Second rewrite (2026-11-19). The history was rewritten a second time, before the repository was made public, to correct the wording of this entry in the earlier commits: the first row named the local tool configuration file, and the second row named it in describing the step 1 brief. Both rows now read as in the table above, with the same wording in every commit that carries them. In the eight commits before "AUDIT.md: wording of the history rewrite entry" the second row had an older phrase about the two removed lines; it was given the same wording, so that commit, whose only change was this phrase, is replayed as an empty commit with its message, author and dates. Done the same way as the first rewrite: the 21 commits up to and including aaabf90 are untouched and keep their hashes; the 20 commits after them were replayed in order with the same message, author, author date, committer and committer date, and in each the two rows were replaced and every cited hash of a replayed commit was replaced by its new hash (only AUDIT.md cites any; DESIGN.md, the briefs and the docstrings cite only the 21 untouched commits, so the MT1 marker line and its hashes are unchanged). The previous history is kept on the local branch backup/pre-rewrite-2, which is not pushed (nor is backup/pre-rewrite).
+
+Old and new hashes of the second rewrite, paired in order (20 commits; dates and subjects identical in every pair):
+
+| old | new | date | subject |
+|:--|:--|:--|:--|
+| 79a5abe | fc816df | 2026-11-17 | Step 3h stage 1: history rewrite logged with the hash table, documentation fixes, 3h definitions frozen in DESIGN.md, 3h checks and path check logged before any run |
+| 903ddc2 | 3365a0d | 2026-11-17 | Step 3h stage 2: enough and path-check modules, clips_enough.csv beside an unchanged clips.csv, 16 synthetic tests; MT1 outputs byte-identical on the exploration matches before and after |
+| 1e6b673 | f61ccc4 | 2026-11-17 | Step 3h stage 3: rehearsal of 3h, its checks and the path check on the five exploration matches, four seeded figures, results logged |
+| 618b2e7 | e46bae9 | 2026-11-18 | Step 3h part 2 stage 1: post hoc revisions R1 to R5 after the exploration rehearsal, logged before any code runs on match data |
+| 9d8b86a | afbfe77 | 2026-11-18 | Step 3h part 2 stage 2: move-only enough change, report-only redirection, P1b and P3b, tests updated; rehearsal on the exploration matches with the revised definitions logged |
+| 5e98114 | f8453a3 | 2026-11-18 | Step 3h part 2 stage 3: reproduce identical to the MT1 record; 3h and the path check run once on the test matches, tables logged, record committed and added to the checker |
+| 2012c47 | f24382c | 2026-11-18 | Step 3h part 2 stage 4: looseball animate with tests; animation draw rule and presentation choices logged before the draw |
+| c57c345 | b1c44e8 | 2026-11-18 | Step 3h part 2 stage 4: four seeded test-set animations written and inspected, logged |
+| 8336ac3 | 1dbac14 | 2026-11-18 | AUDIT.md: wording of the history rewrite entry (documentation only) |
+| 8710317 | 3afc931 | 2026-11-18 | Step 3h part 3: diagnostics D1 to D3 logged before the run |
+| 132a06e | e83ca86 | 2026-11-18 | Step 3h part 3: diagnostics D1 to D3 run once on the test analysis set, logged |
+| b132033 | 7cbc68d | 2026-11-18 | Step 3h part 3: animation revision (labels, shirt numbers, race-only shading inside the circle, start option, closing label, contact sheets) and candidate draw rule logged before the draw |
+| 2928b33 | 0d8d335 | 2026-11-18 | Step 3h part 3: fifteen animation candidates and the four seed 20261118 clips redrawn with contact sheets; reproduce identical; logged |
+| d8cab2c | 7253e71 | 2026-11-18 | Animation: move label placed clear of dots and the pickup marker, panel extended to show the whole race circle; coach versions of four hand-chosen candidates written outside the record |
+| 684156f | 1917d15 | 2026-11-18 | Step 3c revision: README text revised with every new number checked against the record (996 words); moved player drawn as a ring with his number beside it in the model frame |
+| f6cc8b7 | d9a0724 | 2026-11-19 | AUDIT: test-suite failure at the 3c revision commit traced to a rare ValueError in numpy's norm, reproduced outside pytest; cause open; commits now only after a passing suite in the same command |
+| 2cd1e80 | 26cfe59 | 2026-11-19 | README cut to 994 words with citation links; no-player statement moved to the anchor hold and the three no_player_in_race clips regenerated; incident entry corrected; numpy soak script added |
+| 1b473d8 | bddea60 | 2026-11-19 | Pre-public fixes: Le et al. 2017 linked; the four seed 20261118 mp4 files with the wrong drop-zone label deleted, corrected versions kept in audit/animations_v2/seed20261118 |
+| 34fe424 | cb0feb3 | 2026-11-19 | README animate sentence gives the arguments and the seq_i source (995 words); animate --help names the seq_i column of clips_enough.csv |
+| 7816b70 | a2802fb | 2026-11-19 | README animate command gains --data data/opendata and runs as written (997 words) |
+
 ### Documentation fixes (2026-11-17)
 
 Documentation only; no result, definition or parameter changes.

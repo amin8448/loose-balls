@@ -2360,6 +2360,23 @@ Old and new hashes of the second rewrite, paired in order (20 commits; dates and
 | 34fe424 | cb0feb3 | 2026-11-19 | README animate sentence gives the arguments and the seq_i source (995 words); animate --help names the seq_i column of clips_enough.csv |
 | 7816b70 | a2802fb | 2026-11-19 | README animate command gains --data data/opendata and runs as written (997 words) |
 
+Checks of the second rewrite (2026-11-19), on main at 43f775e:
+
+| check | result |
+|:--|:--|
+| a case-insensitive search for the removed file's name over every commit of main (42 commits) | no match |
+| the same search over the commit messages of main | no match |
+| the older phrase about the two removed lines, in any commit of main | absent |
+| files that differ from backup/pre-rewrite-2 (the history before this rewrite) | AUDIT.md only |
+| audit/, figures/ and src/ against backup/pre-rewrite-2 | byte-identical |
+| the 21 commits up to and including aaabf90 | unchanged, same hashes |
+| empty commits | one, "AUDIT.md: wording of the history rewrite entry", as described above |
+| guard | reads the marker line from AUDIT.md at HEAD and finds it; the line is identical to the one before the rewrite |
+| test suite | 94 passed |
+| `looseball reproduce` and scripts/check_reproduce.py | all identical: the six MT1 files, report.md, static_temperature.md, the four figure files and clips_enough.csv (3 min 53 s, 827 MB) |
+
+The local branches backup/pre-rewrite and backup/pre-rewrite-2 keep the earlier histories, with the earlier wording; they are not pushed.
+
 ### Documentation fixes (2026-11-17)
 
 Documentation only; no result, definition or parameter changes.
